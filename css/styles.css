@@ -212,6 +212,47 @@ Intro Text
 	color: #90A6BB;
 }
 
+/*
+Certification
+*/
+
+.certifications {
+	background-color: var(--color-primary2);
+	padding: 200px;
+}
+
+.button-section {
+	margin-top: 10px;
+}
+
+.certification-button {
+	background-color: #0F1F31; /* Green */
+	border: none;
+	color: white;
+	width: 100%;
+	height: 120%;
+	display: inline-block;
+	cursor: pointer;
+	text-align: left;
+}
+
+.certification-button h4 {
+	font-size: 20px;
+}
+
+.certification-button p {
+	font-size: 15px;
+}
+
+.certification-button img {
+	width: 48px;
+	height: 48px;
+	float: left;
+	margin-right: 10px;
+	margin-left: 5px;
+	margin-top: 1%;
+}
+
 @media (max-width:1100px) {
 	.timeline {
 		margin-left: -5%;
