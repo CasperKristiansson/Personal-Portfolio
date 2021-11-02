@@ -140,7 +140,7 @@ Intro Text
 
 .timeline-title {
 	padding: 10px;
-	margin-left: 15%; 
+	margin-left: 10%; 
 }
 
 .timeline {
@@ -216,9 +216,14 @@ Intro Text
 Certification
 */
 
+.section-title {
+	margin-left: 6%;
+	margin-bottom: 50px;
+}
+
 .certifications {
 	background-color: var(--color-primary2);
-	padding: 200px;
+	padding: 100px;
 }
 
 .button-section {
@@ -226,7 +231,7 @@ Certification
 }
 
 .certification-button {
-	background-color: #0F1F31; /* Green */
+	background-color: #0F1F31;
 	border: none;
 	color: white;
 	width: 100%;
@@ -251,6 +256,61 @@ Certification
 	margin-right: 10px;
 	margin-left: 5px;
 	margin-top: 1%;
+}
+
+/*
+Recommendations
+*/
+.recommendations {
+	background-color: var(--color-primary2);
+	padding: 100px;
+}
+
+.recommendation-card {
+	border: 1px solid #90A6BB;
+	width: 60%;
+  	padding: 10px;
+	border-radius: 10px;
+	background-color: #081f27;
+}
+
+.recommendation-card img {
+	border-radius: 50%;
+	width: 70px;
+	float: left;
+	padding: 5px;
+}
+
+.recommendation-card h5 {
+	font-size: 20px;
+	margin-left: 18%;
+	margin-top: 15px;
+}
+
+.recommendation-profession {
+	font-size: 12px;
+	margin-left: 18%;
+	color: #90A6BB;
+}
+
+.recommendation-text {
+	margin-top: 20px;
+	font-size: 13px;
+}
+
+.card-right {
+	float: right;
+}
+
+.card-left {
+	float: left;
+}
+
+.recommendation-card span {
+	content: "\201D";
+	float: right;
+	font-size: 100px;
+	margin-top: -25px;
 }
 
 @media (max-width:1100px) {
