@@ -113,12 +113,12 @@ Type writer intro effect
 }
 
 .anim-typewriter{
-    animation: typewriter 3s steps(35) 1s 1 normal both, blinkTextCursor 500ms steps(35) infinite normal;
+    animation: typewriter 2s steps(45) 0.5s 1 normal both, blinkTextCursor 700ms steps(45) infinite normal;
 }
 
 @keyframes typewriter{
   from{width: 0;}
-  to{width: 10em;}
+  to{width: 9.4em;}
 }
 
 @keyframes blinkTextCursor{
