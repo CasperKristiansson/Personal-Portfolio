@@ -109,7 +109,7 @@ Type writer intro effect
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    height: 1.05em; 
+    height: 1.2em; 
 }
 
 .anim-typewriter{
@@ -131,43 +131,45 @@ Intro Text
 */
 .experience {
     background-color: var(--color-primary2);
+}
+
+.education {
+    background-color: var(--color-primary2);
     margin-top: 750px;
 }
 
 .timeline-title {
 	padding: 10px;
-	margin-left: 15%;
-	margin-bottom: -20px;
+	margin-left: 15%; 
 }
 
 .timeline {
-	margin-left: -15%;
-	margin-top: 30px;
+	margin: 40px 0 0 -15%; 
 	max-width: 90%;
 	display: grid;
 	grid-template-columns: 1fr 2px 1fr;
 	color: #094a68;
 }
 
-.timeline__component {
-  margin: 0 50px 30px 50px;
+.timeline-component {
+  margin: 0 50px 40px 50px;
 }
 
-.timeline__component--bottom {
+.timeline-component--bottom {
   margin-bottom: 0;
 }
 
-.timeline__middle {
+.timeline-middle {
   position: relative;
   background: #094a68;
 }
 
-.timeline__point:hover:before {
+.timeline-point:hover:before {
 	background-color: #0f0;
 	box-shadow: 0 0 10px 2px #0f0
 }
 
-.timeline__point:before {
+.timeline-point:before {
 	position: absolute;
 	content: '';
 	width: 20px;
@@ -178,13 +180,12 @@ Intro Text
 	transition: .5s
 }
 
-/* LEAVE TILL LAST */
-.timeline__point--bottom {
+.timeline-point--bottom {
   top: initial;
   bottom: 0;
 }
 
-.timeline__date--right {
+.timeline-date--right {
   text-align: right;
   color: #106fb4;
 }
@@ -193,7 +194,7 @@ Intro Text
   line-height: 1.5;
 }
 
-.timeline__date {
+.timeline-date {
   color: #106fb4;
 }
 
