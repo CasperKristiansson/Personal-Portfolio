@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 :root {
 	--color-primary: #0D0E0E;
+    --color-primary2: #0A1A2B;
 	--color-text: white;
 }
 
@@ -13,7 +16,7 @@ html {
 body,
 p {
 	color: var(--color-text);
-	font: 400 1rem/1.625rem "Open Sans", sans-serif
+	font-family: 'Playfair Display', serif;
 }
 
 h1 {
@@ -89,9 +92,16 @@ a:hover {
 	text-decoration: underline
 }
 
-.intro-name{
+/*
+Type writer intro effect
+*/
+.intro {
     position: relative;
-    top: 50%;  
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.intro-text{
     width: 9.5em;
     margin: 0 auto;
     border-right: 2px solid rgba(255,255,255,.75);
@@ -99,7 +109,7 @@ a:hover {
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    transform: translateY(-50%);    
+    height: 1.05em; 
 }
 
 .anim-typewriter{
@@ -110,7 +120,105 @@ a:hover {
   from{width: 0;}
   to{width: 10em;}
 }
+
 @keyframes blinkTextCursor{
   from{border-right-color: var(--color-text)}
   to{border-right-color: transparent;}
+}
+
+/*
+Intro Text
+*/
+.experience {
+    background-color: var(--color-primary2);
+    margin-top: 750px;
+}
+
+.timeline-title {
+	padding: 10px;
+	margin-left: 15%;
+	margin-bottom: -20px;
+}
+
+.timeline {
+	margin-left: -15%;
+	margin-top: 30px;
+	max-width: 90%;
+	display: grid;
+	grid-template-columns: 1fr 2px 1fr;
+	color: #094a68;
+}
+
+.timeline__component {
+  margin: 0 50px 30px 50px;
+}
+
+.timeline__component--bottom {
+  margin-bottom: 0;
+}
+
+.timeline__middle {
+  position: relative;
+  background: #094a68;
+}
+
+.timeline__point:hover:before {
+	background-color: #0f0;
+	box-shadow: 0 0 10px 2px #0f0
+}
+
+.timeline__point:before {
+	position: absolute;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background-color: #90A6BB;
+	border-radius: 50%;
+	left: -9px;
+	transition: .5s
+}
+
+/* LEAVE TILL LAST */
+.timeline__point--bottom {
+  top: initial;
+  bottom: 0;
+}
+
+.timeline__date--right {
+  text-align: right;
+  color: #106fb4;
+}
+
+.timeline__paragraph {
+  line-height: 1.5;
+}
+
+.timeline__date {
+  color: #106fb4;
+}
+
+.timeline h6 {
+	font-size: 17px;
+}
+
+.p-small {
+	font-size: 15px;
+	color: #90A6BB;
+}
+
+.p-medium {
+	font-size: 17px;
+	color: #90A6BB;
+}
+
+@media (max-width:1100px) {
+	.timeline {
+		margin-left: -5%;
+	}
+}
+
+@media (max-width:768px) {
+	.timeline {
+		margin-left: 0%;
+	}
 }
