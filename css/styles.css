@@ -11,6 +11,7 @@ html {
 	width: 100%;
 	height: 100%;
     background: var(--color-primary);
+	overflow-x: hidden;
 }
 
 body,
@@ -95,10 +96,15 @@ a:hover {
 /*
 Type writer intro effect
 */
-.intro {
+
+.stars {
+	margin-top: -300px;
+}
+
+.intro h1 {
     position: relative;
-    top: 40%;
     transform: translateY(-50%);
+	top: 50%;
 }
 
 .intro-text{
@@ -126,6 +132,12 @@ Type writer intro effect
   to{border-right-color: transparent;}
 }
 
+@keyframes glow {
+	to {
+	  opacity: 0;
+	}
+  }
+
 /*
 Intro Text
 */
@@ -135,7 +147,7 @@ Intro Text
 
 .education {
     background-color: var(--color-primary2);
-    margin-top: 750px;
+    margin-top: 400px;
 }
 
 .timeline-title {
@@ -296,6 +308,7 @@ Recommendations
 .recommendation-text {
 	margin-top: 20px;
 	font-size: 13px;
+	font-style: italic;
 }
 
 .card-right {
