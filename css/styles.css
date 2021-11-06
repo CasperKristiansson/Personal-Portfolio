@@ -96,20 +96,10 @@ a:hover {
 /*
 Type writer intro effect
 */
-
-.stars {
-	margin-top: -300px;
-}
-
-.intro h1 {
-    position: relative;
-    transform: translateY(-50%);
-	top: 50%;
-}
-
 .intro-text{
+	position: relative;
     width: 9.5em;
-    margin: 0 auto;
+    margin: 300px auto;
     border-right: 2px solid rgba(255,255,255,.75);
     font-size: 300%;
     text-align: center;
@@ -143,16 +133,18 @@ Intro Text
 */
 .experience {
     background-color: var(--color-primary2);
+	margin-top: -8%;
+	position: relative;
 }
 
 .education {
     background-color: var(--color-primary2);
     margin-top: 400px;
+	position: relative;
 }
 
 .timeline-title {
-	padding: 10px;
-	margin-left: 10%; 
+	padding: 5% 0 0 10%;
 }
 
 .timeline {
@@ -171,14 +163,14 @@ Intro Text
   margin-bottom: 0;
 }
 
-.timeline-middle {
-  position: relative;
-  background: #094a68;
-}
-
 .timeline-point:hover:before {
 	background-color: #0f0;
 	box-shadow: 0 0 10px 2px #0f0
+}
+
+.timeline-middle {
+	position: relative;
+	background: #094a68;
 }
 
 .timeline-point:before {
@@ -236,6 +228,7 @@ Certification
 .certifications {
 	background-color: var(--color-primary2);
 	padding: 100px;
+	position: relative;
 }
 
 .button-section {
@@ -276,6 +269,7 @@ Recommendations
 .recommendations {
 	background-color: var(--color-primary2);
 	padding: 100px;
+	position: relative;
 }
 
 .recommendation-card {
@@ -326,14 +320,48 @@ Recommendations
 	margin-top: -25px;
 }
 
-@media (max-width:1100px) {
+@media (max-width:1300px) {
 	.timeline {
-		margin-left: -5%;
+		margin-left: -3%;
 	}
 }
 
-@media (max-width:768px) {
+@media (max-width:1000px) {
 	.timeline {
 		margin-left: 0%;
+	}
+	.timeline-title {
+		padding-top: 50px;
+	}
+}
+
+@media (max-width:800px) {
+	.timeline-middle {
+		visibility: hidden;
+	}
+	
+	.timeline-point {
+		visibility: hidden;
+	}
+
+	.timeline-component {
+		margin: 0;
+	}
+
+	.timeline {
+		display: block;
+		padding: 5% 5% 0 15%;
+	}
+
+	.timeline-date--right {
+		text-align: left;
+	}
+
+	.timeline-title {
+		margin-bottom: -18%;
+	}
+
+	.timeline-date {
+		margin-top: 80px;
 	}
 }
