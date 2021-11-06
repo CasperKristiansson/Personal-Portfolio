@@ -2,7 +2,7 @@
 
 :root {
 	--color-primary: #0D0E0E;
-    --color-primary2: #0A1A2B;
+    --color-primary2: #18284f;
 	--color-text: white;
 }
 
@@ -10,7 +10,7 @@ body,
 html {
 	width: 100%;
 	height: 100%;
-    background: var(--color-primary);
+	background-image: linear-gradient(to bottom, #07070b, #131522, #171e37, #18284f, #143367);
 	overflow-x: hidden;
 }
 
@@ -94,10 +94,8 @@ a:hover {
 }
 
 /*
-Type writer intro effect
+Type writer intro effect and stars glow effect
 */
-.stars {
-}
 
 .intro-text{
 	position: relative;
