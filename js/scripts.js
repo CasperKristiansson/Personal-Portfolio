@@ -32,13 +32,3 @@
         document.getElementsByClassName("stars")[0].appendChild(stars[i]);
     }
 })();
-
-function clearHtml() {
-    for (let i = 0; i < 300; i++) {
-        try {
-            document.getElementById("star-id-" + i).remove();
-        } catch (e) {
-            break;
-        }
-    }
-}   
