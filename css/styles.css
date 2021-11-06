@@ -96,6 +96,10 @@ a:hover {
 /*
 Type writer intro effect
 */
+.stars {
+	margin-top: -700px;
+}
+
 .intro-text{
 	position: relative;
     width: 9.5em;
@@ -269,7 +273,6 @@ Recommendations
 .recommendations {
 	background-color: var(--color-primary2);
 	padding: 100px;
-	position: relative;
 }
 
 .recommendation-card {
