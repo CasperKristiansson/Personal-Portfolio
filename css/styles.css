@@ -365,3 +365,10 @@ Recommendations
 		margin-top: 80px;
 	}
 }
+
+@media (max-width:500px) {
+	.intro-text{
+		font-size: 200%;
+		height: 1.4em; 
+	}
+}
