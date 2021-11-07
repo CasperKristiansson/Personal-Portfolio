@@ -97,7 +97,6 @@ a:hover {
 /*
 Type writer intro effect and stars glow effect
 */
-
 .intro-text{
 	position: relative;
     width: 9.5em;
@@ -136,7 +135,7 @@ Intro Text
 .experience {
     background-color: var(--color-primary2);
 	position: relative;
-	margin-top: -100px;
+	margin-top: -70px;
 }
 
 .education {

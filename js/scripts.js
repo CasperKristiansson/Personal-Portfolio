@@ -1,8 +1,5 @@
 (function staticStars() {
-
     var rand, stars = [];
-    var intViewportWidth = window.innerWidth;
-    var intViewportHeight = window.innerHeight;
 
     for (let i = 0; i < 300; i++) {
         rand = Math.random() * 5;
@@ -11,7 +8,7 @@
 
         stars[i].style.width = rand + "px";
         stars[i].style.height = rand + "px";
-        stars[i].style.top = Math.random() * 80 + "%";
+        stars[i].style.top = Math.random() * 100 + "%";
         stars[i].style.left = Math.random() * 100 + "%";
 
         stars[i].style.marginTop= "0";
