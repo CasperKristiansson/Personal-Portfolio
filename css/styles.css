@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap');
+
+/* 
+TODO: If the content reaches over 1080p set a width zoom out to 25%
+*/
 
 :root {
 	--color-primary: #0D0E0E;
@@ -18,7 +23,7 @@ html {
 body,
 p {
 	color: var(--color-text);
-	font-family: 'Playfair Display', serif;
+	font-family: 'IBM Plex Mono', monospace;
 }
 
 h1 {
@@ -107,6 +112,7 @@ Type writer intro effect and stars glow effect
     white-space: nowrap;
     overflow: hidden;
     height: 1.2em; 
+	font-family: 'Playfair Display', serif;
 }
 
 .anim-typewriter{
@@ -253,47 +259,57 @@ Intro Text
 Certification
 */
 
-.section-title {
-	margin-left: 6%;
-	margin-bottom: 50px;
-}
-
 .certifications {
 	background-color: var(--color-primary2);
-	padding: 100px;
 	position: relative;
 }
 
+.section-title {
+	padding: 5% 0 0 10%;
+}
+
 .button-section {
-	margin-top: 10px;
+	padding: 40px 40px 0px 40px;
+	margin-bottom: -17px;
 }
 
 .certification-button {
-	background-color: #094a68;
+	background-color: #172041;
 	border: none;
 	color: white;
-	width: 100%;
-	height: 120%;
+	width: 710px;
+	height: 100px;
 	display: inline-block;
 	cursor: pointer;
 	text-align: left;
 }
 
-.certification-button h4 {
-	font-size: 20px;
+.certification-button h5 {
+	font-size: 17px;
 }
 
 .certification-button p {
-	font-size: 15px;
+	font-size: 16px;
+	margin-top: -5px;
 }
 
 .certification-button img {
-	width: 48px;
-	height: 48px;
+	width: 50px;
+	height: 50px;
 	float: left;
-	margin-right: 10px;
-	margin-left: 5px;
-	margin-top: 1%;
+	margin: 10px 30px 10px 20px;
+}
+
+.button-left {
+	float: right;
+}
+
+.button-right {
+	float: left;
+}
+
+.certification-text {
+	margin-top: 9px;
 }
 
 /*
@@ -352,9 +368,29 @@ Recommendations
 	margin-top: -25px;
 }
 
-@media (max-width:1300px) {
+@media (max-width:1550px) {
+	.certification-button {
+		width: 600px;
+	}
+}
+
+@media (max-width:1330px) {
 	.timeline {
 		margin-left: -3%;
+	}
+
+	.certification-button {
+		width: 500px;
+	}
+}
+
+@media (max-width:1130px) {
+	.certification-button {
+		float: none;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
 	}
 }
 
@@ -364,6 +400,11 @@ Recommendations
 	}
 	.timeline-title {
 		padding-top: 50px;
+	}
+
+	.certification-button {
+		width: 600px;
+		margin-top: 20px;
 	}
 }
 
@@ -396,11 +437,41 @@ Recommendations
 	.timeline-date {
 		margin-top: 80px;
 	}
+
+	.certification-button {
+		width: 500px;
+	}
+}
+
+@media (max-width:590px) {
+	.certification-button {
+		width: 400px;
+	}
 }
 
 @media (max-width:500px) {
 	.intro-text{
 		font-size: 200%;
 		height: 1.4em; 
+	}
+
+	.section-title {
+		padding: 0;
+		margin-left: 20px;
+	}
+
+	.certification-button h5 {
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+	.certification-button {
+		width: 340px;
+		height: 120px;
+		margin-left: -20px;
+	}
+
+	.certification-button img {
+		margin-top: 25px;
 	}
 }

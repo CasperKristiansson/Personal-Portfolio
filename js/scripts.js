@@ -8,7 +8,7 @@
 
         stars[i].style.width = rand + "px";
         stars[i].style.height = rand + "px";
-        stars[i].style.top = Math.random() * 100 + "%";
+        stars[i].style.top = Math.random() * 95 + "%";
         stars[i].style.left = Math.random() * 100 + "%";
 
         stars[i].style.marginTop= "0";
