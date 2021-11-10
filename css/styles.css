@@ -471,7 +471,9 @@ Recommendations
 	}
 
 	.button-section {
-		padding: 0px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.certification-button img {
