@@ -457,7 +457,7 @@ Recommendations
 
 	.section-title {
 		padding: 0;
-		margin-left: 20px;
+		text-align: center;
 	}
 
 	.certification-button h5 {
@@ -468,6 +468,10 @@ Recommendations
 	.certification-button {
 		width: 340px;
 		height: 120px;
+	}
+
+	.button-section {
+		padding: 0px;
 	}
 
 	.certification-button img {
