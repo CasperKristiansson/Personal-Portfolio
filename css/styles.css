@@ -392,6 +392,10 @@ Recommendations
 		margin-right: auto;
 		width: 100%;
 	}
+
+	.button-section {
+		margin-top: -40px;
+	}
 }
 
 @media (max-width:1000px) {
@@ -461,13 +465,17 @@ Recommendations
 	}
 
 	.certification-button h5 {
-		font-size: 15px;
+		font-size: 14px;
 		line-height: 1.5;
 	}
 
+	.certification-button p {
+		font-size: 13px;
+	}
+
 	.certification-button {
-		width: 340px;
-		height: 120px;
+		width: 300px;
+		height: 150px;
 	}
 
 	.button-section {
@@ -477,6 +485,6 @@ Recommendations
 	}
 
 	.certification-button img {
-		margin-top: 25px;
+		margin-top: 22px;
 	}
 }
