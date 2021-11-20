@@ -1,191 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Portfolio</title>
-  
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/fontawesome-all.min.css" rel="stylesheet">
   <link href="css/swiper.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
   <link href="css/fontawesome-all.min.css" rel="stylesheet">
 
 </head>
+
 <body>
-  
+
   <div class="intro">
     <div class="stars"></div>
     <h1 class="intro-text anim-typewriter">Casper Kristiansson.</h1>
   </div>
 
-    <div class="education">
-      <div class="timeline-title">
-        <h1>Education</h1>
-      </div>
-      
-      <div class="timeline">
-          <div class="timeline-component">
-            <div class="timeline-date timeline-date--right">
-              <h6>KTH Royal Institute of Technology</h6>
-              <p class="p-small">2020 - 2023</p>
-            </div>
-          </div>
-          <div class="timeline-middle">
-            <div class="timeline-point"></div>
-          </div>
-          <div class="timeline-component">
-            <h5>Bachelor's Degree, Computer Science</h5>
-            <p class="p-medium">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+  <div class="projects">
+    <div class="projects-title">
+      <h1>Projects</h1>
+    </div>
+    <div class="project-button" id="project-nav">
+      <button id="prev"><</button>
+      <button id="next">></button>
+    </div>
+    <div class="menu" id="menu">
+      <ul>
+        <li>
+          <div class="card">
+            <img src="images/PKTraffic.png">
+            <h5 class="tags">
+              Data, Web, Company, Front/Backend
+            </h5>
+            <h2 card-title>
+              PKTraffic LLC
+            </h2>
+            <p>
+              PK Traffic specializes in deep public record search of traffic related data and events to provide expert
+              analysis and support.
             </p>
-            <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://www.kth.se/utbildning/hogskoleingenjor/datateknik-kista/utbildningsbeskrivning-1.4117">kth.se</a>
+            <button onClick="window.location.href='#PKTraffic'" class="cardsButton">
+              READ MORE
+            </button>
           </div>
-          
-          <div class="timeline-component">
-              <div class="timeline-date timeline-date--right">
-                <h6>Cisco Networking Academy</h6>
-                <p class="p-small">2018 - 2020</p>
-              </div>
-            </div>
-            <div class="timeline-middle">
-              <div class="timeline-point"></div>
-            </div>
-            <div class="timeline-component">
-              <h5>System, Networking, and LAN/WAN Management</h5>
-              <p class="p-medium">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-              </p>
-              <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://www.cisco.com/c/m/en_sg/partners/cisco-networking-academy/index.html">cisco.com</a>
-          </div>
+        </li>
 
-          <div class="timeline-component">
-              <div class="timeline-date timeline-date--right">
-                <h6>Thorildsplans Gymnasium</h6>
-                <p class="p-small">2017 - 2020</p>
-              </div>
-            </div>
-            <div class="timeline-middle">
-              <div class="timeline-point"></div>
-            </div>
-            <div class="timeline-component">
-              <h5>Information and Media Technology</h5>
-              <p class="p-medium">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-              </p>
-              <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://thorildsplansgymnasium.stockholm/vara-program/teknikprogrammet/">thorildsplansgymnasium.stockholm</a>
-            </div>
+        <li>
+          <div class="card">
+            <img src="images/tvShowNetwork.jpg">
+            <h5 class="tags">
+              Website, Wordpress, SEO, Front/Backend
+            </h5>
+            <h2 card-title>
+              TvShowNetwork
+            </h2>
+            <p>
+              TvShowNetwork is an article publishing website where a user is able to sign up and write their own reviews/articles on
+              film and the TV industry. Starting a new blog can be hard, especially with competing against sites that posts 5-10
+              articles a day.
+            </p>
+            <button onClick="window.location.href='#TvShowNetwork'" class="cardsButton">
+              READ MORE
+            </button>
+          </div>
+        </li>
+
+        <li>
+          <div class="card">
+            <img src="images/Image Editor.jpg">
+            <h5 class="tags">
+              Program, Photo Editor, Front/Backend
+            </h5>
+            <h2 card-title>
+              Image Editor
+            </h2>
+            <p>
+              Casper Kristiansson developed a mass image editing program which was developed for the Personnel Foundation of the
+              Swedish postal service.
+            </p>
+            <button onClick="window.location.href='#ImageEditor'" class="cardsButton">
+              READ MORE
+            </button>
+          </div>
+        </li>
+
+        <li>
+          <div class="card">
+            <img src="images/Github Overview.jpg">
+            <h5 class="tags">
+              General, Front/Backend
+            </h5>
+            <h2 card-title>
+              Smaller Projects on Github
+            </h2>
+            <p>
+              Collection of smaller projects that I have done on Github with all of its codes being open source.
+            </p>
+            <button  onClick="window.location.href='#GithubProjects'" class="cardsButton">
+              READ MORE
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="PKTraffic" class="overlay">
+    <div class="popup" id="scrollbar">
+      <img src="images/PKTraffic Website Overview.png">
+      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://www.pktraffic.com">Website</a>
+      <h1>PKTraffic LLC</h1>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        <p>PK Traffic specializes in deep public record search of traffic related data and events to provide expert
+          analysis and support.</p>
+        <p>PK Traffic performs a deep record search of traffic related incidents through an intelligence application
+          that
+          makes it easy to explore, analyze and visualize data to help support you. Our goal is to provide insight
+          through
+          post-processing to support safety and justice to traffic crash victims.</p>
+        <p>Casper Kristiansson is one of the owners and CTO (chief technology officer). He developed both the frontend
+          and
+          backend parts of the company. The frontend part of the project includes a program which is able to visualize
+          data and sort through traffic crashes, and the website <a href="https://pktraffic.com/"
+            target="_blank">pktraffic.com</a>. The backend of the project includes
+          managing a server which handles a large amount of data and camera footage. His mayor responsibility is making
+          sure that the program is working efficiently and that the data is stored safely and that the data is accurate.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="TvShowNetwork" class="overlay">
+    <div class="popup" id="scrollbar">
+      <img src="images/TvShowNetwork Website Overview.jpg">
+      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://www.tvshownetwork.com/">Website</a>
+      <h1>TvShowNetwork</h1>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        <p>TvShowNetwork is an article publishing website where a user is able to sign up and write their own reviews/articles
+          on film and the TV industry. Starting a new blog can be hard, especially with competing against sites that posts
+          5-10 articles a day. Climbing the google search ladder is harder than ever. By writers joining together they can
+          quickly beat the bigger article websites. The goal of the project than is that the writers receive a share of what
+          their article websites have received in google AdSense. During the first year of the website launching, it had
+          attracted approximately 166,000 visitors.</p>
+        <p>Casper Kristiansson has developed the website and the backend of the site which includes keeping track on which and
+          how many visitors each article author gets. The project also includes optimizing the website for SEO (search engine
+          optimization).</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="ImageEditor" class="overlay">
+    <div class="popup" id="scrollbar">
+      <img src="images/Image Editor Overview.png">
+      <h1>Image Editor</h1>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        <p>Casper Kristiansson developed a mass image editing program which was developed for the Personnel Foundation of the
+          Swedish postal service (postnordplus.com). The goal of the program is to mass edit images which only requires a few
+          changes such as changing the width and height, brightness, sharpness, vignette, vibrance and much more. The program
+          would than apply all of those changes to the selected images. The program also included a version where the user is
+          able to go through an image at a time a changing the image properties. By using this program, its users would save a
+          large amount on time specifically for images who’s purpose would be uploading to a website. This is because editing
+          each image in a program like MS Photoshop would take many hours.</p>
+        <p>Casper kristiansson has developed both the frontend and backend of the project which includes a program which is
+          able to manipulate and work with images. He has also trained the staff in using the program as well as given support
+          to any questions. </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="GithubProjects" class="overlay">
+    <div class="popup" id="scrollbar">
+      <img src="images/Github Projects Overview.jpg">
+      <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://github.com/CasperKristiansson">Github Profile Page</a>
+      <h1>Twitch YouTube Auto Uploader</h1>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        <p>The goal of the project is to automatically upload twitch clips to YouTube using both Twitch API and googles API.
+          On the website twitch a user is able to “clip” a part of a livestream and upload it to the platform. These clips
+          often get a lot of attention and often attracts millions of views. With this project using twitch API and YouTube dl
+          it can download popular clips of the platform. It than uploads them to YouTube using their data v3 API.</p>
+          <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://github.com/CasperKristiansson/Twitch-Youtube-Auto-Uploader">Github Link</a>
+      </div>
+
+      <h1>Automated Instagram Account</h1>
+      <div class="content">
+        <p>This project is a simplified version of the image editor where it was able to automatically run for ever where it
+          downloads images from images from unsplash.com, edits them to a specific width and height and an overlay. It than
+          adds a quote and a logo to the image. The image is than uploaded to Instagram. The project goal is to automate an
+          Instagram account which would be able to run indefinitely and keep upload content which its followers could enjoy.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://github.com/CasperKristiansson/Image-Auto-Editor">Github Link</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="education">
+    <div class="timeline-title">
+      <h1>Education</h1>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>KTH Royal Institute of Technology</h6>
+          <p class="p-small">2020 - 2023</p>
         </div>
-    <br>
-    <br>
-    <br>
-	</div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>Bachelor's Degree, Computer Science</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank"
+          href="https://www.kth.se/utbildning/hogskoleingenjor/datateknik-kista/utbildningsbeskrivning-1.4117">kth.se</a>
+      </div>
 
-	<div class="experience">
-        <div class="timeline-title">
-            <h1>Experience</h1>
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>Cisco Networking Academy</h6>
+          <p class="p-small">2018 - 2020</p>
         </div>
-        
-        <div class="timeline">
-            <div class="timeline-component">
-              <div class="timeline-date timeline-date--right">
-                <h6>Administrative Assistant</h6>
-                <p class="p-small">2017 - 2020</p>
-              </div>
-            </div>
-            <div class="timeline-middle">
-              <div class="timeline-point"></div>
-            </div>
-            <div class="timeline-component">
-              <h5>Personalstiftelsen PostNord Plus - Seasonal</h5>
-              <p class="p-medium">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-              </p>
-              <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://www.postnordplus.com/">postnordplus.com</a>
-            </div>
-            
-            <div class="timeline-component">
-                <div class="timeline-date timeline-date--right">
-                  <h6>Waiter</h6>
-                  <p class="p-small">2017 - 2018</p>
-                </div>
-              </div>
-              <div class="timeline-middle">
-                <div class="timeline-point"></div>
-              </div>
-              <div class="timeline-component">
-                <h5>Modis Resturanger AB - Seasonal</h5>
-                <p class="p-medium">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                </p>
-                <i class="fa fa-link fa-lg"></i><a target="_blank" href="http://restaurangmodis.se/">resturangmodis.se</a>
-            </div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>System, Networking, and LAN/WAN Management</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank"
+          href="https://www.cisco.com/c/m/en_sg/partners/cisco-networking-academy/index.html">cisco.com</a>
+      </div>
 
-            <div class="timeline-component">
-                <div class="timeline-date timeline-date--right">
-                  <h6>Caretaker</h6>
-                  <p class="p-small">June 2017 - July 2017</p>
-                </div>
-              </div>
-              <div class="timeline-middle">
-                <div class="timeline-point"></div>
-              </div>
-              <div class="timeline-component">
-                <h5>Stockholm Stad - Seasonal</h5>
-                <p class="p-medium">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                </p>
-                <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://jobba.stockholm/feriejobb/">jobba.stockholm</a>
-              </div>
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>Thorildsplans Gymnasium</h6>
+          <p class="p-small">2017 - 2020</p>
+        </div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>Information and Media Technology</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank"
+          href="https://thorildsplansgymnasium.stockholm/vara-program/teknikprogrammet/">thorildsplansgymnasium.stockholm</a>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>
 
-			  <div class="timeline-component">
-                <div class="timeline-date timeline-date--right">
-                  <h6>Administrative Assistant</h6>
-                  <p class="p-small">June 2016 - July 2016</p>
-                </div>
-              </div>
-              <div class="timeline-middle">
-                <div class="timeline-point"></div>
-              </div>
-              <div class="timeline-component">
-                <h5>Citroën - Seasonal</h5>
-                <p class="p-medium">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                </p>
-                <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://www.hedinbil.se/anlaggningar/stockholm-spanga">hedinbil.se</a>
-              </div>
-          </div>
-		  <br>
-		  <br>
-		  <br>
-	</div>
+  <div class="experience">
+    <div class="timeline-title">
+      <h1>Experience</h1>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>Administrative Assistant</h6>
+          <p class="p-small">2017 - 2020</p>
+        </div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>Personalstiftelsen PostNord Plus - Seasonal</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://www.postnordplus.com/">postnordplus.com</a>
+      </div>
+
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>Waiter</h6>
+          <p class="p-small">2017 - 2018</p>
+        </div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>Modis Resturanger AB - Seasonal</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank" href="http://restaurangmodis.se/">resturangmodis.se</a>
+      </div>
+
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>Caretaker</h6>
+          <p class="p-small">June 2017 - July 2017</p>
+        </div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>Stockholm Stad - Seasonal</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank" href="https://jobba.stockholm/feriejobb/">jobba.stockholm</a>
+      </div>
+
+      <div class="timeline-component">
+        <div class="timeline-date timeline-date--right">
+          <h6>Administrative Assistant</h6>
+          <p class="p-small">June 2016 - July 2016</p>
+        </div>
+      </div>
+      <div class="timeline-middle">
+        <div class="timeline-point"></div>
+      </div>
+      <div class="timeline-component">
+        <h5>Citroën - Seasonal</h5>
+        <p class="p-medium">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo.
+        </p>
+        <i class="fa fa-link fa-lg"></i><a target="_blank"
+          href="https://www.hedinbil.se/anlaggningar/stockholm-spanga">hedinbil.se</a>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>
 
 
-	<div class="certifications">
-		<div class="section-title">
+  <div class="certifications">
+    <div class="section-title">
       <h1>Certifications</h1>
     </div>
-		<div class="button-section row">
-			<div class="col">
-				<button class="certification-button button-left">
-					<img src="images/certification symbol.png" alt="">
+    <div class="button-section row">
+      <div class="col">
+        <button class="certification-button button-left">
+          <img src="images/certification symbol.png" alt="">
           <div class="certification-text">
             <h5>Elements of AI - Building AI</h5>
             <p>University of Helsinki</p>
           </div>
-				</button>
-			</div>
-			<div class="col">
-				<button class="certification-button button-right">
-					<img src="images/certification symbol.png" alt="">
+        </button>
+      </div>
+      <div class="col">
+        <button class="certification-button button-right">
+          <img src="images/certification symbol.png" alt="">
           <div class="certification-text">
             <h5>Elements of AI - Introduction to AI</h5>
             <p>University of Helsinki</p>
           </div>
-				</button>
-			</div>
-		</div>
+        </button>
+      </div>
+    </div>
 
     <div class="button-section row">
       <div class="col">
@@ -209,42 +410,48 @@
     </div>
 
 
-	<div class="recommendations">
-		<div class="section-title">
+    <div class="recommendations">
+      <div class="section-title">
         <h1>Recommendations</h1>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="recommendation-card card-right">
+            <img src="images/Casper Kristiansson.jpg" alt="">
+            <span>&#8221;</span>
+            <h5>Casper Kristiansson</h5>
+            <p class="recommendation-profession">VD Hlopek</p>
+
+            <p class="recommendation-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo.</p>
+
+            <br>
+          </div>
+        </div>
+        <div class="col">
+          <div class="recommendation-card card-left">
+            <img src="images/Casper Kristiansson.jpg" alt="">
+            <span>&#8221;</span>
+            <h5>Casper Kristiansson</h5>
+            <p class="recommendation-profession">VD Hlopek</p>
+            <p class="recommendation-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo.</p>
+            <br>
+          </div>
+        </div>
+      </div>
     </div>
 
-		<div class="row">
-			<div class="col">
-				<div class="recommendation-card card-right">
-					<img src="images/Casper Kristiansson.jpg" alt="">
-					<span>&#8221;</span>
-					<h5>Casper Kristiansson</h5>
-					<p class="recommendation-profession">VD Hlopek</p>
-					
-					<p class="recommendation-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-					
-					<br>
-				</div>
-			</div>
-			<div class="col">
-				<div class="recommendation-card card-left">
-					<img src="images/Casper Kristiansson.jpg" alt="">
-					<span>&#8221;</span>
-					<h5>Casper Kristiansson</h5>
-					<p class="recommendation-profession">VD Hlopek</p>
-					<p class="recommendation-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-					<br>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/swiper.min.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="https://use.fontawesome.com/3f36e139a0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://use.fontawesome.com/3f36e139a0.js"></script>
 
 </body>
+
 </html>

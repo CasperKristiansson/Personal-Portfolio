@@ -29,3 +29,23 @@
         document.getElementsByClassName("stars")[0].appendChild(stars[i]);
     }
 })();
+
+$("#prev").on("click", function () {
+    $("#menu ul").animate(
+        {
+            scrollLeft: "-=407",
+        },
+        300,
+        "swing"
+    );
+});
+
+$("#next").on("click", function () {
+    $("#menu ul").animate(
+        {
+            scrollLeft: "+=407",
+        },
+        300,
+        "swing"
+    );
+});
