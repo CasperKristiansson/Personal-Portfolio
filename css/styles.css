@@ -138,7 +138,7 @@ Type writer intro effect and stars glow effect
 	to {
 	  opacity: 0;
 	}
-  }
+}
 
 /*
 Projects
@@ -528,6 +528,7 @@ Certification
 .certifications {
 	background-color: var(--color-primary2);
 	position: relative;
+	padding-bottom: 50px;
 }
 
 .section-title {
@@ -549,6 +550,11 @@ Certification
 	display: inline-block;
 	cursor: pointer;
 	text-align: left;
+	transition: all .2s ease-in-out;
+}
+
+.certification-button:hover {
+	transform: scale(1.05);
 }
 
 .certification-button h5 {
@@ -585,60 +591,27 @@ Certification
 }
 
 /*
-Recommendations
+External Links
 */
-.recommendations {
+
+.external-links {
 	background-color: var(--color-primary2);
-	padding: 100px 0 0 0;
+	position: relative;
+	padding: 50px 0 150px 0;
 }
 
-.recommendation-card {
-	border: 1px solid #90A6BB;
-	width: 60%;
-  	padding: 10px;
-	border-radius: 10px;
-	background-color: var(--color-primary3);
+.external-links-section {
+	padding: 50px 0 0 16%;
+	font-size: 30px;
+	font-weight: lighter;
 }
 
-.recommendation-card img {
-	border-radius: 50%;
-	width: 70px;
-	float: left;
-	padding: 5px;
+.external-links-section a {
+	color: white;
+	font-size: 16px;
+	font-weight: lighter;
 }
 
-.recommendation-card h5 {
-	font-size: 20px;
-	margin-left: 18%;
-	margin-top: 15px;
-}
-
-.recommendation-profession {
-	font-size: 12px;
-	margin-left: 18%;
-	color: #90A6BB;
-}
-
-.recommendation-text {
-	margin-top: 20px;
-	font-size: 13px;
-	font-style: italic;
-}
-
-.card-right {
-	float: right;
-}
-
-.card-left {
-	float: left;
-}
-
-.recommendation-card span {
-	content: "\201D";
-	float: right;
-	font-size: 100px;
-	margin-top: -25px;
-}
 
 @media (max-width:1800px) {
 	.projects {
