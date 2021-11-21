@@ -31,21 +31,43 @@
 })();
 
 $("#prev").on("click", function () {
-    $("#menu ul").animate(
-        {
-            scrollLeft: "-=407",
-        },
-        300,
-        "swing"
-    );
+    if (window.innerWidth < 500) {
+        $("#menu ul").animate(
+            {
+                scrollLeft: `-=${window.innerWidth - 45}`,
+            },
+            300,
+            "swing"
+        );
+    }
+    else {
+        $("#menu ul").animate(
+            {
+                scrollLeft: "-=400",
+            },
+            300,
+            "swing"
+        );
+    }
 });
 
 $("#next").on("click", function () {
-    $("#menu ul").animate(
-        {
-            scrollLeft: "+=407",
-        },
-        300,
-        "swing"
-    );
+    if (window.innerWidth < 500) {
+        $("#menu ul").animate(
+            {
+                scrollLeft: `+=${window.innerWidth - 45}`,
+            },
+            300,
+            "swing"
+        );
+    }
+    else {
+        $("#menu ul").animate(
+            {
+                scrollLeft: "+=400",
+            },
+            300,
+            "swing"
+        );
+    }
 });
