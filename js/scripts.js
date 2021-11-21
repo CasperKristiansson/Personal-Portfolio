@@ -71,3 +71,12 @@ $("#next").on("click", function () {
         );
     }
 });
+
+// $(function() {
+//     $('#timeline-component').hover(function() {
+//       $('#timeline-point').attr('style', 'background-color: #0f0; box-shadow: 0 0 10px 2px #0f0;');
+//     }, function() {
+//       $('#timeline-point').css('background-color', ''),
+//       $('#timeline-point').css('box-shadow', 'none')
+//     });
+// });

@@ -452,7 +452,7 @@ Intro Text
 }
 
 .timeline {
-	margin: 40px 0 0 -15%; 
+	margin: 40px 0 100px -15%; 
 	max-width: 90%;
 	display: grid;
 	grid-template-columns: 1fr 2px 1fr;
