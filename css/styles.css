@@ -34,7 +34,7 @@ p {
 h1 {
 	color: var(--color-text);
 	font-weight: 700;
-	font-size: 2.5rem;
+	font-size: 2.2em;
 	line-height: 3.25rem;
 	letter-spacing: -0.4px;
 }
@@ -110,7 +110,7 @@ Type writer intro effect and stars glow effect
 .intro-text{
 	position: relative;
     width: 9.5em;
-    margin: 300px auto;
+    margin: 35vh auto;
     border-right: 2px solid rgba(255,255,255,.75);
     font-size: 300%;
     text-align: center;
@@ -118,7 +118,6 @@ Type writer intro effect and stars glow effect
     overflow: hidden;
     height: 1.2em; 
 	font-family: 'Playfair Display', serif;
-	
 }
 
 .anim-typewriter{
@@ -198,8 +197,7 @@ Projects
 	width: 23vw;
 	max-width: 450px;
 	min-width: 330px;
-	height: 70vh;
-	max-height: 700px;
+	height: 700px;
 	display: inline-block;
 }
 
@@ -409,7 +407,8 @@ Intro Text
 }
 
 .timeline-title {
-	padding: 5% 0 0 10%;
+	padding: 5% 0 0 15%;
+	font-size: 30px;
 }
 
 .timeline {
@@ -509,6 +508,15 @@ Intro Text
 	-webkit-transform: scaleX(1);
 }
 
+.p-medium a {
+	all: revert;
+	color: #6b9bc9;
+}
+
+.p-medium a:before {
+
+}
+
 .fa-link {
 	color: #6b9bc9;
 }
@@ -523,7 +531,8 @@ Certification
 }
 
 .section-title {
-	padding: 5% 0 0 10%;
+	padding: 5% 0 0 15%;
+	font-size: 30px;
 }
 
 .button-section {
@@ -532,7 +541,7 @@ Certification
 }
 
 .certification-button {
-	background-color: #172041;
+	background-color: var(--color-primary3);
 	border: none;
 	color: white;
 	width: 710px;
@@ -570,12 +579,17 @@ Certification
 	margin-top: 9px;
 }
 
+.certifications h4 {
+	font-size: 13px;
+	font-weight: 1;
+}
+
 /*
 Recommendations
 */
 .recommendations {
 	background-color: var(--color-primary2);
-	padding: 100px;
+	padding: 100px 0 0 0;
 }
 
 .recommendation-card {
@@ -583,7 +597,7 @@ Recommendations
 	width: 60%;
   	padding: 10px;
 	border-radius: 10px;
-	background-color: #081f27;
+	background-color: var(--color-primary3);
 }
 
 .recommendation-card img {
