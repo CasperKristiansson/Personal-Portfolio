@@ -105,6 +105,26 @@ a:hover {
 	text-decoration: underline
 }
 
+.linkedin {
+	color: white;
+}
+
+.icon-bar {
+	position: fixed;
+	top: 50%;
+	left: 5px;
+	z-index: 100;
+}
+
+.icon-bar a {
+	display: block;
+	text-align: center;
+	padding: 16px;
+	transition: all 0.3s ease;
+	color: white;
+	font-size: 20px;
+}
+
 /*
 Type writer intro effect and stars glow effect
 */
@@ -738,6 +758,10 @@ External Links
 		width: 600px;
 		margin-top: 20px;
 	}
+
+	.icon-bar {
+		display: none;
+	}
 }
 
 @media (max-width:900px) {
@@ -916,6 +940,10 @@ External Links
 	.timeline-component a {
 		font-size: 13px;
 		margin: 0 2px;
+	}
+
+	.p-medium a {
+		font-size: 18px;
 	}
 
 	.timeline {
