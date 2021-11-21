@@ -141,6 +141,37 @@ Type writer intro effect and stars glow effect
 }
 
 /*
+About me
+*/
+
+.about {
+	background-color: var(--color-primary2);
+	position: relative;
+	padding: 100px 0 100px 15%;
+}
+
+.text-section {
+	padding: 5% 20% 8% 20px;
+	line-height: 1.8rem;
+}
+
+.image-section {
+	padding: 2% 20px 2% 2%;
+	margin-left: -100px;
+}
+
+.image-section img {
+	width: 800px;
+	float: right;
+	border-radius: 4px;
+}
+
+.about-grid {
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+/*
 Projects
 */
 
@@ -617,6 +648,10 @@ External Links
 	.projects {
 		padding: 200px 0 300px 5%;
 	}
+
+	.image-section img {
+		width: 600px;
+	}
 }
 
 @media (max-width:1500px) {
@@ -633,6 +668,8 @@ External Links
 	.certification-button {
 		width: 500px;
 	}
+
+	
 }
 
 @media (max-width:1200px) {
@@ -642,6 +679,19 @@ External Links
 
 	.popup .close {
 		right: calc(5% + 20px);
+	}
+
+	.about-grid {
+		display: block;
+	}
+
+	.image-section img {
+		float: none;
+	}
+
+	.image-section {
+		margin-left: auto;
+ 		margin-right: auto;
 	}
 }
 
@@ -739,6 +789,26 @@ External Links
 
 	.popup .close {
 		right: calc(2.5% + 20px);
+	}
+
+	.image-section img {
+		width: 100%;
+	}
+
+	.image-section {
+		padding: 0;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 80%;
+	}
+
+	.about {
+		padding: 100px 0 0 0;
+	}
+
+	.text-section {
+		padding: 10%;
 	}
 }
 
