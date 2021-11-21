@@ -34,7 +34,7 @@ $("#prev").on("click", function () {
     if (window.innerWidth < 500) {
         $("#menu ul").animate(
             {
-                scrollLeft: `-=${window.innerWidth - 45}`,
+                scrollLeft: `-=${window.innerWidth*0.94}`,
             },
             300,
             "swing"
@@ -55,7 +55,7 @@ $("#next").on("click", function () {
     if (window.innerWidth < 500) {
         $("#menu ul").animate(
             {
-                scrollLeft: `+=${window.innerWidth - 45}`,
+                scrollLeft: `+=${window.innerWidth*0.94}`,
             },
             300,
             "swing"
