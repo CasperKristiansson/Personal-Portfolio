@@ -964,4 +964,9 @@ External Links
 	.text-section {
 		padding: 40px 20px;
 	}
+
+	.external-links-section {
+		padding: 10px 20px;
+		text-align: center;
+	}
 }
