@@ -825,7 +825,7 @@ External Links
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
-		width: 80%;
+		width: 90%;
 	}
 
 	.about {
@@ -834,6 +834,10 @@ External Links
 
 	.text-section {
 		padding: 10%;
+	}
+
+	.about {
+		padding-bottom: 60px;
 	}
 }
 
@@ -914,6 +918,10 @@ External Links
 		margin: 0 2px;
 	}
 
+	.timeline {
+		padding: 5px 0px 0 30px;
+	}
+
 	.section-title {
 		text-align: center;
 		padding: 0;
@@ -923,5 +931,9 @@ External Links
 
 	.external-links {
 		padding-top: 200px;
+	}
+
+	.text-section {
+		padding: 40px 20px;
 	}
 }
