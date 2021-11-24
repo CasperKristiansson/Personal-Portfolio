@@ -687,6 +687,7 @@ External Links
 	.certification-button {
 		width: 600px;
 	}
+}
 
 @media (max-width:1500px) {
 	.text-section {
@@ -701,9 +702,7 @@ External Links
 
 	.certification-button {
 		width: 500px;
-	}
-
-	
+	}	
 }
 
 @media (max-width:1200px) {
@@ -966,4 +965,5 @@ External Links
 		padding: 10px 20px;
 		text-align: center;
 	}
+	
 }
