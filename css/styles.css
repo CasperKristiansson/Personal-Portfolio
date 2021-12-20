@@ -693,6 +693,10 @@ External Links
 	.text-section {
 		padding: 5% 15% 8% 20px;
 	}
+
+	.project-button button {
+		top: 180px;
+	}
 }
 
 @media (max-width:1330px) {
