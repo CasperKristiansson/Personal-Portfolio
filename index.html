@@ -122,6 +122,25 @@
 
         <li>
           <div class="card">
+            <img src="images/MovieBoxDB Preview.jpg">
+            <h5 class="tags">
+              Frontend, Database, API, React
+            </h5>
+            <h2 card-title>
+              MovieBoxDB
+            </h2>
+            <p>
+              MovieBoxDB is a website that showcases movies. It is possible to search for a specific movie and observe information
+              about that specific movie such as actors, release date, genre, score etc.
+            </p>
+            <button onClick="window.location.href='#MovieBoxDB'" class="cardsButton">
+              READ MORE
+            </button>
+          </div>
+        </li>
+
+        <li>
+          <div class="card">
             <img src="images/Github Projects Overview.jpg">
             <h5 class="tags">
               General, Front/Backend
@@ -144,7 +163,7 @@
   <div id="PKTraffic" class="overlay">
     <div class="popup" id="scrollbar">
       <img src="images/PKTraffic Website Overview.png">
-      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://www.pktraffic.com">Website</a>
+      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://www.pktraffic.com">www.pktraffic.com</a>
       <h1>PKTraffic LLC</h1>
       <a class="close" href="#">&times;</a>
       <div class="content">
@@ -166,7 +185,7 @@
   <div id="TvShowNetwork" class="overlay">
     <div class="popup" id="scrollbar">
       <img src="images/TvShowNetwork Website Overview.jpg">
-      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://www.tvshownetwork.com/">Website</a>
+      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://www.tvshownetwork.com/">tvshownetwork.com</a>
       <h1>TvShowNetwork</h1>
       <a class="close" href="#">&times;</a>
       <div class="content">
@@ -198,6 +217,37 @@
         <p>I was responsible to develop both the front- and the backend of this program, which includes a functionality for
           editing and working with images. I was also responsible for training of the staff using the program and I can on
           request support the end users when needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="MovieBoxDB" class="overlay">
+    <div class="popup" id="scrollbar">
+      <img src="images/MovieBoxDB Preview.jpg">
+      <i class="fa fa-link fa-lg"></i><a target="_blank" class="popup-a" href="https://movieboxdb.web.app/">movieboxdb.web.app</a>
+      <h1>MovieBoxDB</h1>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        <p> MovieBoxDB is a website that showcases movies. It is possible to search for a specific movie and observe information
+          about that specific movie such as actors, release date, genre, score etc. The site allows users to add shows to a
+          watchlist and a favourites list where they can store their favourite movies. The site also has score for each show, and
+          it is possible to sort through all movies depending on multiple factors such as genre, language, release dates, region
+          and more. The way that users are able to store their movies is by creating an account and logging in. This gives them
+          access to edit different aspects of their profile such as bio, profile picture and name. Creating an account also gives
+          the user access to the MovieMatcher, which is a game inspired by the dating app "Tinder", where the user swipes in one
+          of the four directions for movies depending on whether or not they want to skip, add to favourites, add to watchlist or
+          see more info about the movie.</p>
+      
+        <h1>Project Structure</h1>
+        <p>
+          We are following the React structure for files, which means that we utilize a public folder where we store all our imgs
+          and our index files. Then we have a source file where our main files are, such as index.js which is our rendering module
+          where we use ReactDOM to render. In app we render each presenter, where we use react component router.
+          Our project follows the MVP-structure: In our source folder we have the folders css, which contains all the css files
+          for all styles for all pages as well as the earlier mentioned index.js. and App.js files. The source folder also
+          contains a js folder that houses all our presenters, the views folder that holds all the views for all pages. Lastly the
+          js folder also contains general files like apiFetch, model and firebaseConfig etc.
+        </p>
       </div>
     </div>
   </div>
