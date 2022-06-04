@@ -371,7 +371,6 @@ Popup
 	border-radius: 10px;
 	width : 60%;
 	height: 80%;
-	max-width: 1600px;
 	box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
 	position: relative;
 	overflow: auto;
