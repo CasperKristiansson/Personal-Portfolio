@@ -206,6 +206,38 @@ a:hover {
 	}
 }
 
+@media (min-width: 1800px) {
+    .vertical-algin {
+        padding: 0 10% 0 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .article p {
+        font-size: 18px;
+        line-height: 1.5rem;
+    }
+
+    .article h1 {
+        font-size: 50px;
+        line-height: 3.25rem;
+    }
+
+    .article h2 {
+        font-size: 40px;
+        line-height: 2.625rem;
+    }
+
+    .article a {
+        font-size: 20px;
+    }
+
+    .article span {
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 767px) {
     body {
         padding-left: 0px !important;
