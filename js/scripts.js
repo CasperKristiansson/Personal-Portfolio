@@ -31,45 +31,25 @@
 })();
 
 $("#prev").on("click", function () {
-    if (window.innerWidth < 500) {
-        $("#menu ul").animate(
-            {
-                scrollLeft: `-=${window.innerWidth*0.94}`,
-            },
-            300,
-            "swing"
-        );
-    }
-    else {
-        $("#menu ul").animate(
-            {
-                scrollLeft: "-=400",
-            },
-            300,
-            "swing"
-        );
-    }
+    var width = document.getElementById('card').offsetWidth;
+    $("#menu ul").animate(
+        {
+            scrollLeft: `-=${width + 10}`,
+        },
+        300,
+        "swing"
+    );
 });
 
 $("#next").on("click", function () {
-    if (window.innerWidth < 500) {
-        $("#menu ul").animate(
-            {
-                scrollLeft: `+=${window.innerWidth*0.94}`,
-            },
-            300,
-            "swing"
-        );
-    }
-    else {
-        $("#menu ul").animate(
-            {
-                scrollLeft: "+=400",
-            },
-            300,
-            "swing"
-        );
-    }
+    var width = document.getElementById('card').offsetWidth;
+    $("#menu ul").animate(
+        {
+            scrollLeft: `+=${width + 10}`,
+        },
+        300,
+        "swing"
+    );
 });
 
 // $(function() {
