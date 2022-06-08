@@ -180,7 +180,57 @@ a:hover {
 }
 
 @media (max-width:1000px) {
+    .article-header {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    .article {
+        margin-top: 0px;
+    }
+
+    .article-image {
+        grid-row: 1;
+    }
+
+    .article-image {
+        height: 450px;
+    }
+
+    .article-info {
+        margin-top: 100px;
+    }
+
 	.icon-bar {
-		display: none;
+		display: none !important;
 	}
+}
+
+@media (max-width: 767px) {
+    body {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .article-body {
+        width: 100%;
+        margin: 0;
+        padding: 0 5% 75px 5%;
+    }
+
+    .article-image {
+        height: 300px;
+    }
+
+    .article-info {
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .vertical-algin {
+        padding: 0 5% 0 5%;
+    }
 }
