@@ -179,6 +179,21 @@ a:hover {
     margin-top: 50px;
 }
 
+.article-body ul {
+    list-style: none;
+    position: relative;
+    padding: 8px 0 2px 15px;
+    display: block;
+    color: black;
+}
+
+.article-body ul::before {
+    content: '-';
+    position: absolute;
+    top: 6px;
+    left: 0;
+  }
+
 @media (max-width:1000px) {
     .article-header {
         display: grid;
