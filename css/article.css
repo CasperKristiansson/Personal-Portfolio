@@ -4,6 +4,7 @@
 	--color-primary3: #005070;
 	--color-secondary: #B08C19;
 	--color-text: black;
+    --color-text-small: #565656;
 }
 
 body, html {
@@ -12,8 +13,8 @@ body, html {
 }
 
 body,
-p {
-	color: var(--color-text);
+p, span {
+	color: var(--color-text-small);
 	font-family: 'Epilogue', sans-serif;
 }
 
@@ -127,7 +128,7 @@ a:hover {
 }
 
 .vertical-algin {
-    padding: 0 10% 0 15%;
+    padding: 0 10% 0 12%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,6 +150,33 @@ a:hover {
 .article-image img {
     height: 100%;
     min-width: 100%;
+}
+
+.article-body {
+    padding: 75px 0;
+    width: 600px;
+    margin: auto;
+}
+
+.article-body p {
+    margin-top: 20px;
+}
+
+.article-body img {
+    margin: 25px 0 5px 0;
+}
+
+.article-body span {
+    font-style: italic;
+}
+
+.article-body h2 {
+    margin-top: 25px;
+}
+
+.back-to-home {
+    text-align: center;
+    margin-top: 50px;
 }
 
 @media (max-width:1000px) {
