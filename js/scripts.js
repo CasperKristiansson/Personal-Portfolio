@@ -34,7 +34,7 @@ $("#prev").on("click", function () {
     var width = document.getElementById('card').offsetWidth;
     $("#menu ul").animate(
         {
-            scrollLeft: `-=${width + 10}`,
+            scrollLeft: `-=${width + 12}`,
         },
         300,
         "swing"
@@ -45,7 +45,7 @@ $("#next").on("click", function () {
     var width = document.getElementById('card').offsetWidth;
     $("#menu ul").animate(
         {
-            scrollLeft: `+=${width + 10}`,
+            scrollLeft: `+=${width + 12}`,
         },
         300,
         "swing"
