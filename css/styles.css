@@ -284,10 +284,12 @@ Projects
 	transition: 0.5s;
 }
 
-.card h5 {
+.tags {
 	padding: 30px 30px 5px 30px;
 	font-size: 14px;
 	color: var(--color-secondary);
+	margin-top: 25px;
+	font-weight: 900;
 }
 
 .card h2 {
