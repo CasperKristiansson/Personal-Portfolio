@@ -122,6 +122,10 @@ a:hover {
     margin-top: 50px;
 }
 
+.article strong {
+    color: black
+}
+
 .article-header {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -185,6 +189,7 @@ a:hover {
     padding: 8px 0 2px 15px;
     display: block;
     color: black;
+    font-size: 15px;
 }
 
 .article-body ul::before {

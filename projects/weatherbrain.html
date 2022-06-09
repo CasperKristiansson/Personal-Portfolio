@@ -33,7 +33,7 @@
       <div class="vertical-algin">
       <div class="article-info">
         <p>
-          Mars 2022 - June 2022
+          Mar 2022 - Jun 2022
         </p>
         <h1>WeatherBrain</h1>
         <p>
@@ -57,17 +57,17 @@
     </div>
     <div class="article-body">
       <p>
-        The goal of MovieBoxDB is to easily provide its users with a simple way to find and discover new movies. The site allows
-        users to add shows to a watchlist and a favorites list where they can store their favorite movies. The site also has a
-        score for each show, and it is possible to sort through all movies depending on multiple factors such as genre,
-        language, release dates, region, and more.
+        The main goal of the project is to provide two main functionalities, one for providing real-time weather data from an
+        IoT device and to provide accurate weather predictions. The website that is created will also provide statistics on
+        future and past predictions against a bigger weather company like SMHI.
       </p>
       <p>
-        The way that users can store their movies is by creating an account and logging in. This gives them access to edit
-        various aspects of their profile such as bio, profile picture, and name. Creating an account also gives the user access
-        to the MovieMatcher, which is a game inspired by the dating app "Tinder", where the user swipes in one of the four
-        directions for movies depending on whether they want to skip, add to favorites, add to watchlist, or see more info about
-        the movie.
+        The application will be able to give the stakeholders insight in upcoming weather using a prediction model. We believe
+        that the prediction model that will be created will be able to predict the upcoming weather accurately. But as we know
+        our product won’t be able to predict the weather better than other weather stations. Because of this, our goal is not to
+        be better but rather to offer a solution. That solution is that most weather websites only offer weather reports for
+        entire cities. Our product will be able to offer precise weather data at a specific position using the IoT device. This
+        will give the user a chance to choose a location where to track and predict the upcoming weather.
       </p>
 
       <hr>
@@ -75,37 +75,72 @@
       <h2>Technologies Used</h2>
 
       <p>
-        <ul>Firebase hosting</ul>
-        <ul>Firebase Firestore Database</ul>
-        <ul>Firebase authentication</ul>
+        <p>
+          The project was made nearly using only Microsoft Azure products. The following Azure technologies that were used were:
+        </p>
+        <ul>Virtual Machine (Ubuntu)</ul>
+        <ul>SQL Database and Server</ul>
+        <ul>App Service (website hosting)</ul>
+        <ul>IoT Hub (an intermediate point between IoT device and database)</ul>
+        <ul>Storage Account</ul>
+        <p>
+          Other technologies used in the project are:
+        </p>
+        <ul>Tensorflow for Machine Learning predictions</ul>
+        <ul>Github workflow between the repository and app service</ul>
         <ul>Figma</ul>
+        <ul>REST API</ul>
+        <ul>IoT device (BME680 for weather data) and a raspberry pi</ul>
+        <ul>Firebase hosting</ul>
       </p>
       
-      <img src="../images/MovieBoxDB Preview.jpg" alt="">
+      <img src="../images/Weatherbrain Website.png" alt="">
 
       <h2>Features</h2>
       <p>
-        One key goal that I had when creating the project was the design. I put a lot of time and effort into designing the
-        website in Figma, to get a general sense of what the site should look like. The website has a few functionalities that
-        are only visible on desktop and not mobile like the special view section for movies on the start page. The goal of the
-        page that shows specific movie information is that it should give the users a “one-page design.” The page is not one
-        page, but it gives the user a whole page with information like trailers, cast, storyline, score, and more. The project
-        uses an MVC (model, view, controller) structure for all its pages.
+        This project was part of the course Project and Project Methods (II1302). I as the project leader was responsible for
+        the machine learning part of the project. This means that I was accountable for working with the previous years of data,
+        building the prediction model, compiling the model, overseeing the data between the model and the Microsoft Azure
+        database, and setting up the server. Below I will discuss more in detail what each task contains:
       </p>
 
       <p>
-        The discover page has one single purpose which is to give the user an option to sort through popular movies which can be
-        sorted by different options, chosen for a specific year, or have a minimum rating. This allows the user to find for
-        example what movies were most popular during the year 2008. The sorting option includes most and least popular, newest
-        and oldest, top and worst rated and lastly, most and least revenue.
+        <strong>Previous years of data:</strong> This part of the project includes finding good weather data set. I was able to get this data
+        from SMHI which had multiple weather stations all over the country. To find the best quality of data the project needed
+        that the data should be logged every hour. The data sets also needed to fulfill the requirement of showing temperature,
+        air pressure, and humidity. There were a lot of weather stations that had stopped tracking new weather data. To deal
+        with this I combined multiple weather stations data.
       </p>
 
       <p>
-        When creating a profile on the page the user can add movies to the watchlist or favorites. This information is then
-        stored in the Firebase Firestore database. The profile page provides a clean and easy overview of what movies are in the
-        watchlist and favorites. When creating an account, the user is also able to use the functionality “MovieMatcher.”
-        MovieMatcher is a tinder inspired game where the user is able to swipe right or left on different movies whenever they
-        want to add it to the watchlist or skip it.
+        <strong>Working with data:</strong> The next part was that I needed to make sure that the data had no anomalies which could end affect
+        the prediction model. This means that I needed to make sure that the data didn’t contain any irregular data values. I
+        did this by plotting graphs of the different values, heat maps, and normalizations.
+      </p>
+
+      <p>
+        <strong>Creating the model:</strong> The process I went through of creating the model includes testing over six different models to
+        assess and understand which model from the Tensorflow library would fit best to predict weather (based on our data set).
+        The type of prediction that we created is something called “time-series predictions.” During the creation of the model,
+        I had to set up Tensorflow to use my GPU (this was a bit hard because I stubble upon problems with mix-matching versions
+        of the program) to minimize the compile time (30 hours for CPU, 2 hours on GPU). During the creation of the model, I was
+        also evaluating several types of inputs to the model to find the best parameters.
+      </p>
+
+      <p>
+        <strong>Managing new data:</strong> I was also responsible for overseeing the data between the model and the database. This includes
+        updating the local data with the latest weather data from the IoT device. The prediction model uses the local data to
+        create the latest predictions.
+      </p>
+
+      <p>
+        <strong>Server:</strong> I was also accountable for setting up the server. The purpose of the server was to run the predictions daily
+        and upload the result to the database. The server was also running the functions for the REST API.
+      </p>
+
+      <p>
+        <strong>Redesigning the webpage:</strong> When the course was finished, I took my time to redesign and add placeholder data because our
+        Microsoft Azure student credits ran out. The website that is linked and displayed is my new design for the project.
       </p>
 
       <div class="back-to-home">
