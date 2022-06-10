@@ -254,10 +254,6 @@ Projects
 	margin: 0 1%;
 }
 
-.menu ul:last-child {
-	padding-right: 65px;
-}
-
 .menu div {
 	width: 23vw;
 	max-width: 450px;
