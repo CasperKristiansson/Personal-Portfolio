@@ -266,7 +266,7 @@ Projects
 	display: none;
 }
 
-#card {
+#card-1 {
 	margin-left: 300px;
 }
 
@@ -692,7 +692,7 @@ External Links
 		width: 600px;
 	}
 
-	#card {
+	#card-1 {
 		margin-left: 200px;
 	}
 }
@@ -765,7 +765,7 @@ External Links
 		text-align: center;
 	}
 
-	#card {
+	#card-1 {
 		margin-left: 50px;
 	}
 }
@@ -813,7 +813,7 @@ External Links
 		padding: 50px 0 300px 0%;
 	}
 
-	#card {
+	#card-1 {
 		margin-left: 0;
 	}
 }
@@ -957,7 +957,7 @@ External Links
 		margin-left: -15px;
 	}
 
-	#card {
+	#card-1 {
 		margin-left: -15px;
 	}
 
