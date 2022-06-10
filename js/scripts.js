@@ -30,19 +30,29 @@
     }
 })();
 
+var currentCard = 1;
+
 $("#prev").on("click", function () {
-    var width = document.getElementById('card').offsetWidth;
-    $("#menu ul").animate(
-        {
-            scrollLeft: `-=${width + 12}`,
-        },
-        300,
-        "swing"
-    );
+    if ($(window).width() > 1000) {
+        var width = document.getElementById('card-1').offsetWidth;
+        $("#menu ul").animate(
+            {
+                scrollLeft: `-=${width + 12}`,
+            },
+            300,
+            "swing"
+        );
+    } else {
+        if (currentCard !== 1) currentCard--;;
+        
+        var element = document.getElementById("card-" + currentCard);
+        element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+    }
 });
 
 $("#next").on("click", function () {
-    var width = document.getElementById('card').offsetWidth;
+    if ($(window).width() > 1000) {
+        var width = document.getElementById('card-1').offsetWidth;
     $("#menu ul").animate(
         {
             scrollLeft: `+=${width + 12}`,
@@ -50,13 +60,10 @@ $("#next").on("click", function () {
         300,
         "swing"
     );
-});
+    } else {
+        if (currentCard !== 6) currentCard++;;
 
-// $(function() {
-//     $('#timeline-component').hover(function() {
-//       $('#timeline-point').attr('style', 'background-color: #0f0; box-shadow: 0 0 10px 2px #0f0;');
-//     }, function() {
-//       $('#timeline-point').css('background-color', ''),
-//       $('#timeline-point').css('box-shadow', 'none')
-//     });
-// });
+        var element = document.getElementById("card-" + currentCard);
+        element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+    }
+});
