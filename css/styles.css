@@ -241,7 +241,7 @@ Projects
 
 .menu ul {
 	width: 100%;
-	overflow: hidden;
+	overflow: scroll;
 	white-space: nowrap;
 	list-style: none;
 	border: none;
@@ -260,6 +260,10 @@ Projects
 	min-width: 330px;
 	height: 700px;
 	display: inline-block;
+}
+
+.menu ul::-webkit-scrollbar {
+	display: none;
 }
 
 #card {
