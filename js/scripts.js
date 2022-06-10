@@ -33,7 +33,8 @@
 var currentCard = 1;
 
 $("#prev").on("click", function () {
-    if ($(window).width() > 1000) {
+    var windowWidth = $(window).width()
+    if (windowWidth > 1000) {
         var width = document.getElementById('card-1').offsetWidth;
         $("#menu ul").animate(
             {
@@ -44,14 +45,21 @@ $("#prev").on("click", function () {
         );
     } else {
         if (currentCard !== 1) currentCard--;;
-        
         var element = document.getElementById("card-" + currentCard);
-        element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+
+        if (windowWidth < 600) {
+            var blockStatus = "end";
+        } else {
+            var blockStatus = "center";
+        }
+
+        element.scrollIntoView({behavior: "smooth", block: blockStatus, inline: "center"});
     }
 });
 
 $("#next").on("click", function () {
-    if ($(window).width() > 1000) {
+    var windowWidth = $(window).width()
+    if (windowWidth > 1000) {
         var width = document.getElementById('card-1').offsetWidth;
     $("#menu ul").animate(
         {
@@ -62,8 +70,13 @@ $("#next").on("click", function () {
     );
     } else {
         if (currentCard !== 6) currentCard++;;
-
         var element = document.getElementById("card-" + currentCard);
-        element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+
+        if (windowWidth < 600) {
+            var blockStatus = "end";
+        } else {
+            var blockStatus = "center";
+        }
+        element.scrollIntoView({behavior: "smooth", block: blockStatus, inline: "center"});
     }
 });
