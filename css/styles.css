@@ -682,6 +682,10 @@ External Links
 	font-weight: lighter;
 }
 
+.timeline ul {
+	color: #90A69F;
+}
+
 
 @media (max-width:1800px) {
 	.menu {
@@ -1004,5 +1008,4 @@ External Links
 		padding: 10px 20px;
 		text-align: center;
 	}
-	
 }
