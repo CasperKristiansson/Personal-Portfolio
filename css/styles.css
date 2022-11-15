@@ -701,6 +701,23 @@ External Links
 	color: #90A69F;
 }
 
+/*
+Skills
+*/
+
+.skills {
+	background-color: var(--color-primary2);
+	position: relative;
+	padding: 50px 0 50px 0;
+}
+
+.skills-section {
+	padding: 50px 16% 0 16%;
+	font-size: 16px;
+	line-height: 50px;
+	letter-spacing: 5px;
+}
+
 
 @media (max-width:1800px) {
 	.menu {
