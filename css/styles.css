@@ -1048,4 +1048,17 @@ Skills
 		padding: 10px 20px;
 		text-align: center;
 	}
+
+	.skills-section {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	.certifications {
+		padding-top: 150px;
+	}
+
+	.rewards {
+		padding-top: 150px;
+	}
 }
