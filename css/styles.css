@@ -482,7 +482,7 @@ Intro Text
 }
 
 .timeline {
-	margin: 40px 0 100px -15%; 
+	margin: 40px 0 50px -15%; 
 	max-width: 90%;
 	display: grid;
 	grid-template-columns: 1fr 2px 1fr;
@@ -658,6 +658,21 @@ Certification
 .certifications h4 {
 	font-size: 13px;
 	font-weight: 1;
+}
+
+/*
+Rewards
+*/
+
+.rewards {
+	background-color: var(--color-primary2);
+	position: relative;
+	padding: 50px 0 50px 0;
+}
+
+.rewards-section {
+	padding: 50px 0 0 16%;
+	font-size: 16px;
 }
 
 /*
