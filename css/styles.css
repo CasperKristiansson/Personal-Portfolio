@@ -833,8 +833,16 @@ Skills
 	}
 
 	.certification-button {
-		width: 600px;
+		width: 90%;
 		margin-top: 20px;
+	}
+
+	.row {
+		display: block !important;
+	}
+
+	.button-section {
+		padding: 0 0 18px 0;
 	}
 
 	.icon-bar {
@@ -892,10 +900,6 @@ Skills
 		margin-top: 80px;
 	}
 
-	.certification-button {
-		width: 500px;
-	}
-
 	.popup {
 		width: 98%;
 	}
@@ -949,13 +953,7 @@ Skills
 	}
 }
 
-@media (max-width:590px) {
-	.certification-button {
-		width: 400px;
-	}
-}
-
-@media (max-width:500px) {
+@media (max-width:550px) {
 	.project-button button  {
 		top: 250px;
 		margin-right: 25%;
@@ -981,7 +979,6 @@ Skills
 	}
 
 	.certification-button {
-		width: 300px;
 		height: 150px;
 	}
 
@@ -992,7 +989,7 @@ Skills
 	}
 
 	.certification-button img {
-		margin-top: 22px;
+		margin-top: 14px;
 	}
 
 	.menu div {
