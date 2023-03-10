@@ -197,7 +197,26 @@ a:hover {
     position: absolute;
     top: 6px;
     left: 0;
-  }
+}
+
+.article-files {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    /* Add spacing between the items */
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+}
 
 @media (max-width:1000px) {
     .article-header {
