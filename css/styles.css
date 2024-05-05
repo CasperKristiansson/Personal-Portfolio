@@ -1058,4 +1058,8 @@ Skills
 	.rewards {
 		padding-top: 150px;
 	}
+
+	.rewards-section {
+		padding: 50px 5% 0 5%;
+	}
 }
