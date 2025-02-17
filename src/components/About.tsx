@@ -4,7 +4,7 @@ import profilePicture from "../assets/profilePicture.jpg";
 export const About: React.FC = () => {
   return (
     <div className="relative z-10 flex w-full items-center justify-center bg-[#18253F] p-2 lg:p-6 xl:p-10">
-      <div className="mt-12 flex w-full max-w-[1400px] flex-col items-center gap-6 rounded-lg p-4 shadow-lg xl:flex-row xl:items-start">
+      <div className="mt-12 flex w-full max-w-[1400px] flex-col items-center gap-6 rounded-lg bg-[#182642] p-4 shadow-lg xl:flex-row xl:items-start">
         <img
           src={profilePicture}
           alt="Casper Kristiansson"
