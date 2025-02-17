@@ -1,9 +1,58 @@
 import React from "react";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
+import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
+import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
+
+type Card = {
+  title: string;
+  badge: string;
+  description: string;
+  image: string;
+  tags: string[];
+};
+
+const cards: Card[] = [
+  {
+    title: "PKTraffic, LLC",
+    badge: "POPULAR",
+    description:
+      "A Project which focuses in collecting and analyzing traffic associated data in Florida, USA. The project includes recording and gathering video data from 1000's of highways cameras to provide insight through post-processing to support safety and justice to traffic accident victims.",
+    image: pktrafficOverview,
+    tags: [
+      "AWS",
+      "Website",
+      "Database",
+      "Front/Backend",
+      "Company",
+      "Real-time",
+      "Government Contract",
+    ],
+  },
+  {
+    title: "MovieBoxDB",
+    badge: "",
+    description:
+      "MovieBoxDB is a movie tracking application. It is possible to search for a specific movie and observe information about that specific movie such as actors, release date, genre, score etc.",
+    image: movieboxdbOverview,
+    tags: ["Frontend", "Database", "API", "React", "Firebase"],
+  },
+  {
+    title: "WeatherBrain",
+    badge: "",
+    description:
+      "This application can through machine learning predict upcoming weather/weather phenomena. The application receives its data from an IoT-device that can measure certain weather parameters such as temperature, atmospheric pressure, and humidity.",
+    image: weatherbrainOverview,
+    tags: [
+      "Microsoft Azure",
+      "Front/Backend",
+      "Machine Learning",
+      "IoT Device",
+    ],
+  },
+];
 
 export const Projects: React.FC = () => {
-  const cards = new Array(10).fill(0);
-
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -24,31 +73,40 @@ export const Projects: React.FC = () => {
       <div className="relative">
         <div
           ref={scrollRef}
-          className="flex space-x-2 overflow-x-auto pb-4 pl-5 sm:space-x-4 sm:pl-10 lg:space-x-6 lg:pl-40"
+          className="flex space-x-2 overflow-x-auto rounded-lg pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pl-10 lg:space-x-6 lg:pl-40"
         >
-          {cards.map((_, index) => (
+          {cards.map((project, index) => (
             <div
               key={index}
-              className="card w-4/5 flex-shrink-0 bg-base-100 shadow-sm sm:w-96 lg:w-[500px]"
+              className="card w-[90%] flex-shrink-0 bg-base-100 shadow-sm sm:w-96 lg:w-[500px]"
             >
               <figure>
                 <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
+                  src={project.image}
+                  alt={project.title}
+                  className="h-[300px] w-full object-cover sm:h-[500px]"
                 />
               </figure>
-              <div className="card-body h-[400px]">
-                <h2 className="card-title">
-                  Card Title
-                  <div className="badge badge-secondary">NEW</div>
+              <div className="card-body h-full min-h-[400px] bg-[#111c32] p-4 pt-6 text-base sm:p-8">
+                <h2 className="card-title text-2xl">
+                  {project.title}
+                  {project.badge && (
+                    <div className="badge badge-accent">{project.badge}</div>
+                  )}
                 </h2>
-                <p>
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
+                <p>{project.description}</p>
+
                 <div className="card-actions justify-end">
-                  <div className="badge-outline badge">Fashion</div>
-                  <div className="badge-outline badge">Products</div>
+                  {project.tags.map((tag, index) => (
+                    <div key={index} className="badge badge-primary">
+                      {tag}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6">
+                  <button className="btn btn-block btn-primary">
+                    Read More
+                  </button>
                 </div>
               </div>
             </div>

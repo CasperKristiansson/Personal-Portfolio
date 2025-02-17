@@ -21,6 +21,9 @@
   /* 📏 Borders and UI Elements */
   --color-border: #1e293b;
   --color-card: #143367;
+
+  /* 🌟 Daisy UI */
+  --card-p: 0;
 }
 
 body {
