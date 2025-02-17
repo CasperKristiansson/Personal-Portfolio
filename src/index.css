@@ -3,28 +3,23 @@
 
 @theme {
   /* 🎨 Background Colors */
-  --color-background: #07070b; /* Deep dark blue */
-  --color-background-soft: #131522; /* Slightly lighter blue */
-  --color-background-highlight: #171e37; /* Mid-tone blue for contrast */
+  --color-background: #07070b;
+  --color-background-soft: #131522;
+  --color-background-highlight: #171e37;
 
   /* 🌊 Primary Colors */
-  --color-primary: #0ea5e9; /* Cyan blue */
-  --color-primary-light: #38bdf8; /* Lighter cyan */
-  --color-primary-dark: #0284c7; /* Deeper blue */
-
-  /* 🍃 Secondary Colors */
-  --color-secondary: #16a34a; /* Emerald green */
-  --color-secondary-light: #22c55e;
-  --color-secondary-dark: #15803d;
+  --color-primary: #0ea5e9;
+  --color-primary-light: #38bdf8;
+  --color-primary-dark: #0284c7;
 
   /* 🔠 Text Colors */
-  --color-text: #e2e8f0; /* Light gray for text */
-  --color-text-muted: #94a3b8; /* Muted grayish blue */
-  --color-text-subtle: #64748b; /* Softer blue-gray */
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
 
   /* 📏 Borders and UI Elements */
-  --color-border: #1e293b; /* Subtle blue-gray border */
-  --color-card: #143367; /* Dark blue background for cards */
+  --color-border: #1e293b;
+  --color-card: #143367;
 }
 
 body {
@@ -32,11 +27,39 @@ body {
 }
 
 .parallax {
-	background-image: linear-gradient(to bottom, #07070b, #131522, #171e37, #18284f, #143367);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+  background: linear-gradient(to bottom, #07070b, #131522, #171e37, #18284f, #143367);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.stars-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: fixed;
+  background-color: white;
+  border-radius: 50%;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes typewriter {
