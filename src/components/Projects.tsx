@@ -3,6 +3,11 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
+import financeTrackerOverview from "../assets/projects/financeTracker/financeTrackerOverview.png";
+import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
+import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
+import tvShowNetWorkOverview from "../assets/projects/tvShowNetwork/tvShowNetworkOverview.png";
+import clsx from "clsx";
 
 type Card = {
   title: string;
@@ -10,6 +15,7 @@ type Card = {
   description: string;
   image: string;
   tags: string[];
+  fillHeight?: boolean;
 };
 
 const cards: Card[] = [
@@ -43,12 +49,41 @@ const cards: Card[] = [
     description:
       "This application can through machine learning predict upcoming weather/weather phenomena. The application receives its data from an IoT-device that can measure certain weather parameters such as temperature, atmospheric pressure, and humidity.",
     image: weatherbrainOverview,
-    tags: [
-      "Microsoft Azure",
-      "Front/Backend",
-      "Machine Learning",
-      "IoT Device",
-    ],
+    tags: ["Microsoft Azure", "Front/Backend", "Machine Learning"],
+  },
+  {
+    title: "Finance Tracker",
+    badge: "",
+    description:
+      "A project which solved an issue of mine which was tracking my finance. This Finance Tracking application gives overviews of expenses and income to give its users an easy way to explore their data.",
+    image: financeTrackerOverview,
+    tags: ["Frontend", "Backend", "API", "Firebase Auth"],
+  },
+  {
+    title: "Sulfide Soil Classification",
+    badge: "",
+    description:
+      "This project aims to create a website tool for detecting sulfide soil in Northern Sweden and Finland, which can cause environmental damage. Ecoloop, a environmental engineering company, worked with the project team to improve the accessibility and usability of the tool.",
+    image: ecoloopOverview,
+    tags: ["Sustainability", "Typescript", "Solution"],
+    fillHeight: true,
+  },
+  {
+    title: "Image Editor",
+    badge: "",
+    description:
+      "An application that allows its users to quickly make small adjustments to a large number of images. This program was developed for the Personnel Foundation of the Swedish postal service.",
+    image: imageEditorOverview,
+    tags: ["Application", "Photo Editor", "Front/Backend"],
+  },
+  {
+    title: "TV Show Network",
+    badge: "",
+    description:
+      "The goal of the application is to allow users to come together and write about the TV industry. Depending on how many views the article gets, the author receives a percentage of the revenue.",
+    image: tvShowNetWorkOverview,
+    tags: ["Website", "Wordpress", "SEO"],
+    fillHeight: true,
   },
 ];
 
@@ -57,7 +92,7 @@ export const Projects: React.FC = () => {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 600;
+      const scrollAmount = window.innerWidth * 0.8;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -73,7 +108,7 @@ export const Projects: React.FC = () => {
       <div className="relative">
         <div
           ref={scrollRef}
-          className="flex space-x-2 overflow-x-auto rounded-lg pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pl-10 lg:space-x-6 lg:pl-40"
+          className="flex space-x-2 overflow-x-auto rounded-lg pr-20 pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pl-10 lg:space-x-6 lg:pl-40"
         >
           {cards.map((project, index) => (
             <div
@@ -84,7 +119,12 @@ export const Projects: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="h-[300px] w-full object-cover sm:h-[500px]"
+                  className={clsx(
+                    "h-[300px] w-full object-cover sm:h-[500px]",
+                    project.fillHeight
+                      ? "lg:object-cover"
+                      : "lg:object-contain",
+                  )}
                 />
               </figure>
               <div className="card-body h-full min-h-[400px] bg-[#111c32] p-4 pt-6 text-base sm:p-8">
