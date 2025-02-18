@@ -102,7 +102,7 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mb-10 text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+      <h1 className="mb-14 text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
         Projects
       </h1>
       <div className="relative">

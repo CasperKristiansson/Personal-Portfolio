@@ -20,15 +20,6 @@ const timelineItems: TimeLineItem[] = [
     linkDisplay: "kth.se",
   },
   {
-    period: "2020 - 2023",
-    location: "KTH Royal Institute of Technology",
-    header: "Bachelor's Degree, Computer Engineering",
-    description:
-      "The education is focused on technology that applies the opportunities the internet and the mobile phone network of the future, 5G offers. The program provides knowledge in the areas of processors, programming, computer networks, databases, and security. The education includes the basics for the development of cloud services and connected gadgets. During year three, the program is focused on app development or on the Internet of Things.",
-    link: "https://www.kth.se",
-    linkDisplay: "kth.se",
-  },
-  {
     period: "Mar 2024 - Aug 2024",
     location: "Kyushu University",
     header: "Exchange Semester",
@@ -36,6 +27,15 @@ const timelineItems: TimeLineItem[] = [
       "Kyushu University is one of Japan's leading research-oriented institutes of higher education, consistently ranking as one of the top ten Japanese universities in the Times Higher Education World University Rankings and the QS World Rankings.",
     link: "https://www.kyushu-u.ac.jp",
     linkDisplay: "kyushu-u.ac.jp",
+  },
+  {
+    period: "2020 - 2023",
+    location: "KTH Royal Institute of Technology",
+    header: "Bachelor's Degree, Computer Engineering",
+    description:
+      "The education is focused on technology that applies the opportunities the internet and the mobile phone network of the future, 5G offers. The program provides knowledge in the areas of processors, programming, computer networks, databases, and security. The education includes the basics for the development of cloud services and connected gadgets. During year three, the program is focused on app development or on the Internet of Things.",
+    link: "https://www.kth.se",
+    linkDisplay: "kth.se",
   },
   {
     period: "Aug 2022 - Jan 2023",
@@ -60,6 +60,9 @@ const timelineItems: TimeLineItem[] = [
 export const Education: React.FC = () => {
   return (
     <div className="relative z-10 bg-[#18253F] pt-36">
+      <h1 className="mb-14 text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+        Education
+      </h1>
       <div className="mx-auto w-4/5 max-w-[1400px]">
         <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
           {timelineItems.map((item, index) => (
