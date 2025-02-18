@@ -1,4 +1,5 @@
 import { About } from "./components/About";
+import { Education } from "./components/Education";
 import { Hero } from "./components/Hero";
 import { Projects } from "./components/Projects";
 
@@ -8,6 +9,7 @@ export const App: React.FC = () => {
       <Hero />
       <About />
       <Projects />
+      <Education />
     </>
   );
 };

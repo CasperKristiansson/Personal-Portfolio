@@ -108,12 +108,12 @@ export const Projects: React.FC = () => {
       <div className="relative">
         <div
           ref={scrollRef}
-          className="flex space-x-2 overflow-x-auto rounded-lg pr-20 pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pl-10 lg:space-x-6 lg:pl-40"
+          className="flex space-x-2 overflow-x-scroll rounded-lg pr-4 pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pr-20 sm:pl-10 md:overflow-x-hidden lg:space-x-6 lg:pl-40"
         >
           {cards.map((project, index) => (
             <div
               key={index}
-              className="card w-[90%] flex-shrink-0 bg-base-100 shadow-sm sm:w-96 lg:w-[500px]"
+              className="card w-[95%] flex-shrink-0 bg-base-100 shadow-sm sm:w-96 lg:w-[500px]"
             >
               <figure>
                 <img
@@ -131,7 +131,9 @@ export const Projects: React.FC = () => {
                 <h2 className="card-title text-2xl">
                   {project.title}
                   {project.badge && (
-                    <div className="badge badge-accent">{project.badge}</div>
+                    <div className="badge hidden badge-accent sm:flex">
+                      {project.badge}
+                    </div>
                   )}
                 </h2>
                 <p>{project.description}</p>
