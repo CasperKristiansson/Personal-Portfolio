@@ -1,13 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export const Hero: React.FC = () => {
-  useEffect(() => {
-    const width = window.innerWidth;
-    const starCount = Math.floor(width * 0.2);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isResizing, setIsResizing] = useState(false);
 
+  useEffect(() => {
+    let resizeTimer: ReturnType<typeof setTimeout>;
+
+    const handleResize = () => {
+      setIsResizing(true);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setWindowWidth(window.innerWidth);
+        setIsResizing(false);
+      }, 300);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const starsContainer = document.querySelector(".stars-container");
     if (!starsContainer) return;
 
+    if (isResizing) {
+      starsContainer.innerHTML = "";
+      return;
+    }
+
+    const starCount = Math.floor(windowWidth * 0.2);
     starsContainer.innerHTML = "";
 
     for (let i = 0; i < starCount; i++) {
@@ -33,7 +55,7 @@ export const Hero: React.FC = () => {
 
       starsContainer.appendChild(star);
     }
-  }, []);
+  }, [windowWidth, isResizing]);
 
   return (
     <div className="parallax relative flex h-[80vh] items-center justify-center">
