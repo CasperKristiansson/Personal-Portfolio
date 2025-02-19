@@ -102,13 +102,13 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mb-14 text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
         Projects
       </h1>
       <div className="relative">
         <div
           ref={scrollRef}
-          className="flex space-x-2 overflow-x-scroll rounded-lg pr-4 pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pr-20 sm:pl-10 md:overflow-x-hidden lg:space-x-6 lg:pl-40"
+          className="flex space-x-2 overflow-x-scroll rounded-lg pr-4 pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pr-20 sm:pl-10 md:overflow-x-hidden lg:space-x-6 lg:pl-[max(10rem,calc((100vw-2000px)/2)+10rem)]"
         >
           {cards.map((project, index) => (
             <div
