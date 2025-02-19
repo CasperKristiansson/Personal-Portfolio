@@ -60,11 +60,11 @@ const timelineItems: TimeLineItem[] = [
 export const Education: React.FC = () => {
   return (
     <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mb-14 text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
         Education
       </h1>
       <div className="mx-auto w-full max-w-[1400px]">
-        <div className="ml-[5vw] w-4/5 2xl:ml-0">
+        <div className="w-full px-4 xl:w-4/5 2xl:ml-[5vw]">
           <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
             {timelineItems.map((item, index) => (
               <li
