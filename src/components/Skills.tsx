@@ -173,7 +173,7 @@ export const Skills: React.FC = () => {
       <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
         Skills
       </h1>
-      <div className="w-full px-4 text-white shadow-lg sm:px-10 2xl:mx-auto 2xl:max-w-[1400px]">
+      <div className="w-full px-4 text-white sm:px-10 2xl:mx-auto 2xl:max-w-[1400px]">
         <div className="mt-6 flex flex-row">
           <IconBrandAmazon size={32} />
           <h2 className="ml-2 text-2xl font-bold">AWS Services</h2>

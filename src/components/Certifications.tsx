@@ -32,7 +32,7 @@ const certifications = [
 export const Certificates: React.FC = () => {
   return (
     <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-5xl font-bold text-white sm:pl-10 sm:text-left sm:text-6xl lg:pl-40">
         Certifications
       </h1>
       <div className="w-full px-4 sm:px-10 2xl:mx-auto 2xl:max-w-[1400px]">
