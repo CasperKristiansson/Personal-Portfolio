@@ -58,7 +58,7 @@ export const TimeLine: React.FC<{
         ))
       ) : (
         <div className="mx-auto w-full max-w-[1400px]">
-          <div className="w-full px-4 xl:w-4/5 2xl:ml-[5vw]">
+          <div className="w-full px-4 xl:w-4/5 2xl:ml-[2vw]">
             <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
               {timelineItems.map((item, index) => (
                 <li
@@ -83,9 +83,14 @@ export const TimeLine: React.FC<{
                     </div>
                     <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                     {item.listItems && (
-                      <ul className="mt-4 ml-2 list-inside list-disc text-[#90a6bb]">
+                      <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
                         {item.listItems.map((listItem, index) => (
-                          <li key={index}>{listItem}</li>
+                          <li
+                            key={index}
+                            className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                          >
+                            {listItem}
+                          </li>
                         ))}
                       </ul>
                     )}
