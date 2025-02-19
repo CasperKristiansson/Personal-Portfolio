@@ -3,6 +3,7 @@ import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { Hero } from "./components/Hero";
 import { Projects } from "./components/Projects";
+import { Skills } from "./components/Skills";
 
 export const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const App: React.FC = () => {
       <Projects />
       <Experience />
       <Education />
+      <Skills />
     </>
   );
 };
