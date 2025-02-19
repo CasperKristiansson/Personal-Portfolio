@@ -1,4 +1,5 @@
 import { About } from "./components/About";
+import { Certificates } from "./components/Certifications";
 import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { Hero } from "./components/Hero";
@@ -14,6 +15,7 @@ export const App: React.FC = () => {
       <Experience />
       <Education />
       <Skills />
+      <Certificates />
     </>
   );
 };

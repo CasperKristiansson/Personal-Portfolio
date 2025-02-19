@@ -107,6 +107,7 @@ const timelineItems: TimelineItem[] = [
       "Worked as a waiter at events and handled dishwashing and serving at Restaurang Modis in Solna, Stockholm.",
     link: "https://resturangmodis.se",
     linkDisplay: "resturangmodis.se",
+    hide: true,
   },
   {
     period: "Jun 2017 - Jul 2017",
@@ -119,6 +120,7 @@ const timelineItems: TimelineItem[] = [
     ],
     link: "https://jobba.stockholm",
     linkDisplay: "jobba.stockholm",
+    hide: true,
   },
   {
     period: "Jun 2016 - Jul 2016",
@@ -128,6 +130,7 @@ const timelineItems: TimelineItem[] = [
       "Worked with administrative assignments at Citroën’s head office, including document management and office relocation.",
     link: "https://hedinbil.se",
     linkDisplay: "hedinbil.se",
+    hide: true,
   },
 ];
 

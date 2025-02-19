@@ -1,4 +1,4 @@
-import { IconLink } from "@tabler/icons-react";
+import { IconChevronDown, IconChevronUp, IconLink } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 
 export type TimelineItem = {
@@ -9,6 +9,7 @@ export type TimelineItem = {
   listItems?: string[];
   link: string;
   linkDisplay: string;
+  hide?: boolean;
 };
 
 export const TimeLine: React.FC<{
@@ -16,6 +17,7 @@ export const TimeLine: React.FC<{
   title: string;
 }> = ({ timelineItems, title }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isCompact, setIsCompact] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,98 +36,116 @@ export const TimeLine: React.FC<{
         {title}
       </h1>
       {isSmallScreen ? (
-        timelineItems.map((item, index) => (
-          <div key={index} className="px-4 sm:px-10">
-            <h1 className="text-xl font-bold text-white">{item.location}</h1>
-            <p className="mt-2 text-[#90a6bb]">{item.period}</p>
-            <div className="">
-              <div className="text-2xl font-bold text-white">{item.header}</div>
-              <p className="mt-2 text-[#90a6bb]">{item.description}</p>
-              {item.listItems && (
-                <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
-                  {item.listItems.map((listItem, index) => (
-                    <li
-                      key={index}
-                      className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
-                    >
-                      {listItem}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <div className="mt-4 flex items-center gap-2">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-blue-400 hover:underline"
-                >
-                  <IconLink className="mr-1" />
-                  {item.linkDisplay}
-                </a>
+        timelineItems.map((item, index) => {
+          if (item.hide && isCompact) return null;
+          return (
+            <div key={index} className="px-4 sm:px-10">
+              <h1 className="text-xl font-bold text-white">{item.location}</h1>
+              <p className="mt-2 text-[#90a6bb]">{item.period}</p>
+              <div className="">
+                <div className="text-2xl font-bold text-white">
+                  {item.header}
+                </div>
+                <p className="mt-2 text-[#90a6bb]">{item.description}</p>
+                {item.listItems && (
+                  <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
+                    {item.listItems.map((listItem, index) => (
+                      <li
+                        key={index}
+                        className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                      >
+                        {listItem}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="mt-4 flex items-center gap-2">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-blue-400 hover:underline"
+                  >
+                    <IconLink className="mr-1" />
+                    {item.linkDisplay}
+                  </a>
+                </div>
               </div>
+              {index !== timelineItems.length - 1 && <div className="mb-10" />}
             </div>
-            {index !== timelineItems.length - 1 && <div className="mb-10" />}
-          </div>
-        ))
+          );
+        })
       ) : (
         <div className="mx-auto w-full max-w-[1800px]">
           <div className="w-4/5 px-4 2xl:ml-[1vw]">
             <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
-              {timelineItems.map((item, index) => (
-                <li
-                  key={index}
-                  style={{ gridTemplateColumns: "1fr auto 2fr" }}
-                  className="mt-[-10px]"
-                >
-                  <div className="timeline-start mr-6 h-full">
-                    <h1 className="text-end text-xl font-bold text-white">
-                      {item.location}
-                    </h1>
-                    <p className="mt-2 text-end text-[#90a6bb]">
-                      {item.period}
-                    </p>
-                  </div>
-                  <div className="timeline-middle">
-                    <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 hover:bg-[#0f0] hover:shadow-2xl hover:shadow-green-500" />
-                  </div>
-                  <div className="timeline-end ml-6 h-full">
-                    <div className="text-2xl font-bold text-white">
-                      {item.header}
+              {timelineItems.map((item, index) => {
+                if (item.hide && isCompact) return null;
+                return (
+                  <li
+                    key={index}
+                    style={{ gridTemplateColumns: "1fr auto 2fr" }}
+                    className="mt-[-10px]"
+                  >
+                    <div className="timeline-start mr-6 h-full">
+                      <h1 className="text-end text-xl font-bold text-white">
+                        {item.location}
+                      </h1>
+                      <p className="mt-2 text-end text-[#90a6bb]">
+                        {item.period}
+                      </p>
                     </div>
-                    <p className="mt-2 text-[#90a6bb]">{item.description}</p>
-                    {item.listItems && (
-                      <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
-                        {item.listItems.map((listItem, index) => (
-                          <li
-                            key={index}
-                            className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
-                          >
-                            {listItem}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    <div className="mt-4 flex items-center gap-2">
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-blue-400 hover:underline"
-                      >
-                        <IconLink className="mr-1" />
-                        {item.linkDisplay}
-                      </a>
+                    <div className="timeline-middle">
+                      <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 hover:bg-[#0f0] hover:shadow-2xl hover:shadow-green-500" />
                     </div>
-                    {index !== timelineItems.length - 1 && (
-                      <div className="mb-20" />
-                    )}
-                  </div>
-                  <hr className="bg-[#094a68]" style={{ width: "2px" }} />
-                </li>
-              ))}
+                    <div className="timeline-end ml-6 h-full">
+                      <div className="text-2xl font-bold text-white">
+                        {item.header}
+                      </div>
+                      <p className="mt-2 text-[#90a6bb]">{item.description}</p>
+                      {item.listItems && (
+                        <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
+                          {item.listItems.map((listItem, index) => (
+                            <li
+                              key={index}
+                              className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                            >
+                              {listItem}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <div className="mt-4 flex items-center gap-2">
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-blue-400 hover:underline"
+                        >
+                          <IconLink className="mr-1" />
+                          {item.linkDisplay}
+                        </a>
+                      </div>
+                      {index !== timelineItems.length - 1 && (
+                        <div className="mb-20" />
+                      )}
+                    </div>
+                    <hr className="bg-[#094a68]" style={{ width: "2px" }} />
+                  </li>
+                );
+              })}
             </ul>
           </div>
+        </div>
+      )}
+      {timelineItems.filter((item) => item.hide).length !== 0 && (
+        <div className="mx-auto mt-10 flex w-full max-w-[1800px] justify-center">
+          <button
+            className="btn w-48 btn-primary"
+            onClick={() => setIsCompact(!isCompact)}
+          >
+            {isCompact ? <IconChevronDown /> : <IconChevronUp />} More
+          </button>
         </div>
       )}
     </div>
