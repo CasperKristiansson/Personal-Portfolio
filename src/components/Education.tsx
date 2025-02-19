@@ -63,45 +63,47 @@ export const Education: React.FC = () => {
       <h1 className="mb-14 text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
         Education
       </h1>
-      <div className="mx-auto w-4/5 max-w-[1400px]">
-        <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
-          {timelineItems.map((item, index) => (
-            <li
-              key={index}
-              style={{ gridTemplateColumns: "1fr auto 2fr" }}
-              className="mt-[-10px]"
-            >
-              <div className="timeline-start mr-6 h-full">
-                <h1 className="text-end text-xl font-bold text-white">
-                  {item.location}
-                </h1>
-                <p className="mt-2 text-end text-[#90a6bb]">{item.period}</p>
-              </div>
-              <div className="timeline-middle">
-                <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 hover:bg-[#0f0] hover:shadow-2xl hover:shadow-green-500" />
-              </div>
-              <div className="timeline-end ml-6 h-full">
-                <div className="text-2xl font-bold text-white">
-                  {item.header}
+      <div className="mx-auto w-full max-w-[1400px]">
+        <div className="ml-[5vw] w-4/5 2xl:ml-0">
+          <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+            {timelineItems.map((item, index) => (
+              <li
+                key={index}
+                style={{ gridTemplateColumns: "1fr auto 2fr" }}
+                className="mt-[-10px]"
+              >
+                <div className="timeline-start mr-6 h-full">
+                  <h1 className="text-end text-xl font-bold text-white">
+                    {item.location}
+                  </h1>
+                  <p className="mt-2 text-end text-[#90a6bb]">{item.period}</p>
                 </div>
-                <p className="mt-2 text-[#90a6bb]">{item.description}</p>
-                <div className="mt-4 flex items-center gap-2">
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-blue-400 hover:underline"
-                  >
-                    <IconLink className="mr-1" />
-                    {item.linkDisplay}
-                  </a>
+                <div className="timeline-middle">
+                  <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 hover:bg-[#0f0] hover:shadow-2xl hover:shadow-green-500" />
                 </div>
-                <div className="mb-20" />
-              </div>
-              <hr className="bg-[#094a68]" style={{ width: "2px" }} />
-            </li>
-          ))}
-        </ul>
+                <div className="timeline-end ml-6 h-full">
+                  <div className="text-2xl font-bold text-white">
+                    {item.header}
+                  </div>
+                  <p className="mt-2 text-[#90a6bb]">{item.description}</p>
+                  <div className="mt-4 flex items-center gap-2">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-blue-400 hover:underline"
+                    >
+                      <IconLink className="mr-1" />
+                      {item.linkDisplay}
+                    </a>
+                  </div>
+                  <div className="mb-20" />
+                </div>
+                <hr className="bg-[#094a68]" style={{ width: "2px" }} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
