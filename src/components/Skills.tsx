@@ -130,12 +130,6 @@ const awsServices = [
     logoColor: "white",
   },
   {
-    name: "Amazon SQS",
-    color: "FF9900",
-    logo: "amazon-sqs",
-    logoColor: "white",
-  },
-  {
     name: "Amazon SNS",
     color: "FF9900",
     logo: "amazon-sns",
