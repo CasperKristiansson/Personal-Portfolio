@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router";
 import { About } from "./components/About";
 import { Certificates } from "./components/Certifications";
 import { Education } from "./components/Education";
@@ -8,9 +9,10 @@ import { Icons } from "./components/Icons";
 import { Projects } from "./components/Projects";
 import { Rewards } from "./components/Rewards";
 import { Skills } from "./components/Skills";
+import { NotFound } from "./components/NotFound";
 
 export const App: React.FC = () => {
-  return (
+  const homePage = (
     <>
       <Icons />
       <Hero />
@@ -23,5 +25,12 @@ export const App: React.FC = () => {
       <Rewards />
       <ExternalLinks />
     </>
+  );
+
+  return (
+    <Routes>
+      <Route path="/" element={homePage} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
