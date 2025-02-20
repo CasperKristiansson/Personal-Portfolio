@@ -159,6 +159,12 @@ const awsServices = [
     logo: "amazon-cognito",
     logoColor: "white",
   },
+  {
+    name: "AWS Fargate",
+    color: "3B25C1",
+    logo: "awsfargate",
+    logoColor: "white",
+  },
 ];
 
 export const Skills: React.FC = () => {
