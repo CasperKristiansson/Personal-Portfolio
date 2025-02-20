@@ -10,6 +10,7 @@ import { Projects } from "./components/Projects";
 import { Rewards } from "./components/Rewards";
 import { Skills } from "./components/Skills";
 import { NotFound } from "./components/NotFound";
+import { Article } from "./shared/article";
 
 export const App: React.FC = () => {
   const homePage = (
@@ -30,6 +31,7 @@ export const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={homePage} />
+      <Route path="/article" element={<Article />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
