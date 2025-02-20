@@ -100,11 +100,11 @@ const awsServices = [
   },
   {
     name: "DynamoDB",
-    color: "4053D6",
+    color: "FF9900",
     logo: "Amazon%20DynamoDB",
     logoColor: "white",
   },
-  { name: "Amazon S3", color: "569A31", logo: "amazon-s3", logoColor: "white" },
+  { name: "Amazon S3", color: "FF9900", logo: "amazon-s3", logoColor: "white" },
   {
     name: "AWS CloudFormation",
     color: "FF9900",
