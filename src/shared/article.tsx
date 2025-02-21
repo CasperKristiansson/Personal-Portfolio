@@ -42,7 +42,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
           ></div>
         </div>
       </div>
-      <div className="mx-auto mt-20 w-full max-w-[700px] px-6">
+      <div className="mx-auto mt-10 w-full max-w-[700px] px-6 sm:mt-20">
         {article.content.map((item, index) => {
           switch (item.type) {
             case "text":

@@ -6,6 +6,7 @@ import weatherbrainPreview from "./assets/projects/weatherbrain/weatherbrainWebs
 import weatherbrainOverview from "./assets/projects/weatherbrain/weatherbrainOverview.png";
 import financeTrackerPreview from "./assets/projects/financeTracker/financeTrackerPreview.jpg";
 import financeTrackerOverview from "./assets/projects/financeTracker/financeTrackerOverview.png";
+import ecoloopOverview from "./assets/projects/ecoloop/ecoloopOverview.png";
 
 export type ArticleItem = {
   path: string;
@@ -348,9 +349,69 @@ const financeTracker: ArticleItem = {
   ],
 };
 
+const ecoloop: ArticleItem = {
+  path: "/articles/ecoloop",
+  period: "Jan 2023 - Mar 2023",
+  header: "Ecoloop Classification Tool",
+  description:
+    "A web-based tool for detecting sulfide soils in Northern Sweden and Finland, developed in collaboration with Ecoloop to enhance environmental monitoring.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/Ecoloop-Classification-Tool",
+      display: "Github",
+    },
+  ],
+  image: ecoloopOverview,
+  content: [
+    {
+      type: "text",
+      value:
+        "The project tackles the challenge of sulfide soils—commonly found in Northern Sweden and Finland around the Gulf of Bothnia—that can lead to significant environmental damage. By leveraging imputed soil data, the tool provides a precise and accessible method for detection.",
+    },
+    {
+      type: "text",
+      value:
+        "Developed in close collaboration with Ecoloop, a boutique environmental engineering firm operating in Sweden and Norway, the project combined technical expertise with iterative user feedback. This collaboration ensured that the final tool was both user-friendly and effective in meeting real-world detection needs.",
+    },
+    {
+      type: "heading",
+      value: "Technologies Used",
+    },
+    {
+      type: "list",
+      value: [
+        "React with TypeScript",
+        "Firebase hosting & additional hosting providers",
+        "Pipelines (GitHub Actions)",
+        "Basic API endpoints",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Features",
+    },
+    {
+      type: "text",
+      value:
+        "The tool was designed to be smart, easy, and effective, significantly reducing the time and cost involved in sulfide soil detection. While the project met two out of three technical requirements specified by the customer, there is room for further enhancement—such as incorporating multi-input document uploads or a map functionality.",
+    },
+    {
+      type: "text",
+      value:
+        "The accompanying report also provides an in-depth background on the environmental risks of sulfide soils, along with insights into the mission of Ecoloop. It emphasizes the uniqueness of the tool in a market where no similar solution currently exists.",
+    },
+    {
+      type: "text",
+      value:
+        "In summary, the Ecoloop Classification Tool is a pioneering solution aimed at advancing environmental monitoring and resource management in civil engineering, with significant potential for future refinements.",
+    },
+  ],
+};
+
 export const Articles: ArticleItem[] = [
   pktraffic,
   movieboxdb,
   weatherbrain,
   financeTracker,
+  ecoloop,
 ];
