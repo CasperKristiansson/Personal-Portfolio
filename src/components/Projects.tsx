@@ -8,6 +8,7 @@ import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
 import tvShowNetWorkOverview from "../assets/projects/tvShowNetwork/tvShowNetworkOverview.png";
 import clsx from "clsx";
+import { Link } from "react-router";
 
 type Card = {
   title: string;
@@ -16,6 +17,7 @@ type Card = {
   image: string;
   tags: string[];
   fillHeight?: boolean;
+  path: string;
 };
 
 const cards: Card[] = [
@@ -34,6 +36,7 @@ const cards: Card[] = [
       "Real-time",
       "Government Contract",
     ],
+    path: "/articles/pktraffic",
   },
   {
     title: "MovieBoxDB",
@@ -42,6 +45,7 @@ const cards: Card[] = [
       "MovieBoxDB is a movie tracking application. It is possible to search for a specific movie and observe information about that specific movie such as actors, release date, genre, score etc.",
     image: movieboxdbOverview,
     tags: ["Frontend", "Database", "API", "React", "Firebase"],
+    path: "/articles/movieboxdb",
   },
   {
     title: "WeatherBrain",
@@ -50,6 +54,7 @@ const cards: Card[] = [
       "This application can through machine learning predict upcoming weather/weather phenomena. The application receives its data from an IoT-device that can measure certain weather parameters such as temperature, atmospheric pressure, and humidity.",
     image: weatherbrainOverview,
     tags: ["Microsoft Azure", "Front/Backend", "Machine Learning"],
+    path: "/articles/weatherbrain",
   },
   {
     title: "Finance Tracker",
@@ -58,6 +63,7 @@ const cards: Card[] = [
       "A project which solved an issue of mine which was tracking my finance. This Finance Tracking application gives overviews of expenses and income to give its users an easy way to explore their data.",
     image: financeTrackerOverview,
     tags: ["Frontend", "Backend", "API", "Firebase Auth"],
+    path: "/articles/finance-tracker",
   },
   {
     title: "Sulfide Soil Classification",
@@ -67,6 +73,7 @@ const cards: Card[] = [
     image: ecoloopOverview,
     tags: ["Sustainability", "Typescript", "Solution"],
     fillHeight: true,
+    path: "/articles/ecoloop",
   },
   {
     title: "Image Editor",
@@ -75,6 +82,7 @@ const cards: Card[] = [
       "An application that allows its users to quickly make small adjustments to a large number of images. This program was developed for the Personnel Foundation of the Swedish postal service.",
     image: imageEditorOverview,
     tags: ["Application", "Photo Editor", "Front/Backend"],
+    path: "/articles/image-editing-application",
   },
   {
     title: "TV Show Network",
@@ -84,6 +92,7 @@ const cards: Card[] = [
     image: tvShowNetWorkOverview,
     tags: ["Website", "Wordpress", "SEO"],
     fillHeight: true,
+    path: "/articles/tvshownetwork",
   },
 ];
 
@@ -146,9 +155,11 @@ export const Projects: React.FC = () => {
                   ))}
                 </div>
                 <div className="mt-6">
-                  <button className="btn btn-block btn-primary">
-                    Read More
-                  </button>
+                  <Link to={project.path}>
+                    <button className="btn btn-block btn-primary">
+                      Read More
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
