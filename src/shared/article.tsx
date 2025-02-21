@@ -13,7 +13,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
     <div className="relative w-full text-black">
       <Icons dark />
       <div className="fixed top-5 left-5 hidden items-center gap-2 text-black lg:flex">
-        <Link to="/">
+        <Link to="/?scrollTo=projects">
           <div className="flex flex-row hover:underline">
             <IconArrowLeft size={24} />
             <p>Go Back</p>
@@ -102,7 +102,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
         })}
       </div>
       <div className="mt-12 mb-30 text-center">
-        <Link to="/" className="text-blue-600">
+        <Link to="/?scrollTo=projects" className="text-blue-600">
           <IconArrowLeft className="mr-2 inline" /> Back to home page
         </Link>
       </div>
