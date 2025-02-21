@@ -7,7 +7,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
   return (
     <div className="relative w-full text-black">
       <Icons dark />
-      <div className="fixed top-5 left-5 flex items-center gap-2 text-black">
+      <div className="fixed top-5 left-5 hidden items-center gap-2 text-black lg:flex">
         <Link to="/">
           <div className="flex flex-row hover:underline">
             <IconArrowLeft size={24} />
@@ -17,7 +17,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
       </div>
       <div className="mx-auto lg:px-0">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="order-2 mx-auto flex w-full max-w-[800px] flex-col justify-center px-6 sm:px-20 lg:order-1">
+          <div className="order-2 mx-auto flex w-full max-w-[700px] flex-col justify-center px-6 lg:order-1">
             <p className="text-gray-600">{article.period}</p>
             <h1 className="mt-2 text-4xl font-bold">{article.header}</h1>
             <p className="mt-4 text-gray-700">{article.description}</p>
