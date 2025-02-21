@@ -134,7 +134,7 @@ export const Projects: React.FC = () => {
           {cards.map((project, index) => (
             <div
               key={index}
-              className="card w-[95%] flex-shrink-0 bg-base-100 shadow-sm sm:w-96 lg:w-[500px]"
+              className="card w-[95%] flex-shrink-0 shadow-sm sm:w-96 lg:w-[500px]"
             >
               <figure>
                 <img
