@@ -7,6 +7,8 @@ import weatherbrainOverview from "./assets/projects/weatherbrain/weatherbrainOve
 import financeTrackerPreview from "./assets/projects/financeTracker/financeTrackerPreview.jpg";
 import financeTrackerOverview from "./assets/projects/financeTracker/financeTrackerOverview.png";
 import ecoloopOverview from "./assets/projects/ecoloop/ecoloopOverview.png";
+import imageEditorOverview from "./assets/projects/imageEditor/imageEditorOverview.png";
+import imageEditorPreview from "./assets/projects/imageEditor/imageEditorPreview.png";
 
 export type ArticleItem = {
   path: string;
@@ -408,10 +410,51 @@ const ecoloop: ArticleItem = {
   ],
 };
 
+const imageEditingApplication: ArticleItem = {
+  path: "/articles/image-editing-application",
+  period: "Jun 2021 - Aug 2021",
+  header: "Image Editing Application",
+  description:
+    "An application that enables rapid adjustments to large batches of images, developed for the Personnel Foundation of the Swedish postal service.",
+  headerLinks: [],
+  image: imageEditorPreview,
+  content: [
+    {
+      type: "text",
+      value:
+        "I developed a mass image editing program for the Personnel Foundation of the Swedish postal service (postnordplus.com). The objective was to efficiently adjust image parameters such as width, height, brightness, sharpness, vignette, and vibrance across large batches of images.",
+    },
+    {
+      type: "text",
+      value:
+        "The application features two distinct modes: mass editing and individual editing. The mass mode applies uniform adjustments to all images simultaneously, while the individual mode allows for customized settings on a per-image basis, including specific cropping options. This flexibility significantly reduces the time required for preparing images for web uploads.",
+    },
+    {
+      type: "text",
+      value:
+        "I was responsible for developing both the frontend and backend components of the program, ensuring robust image processing functionality. Additionally, I provided training and ongoing support to staff to facilitate smooth adoption of the tool.",
+    },
+    {
+      type: "heading",
+      value: "Technologies Used",
+    },
+    {
+      type: "list",
+      value: ["Python with PyQt", "QT Designer", "OpenCV"],
+    },
+    {
+      type: "image",
+      value: imageEditorOverview,
+      description: "Image Editing Application Preview",
+    },
+  ],
+};
+
 export const Articles: ArticleItem[] = [
   pktraffic,
   movieboxdb,
   weatherbrain,
   financeTracker,
   ecoloop,
+  imageEditingApplication,
 ];
