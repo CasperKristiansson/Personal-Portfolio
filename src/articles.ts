@@ -9,6 +9,8 @@ import financeTrackerOverview from "./assets/projects/financeTracker/financeTrac
 import ecoloopOverview from "./assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "./assets/projects/imageEditor/imageEditorOverview.png";
 import imageEditorPreview from "./assets/projects/imageEditor/imageEditorPreview.png";
+import tvShowNetworkPreview from "./assets/projects/tvshownetwork/tvShowNetworkPreview.jpg";
+import tvShowNetworkOverview from "./assets/projects/tvshownetwork/tvShowNetworkOverview.png";
 
 export type ArticleItem = {
   path: string;
@@ -450,6 +452,38 @@ const imageEditingApplication: ArticleItem = {
   ],
 };
 
+const tvShowNetwork: ArticleItem = {
+  path: "/articles/tvshownetwork",
+  period: "Dec 2018 - Dec 2020",
+  header: "TvShowNetwork",
+  description:
+    "A collaborative blogging platform for the TV and film industry that rewards writers based on their article views.",
+  headerLinks: [],
+  image: tvShowNetworkOverview,
+  content: [
+    {
+      type: "text",
+      value:
+        "TvShowNetwork is a unique website where users can sign up and share their insights on film and the TV industry. The platform was designed to help independent writers compete with larger blogs by joining forces, thereby improving their visibility on search engines and attracting a wider audience.",
+    },
+    {
+      type: "text",
+      value:
+        "A standout feature of TvShowNetwork is its revenue-sharing model: authors earn a percentage of Google AdSense revenue based on the number of views their articles receive. In its first year, the site attracted around 80,000 visitors, underscoring its potential impact.",
+    },
+    {
+      type: "text",
+      value:
+        "I developed the entire business model, website, and backend system. This included tracking visitor metrics per article and optimizing the site for SEO. Built on WordPress, the platform was enhanced with custom HTML, CSS, and JavaScript to deliver a seamless user experience.",
+    },
+    {
+      type: "image",
+      value: tvShowNetworkPreview,
+      description: "TvShowNetwork Preview",
+    },
+  ],
+};
+
 export const Articles: ArticleItem[] = [
   pktraffic,
   movieboxdb,
@@ -457,4 +491,5 @@ export const Articles: ArticleItem[] = [
   financeTracker,
   ecoloop,
   imageEditingApplication,
+  tvShowNetwork,
 ];
