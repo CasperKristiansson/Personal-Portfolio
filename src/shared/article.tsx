@@ -37,7 +37,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
           <div
             className="order-1 h-[50vh] w-full bg-cover bg-center lg:order-2"
             style={{
-              backgroundImage: `url("${article.image}")`,
+              backgroundImage: `url(${article.image})`,
             }}
           ></div>
         </div>

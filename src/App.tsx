@@ -11,6 +11,7 @@ import { Rewards } from "./components/Rewards";
 import { Skills } from "./components/Skills";
 import { NotFound } from "./components/NotFound";
 import { Article } from "./shared/article";
+import { Articles } from "./articles";
 
 export const App: React.FC = () => {
   const homePage = (
@@ -31,7 +32,14 @@ export const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={homePage} />
-      <Route path="/article" element={<Article />} />
+      {/* <Route path="/article" element={<Article />} /> */}
+      {Articles.map((article, index) => (
+        <Route
+          key={index}
+          path={article.path}
+          element={<Article {...article} />}
+        />
+      ))}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
