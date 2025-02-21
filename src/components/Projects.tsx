@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
@@ -98,6 +98,7 @@ const cards: Card[] = [
 
 export const Projects: React.FC = () => {
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const locationRef = React.useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -109,8 +110,19 @@ export const Projects: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollTo = urlParams.get("scrollTo");
+    if (scrollTo === "projects" && locationRef.current) {
+      locationRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, []);
+
   return (
-    <div className="relative z-10 bg-[#18253F] pt-36">
+    <div className="relative z-10 bg-[#18253F] pt-36" ref={locationRef}>
       <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
         Projects
       </h1>
