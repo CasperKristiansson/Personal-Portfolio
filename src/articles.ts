@@ -4,6 +4,8 @@ import movieboxdbOverview from "./assets/projects/movieboxdb/movieboxdbOverview.
 import movieboxdbPreview from "./assets/projects/movieboxdb/movieboxdbPreview.jpg";
 import weatherbrainPreview from "./assets/projects/weatherbrain/weatherbrainWebsite.png";
 import weatherbrainOverview from "./assets/projects/weatherbrain/weatherbrainOverview.png";
+import financeTrackerPreview from "./assets/projects/financeTracker/financeTrackerPreview.jpg";
+import financeTrackerOverview from "./assets/projects/financeTracker/financeTrackerOverview.png";
 
 export type ArticleItem = {
   path: string;
@@ -282,4 +284,73 @@ const weatherbrain: ArticleItem = {
   ],
 };
 
-export const Articles: ArticleItem[] = [pktraffic, movieboxdb, weatherbrain];
+const financeTracker: ArticleItem = {
+  path: "/articles/finance-tracker",
+  period: "Jun 2022 - Sept 2022",
+  header: "Finance Tracker",
+  description:
+    "A personal finance tracking application that transforms manual expense management into an efficient, dynamic overview of income, expenses, and account balances.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/Finance-Tracker",
+      display: "Github",
+    },
+  ],
+  image: financeTrackerOverview,
+  content: [
+    {
+      type: "text",
+      value:
+        "Driven by a passion for finance and personal economics, I have tracked every expense and income for over five years. Initially, this data was managed in Excel, but the limitations of spreadsheets made it challenging to create dynamic, detailed views.",
+    },
+    {
+      type: "text",
+      value:
+        "This project offers a streamlined solution to explore and manage personal finances programmatically. It enables quick month-to-month tracking of income and expenses, simplifying data visualization and financial planning.",
+    },
+    {
+      type: "heading",
+      value: "Technologies Used",
+    },
+    {
+      type: "list",
+      value: [
+        "MYSQL database for storing transactions and loans",
+        "React for the front-end with Firebase for authentication",
+        "Eight API endpoints for seamless data management",
+        "Python Pandas for cleaning and processing historical transaction data",
+      ],
+    },
+    {
+      type: "image",
+      value: financeTrackerPreview,
+      description: "Finance Tracker Preview",
+    },
+    {
+      type: "heading",
+      value: "Features",
+    },
+    {
+      type: "text",
+      value:
+        "The overview page provides a snapshot of last month’s income and expenses, along with a bar chart displaying financial trends for the current year. It also includes sections for adding new transactions and uploading Excel documents, making data updates quick and efficient.",
+    },
+    {
+      type: "text",
+      value:
+        "The yearly and total overview pages offer detailed insights into income and expense categories, allowing users to track net financial growth over time. An accounts overview consolidates balances from multiple bank accounts, investment portfolios, and savings, and even provides options to adjust discrepancies.",
+    },
+    {
+      type: "text",
+      value:
+        "Additionally, the intuitive transaction page lets users easily create, edit, or delete entries, while API endpoints ensure smooth data operations. The Excel upload feature further simplifies monthly financial management.",
+    },
+  ],
+};
+
+export const Articles: ArticleItem[] = [
+  pktraffic,
+  movieboxdb,
+  weatherbrain,
+  financeTracker,
+];
