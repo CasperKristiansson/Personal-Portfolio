@@ -2,8 +2,13 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Link } from "react-router";
 import { Icons } from "../components/Icons";
 import { ArticleItem } from "../articles";
+import { useEffect } from "react";
 
 export const Article: React.FC<ArticleItem> = (article) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="relative w-full text-black">
       <Icons dark />
