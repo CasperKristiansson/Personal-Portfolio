@@ -15,7 +15,7 @@ import { Articles } from "./articles";
 
 export const App: React.FC = () => {
   const homePage = (
-    <>
+    <div className="bg-[#18253F]">
       <Icons />
       <Hero />
       <About />
@@ -26,13 +26,12 @@ export const App: React.FC = () => {
       <Certificates />
       <Rewards />
       <ExternalLinks />
-    </>
+    </div>
   );
 
   return (
     <Routes>
       <Route path="/" element={homePage} />
-      {/* <Route path="/article" element={<Article />} /> */}
       {Articles.map((article, index) => (
         <Route
           key={index}
