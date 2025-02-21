@@ -1,7 +1,10 @@
-import pktrafficOverview from "../assets/projects/pktraffic/pktrafficWebsite.png";
+import pktrafficPreview from "./assets/projects/pktraffic/pktrafficWebsite.png";
+import pktrafficOverview from "./assets/projects/pktraffic/pktrafficOverview.png";
+import movieboxdbOverview from "./assets/projects/movieboxdb/movieboxdbOverview.png";
+import movieboxdbPreview from "./assets/projects/movieboxdb/movieboxdbPreview.jpg";
 
 export type ArticleItem = {
-  url: string;
+  path: string;
   period: string;
   header: string;
   description: string;
@@ -36,7 +39,7 @@ export type ArticleItem = {
 };
 
 const pktraffic: ArticleItem = {
-  url: "/articles/pktraffic",
+  path: "/articles/pktraffic",
   period: "Jan 2021 - Sept 2024",
   header: "PKTraffic, LLC",
   description:
@@ -47,7 +50,7 @@ const pktraffic: ArticleItem = {
       display: "PKTraffic.com",
     },
   ],
-  image: "../images/pktrafficOverview.png",
+  image: pktrafficOverview,
   content: [
     {
       type: "text",
@@ -79,7 +82,7 @@ const pktraffic: ArticleItem = {
     },
     {
       type: "image",
-      value: pktrafficOverview,
+      value: pktrafficPreview,
       description: "PKTraffic Website Overview",
     },
     {
@@ -114,4 +117,77 @@ const pktraffic: ArticleItem = {
   ],
 };
 
-export const articles: ArticleItem[] = [pktraffic];
+const movieboxdb: ArticleItem = {
+  path: "/articles/movieboxdb",
+  period: "Nov 2021 - Jan 2022",
+  header: "MovieBoxDB",
+  description:
+    "MovieBoxDB is a comprehensive movie discovery platform that simplifies film exploration and management by offering detailed film information and personalized curation features.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/MovieBoxDB",
+      display: "Github",
+    },
+    {
+      link: "https://movieboxdb.web.app/",
+      display: "movieboxdb.web.app",
+    },
+  ],
+  image: movieboxdbOverview,
+  content: [
+    {
+      type: "text",
+      value:
+        "MovieBoxDB is designed to simplify film exploration and management. With its user-friendly interface, users can search for movies and access comprehensive details including cast, release dates, genres, and ratings.",
+    },
+    {
+      type: "text",
+      value:
+        "The platform was meticulously crafted with a focus on user experience. Its intuitive search and dynamic sorting options allow users to effortlessly uncover popular titles and filter films based on various criteria.",
+    },
+    {
+      type: "text",
+      value:
+        "By creating an account, users gain access to personalized features such as updating their profile, managing watchlists, and marking favorites. Additionally, the innovative MovieMatcher—a swipe-based game inspired by dating apps—offers an engaging way to decide whether to save or skip a movie.",
+    },
+    {
+      type: "heading",
+      value: "Technologies Used",
+    },
+    {
+      type: "list",
+      value: [
+        "Firebase Hosting",
+        "Firebase Firestore Database",
+        "Firebase Authentication",
+        "Figma",
+      ],
+    },
+    {
+      type: "image",
+      value: movieboxdbPreview,
+      description: "MovieBoxDB Preview",
+    },
+    {
+      type: "heading",
+      value: "Features",
+    },
+    {
+      type: "text",
+      value:
+        "A strong emphasis on design ensures a visually appealing and seamless user experience. The one-page layout provides comprehensive movie details—trailers, cast, storyline, and ratings—in an integrated view.",
+    },
+    {
+      type: "text",
+      value:
+        "The discover page is tailored for efficient browsing, offering multiple sorting options such as popularity, release year, and ratings. This makes it simple for users to find films that match their interests.",
+    },
+    {
+      type: "text",
+      value:
+        "The profile section not only supports movie curation through watchlists and favorites but also integrates the engaging MovieMatcher. This swipe-based feature lets users make instant decisions on movie selection, adding an interactive element to the discovery process.",
+    },
+  ],
+};
+
+export const Articles: ArticleItem[] = [pktraffic, movieboxdb];
