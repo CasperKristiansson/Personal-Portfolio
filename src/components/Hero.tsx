@@ -17,7 +17,7 @@ const Star: React.FC<{
         top: `${top}vh`,
         left: `${left}vw`,
         boxShadow: glow,
-        animation: `twinkle ${duration} infinite alternate ease-in-out`,
+        animation: `twinkle ${duration}s infinite alternate ease-in-out`,
       }}
     />
   );
@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
   return (
     <div className="parallax relative flex h-[80vh] items-center justify-center">
       <div className="stars-container pointer-events-none fixed inset-0 h-full w-full">
-        {Stars.slice(0, Math.floor(windowWidth * 0.2)).map((star, index) => (
+        {Stars.slice(0, Math.floor(windowWidth * 0.15)).map((star, index) => (
           <Star key={index} {...star} />
         ))}
       </div>
