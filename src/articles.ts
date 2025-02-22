@@ -5,7 +5,7 @@ import movieboxdbPreview from "./assets/projects/movieboxdb/movieboxdbPreview.jp
 import weatherbrainPreview from "./assets/projects/weatherbrain/weatherbrainWebsite.png";
 import weatherbrainOverview from "./assets/projects/weatherbrain/weatherbrainOverview.png";
 import financeTrackerPreview from "./assets/projects/financeTracker/financeTrackerPreview.jpg";
-import financeTrackerOverview from "./assets/projects/financeTracker/financeTrackerOverview.png";
+import financeTrackerOverview from "./assets/projects/financeTracker/financeTrackerOverview.jpg";
 import ecoloopOverview from "./assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "./assets/projects/imageEditor/imageEditorOverview.png";
 import imageEditorPreview from "./assets/projects/imageEditor/imageEditorPreview.png";
