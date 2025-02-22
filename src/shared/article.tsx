@@ -101,7 +101,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
           }
         })}
       </div>
-      <div className="mt-12 mb-30 text-center">
+      <div className="mt-12 mb-30 text-center hover:underline">
         <Link to="/?scrollTo=projects" className="text-blue-600">
           <IconArrowLeft className="mr-2 inline" /> Back to home page
         </Link>
