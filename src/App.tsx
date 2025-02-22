@@ -12,6 +12,7 @@ import { Skills } from "./components/Skills";
 import { NotFound } from "./components/NotFound";
 import { Article } from "./shared/article";
 import { Articles } from "./articles";
+import { Papers } from "./components/Papers";
 
 export const App: React.FC = () => {
   const homePage = (
@@ -24,6 +25,7 @@ export const App: React.FC = () => {
       <Education />
       <Skills />
       <Certificates />
+      <Papers />
       <Rewards />
       <ExternalLinks />
     </div>
