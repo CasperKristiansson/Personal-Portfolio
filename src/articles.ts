@@ -11,6 +11,7 @@ import imageEditorOverview from "./assets/projects/imageEditor/imageEditorOvervi
 import imageEditorPreview from "./assets/projects/imageEditor/imageEditorPreview.png";
 import tvShowNetworkPreview from "./assets/projects/tvshownetwork/tvShowNetworkPreview.jpg";
 import tvShowNetworkOverview from "./assets/projects/tvshownetwork/tvShowNetworkOverview.png";
+import cloudComputingOverview from "./assets/other/cloudComputing.png";
 
 export type ArticleItem = {
   path: string;
@@ -43,6 +44,11 @@ export type ArticleItem = {
     | {
         type: "code";
         value: string[];
+      }
+    | {
+        type: "link";
+        value: string;
+        display: string;
       }
   )[];
 };
@@ -484,6 +490,37 @@ const tvShowNetwork: ArticleItem = {
   ],
 };
 
+const cloudComputing: ArticleItem = {
+  path: "/papers/cloud-computing",
+  period: "Jan 2023 - Jun 2023",
+  header: "Cloud Computing Pricing and Deployment Efforts",
+  description:
+    "Navigating Cloud Computing Pricing and Deployment Efforts: Exploring the Public-Private Landscape",
+  headerLinks: [
+    {
+      link: "https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1770639&dswid=5537",
+      display: "diva-portal.org",
+    },
+  ],
+  image: cloudComputingOverview,
+  content: [
+    {
+      type: "heading",
+      value: "Abstract",
+    },
+    {
+      type: "text",
+      value:
+        "The expanding adoption of cloud computing services by businesses has transformed IT infrastructure and data management in the computing space. Cloud computing offers advantages such as availability, scalability, and cost-effectiveness, making it a favored choice for businesses of all sizes. The aim of this thesis is to compare private and public cloud computing services in terms of pricing and implementation effort as well as comparing the cloud providers to each other. The top three cloud providers that will be examined are Google GCP, Microsoft Azure, and Amazon AWS. The study examines different pricing models and evaluates their effectiveness in different business scenarios. In addition, the thesis also discusses the challenges associated with building and maintaining private infrastructure and the deployment of applications to cloud computing service are examined.",
+    },
+    {
+      type: "text",
+      value:
+        "The research methodology involves data collection, analysis, and a case study of developing and deploying a ticketing system application on different cloud platforms. The ticket system helps to provide a realistic example and investigation of the cloud providers. The findings will help companies make informed decisions regarding the selection of the most appropriate cloud computing service based on pricing models and implementation efforts. The thesis provides valuable information on private and public cloud computing and recommends appropriate pricing models for different scenarios. This study adds to existing knowledge by analyzing current pricing models and deployment concepts in cloud computing. The thesis does not propose new solutions but follows a structured format compiling information on private, and public cloud computing and a comprehensive review of cloud computing pricing models and marketing efforts.",
+    },
+  ],
+};
+
 export const Articles: ArticleItem[] = [
   pktraffic,
   movieboxdb,
@@ -492,4 +529,5 @@ export const Articles: ArticleItem[] = [
   ecoloop,
   imageEditingApplication,
   tvShowNetwork,
+  cloudComputing,
 ];
