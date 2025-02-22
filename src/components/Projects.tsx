@@ -118,6 +118,7 @@ export const Projects: React.FC = () => {
         behavior: "smooth",
         block: "start",
       });
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, []);
 
