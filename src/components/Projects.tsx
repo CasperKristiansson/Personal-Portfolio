@@ -3,7 +3,7 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
-import financeTrackerOverview from "../assets/projects/financeTracker/financeTrackerOverview.png";
+import financeTrackerOverview from "../assets/projects/financeTracker/financeTrackerOverview.jpg";
 import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
 import tvShowNetWorkOverview from "../assets/projects/tvShowNetwork/tvShowNetworkOverview.png";
