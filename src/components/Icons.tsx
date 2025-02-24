@@ -9,9 +9,9 @@ export const Icons: React.FC<IconsProps> = ({ dark = false }) => {
   const iconColor = dark ? "black" : "white";
 
   return (
-    <div className="fixed top-1/2 left-0 z-[9999] ml-1 hidden -translate-y-1/2 transform flex-col gap-6 lg:flex xl:ml-4">
+    <div className="fixed top-2 right-2 z-[9999] hidden transform flex-row gap-3 lg:flex">
       <IconBrandLinkedin
-        className="rotate-270 cursor-pointer duration-300 ease-in-out hover:scale-110"
+        className="cursor-pointer duration-300 ease-in-out hover:scale-110"
         size={44}
         color={iconColor}
         onClick={() =>
@@ -22,7 +22,7 @@ export const Icons: React.FC<IconsProps> = ({ dark = false }) => {
         }
       />
       <IconBrandGithub
-        className="rotate-270 cursor-pointer duration-300 ease-in-out hover:scale-110"
+        className="cursor-pointer duration-300 ease-in-out hover:scale-110"
         size={44}
         color={iconColor}
         onClick={() =>
