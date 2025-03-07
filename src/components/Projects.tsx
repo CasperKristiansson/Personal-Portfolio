@@ -142,14 +142,14 @@ export const Projects: React.FC = () => {
                   src={project.image}
                   alt={project.title}
                   className={clsx(
-                    "h-[300px] w-full object-cover sm:h-[500px]",
+                    "h-[200px] w-full object-cover sm:h-[400px]",
                     project.fillHeight
                       ? "lg:object-cover"
                       : "lg:object-contain",
                   )}
                 />
               </figure>
-              <div className="card-body h-full min-h-[400px] bg-[#111c32] p-4 pt-6 text-base sm:p-8">
+              <div className="card-body h-full min-h-[200px] bg-[#111c32] p-4 pt-6 text-base sm:p-8">
                 <h2 className="card-title text-2xl">
                   {project.title}
                   {project.badge && (
