@@ -21,7 +21,7 @@ const timelineItems: TimelineItem[] = [
   {
     period: "Feb 2023 - Current",
     location: "Scatterin",
-    header: "FullStack Developer",
+    header: "Full Stack Developer",
     description:
       "At Scatterin, I've developed a fully cloud-based platform for industrial companies to analyze material data from neutron and synchrotron experiments. My key responsibilities include:",
     listItems: [

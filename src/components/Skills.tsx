@@ -35,7 +35,7 @@ const toolsFrameworks = [
   { name: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
   { name: "Terraform", color: "623CE4", logo: "terraform", logoColor: "white" },
   { name: "SQL", color: "4479A1", logo: "mysql", logoColor: "white" },
-  { name: "NoSQL", color: "003545", logo: "nosql", logoColor: "white" },
+  { name: "NoSQL", color: "003545", logo: "datadotai", logoColor: "white" },
   {
     name: "PostgreSQL",
     color: "336791",
@@ -62,13 +62,13 @@ const toolsFrameworks = [
   {
     name: "Microservices",
     color: "A833B9",
-    logo: "microservices",
+    logo: "microstrategy",
     logoColor: "white",
   },
   {
     name: "Infrastructure as Code",
     color: "1F74B5",
-    logo: "iac",
+    logo: "instructure",
     logoColor: "white",
   },
   {
@@ -102,7 +102,7 @@ const awsServices = [
   {
     name: "AWS CloudFormation",
     color: "3B25C1",
-    logo: "aws-cloudformation",
+    logo: "cloudinary",
     logoColor: "white",
   },
   {
@@ -124,12 +124,6 @@ const awsServices = [
     logoColor: "white",
   },
   {
-    name: "Amazon SNS",
-    color: "3B25C1",
-    logo: "amazon-sns",
-    logoColor: "white",
-  },
-  {
     name: "Amazon RDS",
     color: "3B25C1",
     logo: "amazon-rds",
@@ -144,7 +138,7 @@ const awsServices = [
   {
     name: "Amazon CloudFront",
     color: "3B25C1",
-    logo: "amazon-cloudfront",
+    logo: "cloudinary",
     logoColor: "white",
   },
   {
