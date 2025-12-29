@@ -39,33 +39,6 @@ body {
   overflow: hidden;
 }
 
-.stars-container {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.star {
-  position: fixed;
-  background-color: white;
-  border-radius: 50%;
-}
-
-@keyframes twinkle {
-  0% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
 @keyframes typewriter {
   from {
     max-width: 0;
