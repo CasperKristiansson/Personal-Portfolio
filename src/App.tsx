@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
+import { AnimatePresence, motion } from "framer-motion";
 import { About } from "./components/About";
 import { Certificates } from "./components/Certifications";
 import { Education } from "./components/Education";
@@ -13,10 +14,18 @@ import { NotFound } from "./components/NotFound";
 import { Article } from "./shared/article";
 import { Articles } from "./articles";
 import { Papers } from "./components/Papers";
+import { pageVariants } from "./shared/motion";
 
 export const App: React.FC = () => {
+  const location = useLocation();
   const homePage = (
-    <div className="bg-[#18253F]">
+    <motion.div
+      className="bg-[#18253F]"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <Icons />
       <Hero />
       <About />
@@ -28,20 +37,22 @@ export const App: React.FC = () => {
       <Papers />
       <Rewards />
       <ExternalLinks />
-    </div>
+    </motion.div>
   );
 
   return (
-    <Routes>
-      <Route path="/" element={homePage} />
-      {Articles.map((article, index) => (
-        <Route
-          key={index}
-          path={article.path}
-          element={<Article {...article} />}
-        />
-      ))}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={homePage} />
+        {Articles.map((article, index) => (
+          <Route
+            key={index}
+            path={article.path}
+            element={<Article {...article} />}
+          />
+        ))}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>
   );
 };

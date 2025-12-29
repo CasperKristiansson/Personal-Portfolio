@@ -1,6 +1,13 @@
 import cisco from "../assets/other/cisco.webp";
 import eoa from "../assets/other/eoa.jpg";
 import eoab from "../assets/other/eoab.png";
+import { motion } from "framer-motion";
+import {
+  fadeUpItem,
+  slideLeftItem,
+  staggerContainer,
+  viewportOnce,
+} from "../shared/motion";
 
 const certifications = [
   {
@@ -31,14 +38,32 @@ const certifications = [
 
 export const Certificates: React.FC = () => {
   return (
-    <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-5xl font-bold text-white sm:pl-10 sm:text-left sm:text-6xl lg:pl-40">
+    <motion.section
+      className="relative z-10 bg-[#18253F] pt-36"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+    >
+      <motion.h1
+        className="mx-auto mb-14 max-w-[2000px] text-center text-5xl font-bold text-white sm:pl-10 sm:text-left sm:text-6xl lg:pl-40"
+        variants={slideLeftItem}
+      >
         Certifications
-      </h1>
+      </motion.h1>
       <div className="w-full px-4 sm:px-10 2xl:mx-auto 2xl:max-w-[1400px]">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <motion.div
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
+          variants={staggerContainer}
+        >
           {certifications.map((certification, index) => (
-            <div key={index} className="card card-side bg-[#111c32] shadow-xl">
+            <motion.div
+              key={index}
+              className="card card-side bg-[#111c32] shadow-xl"
+              variants={fadeUpItem}
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
               <figure className="h-60 w-60 bg-[#111c32]">
                 <img
                   src={certification.image}
@@ -58,10 +83,10 @@ export const Certificates: React.FC = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.section>
   );
 };

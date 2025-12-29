@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Stars } from "../data/stars";
+import { fadeInItem, fadeUpItem, staggerContainer } from "../shared/motion";
 
 const Star: React.FC<{
   top: string;
@@ -41,15 +43,26 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <div className="parallax relative flex h-[80vh] items-center justify-center">
-      <div className="stars-container pointer-events-none fixed inset-0 h-full w-full">
+    <motion.div
+      className="parallax relative flex h-[80vh] items-center justify-center"
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div
+        className="stars-container pointer-events-none fixed inset-0 h-full w-full"
+        variants={fadeInItem}
+      >
         {Stars.slice(0, Math.floor(windowWidth * 0.15)).map((star, index) => (
           <Star key={index} {...star} />
         ))}
-      </div>
-      <h1 className="relative z-10 text-3xl font-bold text-white sm:text-6xl md:text-7xl">
+      </motion.div>
+      <motion.h1
+        className="relative z-10 text-3xl font-bold text-white sm:text-6xl md:text-7xl"
+        variants={fadeUpItem}
+      >
         <span className="typewriter">Casper Kristiansson.</span>
-      </h1>
-    </div>
+      </motion.h1>
+    </motion.div>
   );
 };

@@ -3,6 +3,15 @@ import {
   IconCode,
   IconGitPullRequest,
 } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import {
+  fadeInItem,
+  fadeUpItem,
+  slideLeftItem,
+  staggerContainer,
+  staggerFast,
+  viewportOnce,
+} from "../shared/motion";
 
 const programmingLanguages = [
   { name: "Python", color: "FFD43B", logo: "python", logoColor: "blue" },
@@ -163,63 +172,90 @@ const awsServices = [
 
 export const Skills: React.FC = () => {
   return (
-    <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+    <motion.section
+      className="relative z-10 bg-[#18253F] pt-36"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+    >
+      <motion.h1
+        className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40"
+        variants={slideLeftItem}
+      >
         Skills
-      </h1>
+      </motion.h1>
       <div className="mx-auto w-full max-w-[1000px] px-4 text-white sm:px-10 2xl:max-w-[1400px]">
-        <div className="mt-6 flex flex-row">
+        <motion.div className="mt-6 flex flex-row" variants={fadeUpItem}>
           <IconBrandAmazon size={32} />
           <h2 className="ml-2 text-2xl font-bold">AWS Services</h2>
-        </div>
-        <div className="mt-4 flex flex-wrap gap-2">
+        </motion.div>
+        <motion.div
+          className="mt-4 flex flex-wrap gap-2"
+          variants={staggerFast}
+        >
           {awsServices.map((service, index) => (
-            <div
+            <motion.div
               key={index}
               className="flex h-7 items-center justify-center sm:h-8"
+              variants={fadeInItem}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             >
               <img
                 src={`https://img.shields.io/badge/${service.name}-${service.color}?logo=${service.logo}&logoColor=${service.logoColor}`}
                 className="h-full"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="mt-10 flex flex-row">
+        </motion.div>
+        <motion.div className="mt-10 flex flex-row" variants={fadeUpItem}>
           <IconCode size={32} />
           <h2 className="ml-2 text-2xl font-bold">Programming Languages</h2>
-        </div>
-        <div className="mt-4 flex flex-wrap gap-1">
+        </motion.div>
+        <motion.div
+          className="mt-4 flex flex-wrap gap-1"
+          variants={staggerFast}
+        >
           {programmingLanguages.map((language, index) => (
-            <div
+            <motion.div
               key={index}
               className="flex h-7 items-center justify-center sm:h-8"
+              variants={fadeInItem}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             >
               <img
                 src={`https://img.shields.io/badge/${language.name}-${language.color}?logo=${language.logo}&logoColor=${language.logoColor}`}
                 className="h-full"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="mt-10 flex flex-row">
+        </motion.div>
+        <motion.div className="mt-10 flex flex-row" variants={fadeUpItem}>
           <IconGitPullRequest size={32} />
           <h2 className="ml-2 text-2xl font-bold">Tools & Frameworks</h2>
-        </div>
-        <div className="mt-4 flex flex-wrap gap-2">
+        </motion.div>
+        <motion.div
+          className="mt-4 flex flex-wrap gap-2"
+          variants={staggerFast}
+        >
           {toolsFrameworks.map((tool, index) => (
-            <div
+            <motion.div
               key={index}
               className="flex h-7 items-center justify-center sm:h-8"
+              variants={fadeInItem}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             >
               <img
                 src={`https://img.shields.io/badge/${tool.name}-${tool.color}?logo=${tool.logo}&logoColor=${tool.logoColor}`}
                 className="h-full"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.section>
   );
 };

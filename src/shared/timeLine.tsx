@@ -1,5 +1,7 @@
 import { IconChevronDown, IconChevronUp, IconLink } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { fadeUpItem, slideLeftItem, viewportOnce } from "./motion";
 
 export type TimelineItem = {
   period: string;
@@ -31,15 +33,30 @@ export const TimeLine: React.FC<{
   }, []);
 
   return (
-    <div className="relative z-10 bg-[#18253F] pt-36">
-      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+    <motion.section
+      className="relative z-10 bg-[#18253F] pt-36"
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+    >
+      <motion.h1
+        className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40"
+        variants={slideLeftItem}
+      >
         {title}
-      </h1>
+      </motion.h1>
       {isSmallScreen ? (
         timelineItems.map((item, index) => {
           if (item.hide && isCompact) return null;
           return (
-            <div key={index} className="px-4 sm:px-10">
+            <motion.div
+              key={index}
+              className="px-4 sm:px-10"
+              variants={fadeUpItem}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+            >
               <h1 className="text-xl font-bold text-white">{item.location}</h1>
               <p className="mt-2 text-[#90a6bb]">{item.period}</p>
               <div className="">
@@ -72,7 +89,7 @@ export const TimeLine: React.FC<{
                 </div>
               </div>
               {index !== timelineItems.length - 1 && <div className="mb-10" />}
-            </div>
+            </motion.div>
           );
         })
       ) : (
@@ -82,10 +99,14 @@ export const TimeLine: React.FC<{
               {timelineItems.map((item, index) => {
                 if (item.hide && isCompact) return null;
                 return (
-                  <li
+                  <motion.li
                     key={index}
                     style={{ gridTemplateColumns: "1fr auto 2fr" }}
                     className="mt-[-10px]"
+                    variants={fadeUpItem}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
                   >
                     <div className="timeline-start mr-6 h-full">
                       <h1 className="text-end text-xl font-bold text-white">
@@ -131,7 +152,7 @@ export const TimeLine: React.FC<{
                       )}
                     </div>
                     <hr className="bg-[#094a68]" style={{ width: "2px" }} />
-                  </li>
+                  </motion.li>
                 );
               })}
             </ul>
@@ -140,14 +161,16 @@ export const TimeLine: React.FC<{
       )}
       {timelineItems.filter((item) => item.hide).length !== 0 && (
         <div className="mx-auto mt-10 flex w-full max-w-[1800px] justify-center">
-          <button
+          <motion.button
             className="btn w-48 btn-primary"
             onClick={() => setIsCompact(!isCompact)}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
           >
             {isCompact ? <IconChevronDown /> : <IconChevronUp />} More
-          </button>
+          </motion.button>
         </div>
       )}
-    </div>
+    </motion.section>
   );
 };

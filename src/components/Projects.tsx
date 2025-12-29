@@ -9,6 +9,13 @@ import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverv
 import tvShowNetWorkOverview from "../assets/projects/tvShowNetwork/tvShowNetworkOverview.png";
 import clsx from "clsx";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
+import {
+  fadeUpItem,
+  slideLeftItem,
+  staggerContainer,
+  viewportOnce,
+} from "../shared/motion";
 
 type Card = {
   title: string;
@@ -123,19 +130,33 @@ export const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative z-10 bg-[#18253F] pt-36" ref={locationRef}>
-      <h1 className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40">
+    <motion.section
+      className="relative z-10 bg-[#18253F] pt-36"
+      ref={locationRef}
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+    >
+      <motion.h1
+        className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40"
+        variants={slideLeftItem}
+      >
         Projects
-      </h1>
+      </motion.h1>
       <div className="relative">
-        <div
+        <motion.div
           ref={scrollRef}
           className="flex space-x-2 overflow-x-scroll rounded-lg pr-4 pb-4 pl-5 text-white shadow-lg sm:space-x-4 sm:pr-20 sm:pl-10 md:overflow-x-hidden lg:space-x-6 lg:pl-[max(10rem,calc((100vw-2000px)/2)+10rem)]"
+          variants={staggerContainer}
         >
           {cards.map((project, index) => (
-            <div
+            <motion.div
               key={index}
               className="card w-[95%] flex-shrink-0 shadow-sm sm:w-96 lg:w-[500px]"
+              variants={fadeUpItem}
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ duration: 0.2 }}
             >
               <figure>
                 <img
@@ -175,22 +196,26 @@ export const Projects: React.FC = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <button
+        </motion.div>
+        <motion.button
           className="absolute top-1/2 left-2 hidden -translate-y-1/2 transform cursor-pointer rounded-full bg-white p-2 shadow-lg md:flex"
           onClick={() => scroll("left")}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
         >
           <IconChevronLeft size={48} />
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           className="absolute top-1/2 right-2 hidden -translate-y-1/2 transform cursor-pointer rounded-full bg-white p-2 shadow-lg md:flex"
           onClick={() => scroll("right")}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
         >
           <IconChevronRight size={48} />
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.section>
   );
 };
