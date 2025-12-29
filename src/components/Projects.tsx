@@ -3,7 +3,6 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
-import financeTrackerOverview from "../assets/projects/financeTracker/financeTrackerOverview.jpg";
 import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
 import tvShowNetWorkOverview from "../assets/projects/tvShowNetwork/tvShowNetworkOverview.png";
@@ -27,7 +26,63 @@ type Card = {
   path: string;
 };
 
+const financeTrackerHero =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/hero.png";
+const reactWhiteboardStudioHero =
+  "https://raw.githubusercontent.com/CasperKristiansson/React-Whiteboard-Studio/main/docs/images/primary.jpg";
+const podcastTrackerHero =
+  "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg";
+const pydanticFixturegenHero =
+  "https://opengraph.githubassets.com/1/CasperKristiansson/pydantic-fixturegen";
+const pythonVersionPatchPrHero =
+  "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr";
+
 const cards: Card[] = [
+  {
+    title: "Finance Tracker",
+    badge: "",
+    description:
+      "Personal finance intelligence built as an end-to-end product with ingestion, categorization, reporting, and decision-ready insights.",
+    image: financeTrackerHero,
+    tags: ["Full Stack", "React", "TypeScript", "Python", "AWS", "Terraform"],
+    path: "/articles/finance-tracker",
+  },
+  {
+    title: "React Whiteboard Studio",
+    badge: "",
+    description:
+      "A polished whiteboard experience with fluid canvas interactions, local persistence, and a curated design system.",
+    image: reactWhiteboardStudioHero,
+    tags: ["React", "TypeScript", "Canvas", "Zustand", "IndexedDB"],
+    path: "/articles/react-whiteboard-studio",
+  },
+  {
+    title: "Podcast Tracker",
+    badge: "",
+    description:
+      "Track podcast releases by syncing with the Spotify catalog, with show pages, episode details, and personal listening history.",
+    image: podcastTrackerHero,
+    tags: ["Astro", "GraphQL", "AWS", "Tailwind", "Serverless"],
+    path: "/articles/podcast-tracker",
+  },
+  {
+    title: "pydantic-fixturegen",
+    badge: "",
+    description:
+      "Deterministic fixtures, pytest modules, datasets, and JSON for Pydantic v2, dataclasses, and TypedDicts.",
+    image: pydanticFixturegenHero,
+    tags: ["Python", "CLI", "Pydantic", "Testing", "Open Source"],
+    path: "/articles/pydantic-fixturegen",
+  },
+  {
+    title: "CPython Patch PR Action",
+    badge: "",
+    description:
+      "Automated GitHub Action that keeps CPython patch versions current across every reference in a repo.",
+    image: pythonVersionPatchPrHero,
+    tags: ["GitHub Actions", "DevOps", "Automation", "CI/CD", "Python"],
+    path: "/articles/python-version-patch-pr",
+  },
   {
     title: "PKTraffic, LLC",
     badge: "POPULAR",
@@ -62,15 +117,6 @@ const cards: Card[] = [
     image: weatherbrainOverview,
     tags: ["Microsoft Azure", "Front/Backend", "Machine Learning"],
     path: "/articles/weatherbrain",
-  },
-  {
-    title: "Finance Tracker",
-    badge: "",
-    description:
-      "A project which solved an issue of mine which was tracking my finance. This Finance Tracking application gives overviews of expenses and income to give its users an easy way to explore their data.",
-    image: financeTrackerOverview,
-    tags: ["Frontend", "Backend", "API", "Firebase Auth"],
-    path: "/articles/finance-tracker",
   },
   {
     title: "Sulfide Soil Classification",

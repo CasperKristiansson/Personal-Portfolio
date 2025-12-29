@@ -4,14 +4,38 @@ import movieboxdbOverview from "./assets/projects/movieboxdb/movieboxdbOverview.
 import movieboxdbPreview from "./assets/projects/movieboxdb/movieboxdbPreview.jpg";
 import weatherbrainPreview from "./assets/projects/weatherbrain/weatherbrainWebsite.png";
 import weatherbrainOverview from "./assets/projects/weatherbrain/weatherbrainOverview.png";
-import financeTrackerPreview from "./assets/projects/financeTracker/financeTrackerPreview.jpg";
-import financeTrackerOverview from "./assets/projects/financeTracker/financeTrackerOverview.jpg";
 import ecoloopOverview from "./assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "./assets/projects/imageEditor/imageEditorOverview.png";
 import imageEditorPreview from "./assets/projects/imageEditor/imageEditorPreview.png";
 import tvShowNetworkPreview from "./assets/projects/tvshownetwork/tvShowNetworkPreview.jpg";
 import tvShowNetworkOverview from "./assets/projects/tvshownetwork/tvShowNetworkOverview.png";
 import cloudComputingOverview from "./assets/other/cloudComputing.png";
+
+const financeTrackerHero =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/hero.png";
+const financeTrackerDashboard =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/dashboard.png";
+const financeTrackerReports =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/reports.png";
+const financeTrackerTransactions =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/transactions.png";
+
+const podcastTrackerHero =
+  "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg";
+const podcastTrackerDashboard =
+  "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/app-dashboard-search.png";
+const podcastTrackerLibrary =
+  "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/app-library-show.png";
+
+const reactWhiteboardStudioHero =
+  "https://raw.githubusercontent.com/CasperKristiansson/React-Whiteboard-Studio/main/docs/images/primary.jpg";
+const reactWhiteboardStudioIllustration =
+  "https://raw.githubusercontent.com/CasperKristiansson/React-Whiteboard-Studio/main/docs/images/illustration.jpg";
+
+const pydanticFixturegenHero =
+  "https://opengraph.githubassets.com/1/CasperKristiansson/pydantic-fixturegen";
+const pythonVersionPatchPrHero =
+  "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr";
 
 export type ArticleItem = {
   path: string;
@@ -297,27 +321,184 @@ const weatherbrain: ArticleItem = {
 
 const financeTracker: ArticleItem = {
   path: "/articles/finance-tracker",
-  period: "Jun 2022 - Sept 2022",
+  period: "2024 - Present",
   header: "Finance Tracker",
   description:
-    "A personal finance tracking application that transforms manual expense management into an efficient, dynamic overview of income, expenses, and account balances.",
+    "Personal finance intelligence built as an end-to-end product: ingestion, categorization, reporting, and decision-ready insights.",
   headerLinks: [
     {
       link: "https://github.com/CasperKristiansson/Finance-Tracker",
       display: "Github",
     },
   ],
-  image: financeTrackerOverview,
+  image: financeTrackerHero,
   content: [
     {
       type: "text",
       value:
-        "Driven by a passion for finance and personal economics, I have tracked every expense and income for over five years. Initially, this data was managed in Excel, but the limitations of spreadsheets made it challenging to create dynamic, detailed views.",
+        "Finance Tracker is a portfolio-grade personal finance workspace that trades spreadsheets for a product-style experience. It focuses on clarity across transactions, accounts, budgets, and long-term insights.",
+    },
+    {
+      type: "heading",
+      value: "Product Snapshot",
+    },
+    {
+      type: "list",
+      value: [
+        "Unified view of transactions, accounts, budgets, goals, loans, investments, and taxes.",
+        "Rich reporting with net-worth, cash-flow, and category analytics.",
+        "Spreadsheet import workflows with preview, mapping, and reconciliation.",
+        "UX-first interface with motion, progressive loading states, and data-dense layouts.",
+      ],
+    },
+    {
+      type: "image",
+      value: financeTrackerDashboard,
+      description: "Dashboard overview",
     },
     {
       type: "text",
       value:
-        "This project offers a streamlined solution to explore and manage personal finances programmatically. It enables quick month-to-month tracking of income and expenses, simplifying data visualization and financial planning.",
+        "The dashboard emphasizes recent movement and actionable KPIs, with quick access to accounts, goals, and high-signal summaries.",
+    },
+    {
+      type: "image",
+      value: financeTrackerReports,
+      description: "Reports and analytics",
+    },
+    {
+      type: "heading",
+      value: "Highlights",
+    },
+    {
+      type: "list",
+      value: [
+        "Data-rich reporting across yearly and total views, net worth trajectory, and category mix.",
+        "Full CRUD flows across accounts, budgets, loans, investments, subscriptions, and taxes.",
+        "Authenticated experience with AWS Amplify and Cognito-ready configuration.",
+        "Async data orchestration via Redux Toolkit and redux-saga.",
+        "Import pipelines powered by pandas and openpyxl for real-world bank data.",
+      ],
+    },
+    {
+      type: "image",
+      value: financeTrackerTransactions,
+      description: "Transaction management",
+    },
+    {
+      type: "heading",
+      value: "Tech Stack",
+    },
+    {
+      type: "list",
+      value: [
+        "Frontend: React 19 + Vite 6 + TypeScript, Tailwind CSS 4, Radix UI primitives.",
+        "State & forms: Redux Toolkit + redux-saga, React Hook Form + Zod.",
+        "Visualization: Recharts and Framer Motion for rich analytics and motion.",
+        "Backend: Python 3.13, SQLModel/SQLAlchemy, Alembic migrations.",
+        "Infrastructure: AWS Lambda + Cognito with Terraform.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Feature Focus",
+    },
+    {
+      type: "text",
+      value:
+        "Transactions and imports support multi-leg transfers, fast filters, and validation-first spreadsheet ingestion with mapping and reconciliation flows.",
+    },
+    {
+      type: "text",
+      value:
+        "Categories, budgets, and subscriptions provide a rules-driven system for classifying spend, tracking progress, and visualizing recurring commitments.",
+    },
+    {
+      type: "text",
+      value:
+        "Reporting and analytics surface cash-flow volatility, net worth trends, and category insights to guide decisions with confidence.",
+    },
+  ],
+};
+
+const reactWhiteboardStudio: ArticleItem = {
+  path: "/articles/react-whiteboard-studio",
+  period: "2024",
+  header: "React Whiteboard Studio",
+  description:
+    "A polished whiteboard experience with fluid canvas interactions, local persistence, and a curated design system.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/React-Whiteboard-Studio",
+      display: "Github",
+    },
+  ],
+  image: reactWhiteboardStudioHero,
+  content: [
+    {
+      type: "text",
+      value:
+        "React Whiteboard Studio blends high-touch canvas interactions with a thoughtful state architecture. It supports precise drawing, rapid navigation, and export-ready assets without breaking the flow.",
+    },
+    {
+      type: "heading",
+      value: "Highlights",
+    },
+    {
+      type: "list",
+      value: [
+        "Fluid canvas UX with pan, zoom, snapping, and transforms.",
+        "Rich shape toolkit with inline text editing and styling controls.",
+        "Asset pipeline with IndexedDB persistence and exportable bundles.",
+        "Project workspace with autosave, duplication, and lifecycle actions.",
+        "Debug overlay and feature flags for safe experimentation.",
+      ],
+    },
+    {
+      type: "image",
+      value: reactWhiteboardStudioIllustration,
+      description: "Whiteboard tooling illustration",
+    },
+    {
+      type: "heading",
+      value: "Tech Stack",
+    },
+    {
+      type: "list",
+      value: [
+        "React 19 + TypeScript",
+        "Zustand with Immer for global state and undo/redo",
+        "Dexie (IndexedDB) for offline persistence",
+        "Vite + Tailwind CSS",
+        "Custom canvas controllers for snapping, guides, and measurement",
+      ],
+    },
+  ],
+};
+
+const podcastTracker: ArticleItem = {
+  path: "/articles/podcast-tracker",
+  period: "2024",
+  header: "Podcast Tracker",
+  description:
+    "A podcast companion that syncs with the Spotify catalog so new releases surface automatically, with show pages and listening history.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/Podcast-Tracker",
+      display: "Github",
+    },
+  ],
+  image: podcastTrackerHero,
+  content: [
+    {
+      type: "text",
+      value:
+        "Podcast Tracker keeps tabs on every show you follow by syncing with the Spotify catalog. A dedicated episode view highlights the latest drops, and each show has a rich detail page.",
+    },
+    {
+      type: "text",
+      value:
+        "Your profile page stores listening history so you can resume quickly while still discovering new episodes.",
     },
     {
       type: "heading",
@@ -326,35 +507,142 @@ const financeTracker: ArticleItem = {
     {
       type: "list",
       value: [
-        "MYSQL database for storing transactions and loans",
-        "React for the front-end with Firebase for authentication",
-        "Eight API endpoints for seamless data management",
-        "Python Pandas for cleaning and processing historical transaction data",
+        "Astro + TypeScript with Tailwind CSS",
+        "GraphQL API with Apollo Client and GraphQL Code Generator",
+        "AWS Lambda + DynamoDB for serverless data services",
+        "AWS CDK for repeatable infrastructure",
+        "Vitest, ESLint, and Prettier for quality",
       ],
     },
     {
       type: "image",
-      value: financeTrackerPreview,
-      description: "Finance Tracker Preview",
+      value: podcastTrackerDashboard,
+      description: "Profile dashboard and podcast search",
+    },
+    {
+      type: "image",
+      value: podcastTrackerLibrary,
+      description: "Library overview and show detail",
     },
     {
       type: "heading",
-      value: "Features",
+      value: "Experience Highlights",
     },
+    {
+      type: "list",
+      value: [
+        "Spotify catalog sync keeps new releases fresh.",
+        "Show pages provide rich metadata and quick context before play.",
+        "Personal history makes it easy to pick up where you left off.",
+      ],
+    },
+  ],
+};
+
+const pydanticFixturegen: ArticleItem = {
+  path: "/articles/pydantic-fixturegen",
+  period: "2024",
+  header: "pydantic-fixturegen",
+  description:
+    "Deterministic fixtures, pytest modules, datasets, and JSON from Pydantic v2 models, dataclasses, and TypedDicts.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/pydantic-fixturegen",
+      display: "Github",
+    },
+    {
+      link: "https://pydantic-fixturegen.kitgrid.dev/",
+      display: "Docs",
+    },
+    {
+      link: "https://pypi.org/project/pydantic-fixturegen/",
+      display: "PyPI",
+    },
+  ],
+  image: pydanticFixturegenHero,
+  content: [
     {
       type: "text",
       value:
-        "The overview page provides a snapshot of last month’s income and expenses, along with a bar chart displaying financial trends for the current year. It also includes sections for adding new transactions and uploading Excel documents, making data updates quick and efficient.",
+        "pydantic-fixturegen is a sandboxed CLI that generates deterministic structured data for modern testing workflows. It speaks Pydantic v2 natively and also understands stdlib dataclasses and TypedDicts.",
     },
+    {
+      type: "heading",
+      value: "Core Capabilities",
+    },
+    {
+      type: "list",
+      value: [
+        "Deterministic seeds across random, Faker, and optional NumPy.",
+        "Safe-import sandboxing with network and filesystem guards.",
+        "JSON, pytest fixtures, datasets, schema, and diff outputs.",
+        "Pluggy providers and presets for extensibility.",
+        "Works with Pydantic v2, dataclasses, and TypedDicts.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Workflow",
+    },
+    {
+      type: "list",
+      value: [
+        "Discover models with `pfg list`.",
+        "Generate samples or fixtures with deterministic seeds.",
+        "Lock and verify outputs to keep tests reproducible.",
+      ],
+    },
+  ],
+};
+
+const pythonVersionPatchPr: ArticleItem = {
+  path: "/articles/python-version-patch-pr",
+  period: "2024",
+  header: "CPython Patch PR Action",
+  description:
+    "Automates CPython patch updates across every Python version reference in a repo and opens evergreen pull requests.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/python-version-patch-pr",
+      display: "Github",
+    },
+    {
+      link: "https://python-version-patch-pr.kitgrid.dev/",
+      display: "Docs",
+    },
+  ],
+  image: pythonVersionPatchPrHero,
+  content: [
     {
       type: "text",
       value:
-        "The yearly and total overview pages offer detailed insights into income and expense categories, allowing users to track net financial growth over time. An accounts overview consolidates balances from multiple bank accounts, investment portfolios, and savings, and even provides options to adjust discrepancies.",
+        "This GitHub Action scans workflows, Dockerfiles, and runtime files to keep CPython patch versions current. It creates or updates a PR with minimal diff noise.",
     },
     {
-      type: "text",
-      value:
-        "Additionally, the intuitive transaction page lets users easily create, edit, or delete entries, while API endpoints ensure smooth data operations. The Excel upload feature further simplifies monthly financial management.",
+      type: "heading",
+      value: "Feature Overview",
+    },
+    {
+      type: "list",
+      value: [
+        "Cross-file detection for Dockerfiles, workflows, runtime files, and tool configs.",
+        "Resolves the latest stable patch with pre-release guards and python.org fallback.",
+        "Predictable branch and PR automation with Octokit support.",
+        "Dry-run previews, security keyword gates, and offline snapshots.",
+        "Outputs change matrices for targeted CI fan-out.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "How It Works",
+    },
+    {
+      type: "list",
+      value: [
+        "Scan the repo for pinned CPython patch versions.",
+        "Resolve the latest patch for the configured track.",
+        "Open or update a `chore/bump-python-<track>` pull request.",
+      ],
     },
   ],
 };
@@ -522,10 +810,14 @@ const cloudComputing: ArticleItem = {
 };
 
 export const Articles: ArticleItem[] = [
+  financeTracker,
+  reactWhiteboardStudio,
+  podcastTracker,
+  pydanticFixturegen,
+  pythonVersionPatchPr,
   pktraffic,
   movieboxdb,
   weatherbrain,
-  financeTracker,
   ecoloop,
   imageEditingApplication,
   tvShowNetwork,
