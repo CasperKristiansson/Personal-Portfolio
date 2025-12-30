@@ -3,6 +3,7 @@ import reactWhiteboardStudioHero from "../assets/projects/reactWhiteboardStudio/
 import podcastTrackerHero from "../assets/projects/podcastTracker/podcastTrackerHero.jpg";
 import pydanticFixturegenHero from "../assets/projects/pydanticFixturegen/pydanticFixturegenHero.jpg";
 import pythonVersionPatchPrHero from "../assets/projects/pythonVersionPatchPr/pythonVersionPatchPrHero.jpg";
+import kitgridHero from "../assets/projects/kitgrid/kitgridHero.jpg";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
@@ -155,5 +156,17 @@ export const projects: Project[] = [
     image: tvShowNetworkOverview,
     path: "/articles/tvshownetwork",
     tier: "more",
+  },
+  {
+    id: "kitgrid",
+    title: "Kitgrid",
+    summary:
+      "Personal docs network that aggregates raw Markdown across repos into a shared documentation hub.",
+    tags: ["Astro", "TypeScript", "Docs", "Markdown"],
+    categories: ["Product", "Web"],
+    image: kitgridHero,
+    path: "/articles/kitgrid",
+    tier: "more",
+    liveUrl: "https://github.com/CasperKristiansson/kitgrid",
   },
 ];

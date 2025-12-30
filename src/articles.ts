@@ -10,6 +10,7 @@ import imageEditorPreview from "./assets/projects/imageEditor/imageEditorPreview
 import tvShowNetworkPreview from "./assets/projects/tvshownetwork/tvShowNetworkPreview.jpg";
 import tvShowNetworkOverview from "./assets/projects/tvshownetwork/tvShowNetworkOverview.png";
 import cloudComputingOverview from "./assets/other/cloudComputing.png";
+import kitgridHero from "./assets/projects/kitgrid/kitgridHero.jpg";
 
 const financeTrackerHero =
   "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/hero.png";
@@ -790,6 +791,48 @@ const tvShowNetwork: ArticleItem = {
   ],
 };
 
+const kitgrid: ArticleItem = {
+  path: "/articles/kitgrid",
+  period: "2025",
+  header: "Kitgrid",
+  description:
+    "Personal docs network that aggregates raw Markdown across repos into a shared documentation hub.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/kitgrid",
+      display: "Github",
+    },
+  ],
+  image: kitgridHero,
+  content: [
+    {
+      type: "text",
+      value:
+        "Kitgrid pulls documentation from multiple projects and normalizes metadata so every repo with a docs folder shows up in one cohesive hub.",
+    },
+    {
+      type: "heading",
+      value: "Highlights",
+    },
+    {
+      type: "list",
+      value: [
+        "Aggregates raw Markdown across repos with a scripted fetch pipeline.",
+        "Builds a shared documentation hub plus per-project microsites.",
+        "Keeps metadata normalized for consistent navigation and search.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Tech Stack",
+    },
+    {
+      type: "list",
+      value: ["Astro", "TypeScript", "Markdown", "PNPM"],
+    },
+  ],
+};
+
 const cloudComputing: ArticleItem = {
   path: "/papers/cloud-computing",
   period: "Jan 2023 - Jun 2023",
@@ -833,5 +876,6 @@ export const Articles: ArticleItem[] = [
   ecoloop,
   imageEditingApplication,
   tvShowNetwork,
+  kitgrid,
   cloudComputing,
 ];
