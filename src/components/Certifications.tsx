@@ -40,13 +40,13 @@ export const Certificates: React.FC = () => {
   return (
     <motion.section
       id="certifications"
-      className="relative z-10 bg-[#18253F] pt-36"
+      className="relative bg-[#18253F] pt-36"
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-50 mb-8">
+      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-[60] mb-8">
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <motion.h1
             className="text-4xl font-bold text-white sm:text-5xl"
