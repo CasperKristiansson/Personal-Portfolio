@@ -115,7 +115,7 @@ export const StickyNav: React.FC = () => {
   return (
     <nav ref={navRef} className="sticky top-0 z-40">
       <div
-        className={`mx-auto w-full max-w-[1400px] pr-6 pl-4 transition-[padding] duration-300 sm:pr-8 sm:pl-6 lg:pr-12 lg:pl-10 ${
+        className={`mx-auto w-full max-w-[1400px] px-6 transition-[padding] duration-300 sm:px-8 lg:px-12 ${
           isStuck ? "py-2" : "py-4"
         }`}
       >
@@ -226,7 +226,7 @@ export const StickyNav: React.FC = () => {
                 {menuOpen && (
                   <div
                     id="nav-more-menu-mobile"
-                    className="absolute right-0 top-10 min-w-[200px] rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]"
+                    className="absolute top-10 right-0 min-w-[200px] rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]"
                   >
                     <ul className="flex flex-col gap-2 text-sm font-medium text-slate-100">
                       {primaryLinks.map((link) => (

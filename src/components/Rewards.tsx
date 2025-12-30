@@ -18,9 +18,9 @@ export const Rewards: React.FC = () => {
       viewport={viewportOnce}
     >
       <div className="pointer-events-none sticky top-0 z-[60] mb-8 flex h-[var(--sticky-nav-offset)] items-center">
-        <div className="mx-auto w-full max-w-[1400px] pl-10 pr-4 sm:pl-12 sm:pr-6 lg:pl-16 lg:pr-10">
+        <div className="mx-auto w-full max-w-[1400px] pr-4 pl-10 sm:pr-6 sm:pl-12 lg:pr-10 lg:pl-16">
           <motion.h1
-            className="-translate-y-2 text-4xl font-bold leading-none text-white sm:text-5xl"
+            className="-translate-y-2.5 text-4xl leading-none font-bold text-white sm:text-5xl"
             variants={slideLeftItem}
           >
             Rewards
@@ -28,7 +28,10 @@ export const Rewards: React.FC = () => {
         </div>
       </div>
       <div className="mx-auto w-full max-w-[1000px] px-4 sm:px-10 2xl:max-w-[1400px]">
-        <motion.div className="flex items-center gap-2 text-white" variants={fadeUpItem}>
+        <motion.div
+          className="flex items-center gap-2 text-white"
+          variants={fadeUpItem}
+        >
           <IconAward className="shrink-0" />
           <span>
             <strong>Anna Whitlocks Minnesfond</strong> - Award for exchange
