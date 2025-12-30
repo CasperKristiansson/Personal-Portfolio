@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
 import { Link } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
@@ -9,17 +9,6 @@ import {
   staggerFast,
   viewportOnce,
 } from "../shared/motion";
-
-const filterOrder = [
-  "All",
-  "Product",
-  "Web",
-  "Open Source",
-  "DevOps",
-  "AI/ML",
-  "Cloud",
-  "Sustainability",
-];
 
 const cardBase =
   "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#111c32]/90 p-5 shadow-[0_18px_45px_-35px_rgba(3,7,18,0.85)] transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_22px_60px_-40px_rgba(14,165,233,0.35)] focus-within:ring-2 focus-within:ring-sky-300/60 motion-reduce:transform-none motion-reduce:transition-none";
@@ -90,7 +79,6 @@ const TagList: React.FC<{ tags: string[]; max?: number }> = ({
 export const Projects: React.FC = () => {
   const locationRef = React.useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -120,73 +108,42 @@ export const Projects: React.FC = () => {
     };
   }, []);
 
-  const filters = useMemo(() => {
-    const categories = new Set<string>();
-    projects
-      .filter((project) => project.tier !== "featured")
-      .forEach((project) =>
-        project.categories.forEach((category) => categories.add(category)),
-      );
+  const combinedHighlights = useMemo(() => {
+    if (!spotlight) {
+      return [...featured, ...notable];
+    }
+    return [spotlight, ...featured, ...notable];
+  }, [spotlight, featured, notable]);
 
-    const ordered = filterOrder.filter(
-      (category) => category === "All" || categories.has(category),
-    );
-    const extras = Array.from(categories)
-      .filter((category) => !filterOrder.includes(category))
-      .sort((a, b) => a.localeCompare(b));
-
-    return [...ordered, ...extras];
-  }, []);
-
-  const combinedHighlights = useMemo(
-    () => [...featured, ...notable],
-    [featured, notable],
-  );
-
-  const highlightFiltered = useMemo(
-    () =>
-      combinedHighlights.filter(
-        (project) =>
-          activeFilter === "All" || project.categories.includes(activeFilter),
-      ),
-    [combinedHighlights, activeFilter],
-  );
-
-  const moreFiltered = useMemo(
-    () =>
-      more.filter(
-        (project) =>
-          activeFilter === "All" || project.categories.includes(activeFilter),
-      ),
-    [more, activeFilter],
-  );
-
-  const mosaicLayout = [
-    {
-      cardClass: "lg:col-span-4 lg:row-span-2",
-      imageAspect: "aspect-[16/9]",
+  const highlightLayout: Record<
+    string,
+    { cardClass: string; imageAspect: string }
+  > = {
+    "finance-tracker": {
+      cardClass: "lg:col-start-1 lg:col-end-4 lg:row-start-1 lg:row-end-3",
+      imageAspect: "aspect-[16/7]",
     },
-    {
-      cardClass: "lg:col-span-2 lg:row-span-2",
-      imageAspect: "aspect-[16/10]",
+    "pydantic-fixturegen": {
+      cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-1 lg:row-end-2",
+      imageAspect: "aspect-[4/3]",
     },
-    {
-      cardClass: "lg:col-span-3 lg:row-span-1",
-      imageAspect: "aspect-[16/9]",
+    "cpython-patch-pr-action": {
+      cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-2 lg:row-end-3",
+      imageAspect: "aspect-[4/3]",
     },
-    {
-      cardClass: "lg:col-span-3 lg:row-span-1",
-      imageAspect: "aspect-[16/9]",
+    pktraffic: {
+      cardClass: "lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-5",
+      imageAspect: "aspect-[4/3]",
     },
-    {
-      cardClass: "lg:col-span-2 lg:row-span-1",
-      imageAspect: "aspect-[16/10]",
+    "podcast-tracker": {
+      cardClass: "lg:col-start-3 lg:col-end-6 lg:row-start-3 lg:row-end-4",
+      imageAspect: "aspect-[16/7]",
     },
-    {
-      cardClass: "lg:col-span-4 lg:row-span-1",
-      imageAspect: "aspect-[16/9]",
+    "react-whiteboard-studio": {
+      cardClass: "lg:col-start-3 lg:col-end-6 lg:row-start-4 lg:row-end-5",
+      imageAspect: "aspect-[16/7]",
     },
-  ];
+  };
 
   if (!spotlight) {
     return null;
@@ -220,146 +177,62 @@ export const Projects: React.FC = () => {
               Selected work
             </motion.p>
           </div>
-          <motion.div
-            className="flex flex-col items-start gap-3 md:items-end"
-            variants={fadeUpItem}
-          >
-            <div
-              className="hidden flex-wrap items-center justify-end gap-2 md:flex"
-              role="group"
-              aria-label="Project filters"
-            >
-              {filters.map((filter) => {
-                const isActive = filter === activeFilter;
-                return (
-                  <button
-                    key={filter}
-                    type="button"
-                    onClick={() => setActiveFilter(filter)}
-                    aria-pressed={isActive}
-                    className={clsx(
-                      "rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 motion-reduce:transition-none",
-                      isActive
-                        ? "border-sky-300/50 bg-sky-300/15 text-white"
-                        : "border-white/10 bg-white/5 text-slate-200/70 hover:border-sky-300/40 hover:text-white",
-                    )}
-                  >
-                    {filter}
-                  </button>
-                );
-              })}
-            </div>
-            <label className="w-full md:hidden">
-              <span className="sr-only">Filter projects</span>
-              <select
-                value={activeFilter}
-                onChange={(event) => setActiveFilter(event.target.value)}
-                className="w-full rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white focus:border-sky-300/50 focus:outline-none focus:ring-2 focus:ring-sky-300/40"
-              >
-                {filters.map((filter) => (
-                  <option key={filter} value={filter} className="bg-[#111c32]">
-                    {filter}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </motion.div>
         </motion.div>
 
         <div>
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-                Featured
-              </h2>
-              <p className="mt-1 text-sm text-slate-300">
-                One flagship build with the clearest impact line.
-              </p>
-            </div>
-          </div>
-          <div className="mt-8">
-            <motion.article
-              className={clsx(
-                cardBase,
-                "rounded-3xl border-white/15 bg-gradient-to-br from-[#111c32] via-[#101a32] to-[#0c162f] p-6",
-              )}
-              variants={fadeUpItem}
-            >
-              <ImageFrame
-                src={spotlight.image}
-                alt={spotlight.title}
-                aspectClass="aspect-[16/8]"
-                loading="eager"
-              />
-              <div className="mt-6 flex flex-1 flex-col">
-                <span className="w-fit rounded-full border border-sky-300/40 bg-sky-300/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-100/90">
-                  Spotlight
-                </span>
-                <h3 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
-                  {spotlight.title}
-                </h3>
-                <p className="mt-3 text-sm text-slate-200/90 line-clamp-2 sm:text-base">
-                  {spotlight.summary}
-                </p>
-                {spotlight.outcome && (
-                  <p className="mt-4 rounded-xl border border-sky-300/20 bg-sky-300/10 px-4 py-3 text-sm text-sky-100/90">
-                    {spotlight.outcome}
-                  </p>
-                )}
-                <TagList tags={spotlight.tags} max={4} />
-                <div className="mt-auto flex flex-wrap gap-3 pt-6">
-                  {spotlight.liveUrl && (
-                    <a
-                      href={spotlight.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={secondaryCta}
-                    >
-                      Live
-                    </a>
-                  )}
-                  <Link to={spotlight.path} className={primaryCta}>
-                    Case Study
-                  </Link>
-                </div>
-              </div>
-            </motion.article>
-          </div>
-        </div>
-
-        <div>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-                Highlights
-              </h2>
-              <p className="mt-1 text-sm text-slate-300">
-                Selected and notable builds arranged in a dynamic grid.
-              </p>
-            </div>
-          </div>
-          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6 lg:grid-flow-dense lg:auto-rows-[200px]">
-            {highlightFiltered.map((project, index) => {
-              const layout = mosaicLayout[index % mosaicLayout.length];
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[180px]">
+            {combinedHighlights.map((project) => {
+              const layout = highlightLayout[project.id] ?? {
+                cardClass: "lg:col-span-2",
+                imageAspect: "aspect-[16/10]",
+              };
+              const isSpotlight = project.id === spotlight.id;
               return (
                 <motion.article
                   key={project.id}
-                  className={clsx(cardBase, "p-4", layout.cardClass)}
+                  className={clsx(
+                    cardBase,
+                    "p-4",
+                    layout.cardClass,
+                    isSpotlight &&
+                      "rounded-3xl border-sky-300/30 bg-gradient-to-br from-[#111c32] via-[#121d38] to-[#0d1934]",
+                  )}
                   variants={fadeUpItem}
                 >
                   <ImageFrame
                     src={project.image}
                     alt={project.title}
                     aspectClass={layout.imageAspect}
+                    loading={isSpotlight ? "eager" : "lazy"}
                   />
                   <div className="mt-4 flex flex-1 flex-col">
-                    <h3 className="text-lg font-semibold text-white sm:text-xl">
+                    {isSpotlight && (
+                      <span className="w-fit rounded-full border border-sky-300/40 bg-sky-300/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-100/90">
+                        Spotlight
+                      </span>
+                    )}
+                    <h3
+                      className={clsx(
+                        "mt-2 font-semibold text-white",
+                        isSpotlight ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl",
+                      )}
+                    >
                       {project.title}
                     </h3>
-                    <p className="mt-2 text-sm text-slate-300 line-clamp-2">
+                    <p
+                      className={clsx(
+                        "mt-2 text-sm text-slate-300",
+                        isSpotlight ? "line-clamp-2 sm:text-base" : "line-clamp-2",
+                      )}
+                    >
                       {project.summary}
                     </p>
-                    <TagList tags={project.tags} max={3} />
+                    {isSpotlight && project.outcome && (
+                      <p className="mt-3 rounded-xl border border-sky-300/20 bg-sky-300/10 px-4 py-3 text-sm text-sky-100/90">
+                        {project.outcome}
+                      </p>
+                    )}
+                    <TagList tags={project.tags} max={isSpotlight ? 4 : 3} />
                     <div className="mt-auto flex flex-wrap gap-3 pt-4">
                       {project.liveUrl && (
                         <a
@@ -372,7 +245,7 @@ export const Projects: React.FC = () => {
                         </a>
                       )}
                       <Link to={project.path} className={primaryCta}>
-                        Details
+                        {isSpotlight ? "Case Study" : "Details"}
                       </Link>
                     </div>
                   </div>
@@ -380,11 +253,6 @@ export const Projects: React.FC = () => {
               );
             })}
           </div>
-          {highlightFiltered.length === 0 && (
-            <p className="mt-6 text-sm text-slate-300">
-              No projects match this filter yet.
-            </p>
-          )}
         </div>
 
         <div>
@@ -403,7 +271,7 @@ export const Projects: React.FC = () => {
             className="mt-8 flex gap-4 overflow-x-auto pb-4 pr-2 snap-x snap-mandatory"
             aria-label="More projects"
           >
-            {moreFiltered.map((project) => (
+            {more.map((project) => (
               <motion.article
                 key={project.id}
                 className={clsx(
@@ -434,12 +302,6 @@ export const Projects: React.FC = () => {
               </motion.article>
             ))}
           </div>
-
-          {moreFiltered.length === 0 && (
-            <p className="mt-6 text-sm text-slate-300">
-              No projects match this filter yet.
-            </p>
-          )}
         </div>
       </div>
     </motion.section>
