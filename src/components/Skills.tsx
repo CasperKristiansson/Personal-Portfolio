@@ -39,6 +39,7 @@ const programmingLanguages = [
 const toolsFrameworks = [
   { name: "GitHub", color: "181717", logo: "github", logoColor: "white" },
   { name: "React", color: "61DAFB", logo: "react", logoColor: "black" },
+  { name: "Next.js", color: "000000", logo: "nextdotjs", logoColor: "white" },
   { name: "Astro", color: "FF5D01", logo: "astro", logoColor: "white" },
   { name: "Vite", color: "646CFF", logo: "vite", logoColor: "white" },
   {
@@ -132,6 +133,12 @@ const awsServices = [
     logoColor: "white",
   },
   {
+    name: "Amazon Bedrock",
+    color: "3B25C1",
+    logo: "amazonbedrock",
+    logoColor: "white",
+  },
+  {
     name: "AWS Amplify",
     color: "3B25C1",
     logo: "awsamplify",
@@ -160,6 +167,24 @@ const awsServices = [
     name: "Amazon API Gateway",
     color: "3B25C1",
     logo: "amazonapigateway",
+    logoColor: "white",
+  },
+  {
+    name: "AWS AppSync",
+    color: "3B25C1",
+    logo: "awsappsync",
+    logoColor: "white",
+  },
+  {
+    name: "Amazon SQS",
+    color: "3B25C1",
+    logo: "amazonsqs",
+    logoColor: "white",
+  },
+  {
+    name: "WebSockets (Lambda)",
+    color: "3B25C1",
+    logo: "awslambda",
     logoColor: "white",
   },
   {
