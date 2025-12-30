@@ -133,12 +133,27 @@ export const StickyNav: React.FC = () => {
                   </a>
                 </li>
               ))}
-              <li className="relative">
-                <details className="group relative">
-                  <summary className="cursor-pointer list-none text-lg leading-none text-white/80 transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none">
-                    ...
-                  </summary>
-                  <div className="absolute top-7 left-1/2 min-w-[180px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]">
+              <li className="relative" ref={menuRef}>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen((prev) => !prev)}
+                  aria-expanded={menuOpen}
+                  aria-controls="nav-more-menu"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-white/80 transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base"
+                >
+                  More
+                  <IconChevronDown
+                    size={18}
+                    className={`transition duration-200 ${
+                      menuOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {menuOpen && (
+                  <div
+                    id="nav-more-menu"
+                    className="absolute top-8 left-1/2 min-w-[180px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]"
+                  >
                     <ul className="flex flex-col gap-2 text-sm font-medium text-slate-100">
                       {moreLinks.map((link) => (
                         <li key={link.href}>
@@ -149,6 +164,7 @@ export const StickyNav: React.FC = () => {
                                 ? "page"
                                 : undefined
                             }
+                            onClick={() => setMenuOpen(false)}
                             className="block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
                           >
                             {link.label}
@@ -157,7 +173,7 @@ export const StickyNav: React.FC = () => {
                       ))}
                     </ul>
                   </div>
-                </details>
+                )}
               </li>
             </ul>
             <div className="flex items-center gap-3">

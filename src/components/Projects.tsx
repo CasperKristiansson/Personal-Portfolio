@@ -195,9 +195,9 @@ export const Projects: React.FC = () => {
         </div>
       </motion.div>
 
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-1 sm:px-6 lg:px-10">
         <div>
-          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[minmax(220px,auto)]">
+          <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[minmax(220px,auto)]">
             {combinedHighlights.map((project) => {
               const layout = highlightLayout[project.id] ?? {
                 cardClass: "lg:col-span-2",
