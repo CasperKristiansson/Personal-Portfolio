@@ -312,7 +312,7 @@ export const Projects: React.FC = () => {
           </div>
 
           <div
-            className="mt-8 flex gap-4 overflow-x-auto pb-4 pr-2 snap-x snap-mandatory"
+            className="mt-8 flex items-stretch gap-4 overflow-x-auto overflow-y-visible pb-8 pr-2 snap-x snap-mandatory"
             aria-label="More projects"
           >
             {more.map((project) => (
@@ -320,7 +320,7 @@ export const Projects: React.FC = () => {
                 key={project.id}
                 className={clsx(
                   cardBase,
-                  "min-w-[240px] snap-start p-4 sm:min-w-[300px] lg:min-w-[340px]",
+                  "min-h-[360px] min-w-[240px] self-stretch snap-start p-4 sm:min-h-[400px] sm:min-w-[300px] lg:min-h-[420px] lg:min-w-[340px]",
                 )}
                 variants={fadeUpItem}
               >
