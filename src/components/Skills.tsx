@@ -222,10 +222,10 @@ export const Skills: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="pointer-events-none sticky top-0 z-[60] mb-8 flex h-[var(--sticky-nav-offset)] items-center">
+      <div className="pointer-events-none mb-8 md:sticky md:top-0 md:z-[60] md:flex md:h-[var(--sticky-nav-offset)] md:items-center">
         <div className="mx-auto w-full max-w-[1400px] pr-4 pl-10 sm:pr-6 sm:pl-12 lg:pr-10 lg:pl-16">
           <motion.h1
-            className="-translate-y-2.5 text-4xl leading-none font-bold text-white sm:text-5xl"
+            className="text-4xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5"
             variants={slideLeftItem}
           >
             Skills
