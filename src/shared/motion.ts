@@ -72,4 +72,4 @@ export const scaleInItem: Variants = {
   },
 };
 
-export const viewportOnce = { once: true, amount: 0.2 };
+export const viewportOnce = { once: true, amount: 0.1 };

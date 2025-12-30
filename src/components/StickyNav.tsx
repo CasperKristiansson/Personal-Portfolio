@@ -115,12 +115,12 @@ export const StickyNav: React.FC = () => {
   return (
     <nav ref={navRef} className="sticky top-0 z-40">
       <div
-        className={`mx-auto w-full max-w-[1400px] px-6 transition-[padding] duration-300 sm:px-8 lg:px-12 ${
+        className={`mx-auto flex w-full max-w-[1400px] px-6 transition-[padding] duration-300 sm:px-8 lg:px-12 ${
           isStuck ? "py-2" : "py-4"
         }`}
       >
         <div
-          className={`rounded-2xl border border-white/10 bg-[#0f1a33] px-6 py-3 transition duration-300 ${
+          className={`ml-auto w-fit rounded-2xl border border-white/10 bg-[#0f1a33] px-6 py-3 transition duration-300 lg:ml-0 lg:w-full ${
             isStuck
               ? "bg-[#0f1a33]/80 shadow-[0_18px_50px_-30px_rgba(8,15,35,0.9)] backdrop-blur"
               : "shadow-none"
@@ -206,7 +206,7 @@ export const StickyNav: React.FC = () => {
                 )}
               </li>
             </ul>
-            <div className="flex w-full items-center justify-center gap-3 lg:w-auto lg:justify-end">
+            <div className="flex items-center gap-3">
               <div className="relative lg:hidden" ref={menuRefMobile}>
                 <button
                   type="button"
