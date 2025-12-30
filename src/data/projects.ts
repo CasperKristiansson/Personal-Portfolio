@@ -31,7 +31,7 @@ export const projects: Project[] = [
     id: "finance-tracker",
     title: "Finance Tracker",
     summary:
-      "Personal finance intelligence with ingestion, categorization, reporting, and insights.",
+      "Personal finance intelligence with ingestion, categorization, reporting, and insights for budgets, goals, and cash flow clarity. Built to replace spreadsheets with a productized workspace that tracks transactions, categories, subscriptions, and net worth trends.",
     outcome: "Outcome: unified clarity across cash flow, budgets, and net worth.",
     tags: ["Full Stack", "React", "TypeScript", "Python", "AWS", "Terraform"],
     categories: ["Product", "Cloud"],
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     path: "/articles/finance-tracker",
     tier: "featured",
     spotlight: true,
-    liveUrl: "https://github.com/CasperKristiansson/Finance-Tracker",
+    liveUrl: "https://finance-tracker.casperkristiansson.com/",
   },
   {
     id: "pktraffic",
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     image: pydanticFixturegenHero,
     path: "/articles/pydantic-fixturegen",
     tier: "featured",
-    liveUrl: "https://pydantic-fixturegen.kitgrid.dev/",
+    liveUrl: "https://github.com/CasperKristiansson/pydantic-fixturegen",
   },
   {
     id: "podcast-tracker",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     image: podcastTrackerHero,
     path: "/articles/podcast-tracker",
     tier: "featured",
-    liveUrl: "https://github.com/CasperKristiansson/Podcast-Tracker",
+    liveUrl: "https://podcast.casperkristiansson.com/",
   },
   {
     id: "react-whiteboard-studio",
@@ -92,6 +92,7 @@ export const projects: Project[] = [
     image: reactWhiteboardStudioHero,
     path: "/articles/react-whiteboard-studio",
     tier: "notable",
+    liveUrl: "https://draw.casperkristiansson.com/",
   },
   {
     id: "cpython-patch-pr-action",
@@ -102,6 +103,7 @@ export const projects: Project[] = [
     image: pythonVersionPatchPrHero,
     path: "/articles/python-version-patch-pr",
     tier: "notable",
+    liveUrl: "https://github.com/CasperKristiansson/python-version-patch-pr",
   },
   {
     id: "movieboxdb",
@@ -112,6 +114,7 @@ export const projects: Project[] = [
     image: movieboxdbOverview,
     path: "/articles/movieboxdb",
     tier: "notable",
+    liveUrl: "https://movieboxdb.web.app/",
   },
   {
     id: "image-editor",

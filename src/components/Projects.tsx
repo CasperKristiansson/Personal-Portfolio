@@ -158,7 +158,7 @@ export const Projects: React.FC = () => {
     },
     movieboxdb: {
       cardClass: "lg:col-start-1 lg:col-end-4 lg:row-start-4 lg:row-end-5",
-      imageAspect: "aspect-[16/9]",
+      imageAspect: "aspect-[16/7]",
     },
   };
 

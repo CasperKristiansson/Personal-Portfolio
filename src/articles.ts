@@ -327,6 +327,10 @@ const financeTracker: ArticleItem = {
     "Personal finance intelligence built as an end-to-end product: ingestion, categorization, reporting, and decision-ready insights.",
   headerLinks: [
     {
+      link: "https://finance-tracker.casperkristiansson.com/",
+      display: "Live",
+    },
+    {
       link: "https://github.com/CasperKristiansson/Finance-Tracker",
       display: "Github",
     },
@@ -432,6 +436,10 @@ const reactWhiteboardStudio: ArticleItem = {
       link: "https://github.com/CasperKristiansson/React-Whiteboard-Studio",
       display: "Github",
     },
+    {
+      link: "https://draw.casperkristiansson.com/",
+      display: "Live",
+    },
   ],
   image: reactWhiteboardStudioHero,
   content: [
@@ -483,6 +491,10 @@ const podcastTracker: ArticleItem = {
   description:
     "A podcast companion that syncs with the Spotify catalog so new releases surface automatically, with show pages and listening history.",
   headerLinks: [
+    {
+      link: "https://podcast.casperkristiansson.com/",
+      display: "Live",
+    },
     {
       link: "https://github.com/CasperKristiansson/Podcast-Tracker",
       display: "Github",
@@ -541,7 +553,7 @@ const podcastTracker: ArticleItem = {
 
 const pydanticFixturegen: ArticleItem = {
   path: "/articles/pydantic-fixturegen",
-  period: "2024",
+  period: "2025",
   header: "pydantic-fixturegen",
   description:
     "Deterministic fixtures, pytest modules, datasets, and JSON from Pydantic v2 models, dataclasses, and TypedDicts.",
@@ -597,7 +609,7 @@ const pydanticFixturegen: ArticleItem = {
 
 const pythonVersionPatchPr: ArticleItem = {
   path: "/articles/python-version-patch-pr",
-  period: "2024",
+  period: "2025",
   header: "CPython Patch PR Action",
   description:
     "Automates CPython patch updates across every Python version reference in a repo and opens evergreen pull requests.",
