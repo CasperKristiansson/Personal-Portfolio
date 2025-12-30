@@ -58,9 +58,7 @@ const TagList: React.FC<{
   const visible = tags.slice(0, max);
   const remaining = tags.length - visible.length;
   const tagClass =
-    size === "compact"
-      ? "px-2 py-0.5 text-[10px]"
-      : "px-2.5 py-1 text-[11px]";
+    size === "compact" ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-[11px]";
 
   return (
     <div className="mt-4 flex flex-wrap gap-2">
@@ -68,7 +66,7 @@ const TagList: React.FC<{
         <span
           key={tag}
           className={clsx(
-            "rounded-full border border-white/10 bg-white/5 font-semibold uppercase tracking-wide text-slate-200/80 whitespace-nowrap",
+            "rounded-full border border-white/10 bg-white/5 font-semibold tracking-wide whitespace-nowrap text-slate-200/80 uppercase",
             tagClass,
           )}
         >
@@ -78,7 +76,7 @@ const TagList: React.FC<{
       {remaining > 0 && (
         <span
           className={clsx(
-            "rounded-full border border-white/10 bg-white/5 font-semibold uppercase tracking-wide text-slate-200/60 whitespace-nowrap",
+            "rounded-full border border-white/10 bg-white/5 font-semibold tracking-wide whitespace-nowrap text-slate-200/60 uppercase",
             tagClass,
           )}
         >
@@ -174,7 +172,7 @@ export const Projects: React.FC = () => {
   return (
     <motion.section
       id="projects"
-      className="relative bg-[#18253F] pb-28 pt-28"
+      className="relative bg-[#18253F] pt-28 pb-28"
       ref={locationRef}
       variants={staggerContainer}
       initial={shouldReduceMotion ? "visible" : "hidden"}
@@ -182,10 +180,10 @@ export const Projects: React.FC = () => {
       viewport={viewportOnce}
     >
       <motion.div
-        className="pointer-events-none sticky top-0 z-[60] mb-8 flex h-[var(--sticky-nav-offset)] items-center"
+        className="pointer-events-none sticky top-0 z-[60] flex h-[var(--sticky-nav-offset)] items-center"
         variants={staggerFast}
       >
-        <div className="mx-auto w-full max-w-[1400px] pl-10 pr-4 sm:pl-12 sm:pr-6 lg:pl-16 lg:pr-10">
+        <div className="mx-auto w-full max-w-[1400px] pr-4 pl-10 sm:pr-6 sm:pl-12 lg:pr-10 lg:pl-16">
           <motion.h1
             className="text-4xl font-bold text-white sm:text-5xl"
             variants={fadeUpItem}
@@ -195,9 +193,9 @@ export const Projects: React.FC = () => {
         </div>
       </motion.div>
 
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-1 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-0 sm:px-6 lg:px-10">
         <div>
-          <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[minmax(220px,auto)]">
+          <div className="mt-1 grid grid-cols-1 gap-5 md:grid-cols-2 lg:auto-rows-[minmax(220px,auto)] lg:grid-cols-5">
             {combinedHighlights.map((project) => {
               const layout = highlightLayout[project.id] ?? {
                 cardClass: "lg:col-span-2",
@@ -225,14 +223,16 @@ export const Projects: React.FC = () => {
                   />
                   <div className="mt-4 flex flex-1 flex-col">
                     {isSpotlight && (
-                      <span className="w-fit rounded-full border border-sky-300/40 bg-sky-300/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-100/90">
+                      <span className="w-fit rounded-full border border-sky-300/40 bg-sky-300/15 px-3 py-1 text-[11px] font-semibold tracking-[0.2em] text-sky-100/90 uppercase">
                         Spotlight
                       </span>
                     )}
                     <h3
                       className={clsx(
                         "mt-2 font-semibold text-white",
-                        isSpotlight ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl",
+                        isSpotlight
+                          ? "text-2xl sm:text-3xl"
+                          : "text-lg sm:text-xl",
                         isCompact && "text-base sm:text-lg",
                       )}
                     >
@@ -241,7 +241,9 @@ export const Projects: React.FC = () => {
                     <p
                       className={clsx(
                         "mt-2 text-sm text-slate-300",
-                        isSpotlight ? "line-clamp-2 sm:text-base" : "line-clamp-2",
+                        isSpotlight
+                          ? "line-clamp-2 sm:text-base"
+                          : "line-clamp-2",
                         isCompact && "text-xs sm:text-sm",
                       )}
                     >
@@ -307,7 +309,7 @@ export const Projects: React.FC = () => {
           </div>
 
           <div
-            className="mt-8 flex items-stretch gap-4 overflow-x-auto overflow-y-visible pb-8 pr-2 snap-x snap-mandatory"
+            className="mt-8 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible pr-2 pb-8"
             aria-label="More projects"
           >
             {more.map((project) => (
@@ -315,7 +317,7 @@ export const Projects: React.FC = () => {
                 key={project.id}
                 className={clsx(
                   cardBase,
-                  "min-h-[360px] min-w-[240px] self-stretch snap-start p-4 sm:min-h-[400px] sm:min-w-[300px] lg:min-h-[420px] lg:min-w-[340px]",
+                  "min-h-[360px] min-w-[240px] snap-start self-stretch p-4 sm:min-h-[400px] sm:min-w-[300px] lg:min-h-[420px] lg:min-w-[340px]",
                 )}
                 variants={fadeUpItem}
               >
@@ -328,7 +330,7 @@ export const Projects: React.FC = () => {
                   <h3 className="text-lg font-semibold text-white">
                     {project.title}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-300 line-clamp-1">
+                  <p className="mt-2 line-clamp-1 text-sm text-slate-300">
                     {project.summary}
                   </p>
                   <TagList tags={project.tags} max={3} />
