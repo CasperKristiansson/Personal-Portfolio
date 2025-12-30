@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -30,20 +30,24 @@ export const StickyNav: React.FC = () => {
   const menuRefDesktop = useRef<HTMLLIElement | null>(null);
   const menuRefMobile = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const updateOffset = () => {
-      if (!navRef.current) return;
-      const { height } = navRef.current.getBoundingClientRect();
-      document.documentElement.style.setProperty(
-        "--sticky-nav-offset",
-        `${height}px`,
-      );
-    };
+  const updateOffset = useCallback(() => {
+    if (!navRef.current) return;
+    const { height } = navRef.current.getBoundingClientRect();
+    document.documentElement.style.setProperty(
+      "--sticky-nav-offset",
+      `${height}px`,
+    );
+  }, []);
 
+  useEffect(() => {
     updateOffset();
     window.addEventListener("resize", updateOffset);
     return () => window.removeEventListener("resize", updateOffset);
-  }, []);
+  }, [updateOffset]);
+
+  useEffect(() => {
+    updateOffset();
+  }, [isStuck, updateOffset]);
 
   useEffect(() => {
     const handleScroll = () => {

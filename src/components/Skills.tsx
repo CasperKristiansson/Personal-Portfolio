@@ -225,7 +225,7 @@ export const Skills: React.FC = () => {
       <div className="pointer-events-none sticky top-0 z-[60] mb-8 flex h-[var(--sticky-nav-offset)] items-center">
         <div className="mx-auto w-full max-w-[1400px] pl-10 pr-4 sm:pl-12 sm:pr-6 lg:pl-16 lg:pr-10">
           <motion.h1
-            className="text-4xl font-bold text-white sm:text-5xl"
+            className="-translate-y-2 text-4xl font-bold leading-none text-white sm:text-5xl"
             variants={slideLeftItem}
           >
             Skills

@@ -9,7 +9,7 @@ export const Hero: React.FC = () => {
   return (
     <motion.div
       ref={heroRef}
-      className="parallax relative flex h-[calc(100vh-100px)] items-center justify-center"
+      className="parallax relative flex h-[calc(100vh-95px)] items-center justify-center"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
