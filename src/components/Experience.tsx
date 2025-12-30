@@ -6,14 +6,16 @@ const timelineItems: TimelineItem[] = [
     location: "Klimra",
     header: "Co-Founder & CTO",
     description:
-      "Klimra revolutionizes how passengers claim compensation for delayed train journeys in Sweden, offering a fully automated and seamless experience. In addition to streamlining claims, we are expanding our services to provide an on-demand free taxi solution for short-distance delays. As Co-Founder & CTO, I built the system from the ground up and led a team of five engineers, including interns with varying experience levels.",
+      "Klimra simplifies compensation for delayed train journeys in Sweden and offers an on-demand free taxi solution for short-distance delays. The company is part of the SSE Business Lab incubator. I own the technical direction and lead the engineering team.",
     listItems: [
-      "Designed and implemented a serverless backend in Python using Terraform for infrastructure management.",
-      "Ensured compliance with Google CASA security requirements, strengthening authentication and data protection.",
-      "Built a highly scalable and secure system on AWS, leveraging Lambda, DynamoDB, Route 53, CloudFront, Cognito, and Fargate for scheduled batch jobs.",
-      "Developed a Google authentication API, integrating identity federation and extra scopes like email linking.",
-      "Built a file analysis pipeline using OpenAI API to extract train ticket details for compensation claims.",
-      "Developed the frontend with React, TypeScript, and ESLint, integrating multi-stage environments and CI/CD pipelines for efficient and reliable deployments.",
+      "Lead a team of six engineers and interns, with responsibility for hiring, mentoring, and engineering practices.",
+      "Own product and technical roadmap from MVP to production, including architecture, security, and scalability.",
+      "Designed and implemented a serverless backend on AWS using Lambda, DynamoDB, API Gateway, S3, Cognito, CloudFront, and Fargate.",
+      "Established infrastructure as code with Terraform, automated CI/CD, and multi-environment deployment.",
+      "Ensured compliance with Google CASA security requirements and strong handling of sensitive customer data.",
+      "Built the core ticket analysis pipeline using OpenAI models to extract and validate train ticket details for compensation.",
+      "Defined and implemented the security architecture for handling sensitive travel and payment data, including encryption, access control, and audit logging (Google CASA).",
+      "Designed and shipped an AI-driven ticket analysis pipeline using OpenAI models to extract, validate, and classify train tickets end-to-end.",
     ],
     link: "https://klimra.com",
     linkDisplay: "klimra.com",
@@ -23,7 +25,7 @@ const timelineItems: TimelineItem[] = [
     location: "Scatterin",
     header: "Full Stack Developer",
     description:
-      "At Scatterin, I've developed a fully cloud-based platform for industrial companies to analyze material data from neutron and synchrotron experiments. My key responsibilities include:",
+      "Early engineer at a research spin-off building a cloud platform for analysis of neutron and synchrotron experiments. Responsible for large parts of the AWS architecture and developer tooling.",
     listItems: [
       "Built and maintained a 10+ service AWS infrastructure using Terraform with S3, DynamoDB, clusters, and Lambda across multiple stages.",
       "Created 100+ AWS Lambda endpoints, ensuring scalability for large-scale data processing.",
@@ -98,6 +100,7 @@ const timelineItems: TimelineItem[] = [
     listItems: ["Developed two IT programs for the personnel foundation"],
     link: "https://postnordplus.com",
     linkDisplay: "postnordplus.com",
+    hide: true,
   },
   {
     period: "2017 - 2018",
