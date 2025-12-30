@@ -41,7 +41,7 @@ export const TimeLine: React.FC<{
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-[60] mb-8">
+      <div className="pointer-events-none sticky top-0 z-[60] mb-8 flex h-[var(--sticky-nav-offset)] items-center">
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <motion.h1
             className="text-4xl font-bold text-white sm:text-5xl"

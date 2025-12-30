@@ -182,7 +182,7 @@ export const Projects: React.FC = () => {
       viewport={viewportOnce}
     >
       <motion.div
-        className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-[60] mb-8"
+        className="pointer-events-none sticky top-0 z-[60] mb-8 flex h-[var(--sticky-nav-offset)] items-center"
         variants={staggerFast}
       >
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
@@ -192,12 +192,6 @@ export const Projects: React.FC = () => {
           >
             Projects
           </motion.h1>
-          <motion.p
-            className="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-sky-200/80"
-            variants={fadeUpItem}
-          >
-            Selected work
-          </motion.p>
         </div>
       </motion.div>
 

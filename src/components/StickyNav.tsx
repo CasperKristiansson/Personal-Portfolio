@@ -16,10 +16,7 @@ const moreLinks = [
   { label: "Links", href: "#external-links" },
 ];
 
-const allLinks = [
-  ...primaryLinks,
-  ...moreLinks,
-];
+const allLinks = [...primaryLinks, ...moreLinks];
 
 export const StickyNav: React.FC = () => {
   const [activeId, setActiveId] = useState("projects");
@@ -72,13 +69,10 @@ export const StickyNav: React.FC = () => {
       ref={navRef}
       className="sticky top-0 z-40 bg-[#18253F]/90 backdrop-blur"
     >
-      <div className="mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-[1400px] py-4 pr-6 pl-4 sm:pr-8 sm:pl-6 lg:pr-12 lg:pl-10">
         <div className="rounded-2xl border border-white/10 bg-[#0f1a33]/85 px-4 py-3 shadow-[0_18px_50px_-30px_rgba(8,15,35,0.9)]">
           <div className="flex items-center gap-6">
-            <div
-              className="hidden min-w-[140px] lg:block"
-              aria-hidden="true"
-            />
+            <div className="hidden min-w-[140px] lg:block" aria-hidden="true" />
             <ul className="flex flex-1 flex-wrap items-center justify-center gap-6 text-sm font-semibold text-white sm:text-base">
               {primaryLinks.map((link) => (
                 <li key={link.href}>
@@ -87,7 +81,7 @@ export const StickyNav: React.FC = () => {
                     aria-current={
                       activeId === link.href.slice(1) ? "page" : undefined
                     }
-                    className={`transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 ${
+                    className={`transition focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none ${
                       activeId === link.href.slice(1)
                         ? "text-sky-200"
                         : "hover:text-sky-200"
@@ -99,26 +93,26 @@ export const StickyNav: React.FC = () => {
               ))}
               <li className="relative">
                 <details className="group relative">
-                  <summary className="cursor-pointer list-none text-lg leading-none text-white/80 transition hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70">
+                  <summary className="cursor-pointer list-none text-lg leading-none text-white/80 transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none">
                     ...
                   </summary>
-                  <div className="absolute left-1/2 top-7 min-w-[180px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]">
+                  <div className="absolute top-7 left-1/2 min-w-[180px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]">
                     <ul className="flex flex-col gap-2 text-sm font-medium text-slate-100">
-                        {moreLinks.map((link) => (
-                          <li key={link.href}>
-                            <a
-                              href={link.href}
-                              aria-current={
-                                activeId === link.href.slice(1)
-                                  ? "page"
-                                  : undefined
-                              }
-                              className="block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70"
-                            >
-                              {link.label}
-                            </a>
-                          </li>
-                        ))}
+                      {moreLinks.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            aria-current={
+                              activeId === link.href.slice(1)
+                                ? "page"
+                                : undefined
+                            }
+                            className="block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </details>
@@ -130,7 +124,7 @@ export const StickyNav: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-sky-300/50 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70"
+                className="rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-sky-300/50 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
               >
                 <IconBrandLinkedin size={22} />
               </a>
@@ -139,7 +133,7 @@ export const StickyNav: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                className="rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-sky-300/50 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70"
+                className="rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-sky-300/50 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
               >
                 <IconBrandGithub size={22} />
               </a>
