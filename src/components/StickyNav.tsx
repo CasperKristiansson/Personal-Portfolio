@@ -20,6 +20,7 @@ const allLinks = [...primaryLinks, ...moreLinks];
 
 export const StickyNav: React.FC = () => {
   const [activeId, setActiveId] = useState("projects");
+  const [isStuck, setIsStuck] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -35,6 +36,17 @@ export const StickyNav: React.FC = () => {
     updateOffset();
     window.addEventListener("resize", updateOffset);
     return () => window.removeEventListener("resize", updateOffset);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!navRef.current) return;
+      setIsStuck(navRef.current.getBoundingClientRect().top <= 0);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -65,12 +77,15 @@ export const StickyNav: React.FC = () => {
   }, []);
 
   return (
-    <nav
-      ref={navRef}
-      className="sticky top-0 z-40 bg-[#18253F]/90 backdrop-blur"
-    >
+    <nav ref={navRef} className="sticky top-0 z-40">
       <div className="mx-auto w-full max-w-[1400px] py-4 pr-6 pl-4 sm:pr-8 sm:pl-6 lg:pr-12 lg:pl-10">
-        <div className="rounded-2xl border border-white/10 bg-[#0f1a33]/85 px-6 py-3 shadow-[0_18px_50px_-30px_rgba(8,15,35,0.9)]">
+        <div
+          className={`rounded-2xl border border-white/10 bg-[#0f1a33] px-6 py-3 transition duration-300 ${
+            isStuck
+              ? "bg-[#0f1a33]/80 shadow-[0_18px_50px_-30px_rgba(8,15,35,0.9)] backdrop-blur"
+              : "shadow-none"
+          }`}
+        >
           <div className="flex items-center gap-6">
             <div className="hidden min-w-[140px] lg:block" aria-hidden="true" />
             <ul className="flex flex-1 flex-wrap items-center justify-center gap-6 text-sm font-semibold text-white sm:text-base">
