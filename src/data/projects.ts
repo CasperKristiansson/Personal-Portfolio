@@ -118,6 +118,18 @@ export const projects: Project[] = [
     liveUrl: "https://movieboxdb.web.app/",
   },
   {
+    id: "kitgrid",
+    title: "Kitgrid",
+    summary:
+      "Personal docs network that aggregates raw Markdown across repos into a shared documentation hub.",
+    tags: ["Astro", "TypeScript", "Docs", "Markdown"],
+    categories: ["Product", "Web"],
+    image: kitgridHero,
+    path: "/articles/kitgrid",
+    tier: "more",
+    liveUrl: "https://github.com/CasperKristiansson/kitgrid",
+  },
+  {
     id: "image-editor",
     title: "Image Editor",
     summary: "Batch image editing app for the Swedish postal service.",
@@ -156,17 +168,5 @@ export const projects: Project[] = [
     image: tvShowNetworkOverview,
     path: "/articles/tvshownetwork",
     tier: "more",
-  },
-  {
-    id: "kitgrid",
-    title: "Kitgrid",
-    summary:
-      "Personal docs network that aggregates raw Markdown across repos into a shared documentation hub.",
-    tags: ["Astro", "TypeScript", "Docs", "Markdown"],
-    categories: ["Product", "Web"],
-    image: kitgridHero,
-    path: "/articles/kitgrid",
-    tier: "more",
-    liveUrl: "https://github.com/CasperKristiansson/kitgrid",
   },
 ];
