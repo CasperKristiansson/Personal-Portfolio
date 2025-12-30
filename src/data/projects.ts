@@ -1,20 +1,14 @@
+import financeTrackerHero from "../assets/projects/financeTracker/financeTrackerHero.jpg";
+import reactWhiteboardStudioHero from "../assets/projects/reactWhiteboardStudio/reactWhiteboardStudioHero.jpg";
+import podcastTrackerHero from "../assets/projects/podcastTracker/podcastTrackerHero.jpg";
+import pydanticFixturegenHero from "../assets/projects/pydanticFixturegen/pydanticFixturegenHero.jpg";
+import pythonVersionPatchPrHero from "../assets/projects/pythonVersionPatchPr/pythonVersionPatchPrHero.jpg";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
 import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
 import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
 import tvShowNetworkOverview from "../assets/projects/tvshownetwork/tvShowNetworkOverview.png";
-
-const financeTrackerHero =
-  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/hero.png";
-const reactWhiteboardStudioHero =
-  "https://raw.githubusercontent.com/CasperKristiansson/React-Whiteboard-Studio/main/docs/images/primary.jpg";
-const podcastTrackerHero =
-  "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg";
-const pydanticFixturegenHero =
-  "https://opengraph.githubassets.com/1/CasperKristiansson/pydantic-fixturegen";
-const pythonVersionPatchPrHero =
-  "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr";
 
 export type ProjectTier = "featured" | "notable" | "more";
 
