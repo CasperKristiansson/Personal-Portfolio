@@ -121,15 +121,15 @@ export const Projects: React.FC = () => {
   > = {
     "finance-tracker": {
       cardClass: "lg:col-start-1 lg:col-end-4 lg:row-start-1 lg:row-end-3",
-      imageAspect: "aspect-[16/7]",
+      imageAspect: "aspect-[16/6]",
     },
     "pydantic-fixturegen": {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-1 lg:row-end-2",
-      imageAspect: "aspect-[4/3]",
+      imageAspect: "aspect-[16/6]",
     },
     "cpython-patch-pr-action": {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-2 lg:row-end-3",
-      imageAspect: "aspect-[4/3]",
+      imageAspect: "aspect-[16/6]",
     },
     pktraffic: {
       cardClass: "lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-5",
@@ -180,7 +180,7 @@ export const Projects: React.FC = () => {
         </motion.div>
 
         <div>
-          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[180px]">
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[minmax(220px,auto)]">
             {combinedHighlights.map((project) => {
               const layout = highlightLayout[project.id] ?? {
                 cardClass: "lg:col-span-2",
@@ -192,7 +192,7 @@ export const Projects: React.FC = () => {
                   key={project.id}
                   className={clsx(
                     cardBase,
-                    "p-4",
+                    "h-auto p-4",
                     layout.cardClass,
                     isSpotlight &&
                       "rounded-3xl border-sky-300/30 bg-gradient-to-br from-[#111c32] via-[#121d38] to-[#0d1934]",
