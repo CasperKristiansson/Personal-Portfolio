@@ -138,5 +138,7 @@ const timelineItems: TimelineItem[] = [
 ];
 
 export const Experience: React.FC = () => {
-  return <TimeLine timelineItems={timelineItems} title="Experience" />;
+  return (
+    <TimeLine timelineItems={timelineItems} title="Experience" id="experience" />
+  );
 };

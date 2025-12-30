@@ -10,6 +10,7 @@ import {
 export const Rewards: React.FC = () => {
   return (
     <motion.section
+      id="awards"
       className="relative z-10 bg-[#18253F] pt-36"
       variants={staggerFast}
       initial="hidden"

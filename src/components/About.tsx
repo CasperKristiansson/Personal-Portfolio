@@ -11,6 +11,7 @@ import {
 export const About: React.FC = () => {
   return (
     <motion.section
+      id="about"
       className="relative z-10 flex w-full items-center justify-center overflow-hidden bg-[#18253F] px-4 py-12 sm:px-6 lg:px-10 lg:py-20"
       variants={staggerContainer}
       initial="hidden"

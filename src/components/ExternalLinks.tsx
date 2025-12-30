@@ -14,6 +14,7 @@ export const ExternalLinks: React.FC = () => {
 
   return (
     <motion.section
+      id="external-links"
       className="relative z-10 bg-[#18253F] py-36"
       variants={staggerFast}
       initial="hidden"

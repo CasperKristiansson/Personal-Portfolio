@@ -12,6 +12,7 @@ import {
 export const Papers: React.FC = () => {
   return (
     <motion.section
+      id="papers"
       className="relative z-10 bg-[#18253F] pt-36"
       variants={staggerContainer}
       initial="hidden"

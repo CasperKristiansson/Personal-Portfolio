@@ -39,6 +39,7 @@ const certifications = [
 export const Certificates: React.FC = () => {
   return (
     <motion.section
+      id="certifications"
       className="relative z-10 bg-[#18253F] pt-36"
       variants={staggerContainer}
       initial="hidden"

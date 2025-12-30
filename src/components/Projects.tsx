@@ -173,6 +173,7 @@ export const Projects: React.FC = () => {
 
   return (
     <motion.section
+      id="projects"
       className="relative z-10 bg-[#18253F] pb-28 pt-28"
       ref={locationRef}
       variants={staggerContainer}

@@ -215,6 +215,7 @@ const awsServices = [
 export const Skills: React.FC = () => {
   return (
     <motion.section
+      id="skills"
       className="relative z-10 bg-[#18253F] pt-36"
       variants={staggerContainer}
       initial="hidden"

@@ -49,5 +49,7 @@ const timelineItems: TimelineItem[] = [
 ];
 
 export const Education: React.FC = () => {
-  return <TimeLine timelineItems={timelineItems} title="Education" />;
+  return (
+    <TimeLine timelineItems={timelineItems} title="Education" id="education" />
+  );
 };

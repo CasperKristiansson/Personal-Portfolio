@@ -6,7 +6,7 @@ import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { ExternalLinks } from "./components/ExternalLinks";
 import { Hero } from "./components/Hero";
-import { Icons } from "./components/Icons";
+import { StickyNav } from "./components/StickyNav";
 import { Projects } from "./components/Projects";
 import { Rewards } from "./components/Rewards";
 import { Skills } from "./components/Skills";
@@ -26,8 +26,8 @@ export const App: React.FC = () => {
       animate="animate"
       exit="exit"
     >
-      <Icons />
       <Hero />
+      <StickyNav />
       <About />
       <Projects />
       <Experience />

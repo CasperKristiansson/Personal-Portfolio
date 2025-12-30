@@ -17,7 +17,8 @@ export type TimelineItem = {
 export const TimeLine: React.FC<{
   timelineItems: TimelineItem[];
   title: string;
-}> = ({ timelineItems, title }) => {
+  id?: string;
+}> = ({ timelineItems, title, id }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isCompact, setIsCompact] = useState(true);
 
@@ -34,6 +35,7 @@ export const TimeLine: React.FC<{
 
   return (
     <motion.section
+      id={id}
       className="relative z-10 bg-[#18253F] pt-36"
       initial="hidden"
       whileInView="visible"
