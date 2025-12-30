@@ -50,25 +50,38 @@ const ImageFrame: React.FC<ImageFrameProps> = ({
   );
 };
 
-const TagList: React.FC<{ tags: string[]; max?: number }> = ({
-  tags,
-  max = 3,
-}) => {
+const TagList: React.FC<{
+  tags: string[];
+  max?: number;
+  size?: "default" | "compact";
+}> = ({ tags, max = 3, size = "default" }) => {
   const visible = tags.slice(0, max);
   const remaining = tags.length - visible.length;
+  const tagClass =
+    size === "compact"
+      ? "px-2 py-0.5 text-[10px]"
+      : "px-2.5 py-1 text-[11px]";
 
   return (
     <div className="mt-4 flex flex-wrap gap-2">
       {visible.map((tag) => (
         <span
           key={tag}
-          className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-200/80 whitespace-nowrap"
+          className={clsx(
+            "rounded-full border border-white/10 bg-white/5 font-semibold uppercase tracking-wide text-slate-200/80 whitespace-nowrap",
+            tagClass,
+          )}
         >
           {tag}
         </span>
       ))}
       {remaining > 0 && (
-        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-200/60 whitespace-nowrap">
+        <span
+          className={clsx(
+            "rounded-full border border-white/10 bg-white/5 font-semibold uppercase tracking-wide text-slate-200/60 whitespace-nowrap",
+            tagClass,
+          )}
+        >
           +{remaining}
         </span>
       )}
@@ -125,14 +138,14 @@ export const Projects: React.FC = () => {
     },
     "pydantic-fixturegen": {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-1 lg:row-end-2",
-      imageAspect: "aspect-[16/6]",
+      imageAspect: "aspect-[16/5]",
     },
     "cpython-patch-pr-action": {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-2 lg:row-end-3",
-      imageAspect: "aspect-[16/6]",
+      imageAspect: "aspect-[16/5]",
     },
     pktraffic: {
-      cardClass: "lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-5",
+      cardClass: "lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-4",
       imageAspect: "aspect-[4/3]",
     },
     "podcast-tracker": {
@@ -143,7 +156,16 @@ export const Projects: React.FC = () => {
       cardClass: "lg:col-start-3 lg:col-end-6 lg:row-start-4 lg:row-end-5",
       imageAspect: "aspect-[16/7]",
     },
+    movieboxdb: {
+      cardClass: "lg:col-start-1 lg:col-end-3 lg:row-start-4 lg:row-end-5",
+      imageAspect: "aspect-[4/3]",
+    },
   };
+
+  const compactHighlightIds = new Set([
+    "pydantic-fixturegen",
+    "cpython-patch-pr-action",
+  ]);
 
   if (!spotlight) {
     return null;
@@ -187,12 +209,13 @@ export const Projects: React.FC = () => {
                 imageAspect: "aspect-[16/10]",
               };
               const isSpotlight = project.id === spotlight.id;
+              const isCompact = compactHighlightIds.has(project.id);
               return (
                 <motion.article
                   key={project.id}
                   className={clsx(
                     cardBase,
-                    "h-auto p-4",
+                    isCompact ? "h-auto p-3" : "h-auto p-4",
                     layout.cardClass,
                     isSpotlight &&
                       "rounded-3xl border-sky-300/30 bg-gradient-to-br from-[#111c32] via-[#121d38] to-[#0d1934]",
@@ -215,6 +238,7 @@ export const Projects: React.FC = () => {
                       className={clsx(
                         "mt-2 font-semibold text-white",
                         isSpotlight ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl",
+                        isCompact && "text-base sm:text-lg",
                       )}
                     >
                       {project.title}
@@ -223,6 +247,7 @@ export const Projects: React.FC = () => {
                       className={clsx(
                         "mt-2 text-sm text-slate-300",
                         isSpotlight ? "line-clamp-2 sm:text-base" : "line-clamp-2",
+                        isCompact && "text-xs sm:text-sm",
                       )}
                     >
                       {project.summary}
@@ -232,19 +257,38 @@ export const Projects: React.FC = () => {
                         {project.outcome}
                       </p>
                     )}
-                    <TagList tags={project.tags} max={isSpotlight ? 4 : 3} />
-                    <div className="mt-auto flex flex-wrap gap-3 pt-4">
+                    <TagList
+                      tags={project.tags}
+                      max={isSpotlight ? 4 : 3}
+                      size={isCompact ? "compact" : "default"}
+                    />
+                    <div
+                      className={clsx(
+                        "flex flex-wrap gap-3",
+                        isSpotlight ? "mt-4" : "mt-auto",
+                        isCompact ? "pt-3" : "pt-4",
+                      )}
+                    >
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className={secondaryCta}
+                          className={clsx(
+                            secondaryCta,
+                            isCompact && "px-3 py-1.5 text-xs",
+                          )}
                         >
                           Live
                         </a>
                       )}
-                      <Link to={project.path} className={primaryCta}>
+                      <Link
+                        to={project.path}
+                        className={clsx(
+                          primaryCta,
+                          isCompact && "px-3 py-1.5 text-xs",
+                        )}
+                      >
                         {isSpotlight ? "Case Study" : "Details"}
                       </Link>
                     </div>

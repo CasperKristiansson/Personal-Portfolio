@@ -111,7 +111,7 @@ export const projects: Project[] = [
     categories: ["Product", "Web"],
     image: movieboxdbOverview,
     path: "/articles/movieboxdb",
-    tier: "more",
+    tier: "notable",
   },
   {
     id: "image-editor",
