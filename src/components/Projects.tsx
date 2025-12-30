@@ -153,12 +153,12 @@ export const Projects: React.FC = () => {
       imageAspect: "aspect-[16/7]",
     },
     "react-whiteboard-studio": {
-      cardClass: "lg:col-start-3 lg:col-end-6 lg:row-start-4 lg:row-end-5",
-      imageAspect: "aspect-[16/7]",
+      cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-4 lg:row-end-5",
+      imageAspect: "aspect-[16/10]",
     },
     movieboxdb: {
-      cardClass: "lg:col-start-1 lg:col-end-3 lg:row-start-4 lg:row-end-5",
-      imageAspect: "aspect-[4/3]",
+      cardClass: "lg:col-start-1 lg:col-end-4 lg:row-start-4 lg:row-end-5",
+      imageAspect: "aspect-[16/9]",
     },
   };
 
