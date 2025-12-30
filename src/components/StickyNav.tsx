@@ -27,7 +27,8 @@ export const StickyNav: React.FC = () => {
   const [isStuck, setIsStuck] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
-  const menuRef = useRef<HTMLLIElement | null>(null);
+  const menuRefDesktop = useRef<HTMLLIElement | null>(null);
+  const menuRefMobile = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateOffset = () => {
@@ -58,7 +59,11 @@ export const StickyNav: React.FC = () => {
   useEffect(() => {
     if (!menuOpen) return;
     const handleClick = (event: MouseEvent) => {
-      if (!menuRef.current?.contains(event.target as Node)) {
+      const target = event.target as Node;
+      if (
+        !menuRefDesktop.current?.contains(target) &&
+        !menuRefMobile.current?.contains(target)
+      ) {
         setMenuOpen(false);
       }
     };
@@ -137,7 +142,7 @@ export const StickyNav: React.FC = () => {
                   </a>
                 </li>
               ))}
-              <li className="relative" ref={menuRef}>
+              <li className="relative hidden lg:block" ref={menuRefDesktop}>
                 <button
                   type="button"
                   onClick={() => setMenuOpen((prev) => !prev)}
@@ -198,6 +203,65 @@ export const StickyNav: React.FC = () => {
               </li>
             </ul>
             <div className="flex items-center gap-3">
+              <div className="relative lg:hidden" ref={menuRefMobile}>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen((prev) => !prev)}
+                  aria-expanded={menuOpen}
+                  aria-controls="nav-more-menu-mobile"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-white/80 transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base"
+                >
+                  More
+                  <IconChevronDown
+                    size={18}
+                    className={`transition duration-200 ${
+                      menuOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {menuOpen && (
+                  <div
+                    id="nav-more-menu-mobile"
+                    className="absolute right-0 top-10 min-w-[200px] rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]"
+                  >
+                    <ul className="flex flex-col gap-2 text-sm font-medium text-slate-100">
+                      {primaryLinks.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            aria-current={
+                              activeId === link.href.slice(1)
+                                ? "page"
+                                : undefined
+                            }
+                            onClick={() => setMenuOpen(false)}
+                            className="block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                      <li className="border-t border-white/10 pt-2" />
+                      {moreLinks.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            aria-current={
+                              activeId === link.href.slice(1)
+                                ? "page"
+                                : undefined
+                            }
+                            onClick={() => setMenuOpen(false)}
+                            className="block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
               <a
                 href="https://www.linkedin.com/in/casperKristiansson/"
                 target="_blank"
