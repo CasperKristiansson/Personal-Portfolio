@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconChevronDown,
+} from "@tabler/icons-react";
 
 const primaryLinks = [
   { label: "Projects", href: "#projects" },
-  { label: "Work Exp", href: "#experience" },
+  { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
 ];
@@ -21,7 +25,9 @@ const allLinks = [...primaryLinks, ...moreLinks];
 export const StickyNav: React.FC = () => {
   const [activeId, setActiveId] = useState("projects");
   const [isStuck, setIsStuck] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
+  const menuRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     const updateOffset = () => {
@@ -48,6 +54,27 @@ export const StickyNav: React.FC = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleClick = (event: MouseEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleClick);
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      window.removeEventListener("click", handleClick);
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const sections = allLinks
