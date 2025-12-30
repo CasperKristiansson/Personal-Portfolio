@@ -345,7 +345,8 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
       const hoverTarget = closestIndex;
       const hover = hoverRef.current;
       hover.index = hoverTarget;
-      hover.fade = lerp(hover.fade, hoverTarget === -1 ? 0 : 1, 0.08);
+      hover.fade = lerp(hover.fade, hoverTarget === -1 ? 0 : 1, 0.04);
+      const connectionFade = hover.fade * hover.fade;
 
       if (hover.index === -1 || hover.fade < 0.05) {
         return;
@@ -368,7 +369,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         const nx = neighbor.x * width + neighborOffsetX;
         const ny = neighbor.y * height + neighborOffsetY;
         const distance = Math.hypot(baseX - nx, baseY - ny);
-        const intensity = Math.max(0, 1 - distance / 260) * hover.fade;
+        const intensity = Math.max(0, 1 - distance / 260) * connectionFade;
         if (intensity <= 0) {
           return;
         }
@@ -389,7 +390,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         ctx.restore();
       });
       ctx.save();
-      ctx.globalAlpha = hover.fade;
+      ctx.globalAlpha = connectionFade;
       ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
       ctx.shadowBlur = 18;
       ctx.shadowColor = "rgba(255, 255, 255, 0.75)";

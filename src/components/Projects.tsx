@@ -180,7 +180,7 @@ export const Projects: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 sm:px-6 lg:px-10">
         <motion.div
           className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
           variants={staggerFast}
