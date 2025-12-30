@@ -39,7 +39,29 @@ const programmingLanguages = [
 const toolsFrameworks = [
   { name: "GitHub", color: "181717", logo: "github", logoColor: "white" },
   { name: "React", color: "61DAFB", logo: "react", logoColor: "black" },
+  { name: "Astro", color: "FF5D01", logo: "astro", logoColor: "white" },
+  { name: "Vite", color: "646CFF", logo: "vite", logoColor: "white" },
+  {
+    name: "Framer Motion",
+    color: "0055FF",
+    logo: "framer",
+    logoColor: "white",
+  },
+  {
+    name: "React Hook Form",
+    color: "EC5990",
+    logo: "reacthookform",
+    logoColor: "white",
+  },
+  { name: "Zod", color: "3E67B1", logo: "zod", logoColor: "white" },
+  { name: "Zustand", color: "000000", logo: "zustand", logoColor: "white" },
   { name: "Redux", color: "764ABC", logo: "redux", logoColor: "white" },
+  {
+    name: "Redux Toolkit",
+    color: "764ABC",
+    logo: "redux",
+    logoColor: "white",
+  },
   { name: "GraphQL", color: "E10098", logo: "graphql", logoColor: "white" },
   { name: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
   { name: "Terraform", color: "623CE4", logo: "terraform", logoColor: "white" },
@@ -58,6 +80,14 @@ const toolsFrameworks = [
     logo: "tailwindcss",
     logoColor: "white",
   },
+  { name: "Firebase", color: "FFCA28", logo: "firebase", logoColor: "black" },
+  {
+    name: "WordPress",
+    color: "21759B",
+    logo: "wordpress",
+    logoColor: "white",
+  },
+  { name: "OpenAI", color: "000000", logo: "openai", logoColor: "white" },
   { name: "ESLint", color: "4B32C3", logo: "eslint", logoColor: "white" },
   {
     name: "Serverless Framework",
@@ -99,6 +129,18 @@ const awsServices = [
     name: "AWS Lambda",
     color: "3B25C1",
     logo: "awslambda",
+    logoColor: "white",
+  },
+  {
+    name: "AWS Amplify",
+    color: "3B25C1",
+    logo: "awsamplify",
+    logoColor: "white",
+  },
+  {
+    name: "AWS CDK",
+    color: "3B25C1",
+    logo: "amazonwebservices",
     logoColor: "white",
   },
   {
