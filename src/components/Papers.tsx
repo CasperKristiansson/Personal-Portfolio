@@ -19,12 +19,16 @@ export const Papers: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <motion.h1
-        className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40"
-        variants={slideLeftItem}
-      >
-        Papers
-      </motion.h1>
+      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-50 mb-8">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <motion.h1
+            className="text-4xl font-bold text-white sm:text-5xl"
+            variants={slideLeftItem}
+          >
+            Papers
+          </motion.h1>
+        </div>
+      </div>
       <div className="relative mx-auto h-[600px] w-full max-w-[1320px] overflow-hidden rounded-lg px-2">
         <motion.img
           className="hidden h-[600px] w-full rounded-lg object-cover sm:flex"

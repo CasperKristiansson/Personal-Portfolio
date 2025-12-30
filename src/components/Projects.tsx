@@ -181,27 +181,27 @@ export const Projects: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 sm:px-6 lg:px-10">
-        <motion.div
-          className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
-          variants={staggerFast}
-        >
-          <div>
-            <motion.h1
-              className="text-4xl font-bold text-white sm:text-5xl"
-              variants={fadeUpItem}
-            >
-              Projects
-            </motion.h1>
-            <motion.p
-              className="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-sky-200/80"
-              variants={fadeUpItem}
-            >
-              Selected work
-            </motion.p>
-          </div>
-        </motion.div>
+      <motion.div
+        className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-50 mb-8"
+        variants={staggerFast}
+      >
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <motion.h1
+            className="text-4xl font-bold text-white sm:text-5xl"
+            variants={fadeUpItem}
+          >
+            Projects
+          </motion.h1>
+          <motion.p
+            className="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-sky-200/80"
+            variants={fadeUpItem}
+          >
+            Selected work
+          </motion.p>
+        </div>
+      </motion.div>
 
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-4 sm:px-6 lg:px-10">
         <div>
           <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 lg:auto-rows-[minmax(220px,auto)]">
             {combinedHighlights.map((project) => {

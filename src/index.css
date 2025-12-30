@@ -26,6 +26,10 @@
   --card-p: 0;
 }
 
+:root {
+  --sticky-nav-offset: 96px;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }

@@ -41,12 +41,16 @@ export const TimeLine: React.FC<{
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <motion.h1
-        className="mx-auto mb-14 max-w-[2000px] text-center text-6xl font-bold text-white sm:pl-10 sm:text-left lg:pl-40"
-        variants={slideLeftItem}
-      >
-        {title}
-      </motion.h1>
+      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-50 mb-8">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <motion.h1
+            className="text-4xl font-bold text-white sm:text-5xl"
+            variants={slideLeftItem}
+          >
+            {title}
+          </motion.h1>
+        </div>
+      </div>
       {isSmallScreen ? (
         timelineItems.map((item, index) => {
           if (item.hide && isCompact) return null;

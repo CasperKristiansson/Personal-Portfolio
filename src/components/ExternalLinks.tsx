@@ -21,12 +21,16 @@ export const ExternalLinks: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <motion.h1
-        className="mx-auto mb-14 max-w-[2000px] text-center text-5xl font-bold text-white sm:pl-10 sm:text-left sm:text-6xl lg:pl-40"
-        variants={slideLeftItem}
-      >
-        External Links
-      </motion.h1>
+      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-50 mb-8">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <motion.h1
+            className="text-4xl font-bold text-white sm:text-5xl"
+            variants={slideLeftItem}
+          >
+            External Links
+          </motion.h1>
+        </div>
+      </div>
       <div className="mx-auto w-full max-w-[1000px] px-4 sm:px-10 2xl:max-w-[1400px]">
         <motion.ul className="list-disc space-y-4 text-lg text-white" variants={staggerFast}>
           <motion.a

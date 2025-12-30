@@ -46,12 +46,16 @@ export const Certificates: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <motion.h1
-        className="mx-auto mb-14 max-w-[2000px] text-center text-5xl font-bold text-white sm:pl-10 sm:text-left sm:text-6xl lg:pl-40"
-        variants={slideLeftItem}
-      >
-        Certifications
-      </motion.h1>
+      <div className="pointer-events-none sticky top-[calc(var(--sticky-nav-offset)-4rem)] z-50 mb-8">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <motion.h1
+            className="text-4xl font-bold text-white sm:text-5xl"
+            variants={slideLeftItem}
+          >
+            Certifications
+          </motion.h1>
+        </div>
+      </div>
       <div className="w-full px-4 sm:px-10 2xl:mx-auto 2xl:max-w-[1400px]">
         <motion.div
           className="grid grid-cols-1 gap-6 md:grid-cols-2"
