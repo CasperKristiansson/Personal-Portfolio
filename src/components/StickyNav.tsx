@@ -105,7 +105,11 @@ export const StickyNav: React.FC = () => {
 
   return (
     <nav ref={navRef} className="sticky top-0 z-40">
-      <div className="mx-auto w-full max-w-[1400px] py-4 pr-6 pl-4 sm:pr-8 sm:pl-6 lg:pr-12 lg:pl-10">
+      <div
+        className={`mx-auto w-full max-w-[1400px] pr-6 pl-4 transition-[padding] duration-300 sm:pr-8 sm:pl-6 lg:pr-12 lg:pl-10 ${
+          isStuck ? "py-2" : "py-4"
+        }`}
+      >
         <div
           className={`rounded-2xl border border-white/10 bg-[#0f1a33] px-6 py-3 transition duration-300 ${
             isStuck
@@ -117,7 +121,7 @@ export const StickyNav: React.FC = () => {
             <div className="hidden min-w-[140px] lg:block" aria-hidden="true" />
             <ul className="flex flex-1 flex-wrap items-center justify-center gap-6 text-sm font-semibold text-white sm:text-base">
               {primaryLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="hidden lg:block">
                   <a
                     href={link.href}
                     aria-current={
@@ -155,6 +159,23 @@ export const StickyNav: React.FC = () => {
                     className="absolute top-8 left-1/2 min-w-[180px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]"
                   >
                     <ul className="flex flex-col gap-2 text-sm font-medium text-slate-100">
+                      {primaryLinks.map((link) => (
+                        <li key={link.href} className="lg:hidden">
+                          <a
+                            href={link.href}
+                            aria-current={
+                              activeId === link.href.slice(1)
+                                ? "page"
+                                : undefined
+                            }
+                            onClick={() => setMenuOpen(false)}
+                            className="block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none"
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                      <li className="border-t border-white/10 pt-2 lg:hidden" />
                       {moreLinks.map((link) => (
                         <li key={link.href}>
                           <a
