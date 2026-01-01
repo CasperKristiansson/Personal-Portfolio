@@ -160,7 +160,7 @@ const awsServices = [
   {
     name: "AWS CloudFormation",
     color: "3B25C1",
-    logo: "cloudinary",
+    logo: "cloudinaryy",
     logoColor: "white",
   },
   {
@@ -214,7 +214,7 @@ const awsServices = [
   {
     name: "Amazon CloudFront",
     color: "3B25C1",
-    logo: "cloudinary",
+    logo: "cloudinaryy",
     logoColor: "white",
   },
   {
