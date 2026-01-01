@@ -4,6 +4,29 @@ import {
   IconGitPullRequest,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import amazonApiGatewayIcon from "../assets/aws/amazon-api-gateway.png";
+import amazonBedrockIcon from "../assets/aws/amazon-bedrock.png";
+import amazonCloudFrontIcon from "../assets/aws/amazon-cloudfront.png";
+import amazonCloudWatchIcon from "../assets/aws/amazon-cloudwatch.png";
+import amazonCognitoIcon from "../assets/aws/amazon-cognito.png";
+import amazonDynamoDbIcon from "../assets/aws/amazon-dynamodb.png";
+import amazonEc2Icon from "../assets/aws/amazon-ec2.png";
+import amazonEcrIcon from "../assets/aws/amazon-ecr.png";
+import amazonEcsIcon from "../assets/aws/amazon-ecs.png";
+import amazonRdsIcon from "../assets/aws/amazon-rds.png";
+import amazonRoute53Icon from "../assets/aws/amazon-route53.png";
+import amazonS3Icon from "../assets/aws/amazon-s3.svg";
+import amazonSnsIcon from "../assets/aws/amazon-sns.png";
+import amazonSqsIcon from "../assets/aws/amazon-sqs.png";
+import amazonVpcIcon from "../assets/aws/amazon-vpc.svg";
+import awsAmplifyIcon from "../assets/aws/aws-amplify.png";
+import awsAppSyncIcon from "../assets/aws/aws-appsync.png";
+import awsCdkIcon from "../assets/aws/aws-cdk.png";
+import awsCloudFormationIcon from "../assets/aws/aws-cloudformation.png";
+import awsFargateIcon from "../assets/aws/aws-fargate.png";
+import awsIamIcon from "../assets/aws/aws-iam.svg";
+import awsLambdaIcon from "../assets/aws/aws-lambda.png";
+import awsSystemsManagerIcon from "../assets/aws/aws-systems-manager.png";
 import {
   fadeInItem,
   fadeUpItem,
@@ -13,6 +36,42 @@ import {
   viewportOnce,
 } from "../shared/motion";
 import openAiLogo from "../assets/openai-logo.png";
+
+type BadgeItem = {
+  name: string;
+  color?: string;
+  logo?: string;
+  logoColor?: string;
+  image?: string;
+  badgeColor?: string;
+};
+
+const renderBadge = (item: BadgeItem) => {
+  if (item.image) {
+    return (
+      <div
+        className="inline-flex h-full items-center gap-1.5 rounded-[4px] px-2 text-white sm:gap-2"
+        style={{ backgroundColor: item.badgeColor ?? "#0b0b0b" }}
+      >
+        <img
+          src={item.image}
+          alt={`${item.name} logo`}
+          className="h-6 w-6 object-contain"
+        />
+        <span className="text-[18px] leading-none text-white">
+          {item.name}
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={`https://img.shields.io/badge/${item.name}-${item.color}?logo=${item.logo}&logoColor=${item.logoColor}`}
+      className="h-full"
+    />
+  );
+};
 
 const programmingLanguages = [
   { name: "Python", color: "FFD43B", logo: "python", logoColor: "blue" },
@@ -37,7 +96,7 @@ const programmingLanguages = [
   { name: "PHP", color: "777BB4", logo: "php", logoColor: "white" },
 ];
 
-const toolsFrameworks = [
+const toolsFrameworks: BadgeItem[] = [
   { name: "GitHub", color: "181717", logo: "github", logoColor: "white" },
   { name: "React", color: "61DAFB", logo: "react", logoColor: "black" },
   { name: "Next.js", color: "000000", logo: "nextdotjs", logoColor: "white" },
@@ -89,7 +148,7 @@ const toolsFrameworks = [
     logo: "wordpress",
     logoColor: "white",
   },
-  { name: "OpenAI", image: openAiLogo },
+  { name: "OpenAI", image: openAiLogo, badgeColor: "#0b0b0b" },
   { name: "ESLint", color: "4B32C3", logo: "eslint", logoColor: "white" },
   {
     name: "Serverless Framework",
@@ -126,145 +185,126 @@ const toolsFrameworks = [
   },
 ];
 
-const awsServices = [
+const awsServices: BadgeItem[] = [
   {
     name: "AWS Lambda",
-    color: "3B25C1",
-    logo: "awslambda",
-    logoColor: "white",
+    image: awsLambdaIcon,
+    badgeColor: "#ed7100",
   },
   {
     name: "Amazon Bedrock",
-    color: "3B25C1",
-    logo: "amazonbedrock",
-    logoColor: "white",
+    image: amazonBedrockIcon,
+    badgeColor: "#01a88d",
   },
   {
     name: "AWS Amplify",
-    color: "3B25C1",
-    logo: "awsamplify",
-    logoColor: "white",
+    image: awsAmplifyIcon,
+    badgeColor: "#dd344c",
   },
   {
     name: "AWS CDK",
-    color: "3B25C1",
-    logo: "amazonwebservices",
-    logoColor: "white",
+    image: awsCdkIcon,
+    badgeColor: "#c925d1",
   },
   {
     name: "AWS Identity and Access Management (IAM)",
-    color: "3B25C1",
-    logo: "amazonwebservices",
-    logoColor: "white",
+    image: awsIamIcon,
+    badgeColor: "#dd344c",
   },
   {
     name: "Amazon Virtual Private Cloud (Amazon VPC)",
-    color: "3B25C1",
-    logo: "amazonwebservices",
-    logoColor: "white",
+    image: amazonVpcIcon,
+    badgeColor: "#8c4fff",
   },
   {
     name: "Amazon DynamoDB",
-    color: "3B25C1",
-    logo: "Amazon%20DynamoDB",
-    logoColor: "white",
+    image: amazonDynamoDbIcon,
+    badgeColor: "#c925d1",
   },
-  { name: "Amazon S3", color: "3B25C1", logo: "amazon-s3", logoColor: "white" },
+  {
+    name: "Amazon S3",
+    image: amazonS3Icon,
+    badgeColor: "#7aa116",
+  },
   {
     name: "AWS CloudFormation",
-    color: "3B25C1",
-    logo: "cloudinaryy",
-    logoColor: "white",
+    image: awsCloudFormationIcon,
+    badgeColor: "#e7157b",
   },
   {
     name: "Amazon API Gateway",
-    color: "3B25C1",
-    logo: "amazonapigateway",
-    logoColor: "white",
+    image: amazonApiGatewayIcon,
+    badgeColor: "#8c4fff",
   },
   {
     name: "AWS AppSync",
-    color: "3B25C1",
-    logo: "awsappsync",
-    logoColor: "white",
+    image: awsAppSyncIcon,
+    badgeColor: "#e7157b",
   },
   {
     name: "Amazon SQS",
-    color: "3B25C1",
-    logo: "amazonsqs",
-    logoColor: "white",
+    image: amazonSqsIcon,
+    badgeColor: "#e7157b",
   },
   {
     name: "Amazon Simple Notification Service (Amazon SNS)",
-    color: "3B25C1",
-    logo: "amazonwebservices",
-    logoColor: "white",
+    image: amazonSnsIcon,
+    badgeColor: "#e7157b",
   },
   {
     name: "Amazon API Gateway (WebSocket API)",
-    color: "3B25C1",
-    logo: "amazonapigateway",
-    logoColor: "white",
+    image: amazonApiGatewayIcon,
+    badgeColor: "#8c4fff",
   },
   {
     name: "Amazon EC2",
-    color: "3B25C1",
-    logo: "amazon-ec2",
-    logoColor: "white",
+    image: amazonEc2Icon,
+    badgeColor: "#ed7100",
   },
   {
     name: "Amazon ECS",
-    color: "3B25C1",
-    logo: "amazon-ecs",
-    logoColor: "white",
+    image: amazonEcsIcon,
+    badgeColor: "#ed7100",
   },
   {
     name: "Amazon Elastic Container Registry (Amazon ECR)",
-    color: "3B25C1",
-    logo: "amazonwebservices",
-    logoColor: "white",
+    image: amazonEcrIcon,
+    badgeColor: "#ed7100",
   },
   {
     name: "Amazon RDS",
-    color: "3B25C1",
-    logo: "amazon-rds",
-    logoColor: "white",
+    image: amazonRdsIcon,
+    badgeColor: "#c925d1",
   },
   {
     name: "Amazon Route 53",
-    color: "3B25C1",
-    logo: "amazon-route-53",
-    logoColor: "white",
+    image: amazonRoute53Icon,
+    badgeColor: "#8c4fff",
   },
   {
     name: "Amazon CloudFront",
-    color: "3B25C1",
-    logo: "cloudinaryy",
-    logoColor: "white",
+    image: amazonCloudFrontIcon,
+    badgeColor: "#8c4fff",
   },
   {
     name: "Amazon CloudWatch",
-    color: "3B25C1",
-    logo: "amazon-cloudwatch",
-    logoColor: "white",
+    image: amazonCloudWatchIcon,
+    badgeColor: "#e7157b",
   },
   {
     name: "AWS Systems Manager (SSM)",
-    color: "3B25C1",
-    logo: "amazonwebservices",
-    logoColor: "white",
+    image: awsSystemsManagerIcon,
+    badgeColor: "#e7157b",
   },
   {
     name: "Amazon Cognito",
-    color: "3B25C1",
-    logo: "amazon-cognito",
-    logoColor: "white",
+    image: amazonCognitoIcon,
+    badgeColor: "#dd344c",
   },
   {
     name: "AWS Fargate",
-    color: "3B25C1",
-    logo: "awsfargate",
-    logoColor: "white",
+    image: awsFargateIcon,
+    badgeColor: "#ed7100",
   },
 ];
 
@@ -305,10 +345,7 @@ export const Skills: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <img
-                src={`https://img.shields.io/badge/${service.name}-${service.color}?logo=${service.logo}&logoColor=${service.logoColor}`}
-                className="h-full"
-              />
+              {renderBadge(service)}
             </motion.div>
           ))}
         </motion.div>
@@ -351,23 +388,7 @@ export const Skills: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              {"image" in tool ? (
-                <div className="inline-flex h-full items-center gap-1.5 rounded-[4px] bg-[#0b0b0b] px-2 text-white sm:gap-2">
-                  <img
-                    src={tool.image}
-                    alt={`${tool.name} logo`}
-                    className="h-6 w-6 object-contain"
-                  />
-                  <span className="text-[18px] leading-none text-white">
-                    {tool.name}
-                  </span>
-                </div>
-              ) : (
-                <img
-                  src={`https://img.shields.io/badge/${tool.name}-${tool.color}?logo=${tool.logo}&logoColor=${tool.logoColor}`}
-                  className="h-full"
-                />
-              )}
+              {renderBadge(tool)}
             </motion.div>
           ))}
         </motion.div>
