@@ -29,7 +29,7 @@ type ShootingStar = {
 };
 
 type HeroStarfieldCanvasProps = {
-  containerRef: React.RefObject<HTMLElement>;
+  containerRef: React.RefObject<HTMLElement | null>;
 };
 
 const SEED = "casper-starfield";

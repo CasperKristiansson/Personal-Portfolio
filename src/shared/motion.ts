@@ -1,6 +1,6 @@
 import type { Variants } from "framer-motion";
 
-const easeOut = [0.16, 1, 0.3, 1];
+const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const pageVariants: Variants = {
   initial: { opacity: 0 },
