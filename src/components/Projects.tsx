@@ -87,6 +87,8 @@ const TagList: React.FC<{
   );
 };
 
+
+
 export const Projects: React.FC = () => {
   const locationRef = React.useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -317,7 +319,7 @@ export const Projects: React.FC = () => {
                 key={project.id}
                 className={clsx(
                   cardBase,
-                  "min-h-[360px] min-w-[240px] snap-start self-stretch p-4 sm:min-h-[400px] sm:min-w-[300px] lg:min-h-[420px] lg:min-w-[340px]",
+                  "!h-[420px] min-w-[240px] snap-start self-stretch p-4 sm:!h-[440px] sm:min-w-[300px] lg:!h-[460px] lg:min-w-[340px]",
                 )}
                 variants={fadeUpItem}
               >
