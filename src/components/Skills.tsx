@@ -151,6 +151,18 @@ const awsServices = [
     logoColor: "white",
   },
   {
+    name: "AWS Identity and Access Management (IAM)",
+    color: "3B25C1",
+    logo: "amazonwebservices",
+    logoColor: "white",
+  },
+  {
+    name: "Amazon Virtual Private Cloud (Amazon VPC)",
+    color: "3B25C1",
+    logo: "amazonwebservices",
+    logoColor: "white",
+  },
+  {
     name: "Amazon DynamoDB",
     color: "3B25C1",
     logo: "Amazon%20DynamoDB",
@@ -182,6 +194,12 @@ const awsServices = [
     logoColor: "white",
   },
   {
+    name: "Amazon Simple Notification Service (Amazon SNS)",
+    color: "3B25C1",
+    logo: "amazonwebservices",
+    logoColor: "white",
+  },
+  {
     name: "Amazon API Gateway (WebSocket API)",
     color: "3B25C1",
     logo: "amazonapigateway",
@@ -197,6 +215,12 @@ const awsServices = [
     name: "Amazon ECS",
     color: "3B25C1",
     logo: "amazon-ecs",
+    logoColor: "white",
+  },
+  {
+    name: "Amazon Elastic Container Registry (Amazon ECR)",
+    color: "3B25C1",
+    logo: "amazonwebservices",
     logoColor: "white",
   },
   {
@@ -221,6 +245,12 @@ const awsServices = [
     name: "Amazon CloudWatch",
     color: "3B25C1",
     logo: "amazon-cloudwatch",
+    logoColor: "white",
+  },
+  {
+    name: "AWS Systems Manager (SSM)",
+    color: "3B25C1",
+    logo: "amazonwebservices",
     logoColor: "white",
   },
   {
