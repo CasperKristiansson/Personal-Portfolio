@@ -12,6 +12,7 @@ import {
   staggerFast,
   viewportOnce,
 } from "../shared/motion";
+import openAiLogo from "../assets/openai-logo.png";
 
 const programmingLanguages = [
   { name: "Python", color: "FFD43B", logo: "python", logoColor: "blue" },
@@ -88,7 +89,7 @@ const toolsFrameworks = [
     logo: "wordpress",
     logoColor: "white",
   },
-  { name: "OpenAI", color: "000000", logo: "openai", logoColor: "white" },
+  { name: "OpenAI", image: openAiLogo },
   { name: "ESLint", color: "4B32C3", logo: "eslint", logoColor: "white" },
   {
     name: "Serverless Framework",
@@ -350,10 +351,23 @@ export const Skills: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <img
-                src={`https://img.shields.io/badge/${tool.name}-${tool.color}?logo=${tool.logo}&logoColor=${tool.logoColor}`}
-                className="h-full"
-              />
+              {"image" in tool ? (
+                <div className="inline-flex h-full items-center gap-1.5 rounded-[4px] bg-[#0b0b0b] px-2 font-semibold text-white sm:gap-2">
+                  <img
+                    src={tool.image}
+                    alt={`${tool.name} logo`}
+                    className="h-6 w-6 object-contain"
+                  />
+                  <span className="text-[18px] leading-none font-semibold text-white">
+                    {tool.name}
+                  </span>
+                </div>
+              ) : (
+                <img
+                  src={`https://img.shields.io/badge/${tool.name}-${tool.color}?logo=${tool.logo}&logoColor=${tool.logoColor}`}
+                  className="h-full"
+                />
+              )}
             </motion.div>
           ))}
         </motion.div>
