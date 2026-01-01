@@ -159,7 +159,7 @@ export const TimeLine: React.FC<{
                   <motion.li
                     key={index}
                     style={{ gridTemplateColumns: "1fr auto 2fr" }}
-                    className="mt-[-10px]"
+                    className="group mt-[-10px]"
                     variants={fadeUpItem}
                     initial="hidden"
                     whileInView="visible"
@@ -174,7 +174,7 @@ export const TimeLine: React.FC<{
                       </p>
                     </div>
                     <div className="timeline-middle">
-                      <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 ease-out hover:scale-110 hover:bg-emerald-400 hover:shadow-[0_0_18px_rgba(52,211,153,0.75)] motion-reduce:transform-none motion-reduce:transition-none" />
+                      <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-emerald-400 group-hover:shadow-[0_0_18px_rgba(52,211,153,0.75)] motion-reduce:transform-none motion-reduce:transition-none" />
                     </div>
                     <div className="timeline-end ml-6 h-full">
                       <div className="text-2xl font-bold text-white">
