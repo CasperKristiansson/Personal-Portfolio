@@ -182,7 +182,7 @@ export const Projects: React.FC = () => {
       viewport={viewportOnce}
     >
       <motion.div
-        className="pointer-events-none mb-10 md:sticky md:top-0 md:z-[60] md:mb-0 md:flex md:h-[var(--sticky-nav-offset)] md:items-center"
+        className="pointer-events-none mb-10 lg:sticky lg:top-0 lg:z-[60] lg:mb-0 lg:flex lg:h-[var(--sticky-nav-offset)] lg:items-center"
         variants={staggerFast}
       >
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
