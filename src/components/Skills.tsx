@@ -46,19 +46,30 @@ type BadgeItem = {
   badgeColor?: string;
 };
 
-const renderBadge = (item: BadgeItem) => {
+const renderBadge = (
+  item: BadgeItem,
+  options?: { truncate?: boolean; maxWidthStyle?: string }
+) => {
   if (item.image) {
+    const truncateClass = options?.truncate ? "min-w-0 overflow-hidden" : "";
     return (
       <div
-        className="inline-flex h-full items-center gap-1.5 rounded-[4px] px-2 text-white sm:gap-2"
-        style={{ backgroundColor: item.badgeColor ?? "#0b0b0b" }}
+        className={`inline-flex h-full items-center gap-1.5 rounded-[4px] px-2 text-white sm:gap-2 ${truncateClass}`}
+        style={{
+          backgroundColor: item.badgeColor ?? "#0b0b0b",
+          maxWidth: options?.maxWidthStyle,
+        }}
       >
         <img
           src={item.image}
           alt={`${item.name} logo`}
           className="h-6 w-6 object-contain"
         />
-        <span className="text-[18px] leading-none text-white">
+        <span
+          className={`text-[18px] leading-none text-white ${
+            options?.truncate ? "min-w-0 truncate" : ""
+          }`}
+        >
           {item.name}
         </span>
       </div>
@@ -345,7 +356,10 @@ export const Skills: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              {renderBadge(service)}
+              {renderBadge(service, {
+                truncate: true,
+                maxWidthStyle: "calc(100vw - 64px)",
+              })}
             </motion.div>
           ))}
         </motion.div>
