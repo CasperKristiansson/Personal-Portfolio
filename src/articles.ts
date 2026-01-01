@@ -428,7 +428,7 @@ const financeTracker: ArticleItem = {
 
 const reactWhiteboardStudio: ArticleItem = {
   path: "/articles/react-whiteboard-studio",
-  period: "2024",
+  period: "2025",
   header: "React Whiteboard Studio",
   description:
     "A polished whiteboard experience with fluid canvas interactions, local persistence, and a curated design system.",
@@ -798,6 +798,10 @@ const kitgrid: ArticleItem = {
   description:
     "Personal docs network that aggregates raw Markdown across repos into a shared documentation hub.",
   headerLinks: [
+    {
+      link: "https://kitgrid.dev/",
+      display: "Live",
+    },
     {
       link: "https://github.com/CasperKristiansson/kitgrid",
       display: "Github",

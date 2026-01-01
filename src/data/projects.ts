@@ -127,7 +127,7 @@ export const projects: Project[] = [
     image: kitgridHero,
     path: "/articles/kitgrid",
     tier: "more",
-    liveUrl: "https://github.com/CasperKristiansson/kitgrid",
+    liveUrl: "https://kitgrid.dev/",
   },
   {
     id: "image-editor",
