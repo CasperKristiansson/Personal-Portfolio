@@ -352,13 +352,13 @@ export const Skills: React.FC = () => {
               transition={{ duration: 0.2 }}
             >
               {"image" in tool ? (
-                <div className="inline-flex h-full items-center gap-1.5 rounded-[4px] bg-[#0b0b0b] px-2 font-semibold text-white sm:gap-2">
+                <div className="inline-flex h-full items-center gap-1.5 rounded-[4px] bg-[#0b0b0b] px-2 text-white sm:gap-2">
                   <img
                     src={tool.image}
                     alt={`${tool.name} logo`}
                     className="h-6 w-6 object-contain"
                   />
-                  <span className="text-[18px] leading-none font-semibold text-white">
+                  <span className="text-[18px] leading-none text-white">
                     {tool.name}
                   </span>
                 </div>
