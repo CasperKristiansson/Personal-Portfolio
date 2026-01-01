@@ -151,7 +151,7 @@ const awsServices = [
     logoColor: "white",
   },
   {
-    name: "DynamoDB",
+    name: "Amazon DynamoDB",
     color: "3B25C1",
     logo: "Amazon%20DynamoDB",
     logoColor: "white",
@@ -182,9 +182,9 @@ const awsServices = [
     logoColor: "white",
   },
   {
-    name: "WebSockets (Lambda)",
+    name: "Amazon API Gateway (WebSocket API)",
     color: "3B25C1",
-    logo: "awslambda",
+    logo: "amazonapigateway",
     logoColor: "white",
   },
   {
