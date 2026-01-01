@@ -126,8 +126,8 @@ export const StickyNav: React.FC = () => {
           }`}
         >
           <div className="flex items-center gap-6">
-            <div className="hidden min-w-[140px] lg:block" aria-hidden="true" />
-            <ul className="hidden flex-1 items-center justify-center gap-6 text-sm font-semibold text-white sm:text-base lg:flex">
+            <div className="hidden min-w-[140px] xl:block" aria-hidden="true" />
+            <ul className="hidden flex-1 items-center gap-6 text-sm font-semibold text-white sm:text-base lg:flex lg:justify-end xl:justify-center">
               {primaryLinks.map((link) => (
                 <li key={link.href} className="hidden lg:block">
                   <a
