@@ -152,7 +152,9 @@ export const StickyNav: React.FC = () => {
                   onClick={() => setMenuOpen((prev) => !prev)}
                   aria-expanded={menuOpen}
                   aria-controls="nav-more-menu"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-white/80 transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base"
+                  className={`inline-flex items-center gap-1 text-sm font-semibold transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base ${
+                    menuOpen ? "text-sky-200" : "text-white"
+                  }`}
                 >
                   More
                   <IconChevronDown
@@ -213,7 +215,9 @@ export const StickyNav: React.FC = () => {
                   onClick={() => setMenuOpen((prev) => !prev)}
                   aria-expanded={menuOpen}
                   aria-controls="nav-more-menu-mobile"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-white/80 transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base"
+                  className={`inline-flex items-center gap-1 text-sm font-semibold transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base ${
+                    menuOpen ? "text-sky-200" : "text-white"
+                  }`}
                 >
                   More
                   <IconChevronDown
