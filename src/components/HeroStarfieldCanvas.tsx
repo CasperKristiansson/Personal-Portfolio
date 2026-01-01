@@ -33,6 +33,7 @@ type HeroStarfieldCanvasProps = {
 };
 
 const SEED = "casper-starfield";
+const SHOOTING_SPEED_FACTOR = 0.5;
 
 const createSeededRandom = (seed: string) => {
   let h = 1779033703 ^ seed.length;
@@ -414,8 +415,8 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         const startX = lerp(width * 0.1, width * 0.9, random());
         const startY = lerp(height * 0.1, height * 0.45, random());
         const angle = lerp(Math.PI * 0.15, Math.PI * 0.35, random());
-        const speed = lerp(600, 900, random());
-        const duration = lerp(0.7, 1.2, random());
+        const speed = lerp(600, 900, random()) * SHOOTING_SPEED_FACTOR;
+        const duration = lerp(0.7, 1.2, random()) / SHOOTING_SPEED_FACTOR;
         shootingStarRef.current = {
           active: true,
           startX,
@@ -441,6 +442,10 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         return;
       }
 
+      const fadeIn = Math.min(progress / 0.15, 1);
+      const fadeOut = Math.min((1 - progress) / 0.2, 1);
+      const visibility = Math.min(fadeIn, fadeOut);
+
       const currentX =
         shootingStar.startX + shootingStar.vx * shootingStar.elapsed;
       const currentY =
@@ -457,15 +462,21 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         currentY
       );
       gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-      gradient.addColorStop(0.6, "rgba(255, 255, 255, 0.4)");
-      gradient.addColorStop(1, "rgba(255, 255, 255, 0.8)");
+      gradient.addColorStop(
+        0.6,
+        `rgba(255, 255, 255, ${0.4 * visibility})`
+      );
+      gradient.addColorStop(
+        1,
+        `rgba(255, 255, 255, ${0.8 * visibility})`
+      );
 
       ctx.save();
       ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 2 * visibility;
       ctx.lineCap = "round";
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = "rgba(255, 255, 255, 0.6)";
+      ctx.shadowBlur = 8 * visibility;
+      ctx.shadowColor = `rgba(255, 255, 255, ${0.6 * visibility})`;
       ctx.beginPath();
       ctx.moveTo(tailX, tailY);
       ctx.lineTo(currentX, currentY);
