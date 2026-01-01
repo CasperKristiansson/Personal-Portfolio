@@ -20,7 +20,7 @@ export const Rewards: React.FC = () => {
       <div className="pointer-events-none mb-10 md:sticky md:top-0 md:z-[60] md:mb-8 md:flex md:h-[var(--sticky-nav-offset)] md:items-center">
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
           <motion.h1
-            className="text-center text-5xl leading-none font-bold text-white sm:text-6xl md:-translate-y-2.5 md:text-left"
+            className="text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left"
             variants={slideLeftItem}
           >
             Rewards

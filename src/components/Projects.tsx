@@ -185,7 +185,7 @@ export const Projects: React.FC = () => {
       >
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
           <motion.h1
-            className="text-center text-5xl leading-none font-bold text-white sm:text-6xl md:-translate-y-2.5 md:text-left"
+            className="text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left"
             variants={fadeUpItem}
           >
             Projects
