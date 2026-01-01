@@ -11,7 +11,7 @@ export const Rewards: React.FC = () => {
   return (
     <motion.section
       id="awards"
-      className="relative bg-[#18253F] pt-36"
+      className="relative bg-[#18253F] pt-36 pb-[200px]"
       variants={staggerFast}
       initial="hidden"
       whileInView="visible"
