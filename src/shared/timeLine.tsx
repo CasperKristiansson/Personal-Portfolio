@@ -9,10 +9,18 @@ export type TimelineItem = {
   header: string;
   description: string;
   listItems?: string[];
+  tags?: string[];
+  tagLimit?: number;
   link: string;
   linkDisplay: string;
   hide?: boolean;
 };
+
+const tagBaseClass =
+  "rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200/80 uppercase transition duration-200 ease-out hover:-translate-y-0.5 hover:border-sky-300/40 hover:bg-white/10 hover:text-slate-100 hover:shadow-[0_10px_25px_-18px_rgba(56,189,248,0.6)] motion-reduce:transform-none motion-reduce:transition-none";
+
+const tagActionClass =
+  "relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200/60 uppercase transition duration-200 ease-out hover:-translate-y-0.5 hover:border-sky-300/60 hover:bg-white/10 hover:text-slate-100 hover:shadow-[0_14px_30px_-20px_rgba(56,189,248,0.7)] motion-reduce:transform-none motion-reduce:transition-none before:absolute before:inset-0 before:rounded-full before:bg-sky-400/15 before:opacity-0 before:transition before:duration-300 before:scale-75 hover:before:opacity-100 hover:before:scale-100";
 
 export const TimeLine: React.FC<{
   timelineItems: TimelineItem[];
@@ -21,6 +29,7 @@ export const TimeLine: React.FC<{
 }> = ({ timelineItems, title, id }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isCompact, setIsCompact] = useState(true);
+  const [expandedTags, setExpandedTags] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +41,47 @@ export const TimeLine: React.FC<{
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const renderTags = (item: TimelineItem, index: number) => {
+    if (!item.tags || item.tags.length === 0) return null;
+
+    const tagLimit = item.tagLimit ?? 6;
+    const isExpanded = expandedTags[index] ?? false;
+    const visibleTags = isExpanded ? item.tags : item.tags.slice(0, tagLimit);
+    const remaining = item.tags.length - visibleTags.length;
+
+    return (
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        {visibleTags.map((tag) => (
+          <span key={`${item.header}-${tag}`} className={tagBaseClass}>
+            {tag}
+          </span>
+        ))}
+        {remaining > 0 && !isExpanded && (
+          <button
+            type="button"
+            className={tagActionClass}
+            onClick={() =>
+              setExpandedTags((prev) => ({ ...prev, [index]: true }))
+            }
+          >
+            +{remaining} more
+          </button>
+        )}
+        {isExpanded && item.tags.length > tagLimit && (
+          <button
+            type="button"
+            className={tagActionClass}
+            onClick={() =>
+              setExpandedTags((prev) => ({ ...prev, [index]: false }))
+            }
+          >
+            Show less
+          </button>
+        )}
+      </div>
+    );
+  };
 
   return (
     <motion.section
@@ -82,6 +132,7 @@ export const TimeLine: React.FC<{
                     ))}
                   </ul>
                 )}
+                {renderTags(item, index)}
                 <div className="mt-4 flex items-center gap-2">
                   <a
                     href={item.link}
@@ -132,20 +183,21 @@ export const TimeLine: React.FC<{
                       <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                       {item.listItems && (
                         <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
-                          {item.listItems.map((listItem, index) => (
-                            <li
-                              key={index}
-                              className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
-                            >
-                              {listItem}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      <div className="mt-4 flex items-center gap-2">
-                        <a
-                          href={item.link}
-                          target="_blank"
+                      {item.listItems.map((listItem, index) => (
+                        <li
+                          key={index}
+                          className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                        >
+                          {listItem}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {renderTags(item, index)}
+                  <div className="mt-4 flex items-center gap-2">
+                    <a
+                      href={item.link}
+                      target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center text-blue-400 hover:underline"
                         >
