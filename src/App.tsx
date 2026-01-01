@@ -4,7 +4,6 @@ import { About } from "./components/About";
 import { Certificates } from "./components/Certifications";
 import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
-import { ExternalLinks } from "./components/ExternalLinks";
 import { Hero } from "./components/Hero";
 import { StickyNav } from "./components/StickyNav";
 import { Projects } from "./components/Projects";
@@ -36,7 +35,6 @@ export const App: React.FC = () => {
       <Certificates />
       <Papers />
       <Rewards />
-      <ExternalLinks />
     </motion.div>
   );
 

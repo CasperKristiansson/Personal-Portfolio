@@ -17,7 +17,6 @@ const moreLinks = [
   { label: "Certifications", href: "#certifications" },
   { label: "Papers", href: "#papers" },
   { label: "Awards", href: "#awards" },
-  { label: "Links", href: "#external-links" },
 ];
 
 const allLinks = [...primaryLinks, ...moreLinks];
