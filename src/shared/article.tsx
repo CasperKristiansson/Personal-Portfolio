@@ -2,10 +2,11 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Link } from "react-router";
 import { Icons } from "../components/Icons";
 import { ArticleItem } from "../articles";
-import { projects } from "../data/projects";
+import { projects, type ProjectMedia } from "../data/projects";
+import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
 import type React from "react";
 import { isValidElement, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type MotionProps } from "framer-motion";
 import { MDXProvider } from "@mdx-js/react";
 import {
   fadeUpItem,
@@ -90,6 +91,8 @@ const badgeMap: Record<string, BadgeConfig> = {
   JavaScript: { color: "F7DF1E", logo: "javascript", logoColor: "0B1224" },
 };
 
+type MotionSafeProps<T> = Omit<T, keyof MotionProps>;
+
 const buildBadgeUrl = (tag: string) => {
   const config = badgeMap[tag] ?? { color: "334155" };
   const label = encodeURIComponent(config.label ?? tag);
@@ -147,8 +150,15 @@ export const Article: React.FC<ArticleItem> = (article) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const projectTags =
-    projects.find((project) => project.path === article.path)?.tags ?? [];
+  const project = projects.find((project) => project.path === article.path);
+  const projectTags = project?.tags ?? [];
+  const projectMedia: ProjectMedia | undefined = project?.media;
+  const heroMedia: ProjectMedia = projectMedia ?? {
+    type: "image",
+    src: article.image,
+    alt: `${article.header} cover`,
+  };
+  const isAnimatedHero = heroMedia.type === "animation";
 
   const itemMotionProps = {
     variants: fadeUpItem,
@@ -158,35 +168,35 @@ export const Article: React.FC<ArticleItem> = (article) => {
   } as const;
 
   const mdxComponents = {
-    h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    h1: (props: MotionSafeProps<React.HTMLAttributes<HTMLHeadingElement>>) => (
       <motion.h1
         className="mt-8 text-4xl font-bold text-white sm:text-5xl"
         {...itemMotionProps}
         {...props}
       />
     ),
-    h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    h2: (props: MotionSafeProps<React.HTMLAttributes<HTMLHeadingElement>>) => (
       <motion.h2
-        className="mt-8 text-3xl font-bold text-white"
+        className="mt-8 scroll-mt-28 text-3xl font-bold text-white"
         {...itemMotionProps}
         {...props}
       />
     ),
-    h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    h3: (props: MotionSafeProps<React.HTMLAttributes<HTMLHeadingElement>>) => (
       <motion.h3
-        className="mt-6 text-2xl font-semibold text-white"
+        className="mt-6 scroll-mt-28 text-2xl font-semibold text-white"
         {...itemMotionProps}
         {...props}
       />
     ),
-    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+    p: (props: MotionSafeProps<React.HTMLAttributes<HTMLParagraphElement>>) => (
       <motion.p
         className="mt-4 text-base leading-relaxed text-slate-200/90"
         {...itemMotionProps}
         {...props}
       />
     ),
-    ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+    ul: (props: MotionSafeProps<React.HTMLAttributes<HTMLUListElement>>) => (
       <motion.ul
         className="mt-4 list-outside list-disc space-y-2 pl-5 text-slate-200/90 marker:text-sky-300"
         variants={staggerFast}
@@ -196,7 +206,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
         {...props}
       />
     ),
-    ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+    ol: (props: MotionSafeProps<React.HTMLAttributes<HTMLOListElement>>) => (
       <motion.ol
         className="mt-4 list-outside list-decimal space-y-2 pl-5 text-slate-200/90 marker:text-sky-300"
         variants={staggerFast}
@@ -206,7 +216,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
         {...props}
       />
     ),
-    li: (props: React.LiHTMLAttributes<HTMLLIElement>) => (
+    li: (props: MotionSafeProps<React.LiHTMLAttributes<HTMLLIElement>>) => (
       <motion.li className="pl-1" variants={fadeUpItem} {...props} />
     ),
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
@@ -237,7 +247,9 @@ export const Article: React.FC<ArticleItem> = (article) => {
     ),
     pre: (props: React.HTMLAttributes<HTMLPreElement>) => {
       const { children } = props;
-      const codeChild = isValidElement(children) ? children : null;
+      const codeChild = isValidElement(children)
+        ? (children as React.ReactElement<{ className?: string }>)
+        : null;
       const className = codeChild?.props?.className ?? "";
       const language = className.startsWith("language-")
         ? className.replace("language-", "")
@@ -371,14 +383,28 @@ export const Article: React.FC<ArticleItem> = (article) => {
             <div className="relative w-full lg:w-[108%] lg:translate-x-3">
               <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-br from-sky-500/25 via-blue-500/10 to-transparent blur-3xl" />
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#0b1428] shadow-[0_40px_100px_-60px_rgba(14,165,233,0.7)]">
-                <img
-                  src={article.image}
-                  alt={`${article.header} cover`}
-                  className="h-full w-full object-cover"
-                  loading="eager"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1224]/70 via-transparent to-transparent" />
+                <div className="relative aspect-[16/9] w-full max-h-[420px]">
+                  {heroMedia.type === "image" ? (
+                    <img
+                      src={heroMedia.src}
+                      alt={heroMedia.alt ?? `${article.header} cover`}
+                      className="h-full w-full object-cover"
+                      loading="eager"
+                    />
+                  ) : heroMedia.id === "pydantic-fixturegen" ? (
+                    <PydanticFixturegenHero
+                      variant="hero"
+                      className="h-full w-full"
+                    />
+                  ) : null}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1224]/70 via-transparent to-transparent" />
+                </div>
               </div>
+              {isAnimatedHero && (
+                <p className="mt-3 text-sm text-slate-400/90 italic">
+                  Deterministic pipeline. Seeded. Auditable. Safe.
+                </p>
+              )}
             </div>
           </motion.div>
         </div>

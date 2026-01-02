@@ -2,7 +2,8 @@ import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
 import { Link } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
-import { projects } from "../data/projects";
+import { projects, type ProjectMedia } from "../data/projects";
+import { PydanticFixturegenHero } from "./PydanticFixturegenHero";
 import {
   fadeUpItem,
   staggerContainer,
@@ -19,15 +20,15 @@ const primaryCta =
 const secondaryCta =
   "inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 transition hover:border-sky-300/60 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60 motion-reduce:transition-none";
 
-type ImageFrameProps = {
-  src: string;
+type ProjectMediaFrameProps = {
+  media: ProjectMedia;
   alt: string;
   aspectClass: string;
   loading?: "lazy" | "eager";
 };
 
-const ImageFrame: React.FC<ImageFrameProps> = ({
-  src,
+const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
+  media,
   alt,
   aspectClass,
   loading = "lazy",
@@ -39,12 +40,20 @@ const ImageFrame: React.FC<ImageFrameProps> = ({
         aspectClass,
       )}
     >
-      <img
-        src={src}
-        alt={alt}
-        loading={loading}
-        className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
-      />
+      {media.type === "image" ? (
+        <img
+          src={media.src}
+          alt={media.alt ?? alt}
+          loading={loading}
+          className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+        />
+      ) : media.id === "pydantic-fixturegen" ? (
+        <PydanticFixturegenHero
+          variant="card"
+          interactive={false}
+          className="pointer-events-none h-full w-full"
+        />
+      ) : null}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1428]/60 via-transparent to-transparent opacity-80" />
     </div>
   );
@@ -203,6 +212,11 @@ export const Projects: React.FC = () => {
               };
               const isSpotlight = project.id === spotlight.id;
               const isCompact = compactHighlightIds.has(project.id);
+              const media = project.media ?? {
+                type: "image",
+                src: project.image,
+                alt: project.title,
+              };
               return (
                 <motion.article
                   key={project.id}
@@ -215,8 +229,8 @@ export const Projects: React.FC = () => {
                   )}
                   variants={fadeUpItem}
                 >
-                  <ImageFrame
-                    src={project.image}
+                  <ProjectMediaFrame
+                    media={media}
                     alt={project.title}
                     aspectClass={layout.imageAspect}
                     loading={isSpotlight ? "eager" : "lazy"}
@@ -321,8 +335,14 @@ export const Projects: React.FC = () => {
                 )}
                 variants={fadeUpItem}
               >
-                <ImageFrame
-                  src={project.image}
+                <ProjectMediaFrame
+                  media={
+                    project.media ?? {
+                      type: "image",
+                      src: project.image,
+                      alt: project.title,
+                    }
+                  }
                   alt={project.title}
                   aspectClass="aspect-[16/9]"
                 />

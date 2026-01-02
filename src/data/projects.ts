@@ -13,6 +13,10 @@ import tvShowNetworkOverview from "../assets/projects/tvshownetwork/tvShowNetwor
 
 export type ProjectTier = "featured" | "notable" | "more";
 
+export type ProjectMedia =
+  | { type: "image"; src: string; alt?: string }
+  | { type: "animation"; id: "pydantic-fixturegen" };
+
 export type Project = {
   id: string;
   title: string;
@@ -21,6 +25,7 @@ export type Project = {
   tags: string[];
   categories: string[];
   image: string;
+  media?: ProjectMedia;
   path: string;
   tier: ProjectTier;
   spotlight?: boolean;
@@ -79,6 +84,7 @@ export const projects: Project[] = [
     tags: ["Python", "Pydantic", "CLI", "PyPI", "Testing", "Open Source"],
     categories: ["Open Source", "DevOps"],
     image: pydanticFixturegenHero,
+    media: { type: "animation", id: "pydantic-fixturegen" },
     path: "/articles/pydantic-fixturegen",
     tier: "featured",
     liveUrl: "https://github.com/CasperKristiansson/pydantic-fixturegen",
