@@ -1018,44 +1018,46 @@ export const PythonVersionPatchPrHero: React.FC<
                   className="relative flex-1 px-4 pb-4 font-mono text-[12px] leading-relaxed"
                   style={{ color: palette.textPrimary }}
                 >
-                  <motion.div
-                    className="absolute left-3 top-12 z-20 flex items-center gap-2 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
-                    style={
-                      showStatic
-                        ? {
-                            opacity: 0.8,
-                            borderColor: palette.chipBorder,
-                            backgroundColor: palette.chipBg,
-                            color: palette.chipText,
-                          }
-                        : {
-                            opacity: scanOpacity,
-                            borderColor: palette.chipBorder,
-                            backgroundColor: palette.chipBg,
-                            color: palette.chipText,
-                          }
-                    }
-                  >
-                    <span>Pins found:</span>
-                    <span className="relative h-3 w-3">
-                      {counterStages.map((opacity, index) => (
-                        <motion.span
-                          key={`pins-${index}`}
-                          className="absolute inset-0"
-                          style={{
-                            opacity:
-                              showStatic && index !== PIN_DEFS.length
-                                ? 0
-                                : showStatic
-                                  ? 1
-                                  : opacity,
-                          }}
-                        >
-                          {index}
-                        </motion.span>
-                      ))}
-                    </span>
-                  </motion.div>
+                  {variant === "hero" && (
+                    <motion.div
+                      className="absolute left-3 top-12 z-20 flex items-center gap-2 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
+                      style={
+                        showStatic
+                          ? {
+                              opacity: 0.8,
+                              borderColor: palette.chipBorder,
+                              backgroundColor: palette.chipBg,
+                              color: palette.chipText,
+                            }
+                          : {
+                              opacity: scanOpacity,
+                              borderColor: palette.chipBorder,
+                              backgroundColor: palette.chipBg,
+                              color: palette.chipText,
+                            }
+                      }
+                    >
+                      <span>Pins found:</span>
+                      <span className="relative h-3 w-3">
+                        {counterStages.map((opacity, index) => (
+                          <motion.span
+                            key={`pins-${index}`}
+                            className="absolute inset-0"
+                            style={{
+                              opacity:
+                                showStatic && index !== PIN_DEFS.length
+                                  ? 0
+                                  : showStatic
+                                    ? 1
+                                    : opacity,
+                            }}
+                          >
+                            {index}
+                          </motion.span>
+                        ))}
+                      </span>
+                    </motion.div>
+                  )}
                   <motion.div
                     className="pointer-events-none absolute inset-y-12 left-0 w-[2px]"
                     style={{
