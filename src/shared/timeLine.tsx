@@ -91,7 +91,7 @@ export const TimeLine: React.FC<{
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="pointer-events-none mb-10 lg:sticky lg:top-0 lg:z-[60] md:mb-8 lg:flex lg:h-[var(--sticky-nav-offset)] lg:items-center">
+      <div className="pointer-events-none mb-10 md:mb-8 lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)] lg:items-center">
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
           <motion.h1
             className="text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left"
@@ -183,21 +183,21 @@ export const TimeLine: React.FC<{
                       <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                       {item.listItems && (
                         <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
-                      {item.listItems.map((listItem, index) => (
-                        <li
-                          key={index}
-                          className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
-                        >
-                          {listItem}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {renderTags(item, index)}
-                  <div className="mt-4 flex items-center gap-2">
-                    <a
-                      href={item.link}
-                      target="_blank"
+                          {item.listItems.map((listItem, index) => (
+                            <li
+                              key={index}
+                              className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                            >
+                              {listItem}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {renderTags(item, index)}
+                      <div className="mt-4 flex items-center gap-2">
+                        <a
+                          href={item.link}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center text-blue-400 hover:underline"
                         >

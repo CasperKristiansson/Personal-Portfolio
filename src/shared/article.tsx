@@ -51,7 +51,11 @@ export const Article: React.FC<ArticleItem> = (article) => {
       />
     ),
     p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-      <motion.p className="mt-4 text-gray-700" {...itemMotionProps} {...props} />
+      <motion.p
+        className="mt-4 text-gray-700"
+        {...itemMotionProps}
+        {...props}
+      />
     ),
     ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
       <motion.ul
@@ -79,10 +83,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
       <a className="text-blue-600 hover:underline" {...props} />
     ),
-    img: ({
-      alt,
-      ...props
-    }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    img: ({ alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
       <motion.figure
         className="mt-4"
         variants={scaleInItem}
@@ -112,7 +113,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
           {...itemMotionProps}
         >
           {language ? (
-            <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/40 px-4 py-2 text-xs uppercase tracking-wide text-slate-400">
+            <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/40 px-4 py-2 text-xs tracking-wide text-slate-400 uppercase">
               <span>Snippet</span>
               <span>{language}</span>
             </div>
@@ -123,10 +124,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
         </motion.div>
       );
     },
-    code: ({
-      className,
-      ...props
-    }: React.HTMLAttributes<HTMLElement>) => {
+    code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
       if (className) {
         return <code className={className} {...props} />;
       }
@@ -175,7 +173,10 @@ export const Article: React.FC<ArticleItem> = (article) => {
             <motion.p className="text-gray-600" variants={fadeUpItem}>
               {article.period}
             </motion.p>
-            <motion.h1 className="mt-2 text-4xl font-bold" variants={fadeUpItem}>
+            <motion.h1
+              className="mt-2 text-4xl font-bold"
+              variants={fadeUpItem}
+            >
               {article.header}
             </motion.h1>
             <motion.p className="mt-4 text-gray-700" variants={fadeUpItem}>

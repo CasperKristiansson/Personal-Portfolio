@@ -39,7 +39,7 @@ export const About: React.FC = () => {
             </span>
           </motion.h2>
           <motion.p
-            className="mt-5 w-fit rounded-full border border-sky-300/30 bg-sky-300/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200 sm:text-sm"
+            className="mt-5 w-fit rounded-full border border-sky-300/30 bg-sky-300/10 px-4 py-1 text-xs font-semibold tracking-[0.2em] text-sky-200 uppercase sm:text-sm"
             variants={fadeUpItem}
           >
             Co-Founder Driving Scalable Tech Solutions

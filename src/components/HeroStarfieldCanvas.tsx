@@ -104,9 +104,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
       const isEarly = elapsed < 12000;
       const minDelay = isEarly ? 900 : 16000;
       const maxDelay = isEarly ? 2600 : 38000;
-      const random = createSeededRandom(
-        `${SEED}-shooting-${Math.floor(now)}`
-      );
+      const random = createSeededRandom(`${SEED}-shooting-${Math.floor(now)}`);
       let delay = lerp(minDelay, maxDelay, random());
       if (isEarly && shootingBurstCountRef.current < 2) {
         delay = lerp(400, 1200, random());
@@ -138,7 +136,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         radiusRange: [number, number],
         alphaRange: [number, number],
         glowRange: [number, number],
-        featuredChance: number
+        featuredChance: number,
       ) => {
         return Array.from({ length: count }, () => {
           const radius = lerp(radiusRange[0], radiusRange[1], random());
@@ -172,7 +170,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         [0.4, 1.1],
         [0.2, 0.55],
         [0, 0],
-        0
+        0,
       );
       const midStars = createStars(
         midCount,
@@ -180,7 +178,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         [0.9, 1.8],
         [0.4, 0.7],
         [0, 2],
-        0.14
+        0.14,
       );
       const nearStars = createStars(
         nearCount,
@@ -188,7 +186,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         [1.4, 2.8],
         [0.55, 0.9],
         [4, 12],
-        0.32
+        0.32,
       );
 
       const stars = [...farStars, ...midStars, ...nearStars];
@@ -276,7 +274,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
           animationFrameRef.current = null;
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (observerTarget) {
@@ -289,7 +287,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
       star: Star,
       offsetX: number,
       offsetY: number,
-      time: number
+      time: number,
     ) => {
       const { width, height } = sizeRef.current;
       const x = star.x * width + offsetX;
@@ -358,8 +356,7 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
       const baseX = star.x * width + offsetX;
       const baseY = star.y * height + offsetY;
 
-      const neighbors =
-        featuredNeighborsRef.current.get(hover.index) ?? [];
+      const neighbors = featuredNeighborsRef.current.get(hover.index) ?? [];
       ctx.save();
       ctx.lineWidth = 2.2;
       ctx.shadowBlur = 16;
@@ -459,17 +456,11 @@ export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
         tailX,
         tailY,
         currentX,
-        currentY
+        currentY,
       );
       gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-      gradient.addColorStop(
-        0.6,
-        `rgba(255, 255, 255, ${0.4 * visibility})`
-      );
-      gradient.addColorStop(
-        1,
-        `rgba(255, 255, 255, ${0.8 * visibility})`
-      );
+      gradient.addColorStop(0.6, `rgba(255, 255, 255, ${0.4 * visibility})`);
+      gradient.addColorStop(1, `rgba(255, 255, 255, ${0.8 * visibility})`);
 
       ctx.save();
       ctx.strokeStyle = gradient;

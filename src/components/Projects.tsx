@@ -87,8 +87,6 @@ const TagList: React.FC<{
   );
 };
 
-
-
 export const Projects: React.FC = () => {
   const locationRef = React.useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();

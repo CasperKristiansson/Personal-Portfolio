@@ -33,7 +33,8 @@ export const projects: Project[] = [
     title: "Finance Tracker",
     summary:
       "Personal finance intelligence with ingestion, categorization, reporting, and insights for budgets, goals, and cash flow clarity. Built to replace spreadsheets with a productized workspace that tracks transactions, categories, subscriptions, and net worth trends.",
-    outcome: "Outcome: unified clarity across cash flow, budgets, and net worth.",
+    outcome:
+      "Outcome: unified clarity across cash flow, budgets, and net worth.",
     tags: ["Full Stack", "React", "TypeScript", "Python", "AWS", "Terraform"],
     categories: ["Product", "Cloud"],
     image: financeTrackerHero,
@@ -45,7 +46,8 @@ export const projects: Project[] = [
   {
     id: "pktraffic",
     title: "PKTraffic, LLC",
-    summary: "Traffic data collection and analysis platform for Florida highways.",
+    summary:
+      "Traffic data collection and analysis platform for Florida highways.",
     tags: [
       "AWS",
       "Website",
@@ -76,7 +78,8 @@ export const projects: Project[] = [
   {
     id: "podcast-tracker",
     title: "Podcast Tracker",
-    summary: "Spotify-synced podcast tracker with show pages and listening history.",
+    summary:
+      "Spotify-synced podcast tracker with show pages and listening history.",
     tags: ["Astro", "GraphQL", "AWS", "Tailwind", "Serverless"],
     categories: ["Product", "Web"],
     image: podcastTrackerHero,
@@ -87,7 +90,8 @@ export const projects: Project[] = [
   {
     id: "react-whiteboard-studio",
     title: "React Whiteboard Studio",
-    summary: "Polished whiteboard with fluid canvas interactions and persistence.",
+    summary:
+      "Polished whiteboard with fluid canvas interactions and persistence.",
     tags: ["React", "TypeScript", "Canvas", "Zustand", "IndexedDB"],
     categories: ["Product", "Web"],
     image: reactWhiteboardStudioHero,
@@ -98,7 +102,8 @@ export const projects: Project[] = [
   {
     id: "cpython-patch-pr-action",
     title: "CPython Patch PR Action",
-    summary: "GitHub Action that keeps CPython patch versions current across repos.",
+    summary:
+      "GitHub Action that keeps CPython patch versions current across repos.",
     tags: ["GitHub Actions", "DevOps", "Automation", "CI/CD", "Python"],
     categories: ["Open Source", "DevOps"],
     image: pythonVersionPatchPrHero,
@@ -162,7 +167,8 @@ export const projects: Project[] = [
   {
     id: "tv-show-network",
     title: "TV Show Network",
-    summary: "Collaborative TV industry blogging platform with revenue sharing.",
+    summary:
+      "Collaborative TV industry blogging platform with revenue sharing.",
     tags: ["Website", "Wordpress", "SEO"],
     categories: ["Web", "Product"],
     image: tvShowNetworkOverview,

@@ -16,9 +16,7 @@ import PythonVersionPatchPr, {
   meta as pythonVersionPatchPrMeta,
 } from "./content/python-version-patch-pr.mdx";
 import PKTraffic, { meta as pktrafficMeta } from "./content/pktraffic.mdx";
-import MovieBoxDB, {
-  meta as movieboxdbMeta,
-} from "./content/movieboxdb.mdx";
+import MovieBoxDB, { meta as movieboxdbMeta } from "./content/movieboxdb.mdx";
 import WeatherBrain, {
   meta as weatherbrainMeta,
 } from "./content/weatherbrain.mdx";
