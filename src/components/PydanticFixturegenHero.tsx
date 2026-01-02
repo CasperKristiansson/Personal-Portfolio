@@ -1391,7 +1391,7 @@ export const PydanticFixturegenHero: React.FC<PydanticFixturegenHeroProps> = ({
 
   const shouldAnimate = isVisible && !reducedMotion;
   const containerClassName = [
-    "relative h-full w-full [&>canvas]:!block [&>canvas]:!h-full [&>canvas]:!w-full",
+    "relative h-full w-full [&>canvas]:!block [&>canvas]:!h-full [&>canvas]:!w-full [&_canvas]:!block [&_canvas]:!h-full [&_canvas]:!w-full",
     className,
   ]
     .filter(Boolean)
