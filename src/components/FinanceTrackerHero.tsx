@@ -21,7 +21,6 @@ export const FinanceTrackerHero: React.FC<FinanceTrackerHeroProps> = ({
         >
           <ShaderGradient
             animate={prefersReducedMotion ? "off" : "on"}
-            axesHelper="off"
             brightness={1.2}
             cAzimuthAngle={180}
             cDistance={3.1}
@@ -30,16 +29,9 @@ export const FinanceTrackerHero: React.FC<FinanceTrackerHeroProps> = ({
             color1="#ff945e"
             color2="#dbccb8"
             color3="#b9bee1"
-            destination="onCanvas"
-            embedMode="off"
             envPreset="lobby"
-            format="gif"
-            fov={45}
-            frameRate={10}
-            gizmoHelper="hide"
             grain="on"
             lightType="3d"
-            pixelDensity={1.5}
             positionX={-1.4}
             positionY={0}
             positionZ={0}
@@ -62,6 +54,17 @@ export const FinanceTrackerHero: React.FC<FinanceTrackerHeroProps> = ({
           />
         </ShaderGradientCanvas>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/25 to-slate-950/45" />
+        <div className="relative z-10 flex h-full w-full max-w-4xl flex-col items-center gap-8 px-6 text-center">
+          <div className="space-y-4">
+            <h1 className="text-lg font-semibold tracking-tight text-white drop-shadow-[0_14px_45px_rgba(0,0,0,0.35)]">
+              Money clarity in one calm space
+            </h1>
+            <h2 className="text-sm font-medium text-white/90">
+              Track accounts, budgets, and goals with a focused, beautiful
+              overview.
+            </h2>
+          </div>
+        </div>
       </div>
     </div>
   );

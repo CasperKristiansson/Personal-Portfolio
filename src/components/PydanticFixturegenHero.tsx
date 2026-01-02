@@ -1390,7 +1390,10 @@ export const PydanticFixturegenHero: React.FC<PydanticFixturegenHeroProps> = ({
   const cameraZoom = rigConfig.isCompact ? 49 : 54;
 
   const shouldAnimate = isVisible && !reducedMotion;
-  const containerClassName = ["relative h-full w-full", className]
+  const containerClassName = [
+    "relative h-full w-full [&>canvas]:!block [&>canvas]:!h-full [&>canvas]:!w-full",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -1489,6 +1492,7 @@ export const PydanticFixturegenHero: React.FC<PydanticFixturegenHeroProps> = ({
     >
       {canRender ? (
         <Canvas
+          className="absolute inset-0"
           dpr={
             typeof window === "undefined"
               ? 1
