@@ -81,3 +81,30 @@ body {
     typewriter 2s steps(45) 0.5s 1 normal both,
     blinkTextCursor 700ms steps(45) infinite normal;
 }
+
+@keyframes headingFlash {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+  40% {
+    text-shadow: 0 0 18px var(--heading-flash-color);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+.heading-flash {
+  --heading-flash-color: color-mix(
+    in srgb,
+    var(--color-primary) 65%,
+    transparent
+  );
+  animation: headingFlash 650ms ease-out;
+}
+
+@supports not (color-mix(in srgb, #000 50%, transparent)) {
+  .heading-flash {
+    --heading-flash-color: var(--color-primary);
+  }
+}

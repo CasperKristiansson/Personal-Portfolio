@@ -15,7 +15,10 @@ export type ProjectTier = "featured" | "notable" | "more";
 
 export type ProjectMedia =
   | { type: "image"; src: string; alt?: string }
-  | { type: "animation"; id: "pydantic-fixturegen" };
+  | {
+      type: "animation";
+      id: "pydantic-fixturegen" | "python-version-patch-pr";
+    };
 
 export type Project = {
   id: string;
@@ -134,6 +137,7 @@ export const projects: Project[] = [
     ],
     categories: ["Open Source", "DevOps"],
     image: pythonVersionPatchPrHero,
+    media: { type: "animation", id: "python-version-patch-pr" },
     path: "/articles/python-version-patch-pr",
     tier: "notable",
     liveUrl: "https://github.com/CasperKristiansson/python-version-patch-pr",

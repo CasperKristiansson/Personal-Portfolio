@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { projects, type ProjectMedia } from "../data/projects";
 import { PydanticFixturegenHero } from "./PydanticFixturegenHero";
+import { PythonVersionPatchPrHero } from "./PythonVersionPatchPrHero";
 import {
   fadeUpItem,
   staggerContainer,
@@ -49,6 +50,12 @@ const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
         />
       ) : media.id === "pydantic-fixturegen" ? (
         <PydanticFixturegenHero
+          variant="card"
+          interactive={false}
+          className="pointer-events-none h-full w-full"
+        />
+      ) : media.id === "python-version-patch-pr" ? (
+        <PythonVersionPatchPrHero
           variant="card"
           interactive={false}
           className="pointer-events-none h-full w-full"

@@ -350,11 +350,77 @@ const useInView = (ref: React.RefObject<HTMLElement>) => {
   return isInView;
 };
 
+const usePinMotion = (
+  loopProgress: MotionValue<number>,
+  pin: PinConfig,
+  index: number,
+  scanStart: number,
+  scanEnd: number,
+  resolveStart: number,
+  resolveEnd: number,
+  scanStep: number,
+  updateStep: number,
+  highlightDuration: number,
+  updateDuration: number,
+) => {
+  const highlightStart = scanStart + scanStep * (index + 1);
+  const highlightEnd = Math.min(scanEnd, highlightStart + highlightDuration);
+  const highlightOpacity = useTransform(
+    loopProgress,
+    [
+      highlightStart,
+      highlightStart + highlightDuration * 0.25,
+      highlightEnd - highlightDuration * 0.2,
+      highlightEnd,
+    ],
+    [0, 1, 1, 0],
+  );
+  const labelOpacity = useTransform(
+    loopProgress,
+    [
+      highlightStart,
+      highlightStart + highlightDuration * 0.2,
+      highlightEnd - highlightDuration * 0.2,
+      highlightEnd,
+    ],
+    [0, 1, 1, 0],
+  );
+  const updateStart = resolveStart + updateStep * (index + 1);
+  const updateEnd = Math.min(resolveEnd, updateStart + updateDuration);
+  const updateOpacity = useTransform(
+    loopProgress,
+    [updateStart, updateEnd, 1],
+    [0, 1, 1],
+  );
+
+  return { ...pin, highlightOpacity, labelOpacity, updateOpacity };
+};
+
+const useCounterOpacity = (
+  loopProgress: MotionValue<number>,
+  start: number,
+  end: number,
+  fade: number,
+) =>
+  useTransform(
+    loopProgress,
+    [start, start + fade, end - fade, end],
+    [0, 1, 1, 0],
+  );
+
 const PinToken: React.FC<{
   pin: PinState;
   palette: Palette;
   reducedMotion: boolean;
-}> = ({ pin, palette, reducedMotion }) => {
+  highlightShiftX?: MotionValue<number>;
+  highlightShiftY?: MotionValue<number>;
+}> = ({
+  pin,
+  palette,
+  reducedMotion,
+  highlightShiftX,
+  highlightShiftY,
+}) => {
   const oldOpacity = useTransform(pin.updateOpacity, (value) => 1 - value);
 
   return (
@@ -375,6 +441,8 @@ const PinToken: React.FC<{
                 backgroundColor: palette.highlightBg,
                 boxShadow: `0 0 0 1px ${palette.highlightBorder}`,
                 opacity: pin.highlightOpacity,
+                x: highlightShiftX ?? 0,
+                y: highlightShiftY ?? 0,
               }
         }
       />
@@ -402,6 +470,8 @@ const PinToken: React.FC<{
                 backgroundColor: palette.chipBg,
                 color: palette.chipText,
                 borderColor: palette.chipBorder,
+                x: highlightShiftX ?? 0,
+                y: highlightShiftY ?? 0,
               }
         }
       >
@@ -446,6 +516,22 @@ export const PythonVersionPatchPrHero: React.FC<
   const showStatic = shouldReduceMotion || variant === "card";
   const allowMotion = !showStatic && isInView;
 
+  const scanDuration = 2.2;
+  const resolveDuration = 1.3;
+  const diffDuration = 1.2;
+  const prDuration = 3.9;
+  const loopDuration =
+    scanDuration + resolveDuration + diffDuration + prDuration;
+  const scanStart = 0;
+  const scanEnd = scanDuration / loopDuration;
+  const resolveStart = scanEnd;
+  const resolveEnd = (scanDuration + resolveDuration) / loopDuration;
+  const diffStart = resolveEnd;
+  const diffEnd = (scanDuration + resolveDuration + diffDuration) / loopDuration;
+  const prStart = diffEnd;
+  const prEnd =
+    (scanDuration + resolveDuration + diffDuration + prDuration) / loopDuration;
+
   useEffect(() => {
     if (!containerRef.current) {
       return;
@@ -470,7 +556,7 @@ export const PythonVersionPatchPrHero: React.FC<
       if (!loopControlsRef.current) {
         loopProgress.set(0);
         loopControlsRef.current = animate(loopProgress, 1, {
-          duration: 6.4,
+          duration: loopDuration,
           ease: "linear",
           repeat: Infinity,
         });
@@ -485,7 +571,7 @@ export const PythonVersionPatchPrHero: React.FC<
       loopControlsRef.current?.stop();
       loopControlsRef.current = null;
     };
-  }, [hasEntered, isInView, loopProgress, showStatic]);
+  }, [hasEntered, isInView, loopDuration, loopProgress, showStatic]);
 
   useMotionValueEvent(loopProgress, "change", (value) => {
     const last = lastProgressRef.current;
@@ -551,28 +637,17 @@ export const PythonVersionPatchPrHero: React.FC<
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  const loopDuration = 6.4;
-  const scanDuration = 1.9;
-  const resolveDuration = 1.1;
-  const diffDuration = 1.1;
-  const prDuration = 1.1;
-  const scanStart = 0;
-  const scanEnd = scanDuration / loopDuration;
-  const resolveStart = scanEnd;
-  const resolveEnd = (scanDuration + resolveDuration) / loopDuration;
-  const diffStart = resolveEnd;
-  const diffEnd = (scanDuration + resolveDuration + diffDuration) / loopDuration;
-  const prStart = diffEnd;
-  const prEnd =
-    (scanDuration + resolveDuration + diffDuration + prDuration) / loopDuration;
-
   const fade = 0.03;
   const scanOpacity = useTransform(
     loopProgress,
     [scanStart, scanStart + fade, scanEnd - fade, scanEnd],
     [0, 1, 1, 0],
   );
-  const scanX = useTransform(loopProgress, [scanStart, scanEnd], ["-12%", "110%"]); 
+  const scanX = useTransform(
+    loopProgress,
+    [scanStart, scanEnd],
+    ["-12%", "110%"],
+  );
   const resolveOpacity = useTransform(
     loopProgress,
     [resolveStart, resolveStart + fade, resolveEnd - fade, resolveEnd],
@@ -596,58 +671,123 @@ export const PythonVersionPatchPrHero: React.FC<
   );
 
   const scanStep = (scanEnd - scanStart) / (PIN_DEFS.length + 1);
-  const highlightDuration = 0.05;
   const updateStep = (resolveEnd - resolveStart) / (PIN_DEFS.length + 1);
-  const updateDuration = 0.08;
+  const highlightDuration = scanStep * 0.85;
+  const updateDuration = updateStep * 0.85;
+  const counterFade = Math.min(fade, scanStep * 0.45);
 
-  const pinStates: PinState[] = PIN_DEFS.map((pin, index) => {
-    const highlightStart = scanStart + scanStep * (index + 1);
-    const highlightEnd = Math.min(scanEnd, highlightStart + highlightDuration);
-    const highlightOpacity = useTransform(
-      loopProgress,
-      [
-        highlightStart,
-        highlightStart + highlightDuration * 0.25,
-        highlightEnd - highlightDuration * 0.2,
-        highlightEnd,
-      ],
-      [0, 1, 1, 0],
-    );
-    const labelOpacity = useTransform(
-      loopProgress,
-      [
-        highlightStart,
-        highlightStart + highlightDuration * 0.2,
-        highlightEnd - highlightDuration * 0.2,
-        highlightEnd,
-      ],
-      [0, 1, 1, 0],
-    );
-    const updateStart = resolveStart + updateStep * (index + 1);
-    const updateEnd = Math.min(resolveEnd, updateStart + updateDuration);
-    const updateOpacity = useTransform(
-      loopProgress,
-      [updateStart, updateEnd, 1],
-      [0, 1, 1],
-    );
-    return { ...pin, highlightOpacity, labelOpacity, updateOpacity };
-  });
+  const pinDockerfile = usePinMotion(
+    loopProgress,
+    PIN_DEFS[0],
+    0,
+    scanStart,
+    scanEnd,
+    resolveStart,
+    resolveEnd,
+    scanStep,
+    updateStep,
+    highlightDuration,
+    updateDuration,
+  );
+  const pinWorkflow = usePinMotion(
+    loopProgress,
+    PIN_DEFS[1],
+    1,
+    scanStart,
+    scanEnd,
+    resolveStart,
+    resolveEnd,
+    scanStep,
+    updateStep,
+    highlightDuration,
+    updateDuration,
+  );
+  const pinPyproject = usePinMotion(
+    loopProgress,
+    PIN_DEFS[2],
+    2,
+    scanStart,
+    scanEnd,
+    resolveStart,
+    resolveEnd,
+    scanStep,
+    updateStep,
+    highlightDuration,
+    updateDuration,
+  );
+  const pinPythonVersion = usePinMotion(
+    loopProgress,
+    PIN_DEFS[3],
+    3,
+    scanStart,
+    scanEnd,
+    resolveStart,
+    resolveEnd,
+    scanStep,
+    updateStep,
+    highlightDuration,
+    updateDuration,
+  );
+  const pinRuntime = usePinMotion(
+    loopProgress,
+    PIN_DEFS[4],
+    4,
+    scanStart,
+    scanEnd,
+    resolveStart,
+    resolveEnd,
+    scanStep,
+    updateStep,
+    highlightDuration,
+    updateDuration,
+  );
 
-  const pinLookup = pinStates.reduce<Record<string, PinState>>((acc, pin) => {
-    acc[pin.id] = pin;
-    return acc;
-  }, {});
+  const pinLookup: Record<string, PinState> = {
+    dockerfile: pinDockerfile,
+    workflow: pinWorkflow,
+    pyproject: pinPyproject,
+    "python-version": pinPythonVersion,
+    runtime: pinRuntime,
+  };
 
-  const counterStages = Array.from({ length: PIN_DEFS.length + 1 }, (_, idx) => {
-    const start = scanStart + scanStep * idx;
-    return useTransform(
-      loopProgress,
-      [start, start + fade, scanEnd - fade, scanEnd],
-      [0, 1, 1, 0],
-    );
-  });
+  const counter0 = useCounterOpacity(
+    loopProgress,
+    scanStart,
+    scanStart + scanStep,
+    counterFade,
+  );
+  const counter1 = useCounterOpacity(
+    loopProgress,
+    scanStart + scanStep,
+    scanStart + scanStep * 2,
+    counterFade,
+  );
+  const counter2 = useCounterOpacity(
+    loopProgress,
+    scanStart + scanStep * 2,
+    scanStart + scanStep * 3,
+    counterFade,
+  );
+  const counter3 = useCounterOpacity(
+    loopProgress,
+    scanStart + scanStep * 3,
+    scanStart + scanStep * 4,
+    counterFade,
+  );
+  const counter4 = useCounterOpacity(
+    loopProgress,
+    scanStart + scanStep * 4,
+    scanStart + scanStep * 5,
+    counterFade,
+  );
+  const counter5 = useCounterOpacity(
+    loopProgress,
+    scanStart + scanStep * 5,
+    scanEnd,
+    counterFade,
+  );
+  const counterStages = [counter0, counter1, counter2, counter3, counter4, counter5];
 
-  const badgeOpacity = showStatic ? 1 : resolveOpacity;
   const guardrailOpacity = showStatic
     ? 0.9
     : useTransform(
@@ -664,6 +804,8 @@ export const PythonVersionPatchPrHero: React.FC<
   const bgShiftY = useTransform(parallaxY, [-1, 1], [-16, 16]);
   const overlayShiftX = useTransform(overlayX, [-1, 1], [-8, 8]);
   const overlayShiftY = useTransform(overlayY, [-1, 1], [-6, 6]);
+  const highlightShiftX = useTransform(overlayX, [-1, 1], [-4, 4]);
+  const highlightShiftY = useTransform(overlayY, [-1, 1], [-3, 3]);
 
   const lines = [
     { id: "dockerfile-label", content: "// Dockerfile", muted: true },
@@ -676,6 +818,8 @@ export const PythonVersionPatchPrHero: React.FC<
             pin={pinLookup.dockerfile}
             palette={palette}
             reducedMotion={showStatic}
+            highlightShiftX={allowMotion ? highlightShiftX : undefined}
+            highlightShiftY={allowMotion ? highlightShiftY : undefined}
           />
         </>
       ),
@@ -685,7 +829,14 @@ export const PythonVersionPatchPrHero: React.FC<
       id: "workflow",
       content: (
         <>
-          python-version: <PinToken pin={pinLookup.workflow} palette={palette} reducedMotion={showStatic} />
+          python-version:{" "}
+          <PinToken
+            pin={pinLookup.workflow}
+            palette={palette}
+            reducedMotion={showStatic}
+            highlightShiftX={allowMotion ? highlightShiftX : undefined}
+            highlightShiftY={allowMotion ? highlightShiftY : undefined}
+          />
         </>
       ),
     },
@@ -694,8 +845,15 @@ export const PythonVersionPatchPrHero: React.FC<
       id: "pyproject",
       content: (
         <>
-          requires-python = "=="
-          <PinToken pin={pinLookup.pyproject} palette={palette} reducedMotion={showStatic} />
+          requires-python = {"\"=="}
+          <PinToken
+            pin={pinLookup.pyproject}
+            palette={palette}
+            reducedMotion={showStatic}
+            highlightShiftX={allowMotion ? highlightShiftX : undefined}
+            highlightShiftY={allowMotion ? highlightShiftY : undefined}
+          />
+          {"\""}
         </>
       ),
     },
@@ -703,7 +861,13 @@ export const PythonVersionPatchPrHero: React.FC<
     {
       id: "python-version",
       content: (
-        <PinToken pin={pinLookup["python-version"]} palette={palette} reducedMotion={showStatic} />
+        <PinToken
+          pin={pinLookup["python-version"]}
+          palette={palette}
+          reducedMotion={showStatic}
+          highlightShiftX={allowMotion ? highlightShiftX : undefined}
+          highlightShiftY={allowMotion ? highlightShiftY : undefined}
+        />
       ),
     },
     { id: "runtime-label", content: "// runtime.txt", muted: true },
@@ -712,7 +876,13 @@ export const PythonVersionPatchPrHero: React.FC<
       content: (
         <>
           python-
-          <PinToken pin={pinLookup.runtime} palette={palette} reducedMotion={showStatic} />
+          <PinToken
+            pin={pinLookup.runtime}
+            palette={palette}
+            reducedMotion={showStatic}
+            highlightShiftX={allowMotion ? highlightShiftX : undefined}
+            highlightShiftY={allowMotion ? highlightShiftY : undefined}
+          />
         </>
       ),
     },
@@ -872,7 +1042,14 @@ export const PythonVersionPatchPrHero: React.FC<
                         <motion.span
                           key={`pins-${index}`}
                           className="absolute inset-0"
-                          style={{ opacity: showStatic ? 1 : opacity }}
+                          style={{
+                            opacity:
+                              showStatic && index !== PIN_DEFS.length
+                                ? 0
+                                : showStatic
+                                  ? 1
+                                  : opacity,
+                          }}
                         >
                           {index}
                         </motion.span>
@@ -886,6 +1063,7 @@ export const PythonVersionPatchPrHero: React.FC<
                       boxShadow: `0 0 18px ${palette.scanGlow}`,
                       opacity: showStatic ? 0 : scanOpacity,
                       x: allowMotion ? scanX : 0,
+                      y: allowMotion ? overlayShiftY : 0,
                     }}
                   />
                   <div className="space-y-1">
@@ -1111,11 +1289,13 @@ export const PythonVersionPatchPrHero: React.FC<
           </motion.button>
         </motion.div>
       </div>
-      <div className="relative z-20 pb-3 text-center text-[12px] font-medium">
-        <span style={{ color: palette.captionText }}>
-          Scans pins. Resolves latest patch. Opens an auditable PR.
-        </span>
-      </div>
+      {variant === "hero" && (
+        <div className="relative z-20 pb-3 text-center text-[12px] font-medium">
+          <span style={{ color: palette.captionText }}>
+            Scans pins. Resolves latest patch. Opens an auditable PR.
+          </span>
+        </div>
+      )}
     </div>
   );
 };

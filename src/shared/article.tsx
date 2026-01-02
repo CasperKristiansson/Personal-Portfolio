@@ -4,6 +4,7 @@ import { Icons } from "../components/Icons";
 import { ArticleItem } from "../articles";
 import { projects, type ProjectMedia } from "../data/projects";
 import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
+import { PythonVersionPatchPrHero } from "../components/PythonVersionPatchPrHero";
 import type React from "react";
 import { isValidElement, useEffect, useState } from "react";
 import { motion, type MotionProps } from "framer-motion";
@@ -158,8 +159,9 @@ export const Article: React.FC<ArticleItem> = (article) => {
     src: article.image,
     alt: `${article.header} cover`,
   };
-  const isAnimatedHero =
+  const isPydanticHero =
     heroMedia.type === "animation" && heroMedia.id === "pydantic-fixturegen";
+  const showHeroOverlay = heroMedia.type === "image" || isPydanticHero;
 
   const itemMotionProps = {
     variants: fadeUpItem,
@@ -397,11 +399,18 @@ export const Article: React.FC<ArticleItem> = (article) => {
                       variant="hero"
                       className="h-full w-full"
                     />
+                  ) : heroMedia.id === "python-version-patch-pr" ? (
+                    <PythonVersionPatchPrHero
+                      variant="hero"
+                      className="h-full w-full"
+                    />
                   ) : null}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1224]/70 via-transparent to-transparent" />
+                  {showHeroOverlay && (
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1224]/70 via-transparent to-transparent" />
+                  )}
                 </div>
               </div>
-              {isAnimatedHero && (
+              {isPydanticHero && (
                 <p className="mt-3 text-sm text-slate-400/90 italic">
                   Deterministic pipeline. Seeded. Auditable. Safe.
                 </p>
