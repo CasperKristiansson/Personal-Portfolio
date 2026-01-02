@@ -20,6 +20,14 @@ const financeTrackerReports =
   "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/reports.png";
 const financeTrackerTransactions =
   "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/transactions.png";
+const financeTrackerCategories =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/categories.png";
+const financeTrackerTaxes =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/taxes.png";
+const financeTrackerInvestments =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/investments.png";
+const financeTrackerGoals =
+  "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/goals.png";
 
 const podcastTrackerHero =
   "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg";
@@ -344,6 +352,11 @@ const financeTracker: ArticleItem = {
         "Finance Tracker is a portfolio-grade personal finance workspace that trades spreadsheets for a product-style experience. It focuses on clarity across transactions, accounts, budgets, and long-term insights.",
     },
     {
+      type: "text",
+      value:
+        "The project is an end-to-end showcase: ingestion, categorization, reporting, and decision-ready insights wrapped in a UX-first interface with data-dense views and a clean service architecture.",
+    },
+    {
       type: "heading",
       value: "Product Snapshot",
     },
@@ -357,6 +370,10 @@ const financeTracker: ArticleItem = {
       ],
     },
     {
+      type: "heading",
+      value: "Screenshots",
+    },
+    {
       type: "image",
       value: financeTrackerDashboard,
       description: "Dashboard overview",
@@ -364,12 +381,70 @@ const financeTracker: ArticleItem = {
     {
       type: "text",
       value:
-        "The dashboard emphasizes recent movement and actionable KPIs, with quick access to accounts, goals, and high-signal summaries.",
+        "The command center view focuses on what moved and what matters next with quick access to accounts, goals, and high-signal KPIs.",
     },
     {
       type: "image",
       value: financeTrackerReports,
       description: "Reports and analytics",
+    },
+    {
+      type: "text",
+      value:
+        "Reporting is built for long-range clarity: net-worth trends, cash-flow volatility, and category mix that make tradeoffs visible.",
+    },
+    {
+      type: "image",
+      value: financeTrackerTransactions,
+      description: "Transaction management",
+    },
+    {
+      type: "text",
+      value:
+        "Imports and transactions emphasize speed with bulk ingest, smart mapping, and fast filters for audit-ready edits.",
+    },
+    {
+      type: "heading",
+      value: "Feature Grid",
+    },
+    {
+      type: "text",
+      value:
+        "The feature set goes wide without feeling fragmented. Each surface is scoped, data-dense, and tuned for daily use.",
+    },
+    {
+      type: "image",
+      value: financeTrackerCategories,
+      description: "Categories",
+    },
+    {
+      type: "image",
+      value: financeTrackerTaxes,
+      description: "Taxes",
+    },
+    {
+      type: "image",
+      value: financeTrackerInvestments,
+      description: "Investments",
+    },
+    {
+      type: "image",
+      value: financeTrackerGoals,
+      description: "Goals",
+    },
+    {
+      type: "heading",
+      value: "Why This Project",
+    },
+    {
+      type: "text",
+      value:
+        "I wanted a personal finance workspace that felt like a modern product instead of a spreadsheet. The goal is clarity: see where money goes, how it compounds, and what to do next.",
+    },
+    {
+      type: "text",
+      value:
+        "It is built as a portfolio-grade app, not a tutorial. Every screen is meant to be opinionated, fast, and practical for day-to-day tracking while still surfacing long-term trends.",
     },
     {
       type: "heading",
@@ -386,42 +461,50 @@ const financeTracker: ArticleItem = {
       ],
     },
     {
-      type: "image",
-      value: financeTrackerTransactions,
-      description: "Transaction management",
-    },
-    {
       type: "heading",
       value: "Tech Stack",
     },
     {
       type: "list",
       value: [
-        "Frontend: React 19 + Vite 6 + TypeScript, Tailwind CSS 4, Radix UI primitives.",
-        "State & forms: Redux Toolkit + redux-saga, React Hook Form + Zod.",
-        "Visualization: Recharts and Framer Motion for rich analytics and motion.",
-        "Backend: Python 3.13, SQLModel/SQLAlchemy, Alembic migrations.",
-        "Infrastructure: AWS Lambda + Cognito with Terraform.",
+        "Frontend: React 19 + Vite 6 + TypeScript, Tailwind CSS 4, Radix UI primitives, shadcn-style components, lucide icons.",
+        "State & forms: Redux Toolkit + redux-saga, react-router, React Hook Form + Zod.",
+        "Visualization: Recharts for analytics and Framer Motion for transitions.",
+        "Backend: Python 3.13, SQLModel + SQLAlchemy, Pydantic schemas, Alembic migrations.",
+        "Infrastructure: Serverless AWS Lambda handlers with Cognito via Amplify, provisioned by Terraform.",
       ],
     },
     {
       type: "heading",
-      value: "Feature Focus",
+      value: "Feature Deep Dive",
     },
     {
-      type: "text",
-      value:
-        "Transactions and imports support multi-leg transfers, fast filters, and validation-first spreadsheet ingestion with mapping and reconciliation flows.",
+      type: "list",
+      value: [
+        "Transactions & imports: Multi-leg transfers, bulk ingest, preview mapping, and reconciliation with running balances.",
+        "Categories & rules: Income vs expense types, icon and color metadata, merges, archival, and lifetime trend sparklines.",
+        "Accounts & reconciliation: Balance tracking with debt metadata and explicit adjustment entries for audit-ready ledgers.",
+        "Budgets & subscriptions: Period budgets with spent vs remaining progress, plus recurring matching rules.",
+        "Debt & loans: Principal, interest, minimum payment modeling, amortization schedules, and transaction-driven events.",
+        "Investments: Holdings, cashflows, and performance metrics including realized/unrealized gains, TWR, and IRR.",
+        "Goals: Target amounts and dates linked to accounts or categories with progress computed from live balances.",
+        "Taxes: Payment and refund tracking with authority metadata plus monthly and yearly summaries.",
+        "Reporting & analytics: Net worth trajectory, cash-flow volatility, and exports for projections and forecasts.",
+        "Security & session handling: Amplify/Cognito-backed auth with session-aware loading and demo-safe flows.",
+      ],
     },
     {
-      type: "text",
-      value:
-        "Categories, budgets, and subscriptions provide a rules-driven system for classifying spend, tracking progress, and visualizing recurring commitments.",
+      type: "heading",
+      value: "Repo Layout",
     },
     {
-      type: "text",
-      value:
-        "Reporting and analytics surface cash-flow volatility, net worth trends, and category insights to guide decisions with confidence.",
+      type: "list",
+      value: [
+        "apps/web - Vite + React frontend.",
+        "apps/api - Python API handlers, services, repositories, and schemas.",
+        "infra/terraform - Infrastructure definitions.",
+        "docs - Supporting documentation and assets.",
+      ],
     },
   ],
 };
