@@ -1,0 +1,98 @@
+export const meta = {
+  path: "/articles/finance-tracker",
+  period: "2024 - Present",
+  header: "Finance Tracker",
+  description:
+    "Personal finance intelligence built as an end-to-end product: ingestion, categorization, reporting, and decision-ready insights.",
+  headerLinks: [
+    {
+      link: "https://finance-tracker.casperkristiansson.com/",
+      display: "Live",
+    },
+    {
+      link: "https://github.com/CasperKristiansson/Finance-Tracker",
+      display: "Github",
+    },
+  ],
+  image:
+    "https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/hero.png",
+};
+
+Finance Tracker is a portfolio-grade personal finance workspace that trades spreadsheets for a product-style experience. It focuses on clarity across transactions, accounts, budgets, and long-term insights.
+
+The project is an end-to-end showcase: ingestion, categorization, reporting, and decision-ready insights wrapped in a UX-first interface with data-dense views and a clean service architecture.
+
+## Product Snapshot
+
+- Unified view of transactions, accounts, budgets, goals, loans, investments, and taxes.
+- Rich reporting with net-worth, cash-flow, and category analytics.
+- Spreadsheet import workflows with preview, mapping, and reconciliation.
+- UX-first interface with motion, progressive loading states, and data-dense layouts.
+
+## Screenshots
+
+![Dashboard overview](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/dashboard.png)
+
+The command center view focuses on what moved and what matters next with quick access to accounts, goals, and high-signal KPIs.
+
+![Reports and analytics](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/reports.png)
+
+Reporting is built for long-range clarity: net-worth trends, cash-flow volatility, and category mix that make tradeoffs visible.
+
+![Transaction management](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/transactions.png)
+
+Imports and transactions emphasize speed with bulk ingest, smart mapping, and fast filters for audit-ready edits.
+
+## Feature Grid
+
+The feature set goes wide without feeling fragmented. Each surface is scoped, data-dense, and tuned for daily use.
+
+![Categories](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/categories.png)
+
+![Taxes](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/taxes.png)
+
+![Investments](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/investments.png)
+
+![Goals](https://raw.githubusercontent.com/CasperKristiansson/Finance-Tracker/master/docs/images/goals.png)
+
+## Why This Project
+
+I wanted a personal finance workspace that felt like a modern product instead of a spreadsheet. The goal is clarity: see where money goes, how it compounds, and what to do next.
+
+It is built as a portfolio-grade app, not a tutorial. Every screen is meant to be opinionated, fast, and practical for day-to-day tracking while still surfacing long-term trends.
+
+## Highlights
+
+- Data-rich reporting across yearly and total views, net worth trajectory, and category mix.
+- Full CRUD flows across accounts, budgets, loans, investments, subscriptions, and taxes.
+- Authenticated experience with AWS Amplify and Cognito-ready configuration.
+- Async data orchestration via Redux Toolkit and redux-saga.
+- Import pipelines powered by pandas and openpyxl for real-world bank data.
+
+## Tech Stack
+
+- Frontend: React 19 + Vite 6 + TypeScript, Tailwind CSS 4, Radix UI primitives, shadcn-style components, lucide icons.
+- State and forms: Redux Toolkit + redux-saga, react-router, React Hook Form + Zod.
+- Visualization: Recharts for analytics and Framer Motion for transitions.
+- Backend: Python 3.13, SQLModel + SQLAlchemy, Pydantic schemas, Alembic migrations.
+- Infrastructure: Serverless AWS Lambda handlers with Cognito via Amplify, provisioned by Terraform.
+
+## Feature Deep Dive
+
+- Transactions and imports: Multi-leg transfers, bulk ingest, preview mapping, and reconciliation with running balances.
+- Categories and rules: Income vs expense types, icon and color metadata, merges, archival, and lifetime trend sparklines.
+- Accounts and reconciliation: Balance tracking with debt metadata and explicit adjustment entries for audit-ready ledgers.
+- Budgets and subscriptions: Period budgets with spent vs remaining progress, plus recurring matching rules.
+- Debt and loans: Principal, interest, minimum payment modeling, amortization schedules, and transaction-driven events.
+- Investments: Holdings, cashflows, and performance metrics including realized and unrealized gains, TWR, and IRR.
+- Goals: Target amounts and dates linked to accounts or categories with progress computed from live balances.
+- Taxes: Payment and refund tracking with authority metadata plus monthly and yearly summaries.
+- Reporting and analytics: Net worth trajectory, cash-flow volatility, and exports for projections and forecasts.
+- Security and session handling: Amplify/Cognito-backed auth with session-aware loading and demo-safe flows.
+
+## Repo Layout
+
+- apps/web - Vite + React frontend.
+- apps/api - Python API handlers, services, repositories, and schemas.
+- infra/terraform - Infrastructure definitions.
+- docs - Supporting documentation and assets.

@@ -1,0 +1,131 @@
+export const meta = {
+  path: "/articles/pydantic-fixturegen",
+  period: "2025",
+  header: "pydantic-fixturegen",
+  description:
+    "Deterministic fixtures, datasets, and JSON for Pydantic v2, dataclasses, and TypedDicts. A secure CLI + API for reproducible test artifacts.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/pydantic-fixturegen",
+      display: "Github",
+    },
+    {
+      link: "https://pydantic-fixturegen.kitgrid.dev/",
+      display: "Docs",
+    },
+    {
+      link: "https://pypi.org/project/pydantic-fixturegen/",
+      display: "PyPI",
+    },
+  ],
+  image: "https://opengraph.githubassets.com/1/CasperKristiansson/pydantic-fixturegen",
+};
+
+Deterministic fixtures, datasets, and JSON for Pydantic v2, dataclasses, and TypedDicts. A secure, extensible CLI + Python API that turns models into reproducible test artifacts with one command.
+
+## The Wow in One Paragraph
+
+pydantic-fixturegen bridges the gap between realistic data and strict test determinism. It discovers models safely (AST + sandboxed imports), builds values with a stable RNG core, and emits JSON, pytest fixtures, schemas, and datasets with atomic writes and full metadata. It integrates with FastAPI, Polyfactory, Hypothesis, and OpenAPI/JSON Schema so everything can run from the same generation engine. The result is a production-grade toolchain that makes fixture generation repeatable and auditable.
+
+## Why It Exists
+
+Modern APIs and data-heavy backends need reliable test data. Hand-written fixtures are expensive to maintain, and random generators are too flaky for CI. pydantic-fixturegen solves this with deterministic seeds, provider heuristics, and a hardened sandbox so teams can safely generate rich data from live models, schemas, and specs.
+
+## Core Highlights
+
+- Deterministic engine with stable seeds across Python versions and OSes (SplitMix64 RNG) and cascaded control for random, Faker, and optional NumPy.
+- Multi-model support for Pydantic v2 models, stdlib dataclasses, and TypedDicts.
+- Secure discovery via AST parsing and a safe-import sandbox with network and filesystem guards.
+- Outputs everywhere: JSON/JSONL, pytest fixtures, JSON Schema, and high-volume datasets (CSV/Parquet/Arrow).
+- Extensible by design with Pluggy hooks for providers, strategies, and emitters.
+- Schema-native workflows that ingest JSON Schema or OpenAPI specs and generate artifacts immediately.
+- Observability built in with structured logs, explain trees, diff tooling, and coverage lockfiles.
+
+## Feature Tour
+
+### Generation + Emitters
+
+- JSON/JSONL with optional orjson, sharding, and output templating.
+- Pytest fixtures with deterministic parametrization, configurable style/scope, and atomic IO.
+- JSON Schema export with stable ordering for clean diffs.
+- Dataset output via streaming CSV writers or PyArrow-backed Parquet/Arrow sinks.
+
+### API and Spec Integration
+
+- JSON Schema ingestion with caching for instant reruns.
+- OpenAPI pipeline that isolates route schemas and emits samples per operation.
+- FastAPI commands to smoke-test endpoints or serve mock responses for demos.
+
+### Determinism and Control
+
+- Seed freezing, recursion policies, union/enum selection controls, and field hinting.
+- Relation-aware generation to keep foreign keys and shared references consistent.
+- Profile presets (realistic, edge, adversarial, pii-safe) that tune behavior without manual overrides.
+
+### Reliability and Safety
+
+- Safe-import sandbox blocks network usage, restricts filesystem writes, applies memory caps, and enforces timeouts.
+- Structured errors with taxonomy codes and JSON error outputs for CI.
+- Atomic file writes to protect existing artifacts on failures.
+
+### Tooling That Scales
+
+- Snapshot and diff tooling for regression detection.
+- Coverage lockfiles (pfg lock / pfg verify) to prevent fixture drift.
+- Anonymizer pipeline for sanitizing data with deterministic rule bundles.
+
+## Architecture at a Glance
+
+```text
+Models
+  -> Discovery (AST + sandboxed imports)
+  -> Strategies (presets + plugins)
+  -> Provider registry
+  -> Instance builder (deterministic seeds)
+  -> Emitters (JSON | fixtures | schema | datasets)
+  -> Artifacts with metadata (seed/version/digest)
+```
+
+The pipeline is modular, which is why features like Polyfactory delegation, custom providers, and new emitters can be dropped in without rewriting the core.
+
+## Extensibility
+
+- Pluggy hooks: pfg_register_providers, pfg_modify_strategy, pfg_emit_artifact.
+- Delegation to Polyfactory when available, so existing factories keep working with the same deterministic configuration.
+- Hypothesis strategies derived from the same generation metadata for property-based tests.
+
+## Developer Experience
+
+- Simple CLI (pfg list, pfg gen json, pfg gen fixtures, pfg gen schema, pfg doctor).
+- Consistent flags across commands: --include, --exclude, --seed, --preset, --watch.
+- Flexible config via pyproject.toml, environment variables, or CLI overrides.
+
+```bash
+# Discover models
+pfg list models.py
+
+# Emit JSON samples
+pfg gen json models.py --include models.User --n 2 --seed 7 --freeze-seeds \
+  --out out/{model}.json
+
+# Emit pytest fixtures
+pfg gen fixtures models.py --include models.User --cases 3 --seed 7 --freeze-seeds \
+  --out tests/fixtures/{model}_fixtures.py
+```
+
+## Tech Stack and Quality
+
+- Python 3.10-3.14, Pydantic v2.
+- Type-checked with mypy, linted with Ruff.
+- CI-enforced coverage and deterministic artifact diffing.
+
+## Ideal Use Cases
+
+- Reproducible test fixtures for Pydantic-heavy services.
+- Contract testing for OpenAPI-first APIs.
+- Data seeding for SQLModel/Beanie/MongoDB test environments.
+- Safe demo data generation without touching production systems.
+
+## What Makes It Impressive
+
+pydantic-fixturegen is not a script or a simple factory library. It is a complete data generation platform with deterministic guarantees, sandboxed safety, and professional-grade tooling for diffing, coverage, and auditability. The integration surface (CLI + API + plugins + schema ingestion + FastAPI + Polyfactory) turns it into a drop-in foundation for serious testing and data workflows.

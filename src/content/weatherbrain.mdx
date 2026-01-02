@@ -1,0 +1,55 @@
+import weatherbrainPreview from "../assets/projects/weatherbrain/weatherbrainWebsite.png";
+import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
+
+export const meta = {
+  path: "/articles/weatherbrain",
+  period: "Mar 2022 - Jun 2022",
+  header: "WeatherBrain",
+  description:
+    "WeatherBrain is an innovative application that leverages machine learning and IoT technology to deliver precise, real-time weather data and forecasts for specific locations.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/Weather-Predictor",
+      display: "Github",
+    },
+    {
+      link: "https://weatherbrainproject.web.app/",
+      display: "weatherbrainproject.web.app",
+    },
+  ],
+  image: weatherbrainPreview,
+};
+
+WeatherBrain offers two core functionalities: real-time weather monitoring using an IoT device and predictive forecasting through advanced machine learning. The platform also provides comparative statistics against major weather services, giving users reliable and contextual insights.
+
+By harnessing data from a BME680 sensor connected to a Raspberry Pi, WeatherBrain delivers hyper-localized weather reports. This targeted approach allows users to monitor and predict conditions at a specific site, surpassing the typical city-wide forecasts.
+
+## Technologies Used
+
+- Microsoft Azure Virtual Machine (Ubuntu)
+- Microsoft Azure SQL Database and Server
+- Microsoft Azure App Service for website hosting
+- Microsoft Azure IoT Hub
+- Microsoft Azure Storage Account
+- TensorFlow for machine learning predictions
+- Github workflow integration
+- Figma for design
+- REST API
+- IoT device (BME680) and Raspberry Pi
+- Firebase hosting
+
+## Features
+
+Developed as part of the Project and Project Methods (II1302) course, I led the machine learning aspect of WeatherBrain. My role encompassed data collection, model development, and server configuration to ensure seamless daily predictions.
+
+Data Collection and Preparation: Historical weather data was sourced from SMHI, combining readings from multiple stations to secure consistent hourly records. This comprehensive dataset, covering temperature, atmospheric pressure, and humidity, laid the groundwork for reliable forecasts.
+
+<img src={weatherbrainOverview} alt="WeatherBrain Preview" />
+
+Data Analysis and Cleaning: I ensured data integrity by identifying and correcting anomalies. Utilizing visualizations such as graphs and heat maps, I normalized the data to prepare it for accurate model training.
+
+Model Development: I experimented with over six TensorFlow models to determine the best fit for time-series weather predictions. Leveraging GPU acceleration reduced training time dramatically - from 30 hours on a CPU to just 2 hours - while careful parameter tuning maximized model performance.
+
+Data Integration and Server Setup: I managed the continuous flow of fresh IoT data into the Azure SQL database, ensuring the prediction model always had the latest inputs. Additionally, I configured the server to run daily predictions and support REST API operations.
+
+Webpage Redesign: After the course concluded and our Microsoft Azure student credits expired, I redesigned the website and implemented placeholder data. The new design reflects a modern, intuitive user interface intended to enhance the overall user experience.

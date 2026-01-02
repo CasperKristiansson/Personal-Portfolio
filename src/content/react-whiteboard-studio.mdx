@@ -1,0 +1,39 @@
+export const meta = {
+  path: "/articles/react-whiteboard-studio",
+  period: "2025",
+  header: "React Whiteboard Studio",
+  description:
+    "A polished whiteboard experience with fluid canvas interactions, local persistence, and a curated design system.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/React-Whiteboard-Studio",
+      display: "Github",
+    },
+    {
+      link: "https://draw.casperkristiansson.com/",
+      display: "Live",
+    },
+  ],
+  image:
+    "https://raw.githubusercontent.com/CasperKristiansson/React-Whiteboard-Studio/main/docs/images/primary.jpg",
+};
+
+React Whiteboard Studio blends high-touch canvas interactions with a thoughtful state architecture. It supports precise drawing, rapid navigation, and export-ready assets without breaking the flow.
+
+## Highlights
+
+- Fluid canvas UX with pan, zoom, snapping, and transforms.
+- Rich shape toolkit with inline text editing and styling controls.
+- Asset pipeline with IndexedDB persistence and exportable bundles.
+- Project workspace with autosave, duplication, and lifecycle actions.
+- Debug overlay and feature flags for safe experimentation.
+
+![Whiteboard tooling illustration](https://raw.githubusercontent.com/CasperKristiansson/React-Whiteboard-Studio/main/docs/images/illustration.jpg)
+
+## Tech Stack
+
+- React 19 + TypeScript
+- Zustand with Immer for global state and undo/redo
+- Dexie (IndexedDB) for offline persistence
+- Vite + Tailwind CSS
+- Custom canvas controllers for snapping, guides, and measurement

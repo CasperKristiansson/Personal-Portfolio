@@ -1,0 +1,34 @@
+export const meta = {
+  path: "/articles/python-version-patch-pr",
+  period: "2025",
+  header: "CPython Patch PR Action",
+  description:
+    "Automates CPython patch updates across every Python version reference in a repo and opens evergreen pull requests.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/python-version-patch-pr",
+      display: "Github",
+    },
+    {
+      link: "https://python-version-patch-pr.kitgrid.dev/",
+      display: "Docs",
+    },
+  ],
+  image: "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr",
+};
+
+This GitHub Action scans workflows, Dockerfiles, and runtime files to keep CPython patch versions current. It creates or updates a PR with minimal diff noise.
+
+## Feature Overview
+
+- Cross-file detection for Dockerfiles, workflows, runtime files, and tool configs.
+- Resolves the latest stable patch with pre-release guards and python.org fallback.
+- Predictable branch and PR automation with Octokit support.
+- Dry-run previews, security keyword gates, and offline snapshots.
+- Outputs change matrices for targeted CI fan-out.
+
+## How It Works
+
+- Scan the repo for pinned CPython patch versions.
+- Resolve the latest patch for the configured track.
+- Open or update a `chore/bump-python-<track>` pull request.

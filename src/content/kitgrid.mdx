@@ -1,0 +1,35 @@
+import kitgridHero from "../assets/projects/kitgrid/kitgridHero.jpg";
+
+export const meta = {
+  path: "/articles/kitgrid",
+  period: "2025",
+  header: "Kitgrid",
+  description:
+    "Personal docs network that aggregates raw Markdown across repos into a shared documentation hub.",
+  headerLinks: [
+    {
+      link: "https://kitgrid.dev/",
+      display: "Live",
+    },
+    {
+      link: "https://github.com/CasperKristiansson/kitgrid",
+      display: "Github",
+    },
+  ],
+  image: kitgridHero,
+};
+
+Kitgrid pulls documentation from multiple projects and normalizes metadata so every repo with a docs folder shows up in one cohesive hub.
+
+## Highlights
+
+- Aggregates raw Markdown across repos with a scripted fetch pipeline.
+- Builds a shared documentation hub plus per-project microsites.
+- Keeps metadata normalized for consistent navigation and search.
+
+## Tech Stack
+
+- Astro
+- TypeScript
+- Markdown
+- PNPM

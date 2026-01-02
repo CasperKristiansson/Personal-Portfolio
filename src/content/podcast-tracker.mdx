@@ -1,0 +1,41 @@
+export const meta = {
+  path: "/articles/podcast-tracker",
+  period: "2024",
+  header: "Podcast Tracker",
+  description:
+    "A podcast companion that syncs with the Spotify catalog so new releases surface automatically, with show pages and listening history.",
+  headerLinks: [
+    {
+      link: "https://podcast.casperkristiansson.com/",
+      display: "Live",
+    },
+    {
+      link: "https://github.com/CasperKristiansson/Podcast-Tracker",
+      display: "Github",
+    },
+  ],
+  image:
+    "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg",
+};
+
+Podcast Tracker keeps tabs on every show you follow by syncing with the Spotify catalog. A dedicated episode view highlights the latest drops, and each show has a rich detail page.
+
+Your profile page stores listening history so you can resume quickly while still discovering new episodes.
+
+## Technologies Used
+
+- Astro + TypeScript with Tailwind CSS
+- GraphQL API with Apollo Client and GraphQL Code Generator
+- AWS Lambda + DynamoDB for serverless data services
+- AWS CDK for repeatable infrastructure
+- Vitest, ESLint, and Prettier for quality
+
+![Profile dashboard and podcast search](https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/app-dashboard-search.png)
+
+![Library overview and show detail](https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/app-library-show.png)
+
+## Experience Highlights
+
+- Spotify catalog sync keeps new releases fresh.
+- Show pages provide rich metadata and quick context before play.
+- Personal history makes it easy to pick up where you left off.
