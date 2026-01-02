@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Icons } from "../components/Icons";
 import { ArticleItem } from "../articles";
 import { projects, type ProjectMedia } from "../data/projects";
+import { FinanceTrackerHero } from "../components/FinanceTrackerHero";
 import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
 import type React from "react";
 import { isValidElement, useEffect, useState } from "react";
@@ -158,7 +159,8 @@ export const Article: React.FC<ArticleItem> = (article) => {
     src: article.image,
     alt: `${article.header} cover`,
   };
-  const isAnimatedHero = heroMedia.type === "animation";
+  const isAnimatedHero =
+    heroMedia.type === "animation" && heroMedia.id === "pydantic-fixturegen";
 
   const itemMotionProps = {
     variants: fadeUpItem,
@@ -396,6 +398,8 @@ export const Article: React.FC<ArticleItem> = (article) => {
                       variant="hero"
                       className="h-full w-full"
                     />
+                  ) : heroMedia.id === "finance-tracker" ? (
+                    <FinanceTrackerHero className="h-full w-full" />
                   ) : null}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1224]/70 via-transparent to-transparent" />
                 </div>
