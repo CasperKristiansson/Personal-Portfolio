@@ -4,7 +4,7 @@ import { Icons } from "../components/Icons";
 import { ArticleItem } from "../articles";
 import { projects } from "../data/projects";
 import type React from "react";
-import { isValidElement, useEffect } from "react";
+import { isValidElement, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MDXProvider } from "@mdx-js/react";
 import {
@@ -108,11 +108,12 @@ const BadgeList: React.FC<{ tags: string[]; max?: number }> = ({
   tags,
   max = 6,
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   if (!tags.length) {
     return null;
   }
 
-  const visible = tags.slice(0, max);
+  const visible = isExpanded ? tags : tags.slice(0, max);
   const remaining = tags.length - visible.length;
 
   return (
@@ -128,9 +129,14 @@ const BadgeList: React.FC<{ tags: string[]; max?: number }> = ({
         />
       ))}
       {remaining > 0 && (
-        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200/70 uppercase">
+        <button
+          type="button"
+          onClick={() => setIsExpanded(true)}
+          className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200/70 uppercase transition hover:border-sky-300/50 hover:text-slate-100"
+          aria-label={`Show ${remaining} more tags`}
+        >
           +{remaining}
-        </span>
+        </button>
       )}
     </div>
   );
