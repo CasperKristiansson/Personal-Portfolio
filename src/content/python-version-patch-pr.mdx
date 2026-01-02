@@ -3,7 +3,7 @@ export const meta = {
   period: "2025",
   header: "CPython Patch PR Action",
   description:
-    "Automates CPython patch updates across every Python version reference in a repo and opens evergreen pull requests.",
+    "Automated GitHub Action that keeps every CPython patch pin in a repository up to date, opening a clean, auditable pull request the moment a new patch release is available.",
   headerLinks: [
     {
       link: "https://github.com/CasperKristiansson/python-version-patch-pr",
@@ -14,22 +14,77 @@ export const meta = {
       display: "Docs",
     },
   ],
-  image:
-    "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr",
+  image: "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr",
 };
 
-This GitHub Action scans workflows, Dockerfiles, and runtime files to keep CPython patch versions current. It creates or updates a PR with minimal diff noise.
+Automated GitHub Action that keeps every CPython patch pin in a repository up to date, opening a clean, auditable pull request the moment a new patch release is available.
 
-## Feature Overview
+## Why This Exists
 
-- Cross-file detection for Dockerfiles, workflows, runtime files, and tool configs.
-- Resolves the latest stable patch with pre-release guards and python.org fallback.
-- Predictable branch and PR automation with Octokit support.
-- Dry-run previews, security keyword gates, and offline snapshots.
-- Outputs change matrices for targeted CI fan-out.
+Teams pin exact Python patch versions for reliability and security, but updating them is a constant, error-prone chore. This action turns that into a predictable, low-noise workflow that fits into existing CI/CD without custom scripts.
 
-## How It Works
+## What It Does
 
-- Scan the repo for pinned CPython patch versions.
-- Resolve the latest patch for the configured track.
-- Open or update a `chore/bump-python-<track>` pull request.
+- Scans a repo for pinned X.Y.Z versions across Dockerfiles, GitHub workflows, .python-version, pyproject.toml, tox.ini, Pipfile, runtime.txt, Conda environment.yml, and more.
+- Resolves the latest stable CPython patch from GitHub tags with a python.org fallback.
+- Applies minimal, targeted rewrites that preserve suffixes like -slim and -alpine.
+- Creates or updates a dedicated branch and pull request (`chore/bump-python-<track>`).
+- Emits rich outputs (change matrix, files changed, skip reasons) to drive downstream jobs.
+
+## Key Capabilities That Create the Wow
+
+- Cross-file detection: One scan finds every pinned patch version, even across heterogeneous stacks.
+- Smart gating: Pre-release guardrails, optional security keyword gates, and runner availability checks keep updates safe.
+- Idempotent behavior: If you are already on the latest patch, it cleanly skips with a structured reason.
+- Low-noise PRs: Minimal diffs and deterministic PR bodies make audits and rollbacks painless.
+- Offline mode: Supports air-gapped environments via snapshots for tags, release notes, and runner manifests.
+- Automerge ready: Can label or merge after checks pass, or hand off to peter-evans/create-pull-request.
+
+## Architecture Highlights
+
+- Dependency-injected core (executeAction) keeps the logic testable and isolates integrations (Octokit, network, filesystem).
+- Scanner pipeline expands globs, applies a curated set of file-specific detectors, and tracks exact byte offsets for precise rewrites.
+- Version resolution prefers GitHub tags, falls back to python.org scraping, and enforces pre-release and security gates.
+- Git and PR automation encapsulates branch management, minimal staging, and PR create or update flows with throttling.
+
+## Reliability and Safety
+
+- Pre-release guard prevents accidental upgrades to rc, a, or b builds.
+- Workflow permission guard detects when GITHUB_TOKEN lacks workflow scope and exits cleanly.
+- Runner availability validation ensures all GitHub-hosted runners publish the resolved patch.
+- Structured skip reasons allow downstream workflows to branch predictably.
+
+## Developer Experience
+
+- TypeScript + Node 20 with ncc bundling for a fast, single-file action runtime.
+- Zod validation for inputs and config to stop misconfiguration early.
+- Fast-glob based discovery with sensible default ignores (node_modules, .git, dist).
+- Clear, documented configuration surface with sane defaults for paths and behavior.
+
+## Testing and Quality
+
+The suite uses Vitest with focused unit and integration-style coverage:
+
+- Scanning, pattern detection, and rewrite logic
+- Version resolution and offline snapshot behavior
+- Branch and PR automation with mocked Git and Octokit
+- Deterministic PR body and coexistence configs for Renovate and Dependabot
+
+## Example Usage
+
+```yaml
+- name: Bump CPython patch versions
+  uses: casperkristiansson/python-version-patch-pr@v1
+  with:
+    track: "3.12"
+```
+
+## Tech Stack
+
+TypeScript, Node.js 20, GitHub Actions, Octokit, Zod, fast-glob, semver, Vitest, ncc.
+
+## What I Am Most Proud Of
+
+- A scanning system that is both broad (many file types) and precise (byte-level replacements).
+- Safety-first guardrails that prevent risky upgrades and provide transparent skip reasons.
+- A developer-focused workflow that plays nicely with other automation like Renovate and Dependabot.
