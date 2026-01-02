@@ -2,6 +2,7 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Link } from "react-router";
 import { Icons } from "../components/Icons";
 import { ArticleItem } from "../articles";
+import { projects } from "../data/projects";
 import type React from "react";
 import { isValidElement, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -16,10 +17,132 @@ import {
   viewportOnce,
 } from "./motion";
 
+type BadgeConfig = {
+  label?: string;
+  color: string;
+  logo?: string;
+  logoColor?: string;
+};
+
+const badgeMap: Record<string, BadgeConfig> = {
+  React: { color: "61DAFB", logo: "react", logoColor: "0B1224" },
+  TypeScript: { color: "3178C6", logo: "typescript", logoColor: "white" },
+  "Tailwind CSS": { color: "06B6D4", logo: "tailwindcss", logoColor: "white" },
+  Redux: { color: "764ABC", logo: "redux", logoColor: "white" },
+  Python: { color: "3776AB", logo: "python", logoColor: "white" },
+  AWS: { color: "232F3E", logo: "amazonaws", logoColor: "white" },
+  Terraform: { color: "844FBA", logo: "terraform", logoColor: "white" },
+  Firebase: { color: "FFCA28", logo: "firebase", logoColor: "0B1224" },
+  "Firebase Auth": {
+    color: "FFCA28",
+    logo: "firebase",
+    logoColor: "0B1224",
+  },
+  Firestore: { color: "FFCA28", logo: "firebase", logoColor: "0B1224" },
+  MySQL: { color: "4479A1", logo: "mysql", logoColor: "white" },
+  FFmpeg: { color: "007808", logo: "ffmpeg", logoColor: "white" },
+  Selenium: { color: "43B02A", logo: "selenium", logoColor: "white" },
+  PyQt: { color: "41CD52", logo: "qt", logoColor: "white" },
+  OpenCV: { color: "5C3EE8", logo: "opencv", logoColor: "white" },
+  Pydantic: { color: "E92063", logo: "pydantic", logoColor: "white" },
+  CLI: { color: "334155" },
+  PyPI: { color: "3775A9", logo: "pypi", logoColor: "white" },
+  Testing: { color: "0EA5E9" },
+  "Open Source": {
+    color: "3DA639",
+    logo: "opensourceinitiative",
+    logoColor: "white",
+  },
+  Astro: { color: "FF5D01", logo: "astro", logoColor: "white" },
+  GraphQL: { color: "E10098", logo: "graphql", logoColor: "white" },
+  DynamoDB: {
+    color: "4053D6",
+    logo: "amazondynamodb",
+    logoColor: "white",
+  },
+  Canvas: { color: "E34F26", logo: "html5", logoColor: "white" },
+  Zustand: { color: "334155" },
+  IndexedDB: { color: "475569" },
+  "Node.js": { color: "339933", logo: "node.js", logoColor: "white" },
+  "GitHub Actions": {
+    color: "2088FF",
+    logo: "githubactions",
+    logoColor: "white",
+  },
+  "CI/CD": { color: "1E40AF" },
+  Figma: { color: "F24E1E", logo: "figma", logoColor: "white" },
+  Markdown: { color: "000000", logo: "markdown", logoColor: "white" },
+  PNPM: { color: "F69220", logo: "pnpm", logoColor: "white" },
+  Desktop: { color: "1E293B" },
+  Azure: { color: "0078D4", logo: "microsoftazure", logoColor: "white" },
+  TensorFlow: { color: "FF6F00", logo: "tensorflow", logoColor: "white" },
+  IoT: { color: "0F172A" },
+  "Raspberry Pi": {
+    color: "A22846",
+    logo: "raspberrypi",
+    logoColor: "white",
+  },
+  "REST API": { color: "1D4ED8" },
+  API: { color: "1D4ED8" },
+  WordPress: { color: "21759B", logo: "wordpress", logoColor: "white" },
+  SEO: { color: "0F766E" },
+  AdSense: { color: "4285F4", logo: "googleadsense", logoColor: "white" },
+  JavaScript: { color: "F7DF1E", logo: "javascript", logoColor: "0B1224" },
+};
+
+const buildBadgeUrl = (tag: string) => {
+  const config = badgeMap[tag] ?? { color: "334155" };
+  const label = encodeURIComponent(config.label ?? tag);
+  const color = encodeURIComponent(config.color);
+  const params = new URLSearchParams({ style: "flat" });
+  if (config.logo) {
+    params.set("logo", config.logo);
+  }
+  if (config.logoColor) {
+    params.set("logoColor", config.logoColor);
+  }
+  return `https://img.shields.io/badge/${label}-${color}?${params.toString()}`;
+};
+
+const BadgeList: React.FC<{ tags: string[]; max?: number }> = ({
+  tags,
+  max = 6,
+}) => {
+  if (!tags.length) {
+    return null;
+  }
+
+  const visible = tags.slice(0, max);
+  const remaining = tags.length - visible.length;
+
+  return (
+    <div className="mt-5 flex flex-wrap gap-2">
+      {visible.map((tag) => (
+        <img
+          key={tag}
+          src={buildBadgeUrl(tag)}
+          alt={tag}
+          title={tag}
+          loading="lazy"
+          className="h-6 w-auto"
+        />
+      ))}
+      {remaining > 0 && (
+        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200/70 uppercase">
+          +{remaining}
+        </span>
+      )}
+    </div>
+  );
+};
+
 export const Article: React.FC<ArticleItem> = (article) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const projectTags =
+    projects.find((project) => project.path === article.path)?.tags ?? [];
 
   const itemMotionProps = {
     variants: fadeUpItem,
@@ -210,6 +333,9 @@ export const Article: React.FC<ArticleItem> = (article) => {
             >
               {article.description}
             </motion.p>
+            <motion.div variants={fadeUpItem}>
+              <BadgeList tags={projectTags} />
+            </motion.div>
             <div className="mt-6 flex flex-wrap gap-3">
               {article.headerLinks.map((link, index) => (
                 <motion.a

@@ -18,24 +18,75 @@ export const meta = {
     "https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg",
 };
 
-Podcast Tracker keeps tabs on every show you follow by syncing with the Spotify catalog. A dedicated episode view highlights the latest drops, and each show has a rich detail page.
+# Podcast Tracker
 
-Your profile page stores listening history so you can resume quickly while still discovering new episodes.
+A serverless, design-forward podcast hub that keeps every show you care about up to date. It syncs with the Spotify catalog, builds a living listening library, and surfaces the right episode at the right time. The goal is simple: remove the mental overhead of tracking dozens of podcasts and replace it with a clean, delightful command center.
 
-## Technologies Used
+![Podcast Tracker preview](https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/podcast-tracker-preview.jpg)
 
-- Astro + TypeScript with Tailwind CSS
-- GraphQL API with Apollo Client and GraphQL Code Generator
-- AWS Lambda + DynamoDB for serverless data services
-- AWS CDK for repeatable infrastructure
-- Vitest, ESLint, and Prettier for quality
+## The wow moment
+
+Podcast Tracker turns a messy, forgetful listening habit into a curated dashboard. New releases show up automatically, your progress is tracked show by show, and the interface feels like a premium listening OS rather than a generic list of episodes.
+
+## Product highlights
+
+- **Auto-synced show library:** Follow a show once and new releases stay current without manual refresh.
+- **Deep show pages:** Episode lists, rich metadata, and progress state are merged into one view so you can decide what to play next.
+- **Listening progress tracking:** Mark episodes complete, log the next episode in a series, or mark an entire backlog as done.
+- **Profile intelligence:** A personal dashboard that surfaces completion stats and a spotlight list for what you should finish next.
+- **Ratings and reviews:** Capture your thoughts with star ratings and optional notes.
+- **Drop/return workflows:** Gracefully drop a show without losing its history.
+- **Demo mode:** A full offline demo experience that mirrors real GraphQL behavior without requiring login.
 
 ![Profile dashboard and podcast search](https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/app-dashboard-search.png)
-
 ![Library overview and show detail](https://raw.githubusercontent.com/CasperKristiansson/Podcast-Tracker/main/docs/assets/app-library-show.png)
 
-## Experience Highlights
+## UX and visual direction
 
-- Spotify catalog sync keeps new releases fresh.
-- Show pages provide rich metadata and quick context before play.
-- Personal history makes it easy to pick up where you left off.
+- A cinematic, dark UI with layered gradients, glows, and glassy panels that make content feel premium.
+- Intentional motion and micro-interactions (hero blobs, starfields, hover reveals) to create depth and energy.
+- A layout that keeps the search flow and library context always within reach.
+
+## Architecture snapshot
+
+- **Frontend:** Astro + React with Tailwind CSS for a fast, component-driven UI.
+- **API:** AWS AppSync GraphQL with typed operations via GraphQL Code Generator.
+- **Data:** DynamoDB single-table design with TTL and point-in-time recovery.
+- **Compute:** Lambda functions for Spotify proxying, profile aggregation, progress mutations, and show detail composition.
+- **Auth:** Cognito + Google OAuth, including a pre-token approval gate for access control.
+- **Delivery:** S3 + CloudFront + Route 53, secured with strict response headers and HTTPS-only routing.
+- **Infra:** Fully defined in AWS CDK with reproducible stacks.
+
+## Data flow, end to end
+
+- **Search:** AppSync -> Spotify proxy lambda -> Spotify API -> cache to DynamoDB -> typed results to the UI.
+- **Show detail:** Spotify metadata + DynamoDB subscription and progress are merged in a single resolver for a unified view.
+- **Progress updates:** Mutations write directly to DynamoDB through AppSync mapping templates for low latency.
+- **Daily sync:** A scheduled lambda refreshes show metadata and episode counts to keep the library current.
+
+## Technical highlights
+
+- **Spotify proxy with caching and rate limiting:** Reduces API calls and keeps search fast.
+- **Sanitized HTML content:** Spotify descriptions are cleaned and safe to render.
+- **Typed GraphQL everywhere:** Schema-driven types shared across frontend and backend.
+- **Hybrid resolver strategy:** VTL templates for direct writes, Lambda resolvers for aggregation and API fan-out.
+- **Demo mode parity:** Demo GraphQL link mirrors real queries and mutations for a high-fidelity demo.
+
+## Testing and quality
+
+- **Vitest unit coverage** for lambdas, mapping templates, and data aggregation logic.
+- **ESLint + Prettier** for consistent formatting and style.
+- **TypeScript strictness** across the monorepo for confidence during refactors.
+
+## Repository layout
+
+- `apps/web`: Astro + React client app
+- `apps/api`: GraphQL schema + AppSync VTL resolvers
+- `packages/lambdas`: Serverless functions (Spotify proxy, profile, progress, show detail)
+- `packages/shared`: Shared GraphQL operations and generated types
+- `packages/ui`: Reusable UI components
+- `infra`: AWS CDK infrastructure stacks
+
+## Why this project stands out
+
+Podcast Tracker is not just a UI. It is a full-stack product with real-world constraints: rate-limited third-party APIs, identity and access control, live data sync, and a performance-first static delivery stack. It blends a premium front-end experience with a production-grade serverless backend, showing end-to-end ownership from design to infra.
