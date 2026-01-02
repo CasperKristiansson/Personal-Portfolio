@@ -54,7 +54,7 @@ export const FinanceTrackerHero: React.FC<FinanceTrackerHeroProps> = ({
           />
         </ShaderGradientCanvas>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/25 to-slate-950/45" />
-        <div className="relative z-10 flex h-full w-full max-w-4xl flex-col items-center gap-8 px-6 text-center">
+        <div className="relative z-10 flex h-full w-full max-w-4xl flex-col items-center justify-center gap-8 px-6 text-center">
           <div className="space-y-4">
             <h1 className="text-lg font-semibold tracking-tight text-white drop-shadow-[0_14px_45px_rgba(0,0,0,0.35)]">
               Money clarity in one calm space
