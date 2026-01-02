@@ -11,7 +11,7 @@ export const Icons: React.FC<IconsProps> = ({ dark = false }) => {
 
   return (
     <motion.div
-      className="fixed top-2 right-2 z-[9999] hidden transform flex-row gap-3 lg:flex"
+      className="fixed top-4 right-5 z-[9999] hidden transform flex-row items-center gap-3 rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 ring-black/5 backdrop-blur lg:flex"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}

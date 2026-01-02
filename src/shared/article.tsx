@@ -147,13 +147,13 @@ export const Article: React.FC<ArticleItem> = (article) => {
     >
       <Icons dark />
       <motion.div
-        className="fixed top-5 left-5 hidden items-center gap-2 text-black lg:flex"
+        className="fixed top-5 left-5 hidden items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-black shadow-lg ring-1 ring-black/5 backdrop-blur lg:flex"
         variants={slideLeftItem}
         initial="hidden"
         animate="visible"
       >
         <Link to="/?scrollTo=projects">
-          <div className="flex flex-row hover:underline">
+          <div className="flex flex-row items-center gap-1 hover:underline">
             <IconArrowLeft size={24} />
             <p>Go Back</p>
           </div>
