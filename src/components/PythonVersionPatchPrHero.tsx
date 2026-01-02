@@ -414,21 +414,29 @@ const PinToken: React.FC<{
   reducedMotion: boolean;
   highlightShiftX?: MotionValue<number>;
   highlightShiftY?: MotionValue<number>;
+  enableHoverDetails?: boolean;
 }> = ({
   pin,
   palette,
   reducedMotion,
   highlightShiftX,
   highlightShiftY,
+  enableHoverDetails = false,
 }) => {
   const oldOpacity = useTransform(pin.updateOpacity, (value) => 1 - value);
+  const hoverDetailsEnabled = enableHoverDetails && reducedMotion;
 
   return (
-    <span className="group relative inline-flex items-center">
+    <span
+      className={clsx(
+        "relative inline-flex items-center",
+        hoverDetailsEnabled && "group",
+      )}
+    >
       <motion.span
         className={clsx(
           "absolute -inset-x-1 -inset-y-0.5 rounded-md",
-          reducedMotion &&
+          hoverDetailsEnabled &&
             "opacity-0 transition duration-200 group-hover:opacity-100",
         )}
         style={
@@ -436,6 +444,7 @@ const PinToken: React.FC<{
             ? {
                 backgroundColor: palette.highlightBg,
                 boxShadow: `0 0 0 1px ${palette.highlightBorder}`,
+                opacity: hoverDetailsEnabled ? undefined : 0,
               }
             : {
                 backgroundColor: palette.highlightBg,
@@ -477,16 +486,18 @@ const PinToken: React.FC<{
       >
         {pin.label}
       </motion.span>
-      <span
-        className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] opacity-0 transition duration-200 group-hover:opacity-100"
-        style={{
-          backgroundColor: palette.tooltipBg,
-          color: palette.tooltipText,
-          borderColor: palette.tooltipBorder,
-        }}
-      >
-        byte-level rewrite
-      </span>
+      {hoverDetailsEnabled && (
+        <span
+          className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] opacity-0 transition duration-200 group-hover:opacity-100"
+          style={{
+            backgroundColor: palette.tooltipBg,
+            color: palette.tooltipText,
+            borderColor: palette.tooltipBorder,
+          }}
+        >
+          byte-level rewrite
+        </span>
+      )}
     </span>
   );
 };
@@ -515,6 +526,8 @@ export const PythonVersionPatchPrHero: React.FC<
 
   const showStatic = shouldReduceMotion || variant === "card";
   const allowMotion = !showStatic && isInView;
+  const enableHoverDetails = variant === "hero";
+  const enableChipHover = variant === "hero";
 
   const scanDuration = 2.2;
   const resolveDuration = 1.3;
@@ -814,13 +827,14 @@ export const PythonVersionPatchPrHero: React.FC<
       content: (
         <>
           FROM python:
-          <PinToken
-            pin={pinLookup.dockerfile}
-            palette={palette}
-            reducedMotion={showStatic}
-            highlightShiftX={allowMotion ? highlightShiftX : undefined}
-            highlightShiftY={allowMotion ? highlightShiftY : undefined}
-          />
+            <PinToken
+              pin={pinLookup.dockerfile}
+              palette={palette}
+              reducedMotion={showStatic}
+              highlightShiftX={allowMotion ? highlightShiftX : undefined}
+              highlightShiftY={allowMotion ? highlightShiftY : undefined}
+              enableHoverDetails={enableHoverDetails}
+            />
         </>
       ),
     },
@@ -836,6 +850,7 @@ export const PythonVersionPatchPrHero: React.FC<
             reducedMotion={showStatic}
             highlightShiftX={allowMotion ? highlightShiftX : undefined}
             highlightShiftY={allowMotion ? highlightShiftY : undefined}
+            enableHoverDetails={enableHoverDetails}
           />
         </>
       ),
@@ -852,6 +867,7 @@ export const PythonVersionPatchPrHero: React.FC<
             reducedMotion={showStatic}
             highlightShiftX={allowMotion ? highlightShiftX : undefined}
             highlightShiftY={allowMotion ? highlightShiftY : undefined}
+            enableHoverDetails={enableHoverDetails}
           />
           {"\""}
         </>
@@ -867,6 +883,7 @@ export const PythonVersionPatchPrHero: React.FC<
           reducedMotion={showStatic}
           highlightShiftX={allowMotion ? highlightShiftX : undefined}
           highlightShiftY={allowMotion ? highlightShiftY : undefined}
+          enableHoverDetails={enableHoverDetails}
         />
       ),
     },
@@ -882,6 +899,7 @@ export const PythonVersionPatchPrHero: React.FC<
             reducedMotion={showStatic}
             highlightShiftX={allowMotion ? highlightShiftX : undefined}
             highlightShiftY={allowMotion ? highlightShiftY : undefined}
+            enableHoverDetails={enableHoverDetails}
           />
         </>
       ),
@@ -1141,7 +1159,10 @@ export const PythonVersionPatchPrHero: React.FC<
                   <motion.button
                     type="button"
                     onClick={() => scrollToHeading("reliability-safety")}
-                    className="absolute left-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] transition hover:opacity-100"
+                    className={clsx(
+                      "absolute left-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]",
+                      enableChipHover && "transition hover:opacity-100",
+                    )}
                     style={
                       showGuardrail
                         ? {
@@ -1162,7 +1183,10 @@ export const PythonVersionPatchPrHero: React.FC<
               <motion.button
                 type="button"
                 onClick={() => scrollToHeading("what-it-does")}
-                className="absolute right-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] transition hover:opacity-100"
+                className={clsx(
+                  "absolute right-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]",
+                  enableChipHover && "transition hover:opacity-100",
+                )}
                 style={{
                   opacity: showStatic ? 0.9 : scanOpacity,
                   borderColor: palette.chipBorder,

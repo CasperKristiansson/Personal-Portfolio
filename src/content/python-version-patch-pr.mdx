@@ -14,7 +14,8 @@ export const meta = {
       display: "Docs",
     },
   ],
-  image: "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr",
+  image:
+    "https://opengraph.githubassets.com/1/CasperKristiansson/python-version-patch-pr",
 };
 
 Automated GitHub Action that keeps every CPython patch pin in a repository up to date, opening a clean, auditable pull request the moment a new patch release is available.
@@ -23,7 +24,7 @@ Automated GitHub Action that keeps every CPython patch pin in a repository up to
 
 Teams pin exact Python patch versions for reliability and security, but updating them is a constant, error-prone chore. This action turns that into a predictable, low-noise workflow that fits into existing CI/CD without custom scripts.
 
-<h2 id="what-it-does">What It Does</h2>
+## What It Does
 
 - Scans a repo for pinned X.Y.Z versions across Dockerfiles, GitHub workflows, .python-version, pyproject.toml, tox.ini, Pipfile, runtime.txt, Conda environment.yml, and more.
 - Resolves the latest stable CPython patch from GitHub tags with a python.org fallback.
@@ -40,21 +41,21 @@ Teams pin exact Python patch versions for reliability and security, but updating
 - Offline mode: Supports air-gapped environments via snapshots for tags, release notes, and runner manifests.
 - Automerge ready: Can label or merge after checks pass, or hand off to peter-evans/create-pull-request.
 
-<h2 id="architecture-highlights">Architecture Highlights</h2>
+## Architecture Highlights
 
 - Dependency-injected core (executeAction) keeps the logic testable and isolates integrations (Octokit, network, filesystem).
 - Scanner pipeline expands globs, applies a curated set of file-specific detectors, and tracks exact byte offsets for precise rewrites.
 - Version resolution prefers GitHub tags, falls back to python.org scraping, and enforces pre-release and security gates.
 - Git and PR automation encapsulates branch management, minimal staging, and PR create or update flows with throttling.
 
-<h2 id="reliability-safety">Reliability and Safety</h2>
+## Reliability and Safety
 
 - Pre-release guard prevents accidental upgrades to rc, a, or b builds.
 - Workflow permission guard detects when GITHUB_TOKEN lacks workflow scope and exits cleanly.
 - Runner availability validation ensures all GitHub-hosted runners publish the resolved patch.
 - Structured skip reasons allow downstream workflows to branch predictably.
 
-<h2 id="developer-experience">Developer Experience</h2>
+## Developer Experience
 
 - TypeScript + Node 20 with ncc bundling for a fast, single-file action runtime.
 - Zod validation for inputs and config to stop misconfiguration early.
