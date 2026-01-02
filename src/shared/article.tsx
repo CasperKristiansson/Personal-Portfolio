@@ -134,17 +134,28 @@ export const Article: React.FC<ArticleItem> = (article) => {
                 </motion.ul>
               );
             case "code":
-              return (
-                <motion.div
-                  key={index}
-                  className="mockup-code mt-4"
-                  {...itemMotionProps}
-                >
-                  <pre data-prefix="$">
-                    <code>{item.value}</code>
-                  </pre>
-                </motion.div>
-              );
+              {
+                const hasMeta = Boolean(item.title || item.language);
+                return (
+                  <motion.div
+                    key={index}
+                    className="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 text-slate-100"
+                    {...itemMotionProps}
+                  >
+                    {hasMeta ? (
+                      <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950/40 px-4 py-2 text-xs uppercase tracking-wide text-slate-400">
+                        <span>{item.title ?? "Snippet"}</span>
+                        {item.language ? <span>{item.language}</span> : null}
+                      </div>
+                    ) : null}
+                    <pre className="overflow-x-auto px-5 py-4 text-sm leading-relaxed">
+                      <code className="whitespace-pre font-mono">
+                        {item.value}
+                      </code>
+                    </pre>
+                  </motion.div>
+                );
+              }
             case "image":
               return (
                 <motion.figure

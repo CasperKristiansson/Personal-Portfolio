@@ -76,7 +76,9 @@ export type ArticleItem = {
       }
     | {
         type: "code";
-        value: string[];
+        value: string;
+        title?: string;
+        language?: string;
       }
     | {
         type: "link";
@@ -640,7 +642,7 @@ const pydanticFixturegen: ArticleItem = {
   period: "2025",
   header: "pydantic-fixturegen",
   description:
-    "Deterministic fixtures, pytest modules, datasets, and JSON from Pydantic v2 models, dataclasses, and TypedDicts.",
+    "Deterministic fixtures, datasets, and JSON for Pydantic v2, dataclasses, and TypedDicts. A secure CLI + API for reproducible test artifacts.",
   headerLinks: [
     {
       link: "https://github.com/CasperKristiansson/pydantic-fixturegen",
@@ -660,33 +662,187 @@ const pydanticFixturegen: ArticleItem = {
     {
       type: "text",
       value:
-        "pydantic-fixturegen is a sandboxed CLI that generates deterministic structured data for modern testing workflows. It speaks Pydantic v2 natively and also understands stdlib dataclasses and TypedDicts.",
+        "Deterministic fixtures, datasets, and JSON for Pydantic v2, dataclasses, and TypedDicts. A secure, extensible CLI + Python API that turns models into reproducible test artifacts with one command.",
     },
     {
       type: "heading",
-      value: "Core Capabilities",
+      value: "The Wow in One Paragraph",
+    },
+    {
+      type: "text",
+      value:
+        "pydantic-fixturegen bridges the gap between realistic data and strict test determinism. It discovers models safely (AST + sandboxed imports), builds values with a stable RNG core, and emits JSON, pytest fixtures, schemas, and datasets with atomic writes and full metadata. It integrates with FastAPI, Polyfactory, Hypothesis, and OpenAPI/JSON Schema so everything can run from the same generation engine. The result is a production-grade toolchain that makes fixture generation repeatable and auditable.",
+    },
+    {
+      type: "heading",
+      value: "Why It Exists",
+    },
+    {
+      type: "text",
+      value:
+        "Modern APIs and data-heavy backends need reliable test data. Hand-written fixtures are expensive to maintain, and random generators are too flaky for CI. pydantic-fixturegen solves this with deterministic seeds, provider heuristics, and a hardened sandbox so teams can safely generate rich data from live models, schemas, and specs.",
+    },
+    {
+      type: "heading",
+      value: "Core Highlights",
     },
     {
       type: "list",
       value: [
-        "Deterministic seeds across random, Faker, and optional NumPy.",
-        "Safe-import sandboxing with network and filesystem guards.",
-        "JSON, pytest fixtures, datasets, schema, and diff outputs.",
-        "Pluggy providers and presets for extensibility.",
-        "Works with Pydantic v2, dataclasses, and TypedDicts.",
+        "Deterministic engine with stable seeds across Python versions and OSes (SplitMix64 RNG) and cascaded control for random, Faker, and optional NumPy.",
+        "Multi-model support for Pydantic v2 models, stdlib dataclasses, and TypedDicts.",
+        "Secure discovery via AST parsing and a safe-import sandbox with network and filesystem guards.",
+        "Outputs everywhere: JSON/JSONL, pytest fixtures, JSON Schema, and high-volume datasets (CSV/Parquet/Arrow).",
+        "Extensible by design with Pluggy hooks for providers, strategies, and emitters.",
+        "Schema-native workflows that ingest JSON Schema or OpenAPI specs and generate artifacts immediately.",
+        "Observability built-in with structured logs, explain trees, diff tooling, and coverage lockfiles.",
       ],
     },
     {
       type: "heading",
-      value: "Workflow",
+      value: "Feature Tour",
+    },
+    {
+      type: "heading",
+      value: "Generation + Emitters",
     },
     {
       type: "list",
       value: [
-        "Discover models with `pfg list`.",
-        "Generate samples or fixtures with deterministic seeds.",
-        "Lock and verify outputs to keep tests reproducible.",
+        "JSON/JSONL with optional orjson, sharding, and output templating.",
+        "Pytest fixtures with deterministic parametrization, configurable style/scope, and atomic IO.",
+        "JSON Schema export with stable ordering for clean diffs.",
+        "Dataset output via streaming CSV writers or PyArrow-backed Parquet/Arrow sinks.",
       ],
+    },
+    {
+      type: "heading",
+      value: "API and Spec Integration",
+    },
+    {
+      type: "list",
+      value: [
+        "JSON Schema ingestion with caching for instant reruns.",
+        "OpenAPI pipeline that isolates route schemas and emits samples per operation.",
+        "FastAPI commands to smoke-test endpoints or serve mock responses for demos.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Determinism and Control",
+    },
+    {
+      type: "list",
+      value: [
+        "Seed freezing, recursion policies, union/enum selection controls, and field hinting.",
+        "Relation-aware generation to keep foreign keys and shared references consistent.",
+        "Profile presets (realistic, edge, adversarial, pii-safe) that tune behavior without manual overrides.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Reliability and Safety",
+    },
+    {
+      type: "list",
+      value: [
+        "Safe-import sandbox blocks network usage, restricts filesystem writes, applies memory caps, and enforces timeouts.",
+        "Structured errors with taxonomy codes and JSON error outputs for CI.",
+        "Atomic file writes to protect existing artifacts on failures.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Tooling That Scales",
+    },
+    {
+      type: "list",
+      value: [
+        "Snapshot and diff tooling for regression detection.",
+        "Coverage lockfiles (pfg lock / pfg verify) to prevent fixture drift.",
+        "Anonymizer pipeline for sanitizing data with deterministic rule bundles.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Architecture at a Glance",
+    },
+    {
+      type: "code",
+      title: "Pipeline overview",
+      language: "text",
+      value:
+        "Models\n  -> Discovery (AST + sandboxed imports)\n  -> Strategies (presets + plugins)\n  -> Provider registry\n  -> Instance builder (deterministic seeds)\n  -> Emitters (JSON | fixtures | schema | datasets)\n  -> Artifacts with metadata (seed/version/digest)",
+    },
+    {
+      type: "text",
+      value:
+        "The pipeline is modular, which is why features like Polyfactory delegation, custom providers, and new emitters can be dropped in without rewriting the core.",
+    },
+    {
+      type: "heading",
+      value: "Extensibility",
+    },
+    {
+      type: "list",
+      value: [
+        "Pluggy hooks: pfg_register_providers, pfg_modify_strategy, pfg_emit_artifact.",
+        "Delegation to Polyfactory when available, so existing factories keep working with the same deterministic configuration.",
+        "Hypothesis strategies derived from the same generation metadata for property-based tests.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Developer Experience",
+    },
+    {
+      type: "list",
+      value: [
+        "Simple CLI (pfg list, pfg gen json, pfg gen fixtures, pfg gen schema, pfg doctor).",
+        "Consistent flags across commands: --include, --exclude, --seed, --preset, --watch.",
+        "Flexible config via pyproject.toml, environment variables, or CLI overrides.",
+      ],
+    },
+    {
+      type: "code",
+      title: "Quick CLI taste",
+      language: "bash",
+      value:
+        "# Discover models\npfg list models.py\n\n# Emit JSON samples\npfg gen json models.py --include models.User --n 2 --seed 7 --freeze-seeds \\\n  --out out/{model}.json\n\n# Emit pytest fixtures\npfg gen fixtures models.py --include models.User --cases 3 --seed 7 --freeze-seeds \\\n  --out tests/fixtures/{model}_fixtures.py",
+    },
+    {
+      type: "heading",
+      value: "Tech Stack and Quality",
+    },
+    {
+      type: "list",
+      value: [
+        "Python 3.10-3.14, Pydantic v2.",
+        "Type-checked with mypy, linted with Ruff.",
+        "CI-enforced coverage and deterministic artifact diffing.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "Ideal Use Cases",
+    },
+    {
+      type: "list",
+      value: [
+        "Reproducible test fixtures for Pydantic-heavy services.",
+        "Contract testing for OpenAPI-first APIs.",
+        "Data seeding for SQLModel/Beanie/MongoDB test environments.",
+        "Safe demo data generation without touching production systems.",
+      ],
+    },
+    {
+      type: "heading",
+      value: "What Makes It Impressive",
+    },
+    {
+      type: "text",
+      value:
+        "pydantic-fixturegen is not a script or a simple factory library. It is a complete data generation platform with deterministic guarantees, sandboxed safety, and professional-grade tooling for diffing, coverage, and auditability. The integration surface (CLI + API + plugins + schema ingestion + FastAPI + Polyfactory) turns it into a drop-in foundation for serious testing and data workflows.",
     },
   ],
 };
