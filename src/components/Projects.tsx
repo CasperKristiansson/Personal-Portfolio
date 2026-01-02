@@ -3,7 +3,6 @@ import clsx from "clsx";
 import { Link } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { projects, type ProjectMedia } from "../data/projects";
-import { FinanceTrackerHero } from "./FinanceTrackerHero";
 import { PydanticFixturegenHero } from "./PydanticFixturegenHero";
 import {
   fadeUpItem,
@@ -54,8 +53,6 @@ const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
           interactive={false}
           className="pointer-events-none h-full w-full"
         />
-      ) : media.id === "finance-tracker" ? (
-        <FinanceTrackerHero className="pointer-events-none h-full w-full" />
       ) : null}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1428]/60 via-transparent to-transparent opacity-80" />
     </div>

@@ -15,7 +15,7 @@ export type ProjectTier = "featured" | "notable" | "more";
 
 export type ProjectMedia =
   | { type: "image"; src: string; alt?: string }
-  | { type: "animation"; id: "finance-tracker" | "pydantic-fixturegen" };
+  | { type: "animation"; id: "pydantic-fixturegen" };
 
 export type Project = {
   id: string;
@@ -51,7 +51,6 @@ export const projects: Project[] = [
     ],
     categories: ["Product", "Cloud"],
     image: financeTrackerHero,
-    media: { type: "animation", id: "finance-tracker" },
     path: "/articles/finance-tracker",
     tier: "featured",
     spotlight: true,
