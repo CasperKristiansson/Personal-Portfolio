@@ -82,6 +82,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
   const shootingBurstCountRef = useRef<number>(0);
   const isVisibleRef = useRef(true);
   const reduceMotionRef = useRef(false);
+  const coarsePointerRef = useRef(false);
   const sizeRef = useRef({ width: 0, height: 0, dpr: 1 });
   const lastBuildSizeRef = useRef({ width: 0, height: 0 });
 
@@ -282,6 +283,16 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
     updateReducedMotion();
     mediaQuery.addEventListener("change", updateReducedMotion);
 
+    const coarseQuery = window.matchMedia("(pointer: coarse)");
+    const hoverQuery = window.matchMedia("(hover: none)");
+    const updatePointerMode = () => {
+      coarsePointerRef.current =
+        coarseQuery.matches || hoverQuery.matches;
+    };
+    updatePointerMode();
+    coarseQuery.addEventListener("change", updatePointerMode);
+    hoverQuery.addEventListener("change", updatePointerMode);
+
     const handlePointerMove = (event: PointerEvent) => {
       const { width, height } = sizeRef.current;
       const normalizedX = event.clientX / width - 0.5;
@@ -359,7 +370,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
     };
 
     const drawConnections = (offsets: Record<StarLayer, [number, number]>) => {
-      if (reduceMotionRef.current) {
+      if (reduceMotionRef.current || coarsePointerRef.current) {
         hoverRef.current.index = -1;
         hoverRef.current.fade = 0;
         return;
@@ -582,6 +593,8 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
       window.removeEventListener("pointerleave", handlePointerLeave);
       window.removeEventListener("resize", handleResize);
       mediaQuery.removeEventListener("change", updateReducedMotion);
+      coarseQuery.removeEventListener("change", updatePointerMode);
+      hoverQuery.removeEventListener("change", updatePointerMode);
     };
   }, [containerRef]);
 
