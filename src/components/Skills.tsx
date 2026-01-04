@@ -79,6 +79,7 @@ const renderBadge = (
   return (
     <img
       src={`https://img.shields.io/badge/${item.name}-${item.color}?logo=${item.logo}&logoColor=${item.logoColor}`}
+      alt={`${item.name} badge`}
       className="h-full"
     />
   );
@@ -381,6 +382,7 @@ export const Skills: React.FC = () => {
             >
               <img
                 src={`https://img.shields.io/badge/${language.name}-${language.color}?logo=${language.logo}&logoColor=${language.logoColor}`}
+                alt={`${language.name} badge`}
                 className="h-full"
               />
             </motion.div>

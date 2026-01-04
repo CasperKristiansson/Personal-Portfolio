@@ -226,7 +226,9 @@ export const Article: React.FC<ArticleItem> = (article) => {
       <a
         className="text-sky-300 underline decoration-sky-500/30 underline-offset-4 transition hover:text-sky-200"
         {...props}
-      />
+      >
+        {props.children}
+      </a>
     ),
     img: ({ alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
       <motion.figure
