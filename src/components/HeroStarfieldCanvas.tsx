@@ -34,6 +34,8 @@ type HeroStarfieldCanvasProps = {
 
 const SEED = "casper-starfield";
 const SHOOTING_SPEED_FACTOR = 0.5;
+const HEIGHT_REBUILD_THRESHOLD = 160;
+const HEIGHT_LOCK_THRESHOLD = 120;
 
 const createSeededRandom = (seed: string) => {
   let h = 1779033703 ^ seed.length;
@@ -81,6 +83,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
   const isVisibleRef = useRef(true);
   const reduceMotionRef = useRef(false);
   const sizeRef = useRef({ width: 0, height: 0, dpr: 1 });
+  const lastBuildSizeRef = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -224,31 +227,60 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
       featuredNeighborsRef.current = neighbors;
     };
 
+    const resize = (forceRebuild = false) => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = Math.round(window.innerWidth);
+      const height = Math.round(
+        document.documentElement?.clientHeight || window.innerHeight,
+      );
+      const previousSize = sizeRef.current;
+      const widthDelta = Math.abs(width - previousSize.width);
+      const heightDelta = Math.abs(height - previousSize.height);
+      const lockHeight =
+        !forceRebuild &&
+        widthDelta < 1 &&
+        heightDelta > 0 &&
+        heightDelta < HEIGHT_LOCK_THRESHOLD;
+      const nextHeight = lockHeight ? previousSize.height : height;
+      if (
+        !forceRebuild &&
+        width === previousSize.width &&
+        nextHeight === previousSize.height &&
+        dpr === previousSize.dpr
+      ) {
+        return;
+      }
+      sizeRef.current = { width, height: nextHeight, dpr };
+      canvas.width = width * dpr;
+      canvas.height = nextHeight * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${nextHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pointerRef.current = { x: width * 0.5, y: nextHeight * 0.5 };
+      const lastBuild = lastBuildSizeRef.current;
+      const buildWidthDelta = Math.abs(width - lastBuild.width);
+      const buildHeightDelta = Math.abs(nextHeight - lastBuild.height);
+      const shouldRebuild =
+        forceRebuild ||
+        starsRef.current.length === 0 ||
+        buildWidthDelta > 1 ||
+        buildHeightDelta > HEIGHT_REBUILD_THRESHOLD;
+      if (shouldRebuild) {
+        buildStars();
+        lastBuildSizeRef.current = { width, height: nextHeight };
+      }
+    };
+
+    const handleResize = () => resize();
+
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateReducedMotion = () => {
       reduceMotionRef.current = mediaQuery.matches;
-      buildStars();
+      resize(true);
       scheduleNextShootingStar(performance.now());
     };
     updateReducedMotion();
     mediaQuery.addEventListener("change", updateReducedMotion);
-
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      sizeRef.current = { width, height, dpr };
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      pointerRef.current = { x: width * 0.5, y: height * 0.5 };
-      buildStars();
-    };
-
-    resize();
-    scheduleNextShootingStar(performance.now());
 
     const handlePointerMove = (event: PointerEvent) => {
       const { width, height } = sizeRef.current;
@@ -268,7 +300,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
 
     window.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("pointerleave", handlePointerLeave);
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", handleResize);
 
     const observerTarget = containerRef.current;
     const observer = new IntersectionObserver(
@@ -548,7 +580,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
       observer.disconnect();
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerleave", handlePointerLeave);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", handleResize);
       mediaQuery.removeEventListener("change", updateReducedMotion);
     };
   }, [containerRef]);
