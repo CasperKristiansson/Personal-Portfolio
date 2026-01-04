@@ -12,7 +12,7 @@ export const Icons: FC<IconsProps> = ({ dark = false }) => {
   return (
     <motion.div
       className={`
-        fixed top-4 right-5 z-[9999] hidden transform flex-row items-center
+        fixed top-4 right-5 z-9999 hidden transform flex-row items-center
         gap-3 rounded-full border border-white/10 bg-[#0b1224]/80 px-3 py-2
         shadow-[0_18px_45px_-30px_rgba(15,23,42,0.9)] backdrop-blur
         lg:flex

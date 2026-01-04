@@ -95,11 +95,11 @@ export const TimeLine: FC<{
       <div className={`
         pointer-events-none mb-10
         md:mb-8
-        lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)]
+        lg:sticky lg:top-0 lg:z-60 lg:flex lg:h-(--sticky-nav-offset)
         lg:items-center
       `}>
         <div className={`
-          mx-auto w-full max-w-[1400px] px-4
+          mx-auto w-full max-w-350 px-4
           sm:px-6
           lg:px-10 lg:pl-16
         `}>
@@ -175,7 +175,7 @@ export const TimeLine: FC<{
           );
         })
       ) : (
-        <div className="mx-auto w-full max-w-[1800px]">
+        <div className="mx-auto w-full max-w-450">
           <div className={`
             w-4/5 px-4
             2xl:ml-[1vw]
@@ -190,7 +190,7 @@ export const TimeLine: FC<{
                   <motion.li
                     key={index}
                     style={{ gridTemplateColumns: "1fr auto 2fr" }}
-                    className="group mt-[-10px]"
+                    className="group -mt-2.5"
                     variants={fadeUpItem}
                     initial="hidden"
                     whileInView="visible"
@@ -264,7 +264,7 @@ export const TimeLine: FC<{
         </div>
       )}
       {timelineItems.filter((item) => item.hide).length !== 0 && (
-        <div className="mx-auto mt-10 flex w-full max-w-[1800px] justify-center">
+        <div className="mx-auto mt-10 flex w-full max-w-450 justify-center">
           <motion.button
             className="btn w-48 btn-primary"
             onClick={() => setIsCompact(!isCompact)}

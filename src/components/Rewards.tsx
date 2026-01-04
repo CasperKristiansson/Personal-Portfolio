@@ -13,7 +13,7 @@ export const Rewards: FC = () => {
   return (
     <motion.section
       id="awards"
-      className="relative bg-[#18253F] pt-36 pb-[200px]"
+      className="relative bg-[#18253F] pt-36 pb-50"
       variants={staggerFast}
       initial="hidden"
       whileInView="visible"
@@ -22,11 +22,11 @@ export const Rewards: FC = () => {
       <div className={`
         pointer-events-none mb-10
         md:mb-8
-        lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)]
+        lg:sticky lg:top-0 lg:z-60 lg:flex lg:h-(--sticky-nav-offset)
         lg:items-center
       `}>
         <div className={`
-          mx-auto w-full max-w-[1400px] px-4
+          mx-auto w-full max-w-350 px-4
           sm:px-6
           lg:px-10 lg:pl-16
         `}>
@@ -43,9 +43,9 @@ export const Rewards: FC = () => {
         </div>
       </div>
       <div className={`
-        mx-auto w-full max-w-[1000px] px-4
+        mx-auto w-full max-w-250 px-4
         sm:px-10
-        2xl:max-w-[1400px]
+        2xl:max-w-350
       `}>
         <motion.div
           className="flex items-center gap-2 text-white"

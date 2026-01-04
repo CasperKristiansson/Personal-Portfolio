@@ -119,7 +119,7 @@ export const StickyNav: FC = () => {
     <nav ref={navRef} className="sticky top-0 z-40">
       <div
         className={`
-          mx-auto flex w-full max-w-[1400px] px-6 transition-[padding]
+          mx-auto flex w-full max-w-350 px-6 transition-[padding]
           duration-300
           sm:px-8
           lg:px-12
@@ -145,7 +145,7 @@ export const StickyNav: FC = () => {
         >
           <div className="flex items-center gap-6">
             <div className={`
-              hidden min-w-[140px]
+              hidden min-w-35
               xl:block
             `} aria-hidden="true" />
             <ul className={`
@@ -215,7 +215,7 @@ export const StickyNav: FC = () => {
                   <div
                     id="nav-more-menu"
                     className={`
-                      absolute top-8 left-1/2 min-w-[180px] -translate-x-1/2
+                      absolute top-8 left-1/2 min-w-45 -translate-x-1/2
                       rounded-xl border border-white/10 bg-[#111c32] p-3
                       shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]
                     `}
@@ -311,7 +311,7 @@ export const StickyNav: FC = () => {
                   <div
                     id="nav-more-menu-mobile"
                     className={`
-                      absolute top-10 right-0 min-w-[200px] rounded-xl border
+                      absolute top-10 right-0 min-w-50 rounded-xl border
                       border-white/10 bg-[#111c32] p-3
                       shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]
                     `}

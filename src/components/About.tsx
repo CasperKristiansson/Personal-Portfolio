@@ -25,7 +25,7 @@ export const About: FC = () => {
       viewport={viewportOnce}
     >
       <div className={`
-        relative mt-8 flex w-full max-w-[1400px] flex-col gap-8 rounded-2xl
+        relative mt-8 flex w-full max-w-350 flex-col gap-8 rounded-2xl
         border border-white/10 bg-[#111c32] p-6
         shadow-[0_25px_60px_-35px_rgba(3,7,18,0.8)]
         xl:flex-row xl:items-stretch xl:p-10
@@ -35,7 +35,7 @@ export const About: FC = () => {
           alt="Casper Kristiansson"
           className={`
             w-full rounded-2xl object-cover shadow-2xl ring-1 ring-white/10
-            md:h-[420px]
+            md:h-105
             lg:h-auto lg:w-1/2
             xl:w-[45%]
           `}
@@ -57,7 +57,7 @@ export const About: FC = () => {
           >
             Hey there, I&apos;m{" "}
             <span className={`
-              bg-gradient-to-r from-sky-300 via-cyan-200 to-teal-200
+              bg-linear-to-r from-sky-300 via-cyan-200 to-teal-200
               bg-clip-text text-transparent
             `}>
               Casper

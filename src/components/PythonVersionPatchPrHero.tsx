@@ -1018,8 +1018,8 @@ export const PythonVersionPatchPrHero: FC<
       <div className="relative z-10 flex flex-1 items-center justify-center">
         <motion.div
           className={clsx(
-            "relative flex w-[70%] max-w-[360px] origin-center flex-col",
-            variant === "card" && "w-[62%] max-w-[260px]",
+            "relative flex origin-center flex-col",
+            variant === "card" ? "w-[62%] max-w-65" : "w-[70%] max-w-90",
           )}
           style={{
             transformStyle: "preserve-3d",
@@ -1060,7 +1060,7 @@ export const PythonVersionPatchPrHero: FC<
           >
             <div
               className={`
-                relative aspect-[3/4] w-full overflow-hidden rounded-[28px]
+                relative aspect-3/4 w-full overflow-hidden rounded-[28px]
                 border
               `}
               style={{
@@ -1136,7 +1136,7 @@ export const PythonVersionPatchPrHero: FC<
                   )}
                   <motion.div
                     className={`
-                      pointer-events-none absolute inset-y-12 left-0 w-[2px]
+                      pointer-events-none absolute inset-y-12 left-0 w-0.5
                     `}
                     style={{
                       backgroundImage: palette.scanBar,
