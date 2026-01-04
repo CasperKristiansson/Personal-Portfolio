@@ -1060,8 +1060,7 @@ export const PythonVersionPatchPrHero: FC<
           >
             <div
               className={`
-                relative aspect-3/4 w-full overflow-hidden rounded-[28px]
-                border
+                relative aspect-3/4 w-full overflow-hidden rounded-[28px] border
               `}
               style={{
                 backgroundColor: palette.panelBg,

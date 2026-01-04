@@ -341,8 +341,7 @@ export const Article: FC<ArticleItem> = (article) => {
       <Icons dark />
       <div className="pointer-events-none absolute inset-0">
         <div className={`
-          absolute -top-36 left-1/2 h-112 w-240 -translate-x-1/2
-          rounded-full
+          absolute -top-36 left-1/2 h-112 w-240 -translate-x-1/2 rounded-full
           bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.25),transparent_70%)]
           blur-3xl
         `} />
@@ -485,8 +484,8 @@ export const Article: FC<ArticleItem> = (article) => {
               lg:w-[108%] lg:translate-x-3
             `}>
               <div className={`
-                absolute -inset-6 rounded-[36px] bg-linear-to-br
-                from-sky-500/25 via-blue-500/10 to-transparent blur-3xl
+                absolute -inset-6 rounded-[36px] bg-linear-to-br from-sky-500/25
+                via-blue-500/10 to-transparent blur-3xl
               `} />
               <div className={`
                 relative overflow-hidden rounded-[28px] border border-white/10

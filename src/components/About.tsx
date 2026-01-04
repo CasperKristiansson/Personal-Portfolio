@@ -25,8 +25,8 @@ export const About: FC = () => {
       viewport={viewportOnce}
     >
       <div className={`
-        relative mt-8 flex w-full max-w-350 flex-col gap-8 rounded-2xl
-        border border-white/10 bg-[#111c32] p-6
+        relative mt-8 flex w-full max-w-350 flex-col gap-8 rounded-2xl border
+        border-white/10 bg-[#111c32] p-6
         shadow-[0_25px_60px_-35px_rgba(3,7,18,0.8)]
         xl:flex-row xl:items-stretch xl:p-10
       `}>
@@ -57,8 +57,8 @@ export const About: FC = () => {
           >
             Hey there, I&apos;m{" "}
             <span className={`
-              bg-linear-to-r from-sky-300 via-cyan-200 to-teal-200
-              bg-clip-text text-transparent
+              bg-linear-to-r from-sky-300 via-cyan-200 to-teal-200 bg-clip-text
+              text-transparent
             `}>
               Casper
             </span>

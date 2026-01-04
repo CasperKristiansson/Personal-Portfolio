@@ -119,8 +119,7 @@ export const StickyNav: FC = () => {
     <nav ref={navRef} className="sticky top-0 z-40">
       <div
         className={`
-          mx-auto flex w-full max-w-350 px-6 transition-[padding]
-          duration-300
+          mx-auto flex w-full max-w-350 px-6 transition-[padding] duration-300
           sm:px-8
           lg:px-12
           ${
