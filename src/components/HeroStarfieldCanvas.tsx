@@ -143,7 +143,8 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
           const alpha = lerp(alphaRange[0], alphaRange[1], random());
           const twinkleSpeed = lerp(0.6, 1.4, random());
           const twinklePhase = random() * Math.PI * 2;
-          const color = palette[Math.floor(random() * palette.length)];
+          const color =
+            palette[Math.floor(random() * palette.length)] ?? palette[0];
           const glow = lerp(glowRange[0], glowRange[1], random());
           const featured =
             !reduceMotionRef.current && random() < featuredChance;
@@ -200,13 +201,19 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
       const neighbors = new Map<number, number[]>();
       featuredIndices.forEach((index) => {
         const star = stars[index];
+        if (!star) {
+          return;
+        }
         const distances = featuredIndices
           .filter((other) => other !== index)
-          .map((other) => {
+          .flatMap((other) => {
             const otherStar = stars[other];
+            if (!otherStar) {
+              return [];
+            }
             const dx = (star.x - otherStar.x) * width;
             const dy = (star.y - otherStar.y) * height;
-            return { index: other, dist: Math.hypot(dx, dy) };
+            return [{ index: other, dist: Math.hypot(dx, dy) }];
           })
           .sort((a, b) => a.dist - b.dist)
           .slice(0, 3)
@@ -265,6 +272,9 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
     const observerTarget = containerRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) {
+          return;
+        }
         isVisibleRef.current = entry.isIntersecting;
         if (entry.isIntersecting) {
           lastTime = performance.now();
@@ -331,6 +341,9 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
 
       featuredRef.current.forEach((index) => {
         const star = starsRef.current[index];
+        if (!star) {
+          return;
+        }
         const [offsetX, offsetY] = offsets[star.layer];
         const x = star.x * width + offsetX;
         const y = star.y * height + offsetY;
@@ -352,6 +365,9 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
       }
 
       const star = starsRef.current[hover.index];
+      if (!star) {
+        return;
+      }
       const [offsetX, offsetY] = offsets[star.layer];
       const baseX = star.x * width + offsetX;
       const baseY = star.y * height + offsetY;
@@ -363,6 +379,9 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
       ctx.shadowColor = "rgba(255, 255, 255, 0.75)";
       neighbors.forEach((neighborIndex) => {
         const neighbor = starsRef.current[neighborIndex];
+        if (!neighbor) {
+          return;
+        }
         const [neighborOffsetX, neighborOffsetY] = offsets[neighbor.layer];
         const nx = neighbor.x * width + neighborOffsetX;
         const ny = neighbor.y * height + neighborOffsetY;

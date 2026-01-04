@@ -87,9 +87,13 @@ const clamp = (value: number, min = 0, max = 1) =>
 const parseHex = (value: string): Rgb | null => {
   const hex = value.replace("#", "").trim();
   if (hex.length === 3) {
-    const r = parseInt(hex[0] + hex[0], 16);
-    const g = parseInt(hex[1] + hex[1], 16);
-    const b = parseInt(hex[2] + hex[2], 16);
+    const [rChar, gChar, bChar] = hex;
+    if (!rChar || !gChar || !bChar) {
+      return null;
+    }
+    const r = parseInt(rChar + rChar, 16);
+    const g = parseInt(gChar + gChar, 16);
+    const b = parseInt(bChar + bChar, 16);
     return { r, g, b };
   }
   if (hex.length === 6) {
@@ -113,7 +117,11 @@ const parseRgb = (value: string): Rgb | null => {
   if (parts.length < 3) {
     return null;
   }
-  return { r: parts[0], g: parts[1], b: parts[2] };
+  const [r, g, b] = parts;
+  if (r === undefined || g === undefined || b === undefined) {
+    return null;
+  }
+  return { r, g, b };
 };
 
 const parseColor = (value: string): Rgb | null => {
@@ -501,8 +509,11 @@ const buildRigConfig = (
     };
   });
 
-  const wires = modules.slice(0, -1).map((module, index) => {
+  const wires = modules.slice(0, -1).flatMap((module, index) => {
     const next = modules[index + 1];
+    if (!next) {
+      return [];
+    }
     const start = new THREE.Vector3(
       module.position.x + module.size[0] / 2,
       module.position.y + 0.05,
@@ -570,6 +581,9 @@ const buildRigConfig = (
 
   const outputCurves = outputIndices.map((slotIndex, index) => {
     const target = rackSlots[slotIndex];
+    if (!target) {
+      return new THREE.CatmullRomCurve3([outputStart, outputStart, outputStart]);
+    }
     const mid = new THREE.Vector3(
       (outputStart.x + target.x) / 2,
       outputStart.y + 0.16 + index * 0.02,
@@ -645,37 +659,47 @@ const PydanticFixturegenFallback: FC<{ palette: Palette }> = ({
         stroke={palette.wire.css}
         strokeWidth={2}
       />
-      {modules.slice(0, -1).map((module, index) => (
-        <line
-          key={`wire-${index}`}
-          x1={module.x + module.w}
-          y1={module.y + module.h / 2}
-          x2={modules[index + 1].x}
-          y2={modules[index + 1].y + modules[index + 1].h / 2}
-          stroke={palette.wire.css}
-          strokeWidth={2}
-        />
-      ))}
-      <circle
-        cx={modules[6].x + modules[6].w / 2}
-        cy={modules[6].y + modules[6].h / 2}
-        r={26}
-        stroke={palette.active.css}
-        strokeWidth={2}
-        fill="none"
-      />
-      {Array.from({ length: 4 }, (_, index) => (
-        <line
-          key={`fan-${index}`}
-          x1={modules[7].x + modules[7].w}
-          y1={modules[7].y + modules[7].h / 2}
-          x2={rack.x}
-          y2={rack.y + 20 + index * 40}
+      {modules.slice(0, -1).map((module, index) => {
+        const next = modules[index + 1];
+        if (!next) {
+          return null;
+        }
+        return (
+          <line
+            key={`wire-${index}`}
+            x1={module.x + module.w}
+            y1={module.y + module.h / 2}
+            x2={next.x}
+            y2={next.y + next.h / 2}
+            stroke={palette.wire.css}
+            strokeWidth={2}
+          />
+        );
+      })}
+      {modules[6] ? (
+        <circle
+          cx={modules[6].x + modules[6].w / 2}
+          cy={modules[6].y + modules[6].h / 2}
+          r={26}
           stroke={palette.active.css}
-          strokeWidth={1.5}
-          strokeOpacity={0.8}
+          strokeWidth={2}
+          fill="none"
         />
-      ))}
+      ) : null}
+      {modules[7]
+        ? Array.from({ length: 4 }, (_, index) => (
+            <line
+              key={`fan-${index}`}
+              x1={modules[7].x + modules[7].w}
+              y1={modules[7].y + modules[7].h / 2}
+              x2={rack.x}
+              y2={rack.y + 20 + index * 40}
+              stroke={palette.active.css}
+              strokeWidth={1.5}
+              strokeOpacity={0.8}
+            />
+          ))
+        : null}
     </svg>
   );
 };
@@ -950,18 +974,27 @@ const RigScene: FC<RigSceneProps> = ({
 
     const packetMeshesCurrent = packetMeshes.current;
     packetMeshesCurrent.forEach((mesh, index) => {
-      const progress = (loopTime / loopDuration + packetOffsets[index]) % 1;
+      const offset = packetOffsets[index];
+      if (offset === undefined) {
+        return;
+      }
+      const progress = (loopTime / loopDuration + offset) % 1;
       mesh.position.copy(config.trunkCurve.getPointAt(progress));
       mesh.visible = bootProgress > 0.8;
     });
 
     fanMeshes.current.forEach((mesh, index) => {
+      const curve = config.outputCurves[index];
+      if (!curve) {
+        mesh.visible = false;
+        return;
+      }
       const fanStart = 0.68 + index * 0.03;
       const fanWindow = 0.18;
       const phase = (loopPhase - fanStart) / fanWindow;
       if (phase >= 0 && phase <= 1) {
         mesh.visible = bootProgress > 0.85;
-        mesh.position.copy(config.outputCurves[index].getPointAt(phase));
+        mesh.position.copy(curve.getPointAt(phase));
       } else {
         mesh.visible = false;
       }
@@ -974,6 +1007,10 @@ const RigScene: FC<RigSceneProps> = ({
     tileMeshes.current.forEach((mesh, index) => {
       const entry = config.tileEntries[index];
       const target = config.rackSlots[index];
+      if (!entry || !target) {
+        mesh.visible = false;
+        return;
+      }
       const age = (cycleIndex - index + config.slotCount) % config.slotCount;
       const baseOpacity = clamp(1 - age * 0.12, 0.25, 0.9);
       const material = mesh.material as THREE.Material & { opacity?: number };
@@ -1086,7 +1123,11 @@ const RigScene: FC<RigSceneProps> = ({
     });
 
     packetMeshes.current.forEach((mesh, index) => {
-      mesh.position.copy(config.trunkCurve.getPointAt(packetOffsets[index]));
+      const offset = packetOffsets[index];
+      if (offset === undefined) {
+        return;
+      }
+      mesh.position.copy(config.trunkCurve.getPointAt(offset));
       mesh.visible = false;
     });
 
@@ -1095,7 +1136,12 @@ const RigScene: FC<RigSceneProps> = ({
     });
 
     tileMeshes.current.forEach((mesh, index) => {
-      mesh.position.copy(config.rackSlots[index]);
+      const target = config.rackSlots[index];
+      if (!target) {
+        mesh.visible = false;
+        return;
+      }
+      mesh.position.copy(target);
       const material = mesh.material as THREE.Material & { opacity?: number };
       if (material && "opacity" in material) {
         material.opacity = 0.55;
@@ -1162,6 +1208,9 @@ const RigScene: FC<RigSceneProps> = ({
 
       {config.modules.map((module, index) => {
         const edges = moduleEdges[index];
+        if (!edges) {
+          return null;
+        }
         const labelVisible =
           module.labelPriority === "primary" || showSecondaryLabels;
         const labelPosition: [number, number, number] = [
@@ -1454,6 +1503,9 @@ export const PydanticFixturegenHero: FC<PydanticFixturegenHeroProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
+        if (!entry) {
+          return;
+        }
         setIsVisible(entry.intersectionRatio >= 0.35);
       },
       { threshold: [0, 0.35, 0.6, 1] },

@@ -99,7 +99,11 @@ export const StickyNav: FC = () => {
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
         if (!visible.length) return;
-        const nextId = visible[0].target.getAttribute("id");
+        const firstVisible = visible[0];
+        if (!firstVisible) {
+          return;
+        }
+        const nextId = firstVisible.target.getAttribute("id");
         if (nextId) {
           setActiveId(nextId);
         }

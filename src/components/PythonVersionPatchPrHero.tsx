@@ -117,9 +117,13 @@ const parseColor = (value: string): Rgb | null => {
   if (value.startsWith("#")) {
     const hex = value.replace("#", "").trim();
     if (hex.length === 3) {
-      const r = parseInt(hex[0] + hex[0], 16);
-      const g = parseInt(hex[1] + hex[1], 16);
-      const b = parseInt(hex[2] + hex[2], 16);
+      const [rChar, gChar, bChar] = hex;
+      if (!rChar || !gChar || !bChar) {
+        return null;
+      }
+      const r = parseInt(rChar + rChar, 16);
+      const g = parseInt(gChar + gChar, 16);
+      const b = parseInt(bChar + bChar, 16);
       return { r, g, b };
     }
     if (hex.length === 6) {
@@ -141,7 +145,11 @@ const parseColor = (value: string): Rgb | null => {
   if (parts.length < 3) {
     return null;
   }
-  return { r: parts[0], g: parts[1], b: parts[2] };
+  const [r, g, b] = parts;
+  if (r === undefined || g === undefined || b === undefined) {
+    return null;
+  }
+  return { r, g, b };
 };
 
 const mix = (from: Rgb, to: Rgb, amount: number): Rgb => ({
@@ -350,6 +358,9 @@ const useInView = (ref: RefObject<HTMLElement | null>) => {
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) {
+          return;
+        }
         const inView = entry.isIntersecting;
         setIsInView(inView);
         if (inView) {
@@ -657,7 +668,7 @@ export const PythonVersionPatchPrHero: FC<
     } else if (typeof IntersectionObserver !== "undefined") {
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          if (entry?.isIntersecting) {
             applyFlash();
             observer.disconnect();
           }
@@ -709,9 +720,15 @@ export const PythonVersionPatchPrHero: FC<
   const updateDuration = updateStep * 0.85;
   const counterFade = Math.min(fade, scanStep * 0.45);
 
+  const pinDockerfileDef = PIN_DEFS[0]!;
+  const pinWorkflowDef = PIN_DEFS[1]!;
+  const pinPyprojectDef = PIN_DEFS[2]!;
+  const pinPythonVersionDef = PIN_DEFS[3]!;
+  const pinRuntimeDef = PIN_DEFS[4]!;
+
   const pinDockerfile = usePinMotion(
     loopProgress,
-    PIN_DEFS[0],
+    pinDockerfileDef,
     0,
     scanStart,
     scanEnd,
@@ -724,7 +741,7 @@ export const PythonVersionPatchPrHero: FC<
   );
   const pinWorkflow = usePinMotion(
     loopProgress,
-    PIN_DEFS[1],
+    pinWorkflowDef,
     1,
     scanStart,
     scanEnd,
@@ -737,7 +754,7 @@ export const PythonVersionPatchPrHero: FC<
   );
   const pinPyproject = usePinMotion(
     loopProgress,
-    PIN_DEFS[2],
+    pinPyprojectDef,
     2,
     scanStart,
     scanEnd,
@@ -750,7 +767,7 @@ export const PythonVersionPatchPrHero: FC<
   );
   const pinPythonVersion = usePinMotion(
     loopProgress,
-    PIN_DEFS[3],
+    pinPythonVersionDef,
     3,
     scanStart,
     scanEnd,
@@ -763,7 +780,7 @@ export const PythonVersionPatchPrHero: FC<
   );
   const pinRuntime = usePinMotion(
     loopProgress,
-    PIN_DEFS[4],
+    pinRuntimeDef,
     4,
     scanStart,
     scanEnd,
@@ -775,7 +792,13 @@ export const PythonVersionPatchPrHero: FC<
     updateDuration,
   );
 
-  const pinLookup: Record<string, PinState> = {
+  const pinLookup: {
+    dockerfile: PinState;
+    workflow: PinState;
+    pyproject: PinState;
+    "python-version": PinState;
+    runtime: PinState;
+  } = {
     dockerfile: pinDockerfile,
     workflow: pinWorkflow,
     pyproject: pinPyproject,
@@ -1146,11 +1169,7 @@ export const PythonVersionPatchPrHero: FC<
                                 ease: [0.2, 0.8, 0.2, 1],
                               }
                         }
-                        style={
-                          line.muted
-                            ? { color: palette.textMuted }
-                            : undefined
-                        }
+                        style={line.muted ? { color: palette.textMuted } : {}}
                       >
                         {line.content}
                         {index === lines.length - 1 && !showStatic && (
