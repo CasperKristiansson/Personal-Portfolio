@@ -889,11 +889,15 @@ const RigScene: FC<RigSceneProps> = ({
     const hoverId = hoverRef.current;
 
     config.wires.forEach((wire, index) => {
+      const wireLine = wireLines[index];
+      if (!wireLine) {
+        return;
+      }
       const progressWindow = 1 / config.wires.length;
       const wireProgress = clamp(
         (bootProgress - index * progressWindow) / progressWindow,
       );
-      const { geometry, count } = wireLines[index];
+      const { geometry, count } = wireLine;
       geometry.setDrawRange(0, Math.max(2, Math.floor(count * wireProgress)));
       const material = wireMaterials.current[index];
       if (material) {
@@ -1037,7 +1041,11 @@ const RigScene: FC<RigSceneProps> = ({
 
     const hoverId = hoveredModule;
     config.wires.forEach((wire, index) => {
-      const { geometry, count } = wireLines[index];
+      const wireLine = wireLines[index];
+      if (!wireLine) {
+        return;
+      }
+      const { geometry, count } = wireLine;
       geometry.setDrawRange(0, count);
       const material = wireMaterials.current[index];
       if (material) {
@@ -1109,7 +1117,11 @@ const RigScene: FC<RigSceneProps> = ({
   return (
     <group ref={groupRef} rotation={rigRotation}>
       {config.wires.map((wire, index) => {
-        const { geometry } = wireLines[index];
+        const wireLine = wireLines[index];
+        if (!wireLine) {
+          return null;
+        }
+        const { geometry } = wireLine;
         return (
           <threeLine key={`${wire.from}-${wire.to}`} geometry={geometry}>
             <lineBasicMaterial
@@ -1127,7 +1139,11 @@ const RigScene: FC<RigSceneProps> = ({
       })}
 
       {config.outputCurves.map((_, index) => {
-        const { geometry } = fanLines[index];
+        const fanLine = fanLines[index];
+        if (!fanLine) {
+          return null;
+        }
+        const { geometry } = fanLine;
         return (
           <threeLine key={`fan-line-${index}`} geometry={geometry}>
             <lineBasicMaterial

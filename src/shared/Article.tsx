@@ -14,7 +14,7 @@ import {
 } from "react";
 import { Link } from "react-router";
 
-import { ArticleItem } from "../articles";
+import type { ArticleItem } from "../articles";
 import { Icons } from "../components/Icons";
 import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
 import { PythonVersionPatchPrHero } from "../components/PythonVersionPatchPrHero";

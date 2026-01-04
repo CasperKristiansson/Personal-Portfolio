@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import { TimeLine, TimelineItem } from "../shared/TimeLine";
+import { TimeLine, type TimelineItem } from "../shared/TimeLine";
 
 const timelineItems: TimelineItem[] = [
   {

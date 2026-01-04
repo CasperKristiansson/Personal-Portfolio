@@ -16,12 +16,21 @@
 
     /* Linting */
     "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "useUnknownInCatchVariables": true,
+    "verbatimModuleSyntax": true,
 
     /* Vite config typing */
+    "resolveJsonModule": true,
     "types": ["node"]
   },
   "include": ["src", "vite.config.ts"]
