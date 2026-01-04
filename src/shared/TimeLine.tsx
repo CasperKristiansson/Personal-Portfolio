@@ -1,6 +1,6 @@
 import { IconChevronDown, IconChevronUp, IconLink } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { type FC,useEffect, useState } from "react";
 
 import { fadeUpItem, slideLeftItem, viewportOnce } from "./motion";
 
@@ -23,7 +23,7 @@ const tagBaseClass =
 const tagActionClass =
   "relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200/60 uppercase transition duration-200 ease-out hover:-translate-y-0.5 hover:border-sky-300/60 hover:bg-white/10 hover:text-slate-100 hover:shadow-[0_14px_30px_-20px_rgba(56,189,248,0.7)] motion-reduce:transform-none motion-reduce:transition-none before:absolute before:inset-0 before:rounded-full before:bg-sky-400/15 before:opacity-0 before:transition before:duration-300 before:scale-75 hover:before:opacity-100 hover:before:scale-100";
 
-export const TimeLine: React.FC<{
+export const TimeLine: FC<{
   timelineItems: TimelineItem[];
   title: string;
   id?: string;
@@ -92,10 +92,23 @@ export const TimeLine: React.FC<{
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="pointer-events-none mb-10 md:mb-8 lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)] lg:items-center">
-        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
+      <div className={`
+        pointer-events-none mb-10
+        md:mb-8
+        lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)]
+        lg:items-center
+      `}>
+        <div className={`
+          mx-auto w-full max-w-[1400px] px-4
+          sm:px-6
+          lg:px-10 lg:pl-16
+        `}>
           <motion.h1
-            className="text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left"
+            className={`
+              text-center text-5xl leading-none font-bold text-white
+              sm:text-5xl
+              md:-translate-y-2.5 md:text-left
+            `}
             variants={slideLeftItem}
           >
             {title}
@@ -108,7 +121,10 @@ export const TimeLine: React.FC<{
           return (
             <motion.div
               key={index}
-              className="px-4 sm:px-10"
+              className={`
+                px-4
+                sm:px-10
+              `}
               variants={fadeUpItem}
               initial="hidden"
               whileInView="visible"
@@ -122,11 +138,16 @@ export const TimeLine: React.FC<{
                 </div>
                 <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                 {item.listItems && (
-                  <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
+                  <ul className={`
+                    mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]
+                  `}>
                     {item.listItems.map((listItem, index) => (
                       <li
                         key={index}
-                        className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                        className={`
+                          relative list-disc text-base
+                          marker:left-0 marker:text-[#90a6bb]
+                        `}
                       >
                         {listItem}
                       </li>
@@ -139,7 +160,10 @@ export const TimeLine: React.FC<{
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-blue-400 hover:underline"
+                    className={`
+                      flex items-center text-blue-400
+                      hover:underline
+                    `}
                   >
                     <IconLink className="mr-1" />
                     {item.linkDisplay}
@@ -152,8 +176,14 @@ export const TimeLine: React.FC<{
         })
       ) : (
         <div className="mx-auto w-full max-w-[1800px]">
-          <div className="w-4/5 px-4 2xl:ml-[1vw]">
-            <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+          <div className={`
+            w-4/5 px-4
+            2xl:ml-[1vw]
+          `}>
+            <ul className={`
+              timeline timeline-vertical timeline-snap-icon
+              max-md:timeline-compact
+            `}>
               {timelineItems.map((item, index) => {
                 if (item.hide && isCompact) return null;
                 return (
@@ -175,7 +205,14 @@ export const TimeLine: React.FC<{
                       </p>
                     </div>
                     <div className="timeline-middle">
-                      <div className="h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-emerald-400 group-hover:shadow-[0_0_18px_rgba(52,211,153,0.75)] motion-reduce:transform-none motion-reduce:transition-none" />
+                      <div className={`
+                        h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB]
+                        transition-all duration-300 ease-out
+                        group-hover:scale-110 group-hover:bg-emerald-400
+                        group-hover:shadow-[0_0_18px_rgba(52,211,153,0.75)]
+                        motion-reduce:transform-none
+                        motion-reduce:transition-none
+                      `} />
                     </div>
                     <div className="timeline-end ml-6 h-full">
                       <div className="text-2xl font-bold text-white">
@@ -183,11 +220,16 @@ export const TimeLine: React.FC<{
                       </div>
                       <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                       {item.listItems && (
-                        <ul className="mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]">
+                        <ul className={`
+                          mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]
+                        `}>
                           {item.listItems.map((listItem, index) => (
                             <li
                               key={index}
-                              className="relative list-disc text-base marker:left-0 marker:text-[#90a6bb]"
+                              className={`
+                                relative list-disc text-base
+                                marker:left-0 marker:text-[#90a6bb]
+                              `}
                             >
                               {listItem}
                             </li>
@@ -200,7 +242,10 @@ export const TimeLine: React.FC<{
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-blue-400 hover:underline"
+                          className={`
+                            flex items-center text-blue-400
+                            hover:underline
+                          `}
                         >
                           <IconLink className="mr-1" />
                           {item.linkDisplay}

@@ -1,3 +1,5 @@
+import type { FC } from "react";
+
 import { TimeLine, TimelineItem } from "../shared/TimeLine";
 
 const timelineItems: TimelineItem[] = [
@@ -48,7 +50,7 @@ const timelineItems: TimelineItem[] = [
   },
 ];
 
-export const Education: React.FC = () => {
+export const Education: FC = () => {
   return (
     <TimeLine timelineItems={timelineItems} title="Education" id="education" />
   );

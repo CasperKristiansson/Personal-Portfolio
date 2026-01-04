@@ -36,22 +36,6 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.parallax {
-  background: linear-gradient(
-    to bottom,
-    #07070b,
-    #131522,
-    #171e37,
-    #18284f,
-    #143367
-  );
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow: hidden;
-}
-
 @keyframes typewriter {
   from {
     max-width: 0;
@@ -67,21 +51,6 @@ body {
   }
 }
 
-.typewriter {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid white;
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  max-width: 0;
-  animation:
-    typewriter 2s steps(45) 0.5s 1 normal both,
-    blinkTextCursor 700ms steps(45) infinite normal;
-}
-
 @keyframes headingFlash {
   0% {
     text-shadow: 0 0 0 transparent;
@@ -94,17 +63,50 @@ body {
   }
 }
 
-.heading-flash {
-  --heading-flash-color: color-mix(
-    in srgb,
-    var(--color-primary) 65%,
-    transparent
-  );
-  animation: headingFlash 650ms ease-out;
-}
+@layer utilities {
+  .parallax {
+    background: linear-gradient(
+      to bottom,
+      #07070b,
+      #131522,
+      #171e37,
+      #18284f,
+      #143367
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+  }
 
-@supports not (color-mix(in srgb, #000 50%, transparent)) {
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid white;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    max-width: 0;
+    animation:
+      typewriter 2s steps(45) 0.5s 1 normal both,
+      blinkTextCursor 700ms steps(45) infinite normal;
+  }
+
   .heading-flash {
-    --heading-flash-color: var(--color-primary);
+    --heading-flash-color: color-mix(
+      in srgb,
+      var(--color-primary) 65%,
+      transparent
+    );
+    animation: headingFlash 650ms ease-out;
+  }
+
+  @supports not (color-mix(in srgb, #000 50%, transparent)) {
+    .heading-flash {
+      --heading-flash-color: var(--color-primary);
+    }
   }
 }

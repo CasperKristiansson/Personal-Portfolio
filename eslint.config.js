@@ -63,21 +63,6 @@ export default defineConfig([
     },
   },
   {
-    name: "import-x/react-compat",
-    files: ["src/**/*.{jsx,tsx}"],
-    rules: {
-      "import-x/default": "off",
-    },
-  },
-  {
-    name: "import-x/compat-warnings",
-    files: ["src/**/*.{js,jsx,ts,tsx}"],
-    rules: {
-      "import-x/no-named-as-default": "off",
-      "import-x/no-named-as-default-member": "off",
-    },
-  },
-  {
     name: "simple-import-sort",
     files: ["src/**/*.{js,jsx,ts,tsx}"],
     plugins: {
@@ -100,8 +85,12 @@ export default defineConfig([
     },
     rules: {
       ...betterTailwindcss.configs["recommended-error"].rules,
-      "better-tailwindcss/enforce-consistent-line-wrapping": "off",
-      "better-tailwindcss/no-unregistered-classes": "off",
+      "better-tailwindcss/no-unregistered-classes": [
+        "error",
+        {
+          ignore: ["heading-flash", "parallax", "typewriter"],
+        },
+      ],
     },
     settings: {
       "better-tailwindcss": {

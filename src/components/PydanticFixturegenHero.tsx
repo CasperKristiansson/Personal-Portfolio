@@ -6,7 +6,16 @@ import {
   useThree,
 } from "@react-three/fiber";
 import { useReducedMotion } from "framer-motion";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  type DependencyList,
+  type FC,
+  type MutableRefObject,
+  type PointerEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import * as THREE from "three";
 
 extend({ ThreeLine: THREE.Line });
@@ -353,7 +362,7 @@ type TextLabelProps = {
   registerMaterial?: (material: THREE.SpriteMaterial) => void;
 };
 
-const TextLabel: React.FC<TextLabelProps> = ({
+const TextLabel: FC<TextLabelProps> = ({
   text,
   position,
   color,
@@ -590,7 +599,7 @@ const createLineGeometry = (curve: THREE.Curve<THREE.Vector3>, segments = 36) =>
   return { geometry, count: points.length };
 };
 
-const PydanticFixturegenFallback: React.FC<{ palette: Palette }> = ({
+const PydanticFixturegenFallback: FC<{ palette: Palette }> = ({
   palette,
 }) => {
   const modules = Array.from({ length: 8 }, (_, index) => ({
@@ -671,7 +680,7 @@ const PydanticFixturegenFallback: React.FC<{ palette: Palette }> = ({
   );
 };
 
-const RigAnimator: React.FC<{ active: boolean }> = ({ active }) => {
+const RigAnimator: FC<{ active: boolean }> = ({ active }) => {
   const { invalidate } = useThree();
   const frameRef = useRef<number | null>(null);
 
@@ -695,7 +704,7 @@ const RigAnimator: React.FC<{ active: boolean }> = ({ active }) => {
   return null;
 };
 
-const InvalidateOnChange: React.FC<{ deps: React.DependencyList }> = ({
+const InvalidateOnChange: FC<{ deps: DependencyList }> = ({
   deps,
 }) => {
   const { invalidate } = useThree();
@@ -713,12 +722,12 @@ type RigSceneProps = {
   reducedMotion: boolean;
   hoveredModule: ModuleId | null;
   interactive: boolean;
-  pointerRef: React.MutableRefObject<{ x: number; y: number }>;
+  pointerRef: MutableRefObject<{ x: number; y: number }>;
   onModuleHover: (id: ModuleId | null) => void;
   onModuleClick: (id: ModuleId) => void;
 };
 
-const RigScene: React.FC<RigSceneProps> = ({
+const RigScene: FC<RigSceneProps> = ({
   palette,
   config,
   cameraZoom,
@@ -1358,7 +1367,7 @@ const headingMap: Record<ModuleId, string | undefined> = {
   artifacts: "generation-emitters",
 };
 
-export const PydanticFixturegenHero: React.FC<PydanticFixturegenHeroProps> = ({
+export const PydanticFixturegenHero: FC<PydanticFixturegenHeroProps> = ({
   variant = "hero",
   className,
   interactive = true,
@@ -1452,7 +1461,7 @@ export const PydanticFixturegenHero: React.FC<PydanticFixturegenHeroProps> = ({
     };
   }, []);
 
-  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (!interactive || reducedMotion || event.pointerType === "touch") {
       return;
     }

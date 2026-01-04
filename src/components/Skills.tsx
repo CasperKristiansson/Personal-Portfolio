@@ -4,6 +4,7 @@ import {
   IconGitPullRequest,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import type { FC } from "react";
 
 import amazonApiGatewayIcon from "../assets/aws/amazon-api-gateway.png";
 import amazonBedrockIcon from "../assets/aws/amazon-bedrock.png";
@@ -55,7 +56,11 @@ const renderBadge = (
     const truncateClass = options?.truncate ? "min-w-0 overflow-hidden" : "";
     return (
       <div
-        className={`inline-flex h-full items-center gap-1.5 rounded-[4px] px-2 text-white sm:gap-2 ${truncateClass}`}
+        className={`
+          inline-flex h-full items-center gap-1.5 rounded-[4px] px-2 text-white
+          sm:gap-2
+          ${truncateClass}
+        `}
         style={{
           backgroundColor: item.badgeColor ?? "#0b0b0b",
           maxWidth: options?.maxWidthStyle,
@@ -67,9 +72,12 @@ const renderBadge = (
           className="h-6 w-6 object-contain"
         />
         <span
-          className={`text-[18px] leading-none text-white ${
+          className={`
+            text-[18px] leading-none text-white
+            ${
             options?.truncate ? "min-w-0 truncate" : ""
-          }`}
+          }
+          `}
         >
           {item.name}
         </span>
@@ -321,7 +329,7 @@ const awsServices: BadgeItem[] = [
   },
 ];
 
-export const Skills: React.FC = () => {
+export const Skills: FC = () => {
   return (
     <motion.section
       id="skills"
@@ -331,17 +339,34 @@ export const Skills: React.FC = () => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="pointer-events-none mb-10 md:mb-8 lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)] lg:items-center">
-        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
+      <div className={`
+        pointer-events-none mb-10
+        md:mb-8
+        lg:sticky lg:top-0 lg:z-[60] lg:flex lg:h-[var(--sticky-nav-offset)]
+        lg:items-center
+      `}>
+        <div className={`
+          mx-auto w-full max-w-[1400px] px-4
+          sm:px-6
+          lg:px-10 lg:pl-16
+        `}>
           <motion.h1
-            className="text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left"
+            className={`
+              text-center text-5xl leading-none font-bold text-white
+              sm:text-5xl
+              md:-translate-y-2.5 md:text-left
+            `}
             variants={slideLeftItem}
           >
             Skills
           </motion.h1>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-[1000px] px-4 text-white sm:px-10 2xl:max-w-[1400px]">
+      <div className={`
+        mx-auto w-full max-w-[1000px] px-4 text-white
+        sm:px-10
+        2xl:max-w-[1400px]
+      `}>
         <motion.div className="mt-6 flex flex-row" variants={fadeUpItem}>
           <IconBrandAmazon size={32} />
           <h2 className="ml-2 text-2xl font-bold">AWS Services</h2>
@@ -353,7 +378,10 @@ export const Skills: React.FC = () => {
           {awsServices.map((service, index) => (
             <motion.div
               key={index}
-              className="flex h-7 items-center justify-center sm:h-8"
+              className={`
+                flex h-7 items-center justify-center
+                sm:h-8
+              `}
               variants={fadeInItem}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
@@ -376,7 +404,10 @@ export const Skills: React.FC = () => {
           {programmingLanguages.map((language, index) => (
             <motion.div
               key={index}
-              className="flex h-7 items-center justify-center sm:h-8"
+              className={`
+                flex h-7 items-center justify-center
+                sm:h-8
+              `}
               variants={fadeInItem}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
@@ -400,7 +431,10 @@ export const Skills: React.FC = () => {
           {toolsFrameworks.map((tool, index) => (
             <motion.div
               key={index}
-              className="flex h-7 items-center justify-center sm:h-8"
+              className={`
+                flex h-7 items-center justify-center
+                sm:h-8
+              `}
               variants={fadeInItem}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}

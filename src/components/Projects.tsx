@@ -1,9 +1,9 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { motion, useReducedMotion } from "framer-motion";
-import React, { useEffect, useMemo } from "react";
+import { type FC,useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router";
 
-import { type ProjectMedia,projects } from "../data/projects";
+import { type ProjectMedia, projects } from "../data/projects";
 import {
   fadeUpItem,
   staggerContainer,
@@ -29,7 +29,7 @@ type ProjectMediaFrameProps = {
   loading?: "lazy" | "eager";
 };
 
-const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
+const ProjectMediaFrame: FC<ProjectMediaFrameProps> = ({
   media,
   alt,
   aspectClass,
@@ -38,7 +38,10 @@ const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
   return (
     <div
       className={clsx(
-        "relative overflow-hidden rounded-xl border border-white/10 bg-[#0b1428]",
+        `
+          relative overflow-hidden rounded-xl border border-white/10
+          bg-[#0b1428]
+        `,
         aspectClass,
       )}
     >
@@ -47,7 +50,11 @@ const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
           src={media.src}
           alt={media.alt ?? alt}
           loading={loading}
-          className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+          className={`
+            h-full w-full object-cover transition duration-500 ease-out
+            group-hover:scale-[1.03]
+            motion-reduce:transform-none motion-reduce:transition-none
+          `}
         />
       ) : media.id === "pydantic-fixturegen" ? (
         <PydanticFixturegenHero
@@ -62,12 +69,15 @@ const ProjectMediaFrame: React.FC<ProjectMediaFrameProps> = ({
           className="pointer-events-none h-full w-full"
         />
       ) : null}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1428]/60 via-transparent to-transparent opacity-80" />
+      <div className={`
+        pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1428]/60
+        via-transparent to-transparent opacity-80
+      `} />
     </div>
   );
 };
 
-const TagList: React.FC<{
+const TagList: FC<{
   tags: string[];
   max?: number;
   size?: "default" | "compact";
@@ -83,7 +93,10 @@ const TagList: React.FC<{
         <span
           key={tag}
           className={clsx(
-            "rounded-full border border-white/10 bg-white/5 font-semibold tracking-wide whitespace-nowrap text-slate-200/80 uppercase",
+            `
+              rounded-full border border-white/10 bg-white/5 font-semibold
+              tracking-wide whitespace-nowrap text-slate-200/80 uppercase
+            `,
             tagClass,
           )}
         >
@@ -93,7 +106,10 @@ const TagList: React.FC<{
       {remaining > 0 && (
         <span
           className={clsx(
-            "rounded-full border border-white/10 bg-white/5 font-semibold tracking-wide whitespace-nowrap text-slate-200/60 uppercase",
+            `
+              rounded-full border border-white/10 bg-white/5 font-semibold
+              tracking-wide whitespace-nowrap text-slate-200/60 uppercase
+            `,
             tagClass,
           )}
         >
@@ -104,8 +120,8 @@ const TagList: React.FC<{
   );
 };
 
-export const Projects: React.FC = () => {
-  const locationRef = React.useRef<HTMLElement>(null);
+export const Projects: FC = () => {
+  const locationRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -197,12 +213,24 @@ export const Projects: React.FC = () => {
       viewport={viewportOnce}
     >
       <motion.div
-        className="pointer-events-none mb-10 lg:sticky lg:top-0 lg:z-[60] lg:mb-0 lg:flex lg:h-[var(--sticky-nav-offset)] lg:items-center"
+        className={`
+          pointer-events-none mb-10
+          lg:sticky lg:top-0 lg:z-[60] lg:mb-0 lg:flex
+          lg:h-[var(--sticky-nav-offset)] lg:items-center
+        `}
         variants={staggerFast}
       >
-        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 lg:pl-16">
+        <div className={`
+          mx-auto w-full max-w-[1400px] px-4
+          sm:px-6
+          lg:px-10 lg:pl-16
+        `}>
           <motion.h1
-            className="text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left"
+            className={`
+              text-center text-5xl leading-none font-bold text-white
+              sm:text-5xl
+              md:-translate-y-2.5 md:text-left
+            `}
             variants={fadeUpItem}
           >
             Projects
@@ -210,9 +238,17 @@ export const Projects: React.FC = () => {
         </div>
       </motion.div>
 
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-0 sm:px-6 lg:px-10">
+      <div className={`
+        mx-auto flex w-full max-w-[1400px] flex-col gap-10 px-4 pt-0
+        sm:px-6
+        lg:px-10
+      `}>
         <div>
-          <div className="mt-1 grid grid-cols-1 gap-5 md:grid-cols-2 lg:auto-rows-[minmax(220px,auto)] lg:grid-cols-5">
+          <div className={`
+            mt-1 grid grid-cols-1 gap-5
+            md:grid-cols-2
+            lg:auto-rows-[minmax(220px,auto)] lg:grid-cols-5
+          `}>
             {combinedHighlights.map((project) => {
               const layout = highlightLayout[project.id] ?? {
                 cardClass: "lg:col-span-2",
@@ -233,7 +269,10 @@ export const Projects: React.FC = () => {
                     isCompact ? "h-auto p-3" : "h-auto p-4",
                     layout.cardClass,
                     isSpotlight &&
-                      "rounded-3xl border-sky-300/30 bg-gradient-to-br from-[#111c32] via-[#121d38] to-[#0d1934]",
+                      `
+                        rounded-3xl border-sky-300/30 bg-gradient-to-br
+                        from-[#111c32] via-[#121d38] to-[#0d1934]
+                      `,
                   )}
                   variants={fadeUpItem}
                 >
@@ -245,7 +284,11 @@ export const Projects: React.FC = () => {
                   />
                   <div className="mt-4 flex flex-1 flex-col">
                     {isSpotlight && (
-                      <span className="w-fit rounded-full border border-sky-300/40 bg-sky-300/15 px-3 py-1 text-[11px] font-semibold tracking-[0.2em] text-sky-100/90 uppercase">
+                      <span className={`
+                        w-fit rounded-full border border-sky-300/40
+                        bg-sky-300/15 px-3 py-1 text-[11px] font-semibold
+                        tracking-[0.2em] text-sky-100/90 uppercase
+                      `}>
                         Spotlight
                       </span>
                     )}
@@ -253,9 +296,18 @@ export const Projects: React.FC = () => {
                       className={clsx(
                         "mt-2 font-semibold text-white",
                         isSpotlight
-                          ? "text-2xl sm:text-3xl"
-                          : "text-lg sm:text-xl",
-                        isCompact && "text-base sm:text-lg",
+                          ? `
+                            text-2xl
+                            sm:text-3xl
+                          `
+                          : `
+                            text-lg
+                            sm:text-xl
+                          `,
+                        isCompact && `
+                          text-base
+                          sm:text-lg
+                        `,
                       )}
                     >
                       {project.title}
@@ -264,15 +316,24 @@ export const Projects: React.FC = () => {
                       className={clsx(
                         "mt-2 text-sm text-slate-300",
                         isSpotlight
-                          ? "line-clamp-2 sm:text-base"
+                          ? `
+                            line-clamp-2
+                            sm:text-base
+                          `
                           : "line-clamp-2",
-                        isCompact && "text-xs sm:text-sm",
+                        isCompact && `
+                          text-xs
+                          sm:text-sm
+                        `,
                       )}
                     >
                       {project.summary}
                     </p>
                     {isSpotlight && project.outcome && (
-                      <p className="mt-3 rounded-xl border border-sky-300/20 bg-sky-300/10 px-4 py-3 text-sm text-sky-100/90">
+                      <p className={`
+                        mt-3 rounded-xl border border-sky-300/20 bg-sky-300/10
+                        px-4 py-3 text-sm text-sky-100/90
+                      `}>
                         {project.outcome}
                       </p>
                     )}
@@ -319,9 +380,15 @@ export const Projects: React.FC = () => {
         </div>
 
         <div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className={`
+            flex flex-col gap-4
+            sm:flex-row sm:items-end sm:justify-between
+          `}>
             <div>
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl">
+              <h2 className={`
+                text-2xl font-semibold text-white
+                sm:text-3xl
+              `}>
                 More projects
               </h2>
               <p className="mt-1 text-sm text-slate-300">
@@ -331,7 +398,10 @@ export const Projects: React.FC = () => {
           </div>
 
           <div
-            className="mt-8 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-visible pr-2 pb-8"
+            className={`
+              mt-8 flex snap-x snap-mandatory items-stretch gap-4
+              overflow-x-auto overflow-y-visible pr-2 pb-8
+            `}
             aria-label="More projects"
           >
             {more.map((project) => (
@@ -339,7 +409,11 @@ export const Projects: React.FC = () => {
                 key={project.id}
                 className={clsx(
                   cardBase,
-                  "!h-[420px] min-w-[240px] snap-start self-stretch p-4 sm:!h-[440px] sm:min-w-[300px] lg:!h-[460px] lg:min-w-[340px]",
+                  `
+                    !h-[420px] min-w-[240px] snap-start self-stretch p-4
+                    sm:!h-[440px] sm:min-w-[300px]
+                    lg:!h-[460px] lg:min-w-[340px]
+                  `,
                 )}
                 variants={fadeUpItem}
               >

@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import {
   animate,
   motion,
@@ -9,7 +9,15 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+  type FC,
+  type PointerEvent,
+  type RefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 type HeroVariant = "hero" | "card";
 
@@ -330,7 +338,7 @@ const useMediaQuery = (query: string) => {
   return matches;
 };
 
-const useInView = (ref: React.RefObject<HTMLElement | null>) => {
+const useInView = (ref: RefObject<HTMLElement | null>) => {
   const ioUnsupported = typeof IntersectionObserver === "undefined";
   const [isInView, setIsInView] = useState(ioUnsupported);
   const [hasEntered, setHasEntered] = useState(ioUnsupported);
@@ -415,7 +423,7 @@ const useCounterOpacity = (
     [0, 1, 1, 0],
   );
 
-const PinToken: React.FC<{
+const PinToken: FC<{
   pin: PinState;
   palette: Palette;
   reducedMotion: boolean;
@@ -444,7 +452,10 @@ const PinToken: React.FC<{
         className={clsx(
           "absolute -inset-x-1 -inset-y-0.5 rounded-md",
           hoverDetailsEnabled &&
-            "opacity-0 transition duration-200 group-hover:opacity-100",
+            `
+              opacity-0 transition duration-200
+              group-hover:opacity-100
+            `,
         )}
         style={
           reducedMotion
@@ -477,7 +488,11 @@ const PinToken: React.FC<{
         </motion.span>
       </span>
       <motion.span
-        className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase"
+        className={`
+          pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2
+          rounded-full border px-2 py-0.5 text-[9px] font-semibold
+          tracking-[0.2em] uppercase
+        `}
         style={
           reducedMotion
             ? { opacity: 0 }
@@ -495,7 +510,12 @@ const PinToken: React.FC<{
       </motion.span>
       {hoverDetailsEnabled && (
         <span
-          className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase opacity-0 transition duration-200 group-hover:opacity-100"
+          className={`
+            pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2
+            rounded-full border px-2 py-0.5 text-[9px] font-semibold
+            tracking-[0.2em] uppercase opacity-0 transition duration-200
+            group-hover:opacity-100
+          `}
           style={{
             backgroundColor: palette.tooltipBg,
             color: palette.tooltipText,
@@ -509,7 +529,7 @@ const PinToken: React.FC<{
   );
 };
 
-export const PythonVersionPatchPrHero: React.FC<
+export const PythonVersionPatchPrHero: FC<
   PythonVersionPatchPrHeroProps
 > = ({ variant = "hero", className, interactive = true }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -595,7 +615,7 @@ export const PythonVersionPatchPrHero: React.FC<
   });
 
   const handlePointerMove = useCallback(
-    (event: React.PointerEvent<HTMLDivElement>) => {
+    (event: PointerEvent<HTMLDivElement>) => {
       if (!interactive || showStatic || !isInView) {
         return;
       }
@@ -1012,7 +1032,10 @@ export const PythonVersionPatchPrHero: React.FC<
             }
           >
             <div
-              className="relative aspect-[3/4] w-full overflow-hidden rounded-[28px] border"
+              className={`
+                relative aspect-[3/4] w-full overflow-hidden rounded-[28px]
+                border
+              `}
               style={{
                 backgroundColor: palette.panelBg,
                 borderColor: palette.panelBorder,
@@ -1026,17 +1049,27 @@ export const PythonVersionPatchPrHero: React.FC<
                 }}
               />
               <div className="relative z-10 flex h-full flex-col">
-                <div className="flex items-center justify-between px-4 pt-4 pb-2 text-[10px] tracking-[0.35em] uppercase">
+                <div className={`
+                  flex items-center justify-between px-4 pt-4 pb-2 text-[10px]
+                  tracking-[0.35em] uppercase
+                `}>
                   <span style={{ color: palette.textSubtle }}>CPython Scan</span>
                   <span style={{ color: palette.textSubtle }}>v1</span>
                 </div>
                 <div
-                  className="relative flex-1 px-4 pb-4 font-mono text-[12px] leading-relaxed"
+                  className={`
+                    relative flex-1 px-4 pb-4 font-mono text-[12px]
+                    leading-relaxed
+                  `}
                   style={{ color: palette.textPrimary }}
                 >
                   {variant === "hero" && (
                     <motion.div
-                      className="absolute top-12 left-3 z-20 flex items-center gap-2 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase"
+                      className={`
+                        absolute top-12 left-3 z-20 flex items-center gap-2
+                        rounded-full border px-2.5 py-1 text-[9px] font-semibold
+                        tracking-[0.2em] uppercase
+                      `}
                       style={
                         showStatic
                           ? {
@@ -1075,7 +1108,9 @@ export const PythonVersionPatchPrHero: React.FC<
                     </motion.div>
                   )}
                   <motion.div
-                    className="pointer-events-none absolute inset-y-12 left-0 w-[2px]"
+                    className={`
+                      pointer-events-none absolute inset-y-12 left-0 w-[2px]
+                    `}
                     style={{
                       backgroundImage: palette.scanBar,
                       boxShadow: `0 0 18px ${palette.scanGlow}`,
@@ -1120,7 +1155,10 @@ export const PythonVersionPatchPrHero: React.FC<
                         {line.content}
                         {index === lines.length - 1 && !showStatic && (
                           <motion.span
-                            className="ml-1 inline-block h-3 w-1.5 rounded-sm align-middle"
+                            className={`
+                              ml-1 inline-block h-3 w-1.5 rounded-sm
+                              align-middle
+                            `}
                             initial={{ opacity: 0 }}
                             animate={
                               hasEntered
@@ -1135,7 +1173,10 @@ export const PythonVersionPatchPrHero: React.FC<
                     ))}
                   </div>
                   <motion.div
-                    className="absolute top-14 right-4 rounded-full border px-2 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase"
+                    className={`
+                      absolute top-14 right-4 rounded-full border px-2 py-1
+                      text-[9px] font-semibold tracking-[0.2em] uppercase
+                    `}
                     style={
                       showStatic
                         ? {
@@ -1158,8 +1199,14 @@ export const PythonVersionPatchPrHero: React.FC<
                     type="button"
                     onClick={() => scrollToHeading("reliability-safety")}
                     className={clsx(
-                      "absolute bottom-4 left-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase",
-                      enableChipHover && "transition hover:opacity-100",
+                      `
+                        absolute bottom-4 left-4 rounded-full border px-2.5 py-1
+                        text-[9px] font-semibold tracking-[0.2em] uppercase
+                      `,
+                      enableChipHover && `
+                        transition
+                        hover:opacity-100
+                      `,
                     )}
                     style={
                       showGuardrail
@@ -1182,8 +1229,14 @@ export const PythonVersionPatchPrHero: React.FC<
                 type="button"
                 onClick={() => scrollToHeading("what-it-does")}
                 className={clsx(
-                  "absolute right-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase",
-                  enableChipHover && "transition hover:opacity-100",
+                  `
+                    absolute right-4 bottom-4 rounded-full border px-2.5 py-1
+                    text-[9px] font-semibold tracking-[0.2em] uppercase
+                  `,
+                  enableChipHover && `
+                    transition
+                    hover:opacity-100
+                  `,
                 )}
                 style={{
                   opacity: showStatic ? 0.9 : scanOpacity,
@@ -1196,7 +1249,10 @@ export const PythonVersionPatchPrHero: React.FC<
                 Scanner
               </motion.button>
               <motion.div
-                className="pointer-events-none absolute right-4 bottom-6 left-4 rounded-xl border px-3 py-2 font-mono text-[10px]"
+                className={`
+                  pointer-events-none absolute right-4 bottom-6 left-4
+                  rounded-xl border px-3 py-2 font-mono text-[10px]
+                `}
                 style={{
                   opacity: showStatic ? 1 : diffOpacity,
                   borderColor: palette.diffBorder,
@@ -1230,7 +1286,10 @@ export const PythonVersionPatchPrHero: React.FC<
           <motion.button
             type="button"
             onClick={() => scrollToHeading("architecture-highlights")}
-            className="group absolute top-10 -right-6 w-[72%] rounded-2xl border px-4 py-3 text-left text-[11px] shadow-lg"
+            className={`
+              group absolute top-10 -right-6 w-[72%] rounded-2xl border px-4
+              py-3 text-left text-[11px] shadow-lg
+            `}
             style={{
               opacity: showStatic ? 1 : prOpacity,
               scale: showStatic ? 1 : prScale,
@@ -1243,11 +1302,16 @@ export const PythonVersionPatchPrHero: React.FC<
             aria-label="Go to architecture highlights"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-semibold tracking-[0.2em] uppercase" style={{ color: palette.textSubtle }}>
+              <span className={`
+                text-[10px] font-semibold tracking-[0.2em] uppercase
+              `} style={{ color: palette.textSubtle }}>
                 Pull request
               </span>
               <motion.span
-                className="rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase"
+                className={`
+                  rounded-full border px-2 py-0.5 text-[9px] font-semibold
+                  tracking-[0.2em] uppercase
+                `}
                 style={{
                   opacity: showStatic ? 0.9 : auditOpacity,
                   borderColor: palette.chipBorder,
@@ -1274,7 +1338,10 @@ export const PythonVersionPatchPrHero: React.FC<
                 .map((chip) => (
                   <span
                     key={chip}
-                    className="rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase"
+                    className={`
+                      rounded-full border px-2 py-0.5 text-[9px] font-semibold
+                      tracking-[0.2em] uppercase
+                    `}
                     style={{
                       borderColor: palette.chipBorder,
                       backgroundColor: palette.chipBg,
@@ -1301,7 +1368,12 @@ export const PythonVersionPatchPrHero: React.FC<
                 ))}
             </div>
             <span
-              className="pointer-events-none absolute -top-6 left-4 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase opacity-0 transition duration-200 group-hover:opacity-100"
+              className={`
+                pointer-events-none absolute -top-6 left-4 rounded-full border
+                px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase
+                opacity-0 transition duration-200
+                group-hover:opacity-100
+              `}
               style={{
                 backgroundColor: palette.tooltipBg,
                 color: palette.tooltipText,

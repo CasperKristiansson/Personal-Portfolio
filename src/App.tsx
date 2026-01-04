@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import type { FC } from "react";
 import { Route, Routes, useLocation } from "react-router";
 
 import { Articles } from "./articles";
@@ -16,7 +17,7 @@ import { StickyNav } from "./components/StickyNav";
 import { Article } from "./shared/Article";
 import { pageVariants } from "./shared/motion";
 
-export const App: React.FC = () => {
+export const App: FC = () => {
   const location = useLocation();
   const homePage = (
     <motion.div

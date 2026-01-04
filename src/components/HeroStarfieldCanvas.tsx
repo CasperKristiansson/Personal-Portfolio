@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { type FC, type RefObject,useEffect, useRef } from "react";
 
 type StarLayer = "far" | "mid" | "near";
 
@@ -29,7 +29,7 @@ type ShootingStar = {
 };
 
 type HeroStarfieldCanvasProps = {
-  containerRef: React.RefObject<HTMLElement | null>;
+  containerRef: RefObject<HTMLElement | null>;
 };
 
 const SEED = "casper-starfield";
@@ -52,7 +52,7 @@ const createSeededRandom = (seed: string) => {
 const lerp = (start: number, end: number, amount: number) =>
   start + (end - start) * amount;
 
-export const HeroStarfieldCanvas: React.FC<HeroStarfieldCanvasProps> = ({
+export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
   containerRef,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
