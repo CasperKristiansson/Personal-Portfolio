@@ -138,7 +138,11 @@ const parseColor = (value: string): Rgb | null => {
   if (!match) {
     return null;
   }
-  const parts = match[1]
+  const [, values] = match;
+  if (!values) {
+    return null;
+  }
+  const parts = values
     .split(",")
     .map((part) => Number(part.trim()))
     .filter((part) => Number.isFinite(part));
@@ -434,14 +438,16 @@ const useCounterOpacity = (
     [0, 1, 1, 0],
   );
 
-const PinToken: FC<{
+type PinTokenProps = {
   pin: PinState;
   palette: Palette;
   reducedMotion: boolean;
   highlightShiftX?: MotionValue<number>;
   highlightShiftY?: MotionValue<number>;
   enableHoverDetails?: boolean;
-}> = ({
+};
+
+const PinToken: FC<PinTokenProps> = ({
   pin,
   palette,
   reducedMotion,
@@ -860,6 +866,9 @@ export const PythonVersionPatchPrHero: FC<
   const overlayShiftY = useTransform(overlayY, [-1, 1], [-6, 6]);
   const highlightShiftX = useTransform(overlayX, [-1, 1], [-4, 4]);
   const highlightShiftY = useTransform(overlayY, [-1, 1], [-3, 3]);
+  const highlightProps: Partial<
+    Pick<PinTokenProps, "highlightShiftX" | "highlightShiftY">
+  > = allowMotion ? { highlightShiftX, highlightShiftY } : {};
 
   const lines = [
     { id: "dockerfile-label", content: "// Dockerfile", muted: true },
@@ -872,8 +881,7 @@ export const PythonVersionPatchPrHero: FC<
               pin={pinLookup.dockerfile}
               palette={palette}
               reducedMotion={showStatic}
-              highlightShiftX={allowMotion ? highlightShiftX : undefined}
-              highlightShiftY={allowMotion ? highlightShiftY : undefined}
+              {...highlightProps}
               enableHoverDetails={enableHoverDetails}
             />
         </>
@@ -889,8 +897,7 @@ export const PythonVersionPatchPrHero: FC<
             pin={pinLookup.workflow}
             palette={palette}
             reducedMotion={showStatic}
-            highlightShiftX={allowMotion ? highlightShiftX : undefined}
-            highlightShiftY={allowMotion ? highlightShiftY : undefined}
+            {...highlightProps}
             enableHoverDetails={enableHoverDetails}
           />
         </>
@@ -906,8 +913,7 @@ export const PythonVersionPatchPrHero: FC<
             pin={pinLookup.pyproject}
             palette={palette}
             reducedMotion={showStatic}
-            highlightShiftX={allowMotion ? highlightShiftX : undefined}
-            highlightShiftY={allowMotion ? highlightShiftY : undefined}
+            {...highlightProps}
             enableHoverDetails={enableHoverDetails}
           />
           {"\""}
@@ -922,8 +928,7 @@ export const PythonVersionPatchPrHero: FC<
           pin={pinLookup["python-version"]}
           palette={palette}
           reducedMotion={showStatic}
-          highlightShiftX={allowMotion ? highlightShiftX : undefined}
-          highlightShiftY={allowMotion ? highlightShiftY : undefined}
+          {...highlightProps}
           enableHoverDetails={enableHoverDetails}
         />
       ),
@@ -938,8 +943,7 @@ export const PythonVersionPatchPrHero: FC<
             pin={pinLookup.runtime}
             palette={palette}
             reducedMotion={showStatic}
-            highlightShiftX={allowMotion ? highlightShiftX : undefined}
-            highlightShiftY={allowMotion ? highlightShiftY : undefined}
+            {...highlightProps}
             enableHoverDetails={enableHoverDetails}
           />
         </>

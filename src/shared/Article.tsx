@@ -341,9 +341,9 @@ export const Article: FC<ArticleItem> = (article) => {
       <Icons dark />
       <div className="pointer-events-none absolute inset-0">
         <div className={`
-          absolute -top-36 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2
+          absolute -top-36 left-1/2 h-112 w-240 -translate-x-1/2
           rounded-full
-          bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.25),_transparent_70%)]
+          bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.25),transparent_70%)]
           blur-3xl
         `} />
         <div className={`
@@ -378,7 +378,7 @@ export const Article: FC<ArticleItem> = (article) => {
       </motion.div>
       <motion.div
         className={`
-          relative mx-auto w-full max-w-[1200px] px-6 pt-20 pb-14
+          relative mx-auto w-full max-w-300 px-6 pt-20 pb-14
           lg:px-10
         `}
         variants={staggerContainer}
@@ -391,7 +391,7 @@ export const Article: FC<ArticleItem> = (article) => {
         `}>
           <motion.div
             className={`
-              order-2 mx-auto flex w-full max-w-[620px] flex-col justify-center
+              order-2 mx-auto flex w-full max-w-155 flex-col justify-center
               lg:order-1
             `}
             variants={staggerFast}
@@ -485,14 +485,14 @@ export const Article: FC<ArticleItem> = (article) => {
               lg:w-[108%] lg:translate-x-3
             `}>
               <div className={`
-                absolute -inset-6 rounded-[36px] bg-gradient-to-br
+                absolute -inset-6 rounded-[36px] bg-linear-to-br
                 from-sky-500/25 via-blue-500/10 to-transparent blur-3xl
               `} />
               <div className={`
                 relative overflow-hidden rounded-[28px] border border-white/10
                 bg-[#0b1428] shadow-[0_40px_100px_-60px_rgba(14,165,233,0.7)]
               `}>
-                <div className="relative aspect-[16/9] max-h-[420px] w-full">
+                <div className="relative aspect-video max-h-105 w-full">
                   {heroMedia.type === "image" ? (
                     <img
                       src={heroMedia.src}
@@ -513,7 +513,7 @@ export const Article: FC<ArticleItem> = (article) => {
                   ) : null}
                   {showHeroOverlay && (
                     <div className={`
-                      pointer-events-none absolute inset-0 bg-gradient-to-t
+                      pointer-events-none absolute inset-0 bg-linear-to-t
                       from-[#0b1224]/70 via-transparent to-transparent
                     `} />
                   )}
@@ -529,7 +529,7 @@ export const Article: FC<ArticleItem> = (article) => {
         </div>
       </motion.div>
       <div className={`
-        relative mx-auto w-full max-w-[820px] px-6 pb-20
+        relative mx-auto w-full max-w-205 px-6 pb-20
         lg:px-0
       `}>
         <MDXProvider components={mdxComponents}>

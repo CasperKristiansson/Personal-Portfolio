@@ -110,7 +110,11 @@ const parseRgb = (value: string): Rgb | null => {
   if (!match) {
     return null;
   }
-  const parts = match[1]
+  const [, values] = match;
+  if (!values) {
+    return null;
+  }
+  const parts = values
     .split(",")
     .map((part) => Number(part.trim()))
     .filter((part) => Number.isFinite(part));
@@ -686,20 +690,24 @@ const PydanticFixturegenFallback: FC<{ palette: Palette }> = ({
           fill="none"
         />
       ) : null}
-      {modules[7]
-        ? Array.from({ length: 4 }, (_, index) => (
-            <line
-              key={`fan-${index}`}
-              x1={modules[7].x + modules[7].w}
-              y1={modules[7].y + modules[7].h / 2}
-              x2={rack.x}
-              y2={rack.y + 20 + index * 40}
-              stroke={palette.active.css}
-              strokeWidth={1.5}
-              strokeOpacity={0.8}
-            />
-          ))
-        : null}
+      {(() => {
+        const fanModule = modules[7];
+        if (!fanModule) {
+          return null;
+        }
+        return Array.from({ length: 4 }, (_, index) => (
+          <line
+            key={`fan-${index}`}
+            x1={fanModule.x + fanModule.w}
+            y1={fanModule.y + fanModule.h / 2}
+            x2={rack.x}
+            y2={rack.y + 20 + index * 40}
+            stroke={palette.active.css}
+            strokeWidth={1.5}
+            strokeOpacity={0.8}
+          />
+        ));
+      })()}
     </svg>
   );
 };

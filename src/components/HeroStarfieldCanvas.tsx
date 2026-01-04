@@ -127,6 +127,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
         "rgba(248, 248, 186, 1)",
         "rgba(255, 255, 210, 1)",
       ];
+      const fallbackColor = palette[0] ?? "rgba(255, 255, 255, 1)";
 
       const twinkleScale = reduceMotionRef.current ? 0.04 : 0.18;
 
@@ -144,7 +145,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
           const twinkleSpeed = lerp(0.6, 1.4, random());
           const twinklePhase = random() * Math.PI * 2;
           const color =
-            palette[Math.floor(random() * palette.length)] ?? palette[0];
+            palette[Math.floor(random() * palette.length)] ?? fallbackColor;
           const glow = lerp(glowRange[0], glowRange[1], random());
           const featured =
             !reduceMotionRef.current && random() < featuredChance;
