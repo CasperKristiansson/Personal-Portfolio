@@ -12,6 +12,7 @@ import { createTypeScriptImportResolver } from "eslint-import-resolver-typescrip
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import unicorn from "eslint-plugin-unicorn";
 import * as mdx from "eslint-plugin-mdx";
+import betterTailwindcss from "eslint-plugin-better-tailwindcss";
 import tseslint from "typescript-eslint";
 
 const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
@@ -90,6 +91,24 @@ export default defineConfig([
   {
     name: "mdx/recommended",
     ...mdx.flat,
+  },
+  {
+    name: "better-tailwindcss/recommended",
+    files: ["src/**/*.{js,jsx,ts,tsx,mdx}"],
+    plugins: {
+      "better-tailwindcss": betterTailwindcss,
+    },
+    rules: {
+      ...betterTailwindcss.configs["recommended-error"].rules,
+      "better-tailwindcss/enforce-consistent-line-wrapping": "off",
+      "better-tailwindcss/no-unregistered-classes": "off",
+    },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "src/index.css",
+        tsconfig: "tsconfig.json",
+      },
+    },
   },
   {
     name: "app/browser-globals",

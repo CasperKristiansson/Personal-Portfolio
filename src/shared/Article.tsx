@@ -302,8 +302,8 @@ export const Article: React.FC<ArticleItem> = (article) => {
       <Icons dark />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-36 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.25),_transparent_70%)] blur-3xl" />
-        <div className="absolute -right-28 top-24 h-72 w-72 rounded-full bg-sky-500/15 blur-3xl" />
-        <div className="absolute -left-28 bottom-0 h-80 w-80 rounded-full bg-indigo-500/15 blur-3xl" />
+        <div className="absolute top-24 -right-28 h-72 w-72 rounded-full bg-sky-500/15 blur-3xl" />
+        <div className="absolute bottom-0 -left-28 h-80 w-80 rounded-full bg-indigo-500/15 blur-3xl" />
       </div>
       <motion.div
         className="fixed top-5 left-5 hidden items-center gap-2 rounded-full border border-white/10 bg-[#0b1224]/80 px-3 py-2 text-slate-100 shadow-[0_18px_45px_-30px_rgba(15,23,42,0.9)] backdrop-blur lg:flex"
@@ -389,7 +389,7 @@ export const Article: React.FC<ArticleItem> = (article) => {
             <div className="relative w-full lg:w-[108%] lg:translate-x-3">
               <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-br from-sky-500/25 via-blue-500/10 to-transparent blur-3xl" />
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#0b1428] shadow-[0_40px_100px_-60px_rgba(14,165,233,0.7)]">
-                <div className="relative aspect-[16/9] w-full max-h-[420px]">
+                <div className="relative aspect-[16/9] max-h-[420px] w-full">
                   {heroMedia.type === "image" ? (
                     <img
                       src={heroMedia.src}

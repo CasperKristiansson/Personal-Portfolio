@@ -471,13 +471,13 @@ const PinToken: React.FC<{
         </motion.span>
         <motion.span
           style={{ opacity: reducedMotion ? 1 : pin.updateOpacity }}
-          className="absolute left-0 top-0"
+          className="absolute top-0 left-0"
         >
           {pin.newValue}
         </motion.span>
       </span>
       <motion.span
-        className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em]"
+        className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase"
         style={
           reducedMotion
             ? { opacity: 0 }
@@ -495,7 +495,7 @@ const PinToken: React.FC<{
       </motion.span>
       {hoverDetailsEnabled && (
         <span
-          className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] opacity-0 transition duration-200 group-hover:opacity-100"
+          className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase opacity-0 transition duration-200 group-hover:opacity-100"
           style={{
             backgroundColor: palette.tooltipBg,
             color: palette.tooltipText,
@@ -1026,7 +1026,7 @@ export const PythonVersionPatchPrHero: React.FC<
                 }}
               />
               <div className="relative z-10 flex h-full flex-col">
-                <div className="flex items-center justify-between px-4 pt-4 pb-2 text-[10px] uppercase tracking-[0.35em]">
+                <div className="flex items-center justify-between px-4 pt-4 pb-2 text-[10px] tracking-[0.35em] uppercase">
                   <span style={{ color: palette.textSubtle }}>CPython Scan</span>
                   <span style={{ color: palette.textSubtle }}>v1</span>
                 </div>
@@ -1036,7 +1036,7 @@ export const PythonVersionPatchPrHero: React.FC<
                 >
                   {variant === "hero" && (
                     <motion.div
-                      className="absolute left-3 top-12 z-20 flex items-center gap-2 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
+                      className="absolute top-12 left-3 z-20 flex items-center gap-2 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase"
                       style={
                         showStatic
                           ? {
@@ -1135,7 +1135,7 @@ export const PythonVersionPatchPrHero: React.FC<
                     ))}
                   </div>
                   <motion.div
-                    className="absolute right-4 top-14 rounded-full border px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
+                    className="absolute top-14 right-4 rounded-full border px-2 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase"
                     style={
                       showStatic
                         ? {
@@ -1158,7 +1158,7 @@ export const PythonVersionPatchPrHero: React.FC<
                     type="button"
                     onClick={() => scrollToHeading("reliability-safety")}
                     className={clsx(
-                      "absolute left-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]",
+                      "absolute bottom-4 left-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase",
                       enableChipHover && "transition hover:opacity-100",
                     )}
                     style={
@@ -1182,7 +1182,7 @@ export const PythonVersionPatchPrHero: React.FC<
                 type="button"
                 onClick={() => scrollToHeading("what-it-does")}
                 className={clsx(
-                  "absolute right-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]",
+                  "absolute right-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase",
                   enableChipHover && "transition hover:opacity-100",
                 )}
                 style={{
@@ -1196,7 +1196,7 @@ export const PythonVersionPatchPrHero: React.FC<
                 Scanner
               </motion.button>
               <motion.div
-                className="pointer-events-none absolute left-4 right-4 bottom-6 rounded-xl border px-3 py-2 font-mono text-[10px]"
+                className="pointer-events-none absolute right-4 bottom-6 left-4 rounded-xl border px-3 py-2 font-mono text-[10px]"
                 style={{
                   opacity: showStatic ? 1 : diffOpacity,
                   borderColor: palette.diffBorder,
@@ -1230,7 +1230,7 @@ export const PythonVersionPatchPrHero: React.FC<
           <motion.button
             type="button"
             onClick={() => scrollToHeading("architecture-highlights")}
-            className="group absolute -right-6 top-10 w-[72%] rounded-2xl border px-4 py-3 text-left text-[11px] shadow-lg"
+            className="group absolute top-10 -right-6 w-[72%] rounded-2xl border px-4 py-3 text-left text-[11px] shadow-lg"
             style={{
               opacity: showStatic ? 1 : prOpacity,
               scale: showStatic ? 1 : prScale,
@@ -1243,11 +1243,11 @@ export const PythonVersionPatchPrHero: React.FC<
             aria-label="Go to architecture highlights"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: palette.textSubtle }}>
+              <span className="text-[10px] font-semibold tracking-[0.2em] uppercase" style={{ color: palette.textSubtle }}>
                 Pull request
               </span>
               <motion.span
-                className="rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em]"
+                className="rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase"
                 style={{
                   opacity: showStatic ? 0.9 : auditOpacity,
                   borderColor: palette.chipBorder,
@@ -1274,7 +1274,7 @@ export const PythonVersionPatchPrHero: React.FC<
                 .map((chip) => (
                   <span
                     key={chip}
-                    className="rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em]"
+                    className="rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase"
                     style={{
                       borderColor: palette.chipBorder,
                       backgroundColor: palette.chipBg,
@@ -1301,7 +1301,7 @@ export const PythonVersionPatchPrHero: React.FC<
                 ))}
             </div>
             <span
-              className="pointer-events-none absolute -top-6 left-4 rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] opacity-0 transition duration-200 group-hover:opacity-100"
+              className="pointer-events-none absolute -top-6 left-4 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase opacity-0 transition duration-200 group-hover:opacity-100"
               style={{
                 backgroundColor: palette.tooltipBg,
                 color: palette.tooltipText,
