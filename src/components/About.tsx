@@ -33,7 +33,7 @@ export const About: React.FC = () => {
             className="text-4xl font-bold tracking-tight sm:text-5xl"
             variants={fadeUpItem}
           >
-            Hey there, I'm{" "}
+            Hey there, I&apos;m{" "}
             <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-teal-200 bg-clip-text text-transparent">
               Casper
             </span>
