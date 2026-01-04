@@ -11,6 +11,7 @@ import { importX, createNodeResolver } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import unicorn from "eslint-plugin-unicorn";
+import * as mdx from "eslint-plugin-mdx";
 import tseslint from "typescript-eslint";
 
 const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
@@ -85,6 +86,10 @@ export default defineConfig([
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
     },
+  },
+  {
+    name: "mdx/recommended",
+    ...mdx.flat,
   },
   {
     name: "app/browser-globals",
