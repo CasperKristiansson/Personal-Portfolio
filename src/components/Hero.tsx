@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import React, { useRef } from "react";
+
 import { fadeInItem, fadeUpItem, staggerContainer } from "../shared/motion";
 import { HeroStarfieldCanvas } from "./HeroStarfieldCanvas";
 

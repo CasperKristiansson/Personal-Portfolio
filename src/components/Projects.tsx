@@ -1,16 +1,17 @@
-import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
-import { Link } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
-import { projects, type ProjectMedia } from "../data/projects";
-import { PydanticFixturegenHero } from "./PydanticFixturegenHero";
-import { PythonVersionPatchPrHero } from "./PythonVersionPatchPrHero";
+import React, { useEffect, useMemo } from "react";
+import { Link } from "react-router";
+
+import { type ProjectMedia,projects } from "../data/projects";
 import {
   fadeUpItem,
   staggerContainer,
   staggerFast,
   viewportOnce,
 } from "../shared/motion";
+import { PydanticFixturegenHero } from "./PydanticFixturegenHero";
+import { PythonVersionPatchPrHero } from "./PythonVersionPatchPrHero";
 
 const cardBase =
   "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#111c32]/90 p-5 shadow-[0_18px_45px_-35px_rgba(3,7,18,0.85)] transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_22px_60px_-40px_rgba(14,165,233,0.35)] focus-within:ring-2 focus-within:ring-sky-300/60 motion-reduce:transform-none motion-reduce:transition-none";

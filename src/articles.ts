@@ -1,11 +1,18 @@
 import type { ComponentType } from "react";
 
+import CloudComputing, {
+  meta as cloudComputingMeta,
+} from "./content/cloud-computing.mdx";
+import Ecoloop, { meta as ecoloopMeta } from "./content/ecoloop.mdx";
 import FinanceTracker, {
   meta as financeTrackerMeta,
 } from "./content/finance-tracker.mdx";
-import ReactWhiteboardStudio, {
-  meta as reactWhiteboardStudioMeta,
-} from "./content/react-whiteboard-studio.mdx";
+import ImageEditingApplication, {
+  meta as imageEditingApplicationMeta,
+} from "./content/image-editing-application.mdx";
+import Kitgrid, { meta as kitgridMeta } from "./content/kitgrid.mdx";
+import MovieBoxDB, { meta as movieboxdbMeta } from "./content/movieboxdb.mdx";
+import PKTraffic, { meta as pktrafficMeta } from "./content/pktraffic.mdx";
 import PodcastTracker, {
   meta as podcastTrackerMeta,
 } from "./content/podcast-tracker.mdx";
@@ -15,22 +22,15 @@ import PydanticFixturegen, {
 import PythonVersionPatchPr, {
   meta as pythonVersionPatchPrMeta,
 } from "./content/python-version-patch-pr.mdx";
-import PKTraffic, { meta as pktrafficMeta } from "./content/pktraffic.mdx";
-import MovieBoxDB, { meta as movieboxdbMeta } from "./content/movieboxdb.mdx";
-import WeatherBrain, {
-  meta as weatherbrainMeta,
-} from "./content/weatherbrain.mdx";
-import Ecoloop, { meta as ecoloopMeta } from "./content/ecoloop.mdx";
-import ImageEditingApplication, {
-  meta as imageEditingApplicationMeta,
-} from "./content/image-editing-application.mdx";
+import ReactWhiteboardStudio, {
+  meta as reactWhiteboardStudioMeta,
+} from "./content/react-whiteboard-studio.mdx";
 import TvShowNetwork, {
   meta as tvShowNetworkMeta,
 } from "./content/tvshownetwork.mdx";
-import Kitgrid, { meta as kitgridMeta } from "./content/kitgrid.mdx";
-import CloudComputing, {
-  meta as cloudComputingMeta,
-} from "./content/cloud-computing.mdx";
+import WeatherBrain, {
+  meta as weatherbrainMeta,
+} from "./content/weatherbrain.mdx";
 
 export type ArticleMeta = {
   path: string;

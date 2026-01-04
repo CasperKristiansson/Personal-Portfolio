@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
+
 import cisco from "../assets/other/cisco.webp";
 import eoa from "../assets/other/eoa.jpg";
 import eoab from "../assets/other/eoab.png";
-import { motion } from "framer-motion";
 import {
   fadeUpItem,
   slideLeftItem,

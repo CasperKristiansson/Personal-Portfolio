@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconChevronDown,
 } from "@tabler/icons-react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const primaryLinks = [
   { label: "Projects", href: "#projects" },

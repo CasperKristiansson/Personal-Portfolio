@@ -1,13 +1,13 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   Canvas,
   extend,
+  type ThreeEvent,
   useFrame,
   useThree,
-  type ThreeEvent,
 } from "@react-three/fiber";
-import * as THREE from "three";
 import { useReducedMotion } from "framer-motion";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import * as THREE from "three";
 
 extend({ ThreeLine: THREE.Line });
 

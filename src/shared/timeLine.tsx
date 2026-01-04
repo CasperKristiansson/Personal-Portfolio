@@ -1,6 +1,7 @@
 import { IconChevronDown, IconChevronUp, IconLink } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
 import { fadeUpItem, slideLeftItem, viewportOnce } from "./motion";
 
 export type TimelineItem = {

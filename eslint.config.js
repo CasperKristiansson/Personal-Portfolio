@@ -9,6 +9,8 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import { importX, createNodeResolver } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
+import unicorn from "eslint-plugin-unicorn";
 import tseslint from "typescript-eslint";
 
 const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
@@ -56,6 +58,32 @@ export default defineConfig([
           extensions: [".js", ".jsx", ".ts", ".tsx"],
         }),
       ],
+    },
+  },
+  {
+    name: "import-x/react-compat",
+    files: ["src/**/*.{jsx,tsx}"],
+    rules: {
+      "import-x/default": "off",
+    },
+  },
+  {
+    name: "import-x/compat-warnings",
+    files: ["src/**/*.{js,jsx,ts,tsx}"],
+    rules: {
+      "import-x/no-named-as-default": "off",
+      "import-x/no-named-as-default-member": "off",
+    },
+  },
+  {
+    name: "simple-import-sort",
+    files: ["src/**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      "simple-import-sort": simpleImportSort,
+    },
+    rules: {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
     },
   },
   {
@@ -123,6 +151,28 @@ export default defineConfig([
     files: ["src/components/PydanticFixturegenHero.tsx"],
     rules: {
       "react/no-unknown-property": "off",
+    },
+  },
+  {
+    name: "filename-case/tsx",
+    files: ["src/**/*.tsx"],
+    ignores: ["src/main.tsx"],
+    plugins: {
+      unicorn,
+    },
+    rules: {
+      "unicorn/filename-case": ["error", { case: "pascalCase" }],
+    },
+  },
+  {
+    name: "filename-case/ts",
+    files: ["src/**/*.ts"],
+    ignores: ["src/**/*.d.ts"],
+    plugins: {
+      unicorn,
+    },
+    rules: {
+      "unicorn/filename-case": ["error", { case: "camelCase" }],
     },
   },
 ]);

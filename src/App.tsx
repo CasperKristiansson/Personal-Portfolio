@@ -1,18 +1,19 @@
-import { Route, Routes, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
+import { Route, Routes, useLocation } from "react-router";
+
+import { Articles } from "./articles";
 import { About } from "./components/About";
 import { Certificates } from "./components/Certifications";
 import { Education } from "./components/Education";
 import { Experience } from "./components/Experience";
 import { Hero } from "./components/Hero";
-import { StickyNav } from "./components/StickyNav";
+import { NotFound } from "./components/NotFound";
+import { Papers } from "./components/Papers";
 import { Projects } from "./components/Projects";
 import { Rewards } from "./components/Rewards";
 import { Skills } from "./components/Skills";
-import { NotFound } from "./components/NotFound";
-import { Article } from "./shared/article";
-import { Articles } from "./articles";
-import { Papers } from "./components/Papers";
+import { StickyNav } from "./components/StickyNav";
+import { Article } from "./shared/Article";
 import { pageVariants } from "./shared/motion";
 
 export const App: React.FC = () => {

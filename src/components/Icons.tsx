@@ -1,6 +1,6 @@
-import React from "react";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import React from "react";
 
 interface IconsProps {
   dark?: boolean;

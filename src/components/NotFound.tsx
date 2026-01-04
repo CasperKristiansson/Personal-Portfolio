@@ -1,5 +1,6 @@
-import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
+
 import { fadeUpItem, pageVariants } from "../shared/motion";
 
 export const NotFound: React.FC = () => {

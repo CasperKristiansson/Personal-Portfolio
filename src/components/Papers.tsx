@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router";
+
 import cloudComputing from "../assets/other/cloudComputing.png";
 import thesis from "../assets/other/thesis.png";
-import { motion } from "framer-motion";
 import {
   fadeUpItem,
   slideLeftItem,

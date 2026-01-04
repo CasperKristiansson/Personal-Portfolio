@@ -1,4 +1,4 @@
-import { TimeLine, TimelineItem } from "../shared/timeLine";
+import { TimeLine, TimelineItem } from "../shared/TimeLine";
 
 const timelineItems: TimelineItem[] = [
   {

@@ -1,15 +1,15 @@
+import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
 import financeTrackerHero from "../assets/projects/financeTracker/financeTrackerHero.jpg";
-import reactWhiteboardStudioHero from "../assets/projects/reactWhiteboardStudio/reactWhiteboardStudioHero.jpg";
+import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
+import kitgridHero from "../assets/projects/kitgrid/kitgridHero.jpg";
+import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
+import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import podcastTrackerHero from "../assets/projects/podcastTracker/podcastTrackerHero.jpg";
 import pydanticFixturegenHero from "../assets/projects/pydanticFixturegen/pydanticFixturegenHero.jpg";
 import pythonVersionPatchPrHero from "../assets/projects/pythonVersionPatchPr/pythonVersionPatchPrHero.jpg";
-import kitgridHero from "../assets/projects/kitgrid/kitgridHero.jpg";
-import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
-import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
-import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
-import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
-import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
+import reactWhiteboardStudioHero from "../assets/projects/reactWhiteboardStudio/reactWhiteboardStudioHero.jpg";
 import tvShowNetworkOverview from "../assets/projects/tvshownetwork/tvShowNetworkOverview.png";
+import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
 
 export type ProjectTier = "featured" | "notable" | "more";
 

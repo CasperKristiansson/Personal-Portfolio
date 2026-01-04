@@ -4,6 +4,7 @@ import {
   IconGitPullRequest,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+
 import amazonApiGatewayIcon from "../assets/aws/amazon-api-gateway.png";
 import amazonBedrockIcon from "../assets/aws/amazon-bedrock.png";
 import amazonCloudFrontIcon from "../assets/aws/amazon-cloudfront.png";
@@ -27,6 +28,7 @@ import awsFargateIcon from "../assets/aws/aws-fargate.png";
 import awsIamIcon from "../assets/aws/aws-iam.svg";
 import awsLambdaIcon from "../assets/aws/aws-lambda.png";
 import awsSystemsManagerIcon from "../assets/aws/aws-systems-manager.png";
+import openAiLogo from "../assets/openai-logo.png";
 import {
   fadeInItem,
   fadeUpItem,
@@ -35,7 +37,6 @@ import {
   staggerFast,
   viewportOnce,
 } from "../shared/motion";
-import openAiLogo from "../assets/openai-logo.png";
 
 type BadgeItem = {
   name: string;

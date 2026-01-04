@@ -1,14 +1,15 @@
+import { MDXProvider } from "@mdx-js/react";
 import { IconArrowLeft } from "@tabler/icons-react";
-import { Link } from "react-router";
-import { Icons } from "../components/Icons";
-import { ArticleItem } from "../articles";
-import { projects, type ProjectMedia } from "../data/projects";
-import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
-import { PythonVersionPatchPrHero } from "../components/PythonVersionPatchPrHero";
+import { motion, type MotionProps } from "framer-motion";
 import type React from "react";
 import { isValidElement, useEffect, useState } from "react";
-import { motion, type MotionProps } from "framer-motion";
-import { MDXProvider } from "@mdx-js/react";
+import { Link } from "react-router";
+
+import { ArticleItem } from "../articles";
+import { Icons } from "../components/Icons";
+import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
+import { PythonVersionPatchPrHero } from "../components/PythonVersionPatchPrHero";
+import { type ProjectMedia,projects } from "../data/projects";
 import {
   fadeUpItem,
   pageVariants,

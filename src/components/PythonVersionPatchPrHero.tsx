@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import {
   animate,
   motion,
+  type MotionValue,
   useMotionValue,
   useMotionValueEvent,
   useReducedMotion,
   useSpring,
   useTransform,
-  type MotionValue,
 } from "framer-motion";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 type HeroVariant = "hero" | "card";
 
