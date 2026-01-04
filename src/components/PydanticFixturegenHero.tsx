@@ -809,6 +809,7 @@ const RigScene: React.FC<RigSceneProps> = ({
   useEffect(() => {
     camera.position.copy(baseCamera);
     if (camera instanceof THREE.OrthographicCamera) {
+      // eslint-disable-next-line react-hooks/immutability -- three.js camera updates are imperative.
       camera.zoom = cameraZoom;
       camera.updateProjectionMatrix();
     }

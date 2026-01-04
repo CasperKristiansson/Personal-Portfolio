@@ -330,24 +330,31 @@ const useMediaQuery = (query: string) => {
   return matches;
 };
 
-const useInView = (ref: React.RefObject<HTMLElement>) => {
-  const [isInView, setIsInView] = useState(false);
+const useInView = (ref: React.RefObject<HTMLElement | null>) => {
+  const ioUnsupported = typeof IntersectionObserver === "undefined";
+  const [isInView, setIsInView] = useState(ioUnsupported);
+  const [hasEntered, setHasEntered] = useState(ioUnsupported);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || typeof IntersectionObserver === "undefined") {
-      setIsInView(true);
+    if (!element || ioUnsupported) {
       return;
     }
     const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
+      ([entry]) => {
+        const inView = entry.isIntersecting;
+        setIsInView(inView);
+        if (inView) {
+          setHasEntered(true);
+        }
+      },
       { threshold: 0.25 },
     );
     observer.observe(element);
     return () => observer.disconnect();
-  }, [ref]);
+  }, [ref, ioUnsupported]);
 
-  return isInView;
+  return { isInView, hasEntered };
 };
 
 const usePinMotion = (
@@ -508,11 +515,10 @@ export const PythonVersionPatchPrHero: React.FC<
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const isCompact = useMediaQuery("(max-width: 640px)");
-  const isInView = useInView(containerRef);
+  const { isInView, hasEntered } = useInView(containerRef);
   const [palette, setPalette] = useState<Palette>(() =>
     derivePalette(null),
   );
-  const [hasEntered, setHasEntered] = useState(false);
   const [showGuardrail, setShowGuardrail] = useState(true);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -551,12 +557,6 @@ export const PythonVersionPatchPrHero: React.FC<
     }
     setPalette(derivePalette(containerRef.current));
   }, []);
-
-  useEffect(() => {
-    if (isInView) {
-      setHasEntered(true);
-    }
-  }, [isInView]);
 
   useEffect(() => {
     if (showStatic || !hasEntered) {
@@ -801,13 +801,11 @@ export const PythonVersionPatchPrHero: React.FC<
   );
   const counterStages = [counter0, counter1, counter2, counter3, counter4, counter5];
 
-  const guardrailOpacity = showStatic
-    ? 0.9
-    : useTransform(
-        loopProgress,
-        [resolveStart + 0.05, resolveStart + 0.14, resolveEnd - 0.05, resolveEnd],
-        [0, 1, 1, 0],
-      );
+  const guardrailOpacity = useTransform(
+    loopProgress,
+    [resolveStart + 0.05, resolveStart + 0.14, resolveEnd - 0.05, resolveEnd],
+    [0, 1, 1, 0],
+  );
 
   const tiltX = useTransform(parallaxY, [-1, 1], [6, -6]);
   const tiltY = useTransform(parallaxX, [-1, 1], [-8, 8]);
