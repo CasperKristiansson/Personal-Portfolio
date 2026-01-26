@@ -249,14 +249,14 @@ const derivePalette = (element: HTMLElement | null): Palette => {
     foregroundValue,
   );
 
-  const background =
-    parseColor(backgroundValue) ?? parseColor(fallbackBackground) ?? {
+  const background = parseColor(backgroundValue) ??
+    parseColor(fallbackBackground) ?? {
       r: 11,
       g: 18,
       b: 36,
     };
-  const foreground =
-    parseColor(foregroundValue) ?? parseColor(fallbackForeground) ?? {
+  const foreground = parseColor(foregroundValue) ??
+    parseColor(fallbackForeground) ?? {
       r: 226,
       g: 232,
       b: 240,
@@ -381,7 +381,10 @@ const TextLabel: FC<TextLabelProps> = ({
   scale = 1,
   registerMaterial,
 }) => {
-  const textureData = useMemo(() => createTextTexture(text, color), [text, color]);
+  const textureData = useMemo(
+    () => createTextTexture(text, color),
+    [text, color],
+  );
   useEffect(() => {
     return () => {
       textureData?.texture.dispose();
@@ -562,13 +565,14 @@ const buildRigConfig = (
   const slotX = rack.position.x + rack.size[0] / 2 - 0.25;
   const slotZ = rack.position.z + rack.size[2] / 2 - 0.12;
 
-  const rackSlots = Array.from({ length: slotCount }, (_, index) =>
-    new THREE.Vector3(slotX, slotStartY + index * slotSpacing, slotZ),
+  const rackSlots = Array.from(
+    { length: slotCount },
+    (_, index) =>
+      new THREE.Vector3(slotX, slotStartY + index * slotSpacing, slotZ),
   );
 
   const tileEntries = rackSlots.map(
-    (slot) =>
-      new THREE.Vector3(slot.x - 0.85, slot.y + 0.02, slot.z - 0.12),
+    (slot) => new THREE.Vector3(slot.x - 0.85, slot.y + 0.02, slot.z - 0.12),
   );
 
   const outputCount = isCompact ? 3 : 4;
@@ -586,7 +590,11 @@ const buildRigConfig = (
   const outputCurves = outputIndices.map((slotIndex, index) => {
     const target = rackSlots[slotIndex];
     if (!target) {
-      return new THREE.CatmullRomCurve3([outputStart, outputStart, outputStart]);
+      return new THREE.CatmullRomCurve3([
+        outputStart,
+        outputStart,
+        outputStart,
+      ]);
     }
     const mid = new THREE.Vector3(
       (outputStart.x + target.x) / 2,
@@ -610,16 +618,17 @@ const buildRigConfig = (
   };
 };
 
-const createLineGeometry = (curve: THREE.Curve<THREE.Vector3>, segments = 36) => {
+const createLineGeometry = (
+  curve: THREE.Curve<THREE.Vector3>,
+  segments = 36,
+) => {
   const points = curve.getPoints(segments);
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
   geometry.setDrawRange(0, 0);
   return { geometry, count: points.length };
 };
 
-const PydanticFixturegenFallback: FC<{ palette: Palette }> = ({
-  palette,
-}) => {
+const PydanticFixturegenFallback: FC<{ palette: Palette }> = ({ palette }) => {
   const modules = Array.from({ length: 8 }, (_, index) => ({
     x: 80 + index * 120,
     y: 300,
@@ -635,13 +644,7 @@ const PydanticFixturegenFallback: FC<{ palette: Palette }> = ({
       role="img"
       aria-label="Deterministic pipeline rig"
     >
-      <rect
-        x={0}
-        y={0}
-        width={1280}
-        height={720}
-        fill="transparent"
-      />
+      <rect x={0} y={0} width={1280} height={720} fill="transparent" />
       {modules.map((module, index) => (
         <rect
           key={index}
@@ -736,9 +739,7 @@ const RigAnimator: FC<{ active: boolean }> = ({ active }) => {
   return null;
 };
 
-const InvalidateOnChange: FC<{ deps: DependencyList }> = ({
-  deps,
-}) => {
+const InvalidateOnChange: FC<{ deps: DependencyList }> = ({ deps }) => {
   const { invalidate } = useThree();
   useEffect(() => {
     invalidate();
@@ -867,14 +868,7 @@ const RigScene: FC<RigSceneProps> = ({
       wireLines.forEach(({ geometry }) => geometry.dispose());
       fanLines.forEach(({ geometry }) => geometry.dispose());
     };
-  }, [
-    shieldEdges,
-    hubEdges,
-    moduleEdges,
-    coreEdges,
-    wireLines,
-    fanLines,
-  ]);
+  }, [shieldEdges, hubEdges, moduleEdges, coreEdges, wireLines, fanLines]);
 
   useEffect(() => {
     if (!groupRef.current) {
@@ -962,9 +956,7 @@ const RigScene: FC<RigSceneProps> = ({
       const moduleProgress = clamp((bootProgress - module.activation) / 0.18);
       const isActive = hoverId === module.id;
       const pulse = Math.sin(moduleProgress * Math.PI) * 0.12;
-      material.color.copy(
-        isActive ? palette.active.color : palette.wire.color,
-      );
+      material.color.copy(isActive ? palette.active.color : palette.wire.color);
       material.opacity =
         (isActive ? palette.active.opacity : palette.wire.opacity) *
           (0.4 + moduleProgress * 0.6) +
@@ -1041,8 +1033,7 @@ const RigScene: FC<RigSceneProps> = ({
       const stampPhase = (loopPhase - stampStart) / stampWindow;
       if (stampPhase >= 0 && stampPhase <= 1 && bootProgress > 0.9) {
         material.opacity =
-          palette.labelMuted.opacity *
-          (1 - Math.abs(stampPhase - 0.5) * 2);
+          palette.labelMuted.opacity * (1 - Math.abs(stampPhase - 0.5) * 2);
       } else {
         material.opacity = 0;
       }
@@ -1051,11 +1042,11 @@ const RigScene: FC<RigSceneProps> = ({
     if (ringRef.current) {
       const ringPhase = loopPhase;
       const ringScale = 1 + ringPhase * 2.2;
-      const ringOpacity =
-        ringPhase <= 0.6 ? (1 - ringPhase / 0.6) * 0.6 : 0;
+      const ringOpacity = ringPhase <= 0.6 ? (1 - ringPhase / 0.6) * 0.6 : 0;
       ringRef.current.scale.setScalar(ringScale);
-      const ringMaterial = ringRef.current
-        .material as THREE.Material & { opacity?: number };
+      const ringMaterial = ringRef.current.material as THREE.Material & {
+        opacity?: number;
+      };
       if (ringMaterial && "opacity" in ringMaterial) {
         ringMaterial.opacity = ringOpacity;
       }
@@ -1120,10 +1111,10 @@ const RigScene: FC<RigSceneProps> = ({
         return;
       }
       const isActive = hoverId === module.id;
-      material.color.copy(
-        isActive ? palette.active.color : palette.wire.color,
-      );
-      material.opacity = isActive ? palette.active.opacity : palette.wire.opacity;
+      material.color.copy(isActive ? palette.active.color : palette.wire.color);
+      material.opacity = isActive
+        ? palette.active.opacity
+        : palette.wire.opacity;
     });
 
     labelMaterials.current.forEach((material) => {
@@ -1447,9 +1438,7 @@ export const PydanticFixturegenHero: FC<PydanticFixturegenHeroProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const pointerRef = useRef({ x: 0, y: 0 });
-  const [palette, setPalette] = useState<Palette>(() =>
-    derivePalette(null),
-  );
+  const [palette, setPalette] = useState<Palette>(() => derivePalette(null));
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredModule, setHoveredModule] = useState<ModuleId | null>(null);
   const [canRender] = useState(() => supportsWebGL());
@@ -1461,8 +1450,8 @@ export const PydanticFixturegenHero: FC<PydanticFixturegenHeroProps> = ({
       return false;
     }
     const cores = navigator.hardwareConcurrency ?? 8;
-    const memory = (navigator as Navigator & { deviceMemory?: number })
-      .deviceMemory ?? 8;
+    const memory =
+      (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8;
     return cores <= 4 || memory <= 4;
   }, []);
 
@@ -1591,7 +1580,12 @@ export const PydanticFixturegenHero: FC<PydanticFixturegenHeroProps> = ({
             alpha: true,
             powerPreference: "high-performance",
           }}
-          camera={{ position: [0, 0, 12], zoom: cameraZoom, near: 0.1, far: 100 }}
+          camera={{
+            position: [0, 0, 12],
+            zoom: cameraZoom,
+            near: 0.1,
+            far: 100,
+          }}
         >
           <RigScene
             palette={palette}

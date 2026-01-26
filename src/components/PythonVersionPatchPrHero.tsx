@@ -257,20 +257,13 @@ const derivePalette = (element: HTMLElement | null): Palette => {
   );
   const accentValue = pickCss(
     computed,
-    [
-      "--accent",
-      "--primary",
-      "--color-primary",
-      "--color-primary-light",
-    ],
+    ["--accent", "--primary", "--color-primary", "--color-primary-light"],
     foregroundValue,
   );
 
-  const background =
-    parseColor(backgroundValue) ??
+  const background = parseColor(backgroundValue) ??
     parseColor(bodyStyle.backgroundColor) ?? { r: 14, g: 20, b: 38 };
-  const foreground =
-    parseColor(foregroundValue) ??
+  const foreground = parseColor(foregroundValue) ??
     parseColor(bodyStyle.color) ?? { r: 226, g: 232, b: 240 };
   const muted = parseColor(mutedValue) ?? mix(foreground, background, 0.45);
   const accent = parseColor(accentValue) ?? mix(foreground, background, 0.2);
@@ -469,10 +462,7 @@ const PinToken: FC<PinTokenProps> = ({
         className={clsx(
           "absolute -inset-x-1 -inset-y-0.5 rounded-md",
           hoverDetailsEnabled &&
-            `
-              opacity-0 transition duration-200
-              group-hover:opacity-100
-            `,
+            `opacity-0 transition duration-200 group-hover:opacity-100`,
         )}
         style={
           reducedMotion
@@ -505,11 +495,7 @@ const PinToken: FC<PinTokenProps> = ({
         </motion.span>
       </span>
       <motion.span
-        className={`
-          pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2
-          rounded-full border px-2 py-0.5 text-[9px] font-semibold
-          tracking-[0.2em] uppercase
-        `}
+        className={`pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase`}
         style={
           reducedMotion
             ? { opacity: 0 }
@@ -527,12 +513,7 @@ const PinToken: FC<PinTokenProps> = ({
       </motion.span>
       {hoverDetailsEnabled && (
         <span
-          className={`
-            pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2
-            rounded-full border px-2 py-0.5 text-[9px] font-semibold
-            tracking-[0.2em] uppercase opacity-0 transition duration-200
-            group-hover:opacity-100
-          `}
+          className={`pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase opacity-0 transition duration-200 group-hover:opacity-100`}
           style={{
             backgroundColor: palette.tooltipBg,
             color: palette.tooltipText,
@@ -546,16 +527,16 @@ const PinToken: FC<PinTokenProps> = ({
   );
 };
 
-export const PythonVersionPatchPrHero: FC<
-  PythonVersionPatchPrHeroProps
-> = ({ variant = "hero", className, interactive = true }) => {
+export const PythonVersionPatchPrHero: FC<PythonVersionPatchPrHeroProps> = ({
+  variant = "hero",
+  className,
+  interactive = true,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const isCompact = useMediaQuery("(max-width: 640px)");
   const { isInView, hasEntered } = useInView(containerRef);
-  const [palette, setPalette] = useState<Palette>(() =>
-    derivePalette(null),
-  );
+  const [palette, setPalette] = useState<Palette>(() => derivePalette(null));
   const [showGuardrail, setShowGuardrail] = useState(true);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -583,7 +564,8 @@ export const PythonVersionPatchPrHero: FC<
   const resolveStart = scanEnd;
   const resolveEnd = (scanDuration + resolveDuration) / loopDuration;
   const diffStart = resolveEnd;
-  const diffEnd = (scanDuration + resolveDuration + diffDuration) / loopDuration;
+  const diffEnd =
+    (scanDuration + resolveDuration + diffDuration) / loopDuration;
   const prStart = diffEnd;
   const prEnd =
     (scanDuration + resolveDuration + diffDuration + prDuration) / loopDuration;
@@ -713,7 +695,11 @@ export const PythonVersionPatchPrHero: FC<
     [prStart, prStart + fade, prEnd - fade, prEnd],
     [0, 1, 1, 0],
   );
-  const prScale = useTransform(loopProgress, [prStart, prStart + 0.05], [0.96, 1]);
+  const prScale = useTransform(
+    loopProgress,
+    [prStart, prStart + 0.05],
+    [0.96, 1],
+  );
   const auditOpacity = useTransform(
     loopProgress,
     [prStart + 0.08, prStart + 0.16, prStart + 0.3],
@@ -848,7 +834,14 @@ export const PythonVersionPatchPrHero: FC<
     scanEnd,
     counterFade,
   );
-  const counterStages = [counter0, counter1, counter2, counter3, counter4, counter5];
+  const counterStages = [
+    counter0,
+    counter1,
+    counter2,
+    counter3,
+    counter4,
+    counter5,
+  ];
 
   const guardrailOpacity = useTransform(
     loopProgress,
@@ -877,17 +870,21 @@ export const PythonVersionPatchPrHero: FC<
       content: (
         <>
           FROM python:
-            <PinToken
-              pin={pinLookup.dockerfile}
-              palette={palette}
-              reducedMotion={showStatic}
-              {...highlightProps}
-              enableHoverDetails={enableHoverDetails}
-            />
+          <PinToken
+            pin={pinLookup.dockerfile}
+            palette={palette}
+            reducedMotion={showStatic}
+            {...highlightProps}
+            enableHoverDetails={enableHoverDetails}
+          />
         </>
       ),
     },
-    { id: "workflow-label", content: "// .github/workflows/ci.yml", muted: true },
+    {
+      id: "workflow-label",
+      content: "// .github/workflows/ci.yml",
+      muted: true,
+    },
     {
       id: "workflow",
       content: (
@@ -908,7 +905,7 @@ export const PythonVersionPatchPrHero: FC<
       id: "pyproject",
       content: (
         <>
-          requires-python = {"\"=="}
+          requires-python = {'"=='}
           <PinToken
             pin={pinLookup.pyproject}
             palette={palette}
@@ -916,7 +913,7 @@ export const PythonVersionPatchPrHero: FC<
             {...highlightProps}
             enableHoverDetails={enableHoverDetails}
           />
-          {"\""}
+          {'"'}
         </>
       ),
     },
@@ -982,13 +979,13 @@ export const PythonVersionPatchPrHero: FC<
         {
           id: "diff-3",
           prefix: "-",
-          text: "python-version: \"3.12.1\"",
+          text: 'python-version: "3.12.1"',
           type: "remove" as const,
         },
         {
           id: "diff-4",
           prefix: "+",
-          text: "python-version: \"3.12.2\"",
+          text: 'python-version: "3.12.2"',
           type: "add" as const,
         },
       ];
@@ -1035,7 +1032,12 @@ export const PythonVersionPatchPrHero: FC<
             initial={
               showStatic
                 ? false
-                : { opacity: 0, scale: 0.98, y: 12, clipPath: "inset(100% 0 0 0)" }
+                : {
+                    opacity: 0,
+                    scale: 0.98,
+                    y: 12,
+                    clipPath: "inset(100% 0 0 0)",
+                  }
             }
             animate={
               hasEntered || showStatic
@@ -1059,9 +1061,7 @@ export const PythonVersionPatchPrHero: FC<
             }
           >
             <div
-              className={`
-                relative aspect-3/4 w-full overflow-hidden rounded-[28px] border
-              `}
+              className={`relative aspect-3/4 w-full overflow-hidden rounded-[28px] border`}
               style={{
                 backgroundColor: palette.panelBg,
                 borderColor: palette.panelBorder,
@@ -1075,27 +1075,21 @@ export const PythonVersionPatchPrHero: FC<
                 }}
               />
               <div className="relative z-10 flex h-full flex-col">
-                <div className={`
-                  flex items-center justify-between px-4 pt-4 pb-2 text-[10px]
-                  tracking-[0.35em] uppercase
-                `}>
-                  <span style={{ color: palette.textSubtle }}>CPython Scan</span>
+                <div
+                  className={`flex items-center justify-between px-4 pt-4 pb-2 text-[10px] tracking-[0.35em] uppercase`}
+                >
+                  <span style={{ color: palette.textSubtle }}>
+                    CPython Scan
+                  </span>
                   <span style={{ color: palette.textSubtle }}>v1</span>
                 </div>
                 <div
-                  className={`
-                    relative flex-1 px-4 pb-4 font-mono text-[12px]
-                    leading-relaxed
-                  `}
+                  className={`relative flex-1 px-4 pb-4 font-mono text-[12px] leading-relaxed`}
                   style={{ color: palette.textPrimary }}
                 >
                   {variant === "hero" && (
                     <motion.div
-                      className={`
-                        absolute top-12 left-3 z-20 flex items-center gap-2
-                        rounded-full border px-2.5 py-1 text-[9px] font-semibold
-                        tracking-[0.2em] uppercase
-                      `}
+                      className={`absolute top-12 left-3 z-20 flex items-center gap-2 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase`}
                       style={
                         showStatic
                           ? {
@@ -1134,9 +1128,7 @@ export const PythonVersionPatchPrHero: FC<
                     </motion.div>
                   )}
                   <motion.div
-                    className={`
-                      pointer-events-none absolute inset-y-12 left-0 w-0.5
-                    `}
+                    className={`pointer-events-none absolute inset-y-12 left-0 w-0.5`}
                     style={{
                       backgroundImage: palette.scanBar,
                       boxShadow: `0 0 18px ${palette.scanGlow}`,
@@ -1154,9 +1146,7 @@ export const PythonVersionPatchPrHero: FC<
                           line.muted && "text-[11px]",
                         )}
                         initial={
-                          showStatic
-                            ? false
-                            : { clipPath: "inset(0 100% 0 0)" }
+                          showStatic ? false : { clipPath: "inset(0 100% 0 0)" }
                         }
                         animate={
                           hasEntered || showStatic
@@ -1177,10 +1167,7 @@ export const PythonVersionPatchPrHero: FC<
                         {line.content}
                         {index === lines.length - 1 && !showStatic && (
                           <motion.span
-                            className={`
-                              ml-1 inline-block h-3 w-1.5 rounded-sm
-                              align-middle
-                            `}
+                            className={`ml-1 inline-block h-3 w-1.5 rounded-sm align-middle`}
                             initial={{ opacity: 0 }}
                             animate={
                               hasEntered
@@ -1195,10 +1182,7 @@ export const PythonVersionPatchPrHero: FC<
                     ))}
                   </div>
                   <motion.div
-                    className={`
-                      absolute top-14 right-4 rounded-full border px-2 py-1
-                      text-[9px] font-semibold tracking-[0.2em] uppercase
-                    `}
+                    className={`absolute top-14 right-4 rounded-full border px-2 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase`}
                     style={
                       showStatic
                         ? {
@@ -1221,14 +1205,8 @@ export const PythonVersionPatchPrHero: FC<
                     type="button"
                     onClick={() => scrollToHeading("reliability-safety")}
                     className={clsx(
-                      `
-                        absolute bottom-4 left-4 rounded-full border px-2.5 py-1
-                        text-[9px] font-semibold tracking-[0.2em] uppercase
-                      `,
-                      enableChipHover && `
-                        transition
-                        hover:opacity-100
-                      `,
+                      `absolute bottom-4 left-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase`,
+                      enableChipHover && `transition hover:opacity-100`,
                     )}
                     style={
                       showGuardrail
@@ -1251,14 +1229,8 @@ export const PythonVersionPatchPrHero: FC<
                 type="button"
                 onClick={() => scrollToHeading("what-it-does")}
                 className={clsx(
-                  `
-                    absolute right-4 bottom-4 rounded-full border px-2.5 py-1
-                    text-[9px] font-semibold tracking-[0.2em] uppercase
-                  `,
-                  enableChipHover && `
-                    transition
-                    hover:opacity-100
-                  `,
+                  `absolute right-4 bottom-4 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.2em] uppercase`,
+                  enableChipHover && `transition hover:opacity-100`,
                 )}
                 style={{
                   opacity: showStatic ? 0.9 : scanOpacity,
@@ -1271,10 +1243,7 @@ export const PythonVersionPatchPrHero: FC<
                 Scanner
               </motion.button>
               <motion.div
-                className={`
-                  pointer-events-none absolute right-4 bottom-6 left-4
-                  rounded-xl border px-3 py-2 font-mono text-[10px]
-                `}
+                className={`pointer-events-none absolute right-4 bottom-6 left-4 rounded-xl border px-3 py-2 font-mono text-[10px]`}
                 style={{
                   opacity: showStatic ? 1 : diffOpacity,
                   borderColor: palette.diffBorder,
@@ -1308,10 +1277,7 @@ export const PythonVersionPatchPrHero: FC<
           <motion.button
             type="button"
             onClick={() => scrollToHeading("architecture-highlights")}
-            className={`
-              group absolute top-10 -right-6 w-[72%] rounded-2xl border px-4
-              py-3 text-left text-[11px] shadow-lg
-            `}
+            className={`group absolute top-10 -right-6 w-[72%] rounded-2xl border px-4 py-3 text-left text-[11px] shadow-lg`}
             style={{
               opacity: showStatic ? 1 : prOpacity,
               scale: showStatic ? 1 : prScale,
@@ -1324,16 +1290,14 @@ export const PythonVersionPatchPrHero: FC<
             aria-label="Go to architecture highlights"
           >
             <div className="flex items-center justify-between">
-              <span className={`
-                text-[10px] font-semibold tracking-[0.2em] uppercase
-              `} style={{ color: palette.textSubtle }}>
+              <span
+                className={`text-[10px] font-semibold tracking-[0.2em] uppercase`}
+                style={{ color: palette.textSubtle }}
+              >
                 Pull request
               </span>
               <motion.span
-                className={`
-                  rounded-full border px-2 py-0.5 text-[9px] font-semibold
-                  tracking-[0.2em] uppercase
-                `}
+                className={`rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase`}
                 style={{
                   opacity: showStatic ? 0.9 : auditOpacity,
                   borderColor: palette.chipBorder,
@@ -1344,7 +1308,10 @@ export const PythonVersionPatchPrHero: FC<
                 Audit-ready
               </motion.span>
             </div>
-            <div className="mt-2 text-[12px] font-semibold" style={{ color: palette.textPrimary }}>
+            <div
+              className="mt-2 text-[12px] font-semibold"
+              style={{ color: palette.textPrimary }}
+            >
               chore/bump-python-3.12
             </div>
             <div className="text-[11px]" style={{ color: palette.textMuted }}>
@@ -1360,10 +1327,7 @@ export const PythonVersionPatchPrHero: FC<
                 .map((chip) => (
                   <span
                     key={chip}
-                    className={`
-                      rounded-full border px-2 py-0.5 text-[9px] font-semibold
-                      tracking-[0.2em] uppercase
-                    `}
+                    className={`rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase`}
                     style={{
                       borderColor: palette.chipBorder,
                       backgroundColor: palette.chipBg,
@@ -1375,27 +1339,20 @@ export const PythonVersionPatchPrHero: FC<
                 ))}
             </div>
             <div className="mt-3 space-y-1">
-              {changeMatrix
-                .slice(0, isCompact ? 2 : 3)
-                .map((row) => (
-                  <div
-                    key={row.file}
-                    className="grid grid-cols-[auto,1fr,1fr] gap-2 text-[10px]"
-                    style={{ color: palette.textSubtle }}
-                  >
-                    <span>{row.file}</span>
-                    <span>{row.from}</span>
-                    <span>{row.to}</span>
-                  </div>
-                ))}
+              {changeMatrix.slice(0, isCompact ? 2 : 3).map((row) => (
+                <div
+                  key={row.file}
+                  className="grid grid-cols-[auto,1fr,1fr] gap-2 text-[10px]"
+                  style={{ color: palette.textSubtle }}
+                >
+                  <span>{row.file}</span>
+                  <span>{row.from}</span>
+                  <span>{row.to}</span>
+                </div>
+              ))}
             </div>
             <span
-              className={`
-                pointer-events-none absolute -top-6 left-4 rounded-full border
-                px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase
-                opacity-0 transition duration-200
-                group-hover:opacity-100
-              `}
+              className={`pointer-events-none absolute -top-6 left-4 rounded-full border px-2 py-0.5 text-[9px] font-semibold tracking-[0.2em] uppercase opacity-0 transition duration-200 group-hover:opacity-100`}
               style={{
                 backgroundColor: palette.tooltipBg,
                 color: palette.tooltipText,

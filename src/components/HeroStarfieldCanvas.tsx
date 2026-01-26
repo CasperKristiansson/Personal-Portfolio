@@ -1,4 +1,4 @@
-import { type FC, type RefObject,useEffect, useRef } from "react";
+import { type FC, type RefObject, useEffect, useRef } from "react";
 
 type StarLayer = "far" | "mid" | "near";
 
@@ -286,8 +286,7 @@ export const HeroStarfieldCanvas: FC<HeroStarfieldCanvasProps> = ({
     const coarseQuery = window.matchMedia("(pointer: coarse)");
     const hoverQuery = window.matchMedia("(hover: none)");
     const updatePointerMode = () => {
-      coarsePointerRef.current =
-        coarseQuery.matches || hoverQuery.matches;
+      coarsePointerRef.current = coarseQuery.matches || hoverQuery.matches;
     };
     updatePointerMode();
     coarseQuery.addEventListener("change", updatePointerMode);

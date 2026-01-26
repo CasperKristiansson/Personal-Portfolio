@@ -21,10 +21,12 @@ const reactJsxRuntime = react.configs.flat["jsx-runtime"];
 const jsxA11yRecommended = jsxA11y.flatConfigs.recommended;
 const importXRecommended = importX.flatConfigs.recommended;
 const importXTypescript = importX.flatConfigs.typescript;
-const importXConfigs = [importXRecommended, importXTypescript].map((config) => ({
-  ...config,
-  files: ["src/**/*.{js,jsx,ts,tsx}"],
-}));
+const importXConfigs = [importXRecommended, importXTypescript].map(
+  (config) => ({
+    ...config,
+    files: ["src/**/*.{js,jsx,ts,tsx}"],
+  }),
+);
 const tsTypeCheckedConfigs = tseslint.configs.recommendedTypeChecked.map(
   (config) => ({
     ...config,
@@ -85,6 +87,7 @@ export default defineConfig([
     },
     rules: {
       ...betterTailwindcss.configs["recommended-error"].rules,
+      "better-tailwindcss/enforce-consistent-line-wrapping": "off",
       "better-tailwindcss/no-unregistered-classes": [
         "error",
         {

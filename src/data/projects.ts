@@ -97,14 +97,7 @@ export const projects: Project[] = [
     title: "Podcast Tracker",
     summary:
       "Spotify-synced podcast tracker with show pages and listening history.",
-    tags: [
-      "Astro",
-      "TypeScript",
-      "Tailwind CSS",
-      "GraphQL",
-      "AWS",
-      "DynamoDB",
-    ],
+    tags: ["Astro", "TypeScript", "Tailwind CSS", "GraphQL", "AWS", "DynamoDB"],
     categories: ["Product", "Web"],
     image: podcastTrackerHero,
     path: "/articles/podcast-tracker",
@@ -128,13 +121,7 @@ export const projects: Project[] = [
     title: "CPython Patch PR Action",
     summary:
       "GitHub Action that keeps CPython patch versions current across repos.",
-    tags: [
-      "TypeScript",
-      "Node.js",
-      "GitHub Actions",
-      "CI/CD",
-      "Open Source",
-    ],
+    tags: ["TypeScript", "Node.js", "GitHub Actions", "CI/CD", "Open Source"],
     categories: ["Open Source", "DevOps"],
     image: pythonVersionPatchPrHero,
     media: { type: "animation", id: "python-version-patch-pr" },

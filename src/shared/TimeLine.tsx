@@ -1,6 +1,6 @@
 import { IconChevronDown, IconChevronUp, IconLink } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import { type FC,useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 
 import { fadeUpItem, slideLeftItem, viewportOnce } from "./motion";
 
@@ -92,23 +92,14 @@ export const TimeLine: FC<{
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className={`
-        pointer-events-none mb-10
-        md:mb-8
-        lg:sticky lg:top-0 lg:z-60 lg:flex lg:h-(--sticky-nav-offset)
-        lg:items-center
-      `}>
-        <div className={`
-          mx-auto w-full max-w-350 px-4
-          sm:px-6
-          lg:px-10 lg:pl-16
-        `}>
+      <div
+        className={`pointer-events-none mb-10 md:mb-8 lg:sticky lg:top-0 lg:z-60 lg:flex lg:h-(--sticky-nav-offset) lg:items-center`}
+      >
+        <div
+          className={`mx-auto w-full max-w-350 px-4 sm:px-6 lg:px-10 lg:pl-16`}
+        >
           <motion.h1
-            className={`
-              text-center text-5xl leading-none font-bold text-white
-              sm:text-5xl
-              md:-translate-y-2.5 md:text-left
-            `}
+            className={`text-center text-5xl leading-none font-bold text-white sm:text-5xl md:-translate-y-2.5 md:text-left`}
             variants={slideLeftItem}
           >
             {title}
@@ -121,10 +112,7 @@ export const TimeLine: FC<{
           return (
             <motion.div
               key={index}
-              className={`
-                px-4
-                sm:px-10
-              `}
+              className={`px-4 sm:px-10`}
               variants={fadeUpItem}
               initial="hidden"
               whileInView="visible"
@@ -138,16 +126,13 @@ export const TimeLine: FC<{
                 </div>
                 <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                 {item.listItems && (
-                  <ul className={`
-                    mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]
-                  `}>
+                  <ul
+                    className={`mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]`}
+                  >
                     {item.listItems.map((listItem, index) => (
                       <li
                         key={index}
-                        className={`
-                          relative list-disc text-base
-                          marker:left-0 marker:text-[#90a6bb]
-                        `}
+                        className={`relative list-disc text-base marker:left-0 marker:text-[#90a6bb]`}
                       >
                         {listItem}
                       </li>
@@ -160,10 +145,7 @@ export const TimeLine: FC<{
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`
-                      flex items-center text-blue-400
-                      hover:underline
-                    `}
+                    className={`flex items-center text-blue-400 hover:underline`}
                   >
                     <IconLink className="mr-1" />
                     {item.linkDisplay}
@@ -176,14 +158,10 @@ export const TimeLine: FC<{
         })
       ) : (
         <div className="mx-auto w-full max-w-450">
-          <div className={`
-            w-4/5 px-4
-            2xl:ml-[1vw]
-          `}>
-            <ul className={`
-              timeline timeline-vertical timeline-snap-icon
-              max-md:timeline-compact
-            `}>
+          <div className={`w-4/5 px-4 2xl:ml-[1vw]`}>
+            <ul
+              className={`timeline timeline-vertical timeline-snap-icon max-md:timeline-compact`}
+            >
               {timelineItems.map((item, index) => {
                 if (item.hide && isCompact) return null;
                 return (
@@ -205,14 +183,9 @@ export const TimeLine: FC<{
                       </p>
                     </div>
                     <div className="timeline-middle">
-                      <div className={`
-                        h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB]
-                        transition-all duration-300 ease-out
-                        group-hover:scale-110 group-hover:bg-emerald-400
-                        group-hover:shadow-[0_0_18px_rgba(52,211,153,0.75)]
-                        motion-reduce:transform-none
-                        motion-reduce:transition-none
-                      `} />
+                      <div
+                        className={`h-6 w-6 cursor-pointer rounded-full bg-[#90A6BB] transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-emerald-400 group-hover:shadow-[0_0_18px_rgba(52,211,153,0.75)] motion-reduce:transform-none motion-reduce:transition-none`}
+                      />
                     </div>
                     <div className="timeline-end ml-6 h-full">
                       <div className="text-2xl font-bold text-white">
@@ -220,16 +193,13 @@ export const TimeLine: FC<{
                       </div>
                       <p className="mt-2 text-[#90a6bb]">{item.description}</p>
                       {item.listItems && (
-                        <ul className={`
-                          mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]
-                        `}>
+                        <ul
+                          className={`mt-4 ml-6 list-outside space-y-2 text-[#90a6bb]`}
+                        >
                           {item.listItems.map((listItem, index) => (
                             <li
                               key={index}
-                              className={`
-                                relative list-disc text-base
-                                marker:left-0 marker:text-[#90a6bb]
-                              `}
+                              className={`relative list-disc text-base marker:left-0 marker:text-[#90a6bb]`}
                             >
                               {listItem}
                             </li>
@@ -242,10 +212,7 @@ export const TimeLine: FC<{
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`
-                            flex items-center text-blue-400
-                            hover:underline
-                          `}
+                          className={`flex items-center text-blue-400 hover:underline`}
                         >
                           <IconLink className="mr-1" />
                           {item.linkDisplay}

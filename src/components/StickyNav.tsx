@@ -3,7 +3,7 @@ import {
   IconBrandLinkedin,
   IconChevronDown,
 } from "@tabler/icons-react";
-import { type FC,useCallback, useEffect, useRef, useState } from "react";
+import { type FC, useCallback, useEffect, useRef, useState } from "react";
 
 const primaryLinks = [
   { label: "Projects", href: "#projects" },
@@ -118,110 +118,65 @@ export const StickyNav: FC = () => {
   return (
     <nav ref={navRef} className="sticky top-0 z-40">
       <div
-        className={`
-          mx-auto flex w-full max-w-350 px-6 transition-[padding] duration-300
-          sm:px-8
-          lg:px-12
-          ${
+        className={`mx-auto flex w-full max-w-350 px-6 transition-[padding] duration-300 sm:px-8 lg:px-12 ${
           isStuck ? "py-2" : "py-4"
-        }
-        `}
+        }`}
       >
         <div
-          className={`
-            ml-auto w-fit rounded-2xl border border-white/10 bg-[#0f1a33] px-6
-            py-3 transition duration-300
-            lg:ml-0 lg:w-full
-            ${
+          className={`ml-auto w-fit rounded-2xl border border-white/10 bg-[#0f1a33] px-6 py-3 transition duration-300 lg:ml-0 lg:w-full ${
             isStuck
-              ? `
-                bg-[#0f1a33]/80 shadow-[0_18px_50px_-30px_rgba(8,15,35,0.9)]
-                backdrop-blur
-              `
+              ? `bg-[#0f1a33]/80 shadow-[0_18px_50px_-30px_rgba(8,15,35,0.9)] backdrop-blur`
               : "shadow-none"
-          }
-          `}
+          }`}
         >
           <div className="flex items-center gap-6">
-            <div className={`
-              hidden min-w-35
-              xl:block
-            `} aria-hidden="true" />
-            <ul className={`
-              hidden flex-1 items-center gap-6 text-sm font-semibold text-white
-              sm:text-base
-              lg:flex lg:justify-end
-              xl:justify-center
-            `}>
+            <div className={`hidden min-w-35 xl:block`} aria-hidden="true" />
+            <ul
+              className={`hidden flex-1 items-center gap-6 text-sm font-semibold text-white sm:text-base lg:flex lg:justify-end xl:justify-center`}
+            >
               {primaryLinks.map((link) => (
-                <li key={link.href} className={`
-                  hidden
-                  lg:block
-                `}>
+                <li key={link.href} className={`hidden lg:block`}>
                   <a
                     href={link.href}
                     aria-current={
                       activeId === link.href.slice(1) ? "page" : undefined
                     }
-                    className={`
-                      transition
-                      focus-visible:ring-2 focus-visible:ring-sky-300/70
-                      focus-visible:outline-none
-                      ${
+                    className={`transition focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none ${
                       activeId === link.href.slice(1)
                         ? "text-sky-200"
                         : "hover:text-sky-200"
-                    }
-                    `}
+                    }`}
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
-              <li className={`
-                relative hidden
-                lg:block
-              `} ref={menuRefDesktop}>
+              <li className={`relative hidden lg:block`} ref={menuRefDesktop}>
                 <button
                   type="button"
                   onClick={() => setMenuOpen((prev) => !prev)}
                   aria-expanded={menuOpen}
                   aria-controls="nav-more-menu"
-                  className={`
-                    inline-flex items-center gap-1 text-sm font-semibold
-                    transition
-                    hover:text-sky-200
-                    focus-visible:ring-2 focus-visible:ring-sky-300/70
-                    focus-visible:outline-none
-                    sm:text-base
-                    ${
+                  className={`inline-flex items-center gap-1 text-sm font-semibold transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base ${
                     menuOpen ? "text-sky-200" : "text-white"
-                  }
-                  `}
+                  }`}
                 >
                   More
                   <IconChevronDown
                     size={18}
-                    className={`
-                      transition duration-200
-                      ${
+                    className={`transition duration-200 ${
                       menuOpen ? "rotate-180" : ""
-                    }
-                    `}
+                    }`}
                   />
                 </button>
                 {menuOpen && (
                   <div
                     id="nav-more-menu"
-                    className={`
-                      absolute top-8 left-1/2 min-w-45 -translate-x-1/2
-                      rounded-xl border border-white/10 bg-[#111c32] p-3
-                      shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]
-                    `}
+                    className={`absolute top-8 left-1/2 min-w-45 -translate-x-1/2 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]`}
                   >
-                    <ul className={`
-                      flex flex-col gap-2 text-sm font-medium text-slate-100
-                    `}>
+                    <ul
+                      className={`flex flex-col gap-2 text-sm font-medium text-slate-100`}
+                    >
                       {primaryLinks.map((link) => (
                         <li key={link.href} className="lg:hidden">
                           <a
@@ -232,21 +187,15 @@ export const StickyNav: FC = () => {
                                 : undefined
                             }
                             onClick={() => setMenuOpen(false)}
-                            className={`
-                              block rounded-lg px-2 py-1 transition
-                              hover:bg-white/5 hover:text-sky-200
-                              focus-visible:ring-2 focus-visible:ring-sky-300/70
-                              focus-visible:outline-none
-                            `}
+                            className={`block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none`}
                           >
                             {link.label}
                           </a>
                         </li>
                       ))}
-                      <li className={`
-                        border-t border-white/10 pt-2
-                        lg:hidden
-                      `} />
+                      <li
+                        className={`border-t border-white/10 pt-2 lg:hidden`}
+                      />
                       {moreLinks.map((link) => (
                         <li key={link.href}>
                           <a
@@ -257,12 +206,7 @@ export const StickyNav: FC = () => {
                                 : undefined
                             }
                             onClick={() => setMenuOpen(false)}
-                            className={`
-                              block rounded-lg px-2 py-1 transition
-                              hover:bg-white/5 hover:text-sky-200
-                              focus-visible:ring-2 focus-visible:ring-sky-300/70
-                              focus-visible:outline-none
-                            `}
+                            className={`block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none`}
                           >
                             {link.label}
                           </a>
@@ -274,50 +218,32 @@ export const StickyNav: FC = () => {
               </li>
             </ul>
             <div className="flex items-center gap-3">
-              <div className={`
-                relative
-                lg:hidden
-              `} ref={menuRefMobile}>
+              <div className={`relative lg:hidden`} ref={menuRefMobile}>
                 <button
                   type="button"
                   onClick={() => setMenuOpen((prev) => !prev)}
                   aria-expanded={menuOpen}
                   aria-controls="nav-more-menu-mobile"
-                  className={`
-                    inline-flex items-center gap-1 text-sm font-semibold
-                    transition
-                    hover:text-sky-200
-                    focus-visible:ring-2 focus-visible:ring-sky-300/70
-                    focus-visible:outline-none
-                    sm:text-base
-                    ${
+                  className={`inline-flex items-center gap-1 text-sm font-semibold transition hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none sm:text-base ${
                     menuOpen ? "text-sky-200" : "text-white"
-                  }
-                  `}
+                  }`}
                 >
                   More
                   <IconChevronDown
                     size={18}
-                    className={`
-                      transition duration-200
-                      ${
+                    className={`transition duration-200 ${
                       menuOpen ? "rotate-180" : ""
-                    }
-                    `}
+                    }`}
                   />
                 </button>
                 {menuOpen && (
                   <div
                     id="nav-more-menu-mobile"
-                    className={`
-                      absolute top-10 right-0 min-w-50 rounded-xl border
-                      border-white/10 bg-[#111c32] p-3
-                      shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]
-                    `}
+                    className={`absolute top-10 right-0 min-w-50 rounded-xl border border-white/10 bg-[#111c32] p-3 shadow-[0_20px_40px_-28px_rgba(8,15,35,0.9)]`}
                   >
-                    <ul className={`
-                      flex flex-col gap-2 text-sm font-medium text-slate-100
-                    `}>
+                    <ul
+                      className={`flex flex-col gap-2 text-sm font-medium text-slate-100`}
+                    >
                       {primaryLinks.map((link) => (
                         <li key={link.href}>
                           <a
@@ -328,12 +254,7 @@ export const StickyNav: FC = () => {
                                 : undefined
                             }
                             onClick={() => setMenuOpen(false)}
-                            className={`
-                              block rounded-lg px-2 py-1 transition
-                              hover:bg-white/5 hover:text-sky-200
-                              focus-visible:ring-2 focus-visible:ring-sky-300/70
-                              focus-visible:outline-none
-                            `}
+                            className={`block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none`}
                           >
                             {link.label}
                           </a>
@@ -350,12 +271,7 @@ export const StickyNav: FC = () => {
                                 : undefined
                             }
                             onClick={() => setMenuOpen(false)}
-                            className={`
-                              block rounded-lg px-2 py-1 transition
-                              hover:bg-white/5 hover:text-sky-200
-                              focus-visible:ring-2 focus-visible:ring-sky-300/70
-                              focus-visible:outline-none
-                            `}
+                            className={`block rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none`}
                           >
                             {link.label}
                           </a>
@@ -370,13 +286,7 @@ export const StickyNav: FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className={`
-                  rounded-full border border-white/10 bg-white/5 p-2 text-white
-                  transition
-                  hover:border-sky-300/50 hover:text-sky-200
-                  focus-visible:ring-2 focus-visible:ring-sky-300/70
-                  focus-visible:outline-none
-                `}
+                className={`rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-sky-300/50 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none`}
               >
                 <IconBrandLinkedin size={22} />
               </a>
@@ -385,13 +295,7 @@ export const StickyNav: FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                className={`
-                  rounded-full border border-white/10 bg-white/5 p-2 text-white
-                  transition
-                  hover:border-sky-300/50 hover:text-sky-200
-                  focus-visible:ring-2 focus-visible:ring-sky-300/70
-                  focus-visible:outline-none
-                `}
+                className={`rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:border-sky-300/50 hover:text-sky-200 focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:outline-none`}
               >
                 <IconBrandGithub size={22} />
               </a>

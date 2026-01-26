@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { type FC,useRef } from "react";
+import { type FC, useRef } from "react";
 
 import { fadeInItem, fadeUpItem, staggerContainer } from "../shared/motion";
 import { HeroStarfieldCanvas } from "./HeroStarfieldCanvas";
@@ -10,9 +10,7 @@ export const Hero: FC = () => {
   return (
     <motion.div
       ref={heroRef}
-      className={`
-        parallax relative flex h-[calc(100svh-95px)] items-center justify-center
-      `}
+      className={`parallax relative flex h-[calc(100svh-95px)] items-center justify-center`}
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
@@ -24,11 +22,7 @@ export const Hero: FC = () => {
         <HeroStarfieldCanvas containerRef={heroRef} />
       </motion.div>
       <motion.h1
-        className={`
-          relative z-10 text-3xl font-bold text-white
-          sm:text-6xl
-          md:text-7xl
-        `}
+        className={`relative z-10 text-3xl font-bold text-white sm:text-6xl md:text-7xl`}
         variants={fadeUpItem}
       >
         <span className="typewriter">Casper Kristiansson.</span>
