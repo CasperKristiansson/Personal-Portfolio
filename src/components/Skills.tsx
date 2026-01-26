@@ -29,6 +29,8 @@ import awsFargateIcon from "../assets/aws/aws-fargate.png";
 import awsIamIcon from "../assets/aws/aws-iam.svg";
 import awsLambdaIcon from "../assets/aws/aws-lambda.png";
 import awsSystemsManagerIcon from "../assets/aws/aws-systems-manager.png";
+import playwrightIcon from "../assets/logos/playwright.ico";
+import ultraciteIcon from "../assets/logos/ultracite.png";
 import openAiLogo from "../assets/openai-logo.png";
 import {
   fadeInItem,
@@ -46,6 +48,7 @@ type BadgeItem = {
   logoColor?: string;
   image?: string;
   badgeColor?: string;
+  textColor?: string;
 };
 
 const renderBadge = (
@@ -54,10 +57,11 @@ const renderBadge = (
 ) => {
   if (item.image) {
     const truncateClass = options?.truncate ? "min-w-0 overflow-hidden" : "";
+    const textColor = item.textColor ?? "#ffffff";
     return (
       <div
         className={`
-          inline-flex h-full items-center gap-1.5 rounded-[4px] px-2 text-white
+          inline-flex h-full items-center gap-1.5 rounded-[4px] px-2
           sm:gap-2
           ${truncateClass}
         `}
@@ -73,11 +77,12 @@ const renderBadge = (
         />
         <span
           className={`
-            text-[18px] leading-none text-white
+            text-[18px] leading-none
             ${
             options?.truncate ? "min-w-0 truncate" : ""
           }
           `}
+          style={{ color: textColor }}
         >
           {item.name}
         </span>
@@ -122,6 +127,7 @@ const toolsFrameworks: BadgeItem[] = [
   { name: "React", color: "61DAFB", logo: "react", logoColor: "black" },
   { name: "Next.js", color: "000000", logo: "nextdotjs", logoColor: "white" },
   { name: "Astro", color: "FF5D01", logo: "astro", logoColor: "white" },
+  { name: "Svelte", color: "FF3E00", logo: "svelte", logoColor: "white" },
   { name: "Vite", color: "646CFF", logo: "vite", logoColor: "white" },
   {
     name: "Framer Motion",
@@ -147,6 +153,8 @@ const toolsFrameworks: BadgeItem[] = [
   { name: "GraphQL", color: "E10098", logo: "graphql", logoColor: "white" },
   { name: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
   { name: "Terraform", color: "623CE4", logo: "terraform", logoColor: "white" },
+  { name: "Pulumi", color: "8A3391", logo: "pulumi", logoColor: "white" },
+  { name: "SST", color: "E54B4B", logo: "sst", logoColor: "white" },
   { name: "SQL", color: "4479A1", logo: "mysql", logoColor: "white" },
   { name: "NoSQL", color: "003545", logo: "datadotai", logoColor: "white" },
   {
@@ -172,6 +180,24 @@ const toolsFrameworks: BadgeItem[] = [
   { name: "OpenAI", image: openAiLogo, badgeColor: "#0b0b0b" },
   { name: "ESLint", color: "4B32C3", logo: "eslint", logoColor: "white" },
   {
+    name: "Prettier",
+    color: "F7B93E",
+    logo: "prettier",
+    logoColor: "black",
+  },
+  {
+    name: "Ultracite",
+    image: ultraciteIcon,
+    badgeColor: "#f5f5f5",
+    textColor: "#111827",
+  },
+  {
+    name: "Playwright",
+    image: playwrightIcon,
+    badgeColor: "#f5f5f5",
+    textColor: "#111827",
+  },
+  {
     name: "Serverless Framework",
     color: "FD5750",
     logo: "serverless",
@@ -180,6 +206,8 @@ const toolsFrameworks: BadgeItem[] = [
 
   { name: "CI/CD", color: "BDBDBD", logo: "githubactions", logoColor: "black" },
   { name: "Git", color: "F05032", logo: "git", logoColor: "white" },
+  { name: "npm", color: "CB3837", logo: "npm", logoColor: "white" },
+  { name: "pnpm", color: "F69220", logo: "pnpm", logoColor: "white" },
   {
     name: "Microservices",
     color: "A833B9",
