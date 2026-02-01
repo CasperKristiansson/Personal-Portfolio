@@ -29,8 +29,10 @@ import awsFargateIcon from "../assets/aws/aws-fargate.png";
 import awsIamIcon from "../assets/aws/aws-iam.svg";
 import awsLambdaIcon from "../assets/aws/aws-lambda.png";
 import awsSystemsManagerIcon from "../assets/aws/aws-systems-manager.png";
+import localstackIcon from "../assets/logos/localstack.png";
 import playwrightIcon from "../assets/logos/playwright.ico";
 import ultraciteIcon from "../assets/logos/ultracite.png";
+import zustandIcon from "../assets/logos/zustand.png";
 import openAiLogo from "../assets/openai-logo.png";
 import {
   fadeInItem,
@@ -135,7 +137,12 @@ const toolsFrameworks: BadgeItem[] = [
     logoColor: "white",
   },
   { name: "Zod", color: "3E67B1", logo: "zod", logoColor: "white" },
-  { name: "Zustand", color: "000000", logo: "zustand", logoColor: "white" },
+  {
+    name: "Zustand",
+    image: zustandIcon,
+    badgeColor: "#f3e3d2",
+    textColor: "#4a2d1f",
+  },
   { name: "Redux", color: "764ABC", logo: "redux", logoColor: "white" },
   {
     name: "Redux Toolkit",
@@ -145,6 +152,11 @@ const toolsFrameworks: BadgeItem[] = [
   },
   { name: "GraphQL", color: "E10098", logo: "graphql", logoColor: "white" },
   { name: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
+  {
+    name: "LocalStack",
+    image: localstackIcon,
+    badgeColor: "#1b2a5a",
+  },
   { name: "Terraform", color: "623CE4", logo: "terraform", logoColor: "white" },
   { name: "Pulumi", color: "8A3391", logo: "pulumi", logoColor: "white" },
   { name: "SST", color: "E54B4B", logo: "sst", logoColor: "white" },
@@ -163,6 +175,7 @@ const toolsFrameworks: BadgeItem[] = [
     logo: "tailwindcss",
     logoColor: "white",
   },
+  { name: "SQLite", color: "003B57", logo: "sqlite", logoColor: "white" },
   { name: "Firebase", color: "FFCA28", logo: "firebase", logoColor: "black" },
   {
     name: "WordPress",
@@ -170,6 +183,7 @@ const toolsFrameworks: BadgeItem[] = [
     logo: "wordpress",
     logoColor: "white",
   },
+  { name: "FFmpeg", color: "007808", logo: "ffmpeg", logoColor: "white" },
   { name: "OpenAI", image: openAiLogo, badgeColor: "#0b0b0b" },
   { name: "ESLint", color: "4B32C3", logo: "eslint", logoColor: "white" },
   {
