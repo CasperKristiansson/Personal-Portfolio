@@ -31,7 +31,6 @@ import awsLambdaIcon from "../assets/aws/aws-lambda.png";
 import awsSystemsManagerIcon from "../assets/aws/aws-systems-manager.png";
 import localstackIcon from "../assets/logos/localstack.png";
 import playwrightIcon from "../assets/logos/playwright.ico";
-import ultraciteIcon from "../assets/logos/ultracite.png";
 import zustandIcon from "../assets/logos/zustand.png";
 import openAiLogo from "../assets/openai-logo.png";
 import {
@@ -117,8 +116,7 @@ const programmingLanguages = [
   { name: "PHP", color: "777BB4", logo: "php", logoColor: "white" },
 ];
 
-const toolsFrameworks: BadgeItem[] = [
-  { name: "GitHub", color: "181717", logo: "github", logoColor: "white" },
+const frontEndStack: BadgeItem[] = [
   { name: "React", color: "61DAFB", logo: "react", logoColor: "black" },
   { name: "Next.js", color: "000000", logo: "nextdotjs", logoColor: "white" },
   { name: "Astro", color: "FF5D01", logo: "astro", logoColor: "white" },
@@ -150,7 +148,51 @@ const toolsFrameworks: BadgeItem[] = [
     logo: "redux",
     logoColor: "white",
   },
+  {
+    name: "Redux Saga",
+    color: "999999",
+    logo: "redux-saga",
+    logoColor: "white",
+  },
+  {
+    name: "Tailwind CSS",
+    color: "06B6D4",
+    logo: "tailwindcss",
+    logoColor: "white",
+  },
+  { name: "shadcn ui", color: "7C3AED", logo: "shadcnui", logoColor: "white" },
+  { name: "MUI", color: "007FFF", logo: "mui", logoColor: "white" },
+  { name: "DaisyUI", color: "5A0EF8", logo: "daisyui", logoColor: "white" },
+];
+
+const backendApis: BadgeItem[] = [
   { name: "GraphQL", color: "E10098", logo: "graphql", logoColor: "white" },
+  {
+    name: "Serverless Framework",
+    color: "FD5750",
+    logo: "serverless",
+    logoColor: "white",
+  },
+  { name: "OpenAI", image: openAiLogo, badgeColor: "#0b0b0b" },
+  { name: "Firebase", color: "FFCA28", logo: "firebase", logoColor: "black" },
+  { name: "FFmpeg", color: "007808", logo: "ffmpeg", logoColor: "white" },
+  {
+    name: "Pydantic",
+    color: "E92063",
+    logo: "pydantic",
+    logoColor: "white",
+  },
+  {
+    name: "PostgreSQL",
+    color: "336791",
+    logo: "postgresql",
+    logoColor: "white",
+  },
+  { name: "MySQL", color: "005C84", logo: "mysql", logoColor: "white" },
+  { name: "SQLite", color: "003B57", logo: "sqlite", logoColor: "white" },
+];
+
+const devopsTooling: BadgeItem[] = [
   { name: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
   {
     name: "LocalStack",
@@ -160,31 +202,13 @@ const toolsFrameworks: BadgeItem[] = [
   { name: "Terraform", color: "623CE4", logo: "terraform", logoColor: "white" },
   { name: "Pulumi", color: "8A3391", logo: "pulumi", logoColor: "white" },
   { name: "SST", color: "E54B4B", logo: "sst", logoColor: "white" },
-  { name: "SQL", color: "4479A1", logo: "mysql", logoColor: "white" },
-  { name: "NoSQL", color: "003545", logo: "datadotai", logoColor: "white" },
   {
-    name: "PostgreSQL",
-    color: "336791",
-    logo: "postgresql",
+    name: "GitHub Actions",
+    color: "2088FF",
+    logo: "githubactions",
     logoColor: "white",
   },
-  { name: "MySQL", color: "005C84", logo: "mysql", logoColor: "white" },
-  {
-    name: "Tailwind CSS",
-    color: "06B6D4",
-    logo: "tailwindcss",
-    logoColor: "white",
-  },
-  { name: "SQLite", color: "003B57", logo: "sqlite", logoColor: "white" },
-  { name: "Firebase", color: "FFCA28", logo: "firebase", logoColor: "black" },
-  {
-    name: "WordPress",
-    color: "21759B",
-    logo: "wordpress",
-    logoColor: "white",
-  },
-  { name: "FFmpeg", color: "007808", logo: "ffmpeg", logoColor: "white" },
-  { name: "OpenAI", image: openAiLogo, badgeColor: "#0b0b0b" },
+  { name: "Git", color: "F05032", logo: "git", logoColor: "white" },
   { name: "ESLint", color: "4B32C3", logo: "eslint", logoColor: "white" },
   {
     name: "Prettier",
@@ -193,51 +217,10 @@ const toolsFrameworks: BadgeItem[] = [
     logoColor: "black",
   },
   {
-    name: "Ultracite",
-    image: ultraciteIcon,
-    badgeColor: "#f5f5f5",
-    textColor: "#111827",
-  },
-  {
     name: "Playwright",
     image: playwrightIcon,
     badgeColor: "#f5f5f5",
     textColor: "#111827",
-  },
-  {
-    name: "Serverless Framework",
-    color: "FD5750",
-    logo: "serverless",
-    logoColor: "white",
-  },
-
-  { name: "CI/CD", color: "BDBDBD", logo: "githubactions", logoColor: "black" },
-  { name: "Git", color: "F05032", logo: "git", logoColor: "white" },
-  { name: "npm", color: "CB3837", logo: "npm", logoColor: "white" },
-  { name: "pnpm", color: "F69220", logo: "pnpm", logoColor: "white" },
-  {
-    name: "Microservices",
-    color: "A833B9",
-    logo: "microstrategy",
-    logoColor: "white",
-  },
-  {
-    name: "Infrastructure as Code",
-    color: "1F74B5",
-    logo: "instructure",
-    logoColor: "white",
-  },
-  {
-    name: "Redux Saga",
-    color: "999999",
-    logo: "redux-saga",
-    logoColor: "white",
-  },
-  {
-    name: "Pydantic",
-    color: "E92063",
-    logo: "pydantic",
-    logoColor: "white",
   },
 ];
 
@@ -440,13 +423,53 @@ export const Skills: FC = () => {
         </motion.div>
         <motion.div className="mt-10 flex flex-row" variants={fadeUpItem}>
           <IconGitPullRequest size={32} />
-          <h2 className="ml-2 text-2xl font-bold">Tools & Frameworks</h2>
+          <h2 className="ml-2 text-2xl font-bold">Front-End Stack</h2>
         </motion.div>
         <motion.div
           className="mt-4 flex flex-wrap gap-2"
           variants={staggerFast}
         >
-          {toolsFrameworks.map((tool, index) => (
+          {frontEndStack.map((tool, index) => (
+            <motion.div
+              key={index}
+              className={`flex h-7 items-center justify-center sm:h-8`}
+              variants={fadeInItem}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              {renderBadge(tool)}
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div className="mt-10 flex flex-row" variants={fadeUpItem}>
+          <IconGitPullRequest size={32} />
+          <h2 className="ml-2 text-2xl font-bold">Backend & APIs</h2>
+        </motion.div>
+        <motion.div
+          className="mt-4 flex flex-wrap gap-2"
+          variants={staggerFast}
+        >
+          {backendApis.map((tool, index) => (
+            <motion.div
+              key={index}
+              className={`flex h-7 items-center justify-center sm:h-8`}
+              variants={fadeInItem}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              {renderBadge(tool)}
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div className="mt-10 flex flex-row" variants={fadeUpItem}>
+          <IconGitPullRequest size={32} />
+          <h2 className="ml-2 text-2xl font-bold">DevOps & Tooling</h2>
+        </motion.div>
+        <motion.div
+          className="mt-4 flex flex-wrap gap-2"
+          variants={staggerFast}
+        >
+          {devopsTooling.map((tool, index) => (
             <motion.div
               key={index}
               className={`flex h-7 items-center justify-center sm:h-8`}
