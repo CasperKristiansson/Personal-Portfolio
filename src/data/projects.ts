@@ -8,6 +8,7 @@ import podcastTrackerHero from "../assets/projects/podcastTracker/podcastTracker
 import pydanticFixturegenHero from "../assets/projects/pydanticFixturegen/pydanticFixturegenHero.jpg";
 import pythonVersionPatchPrHero from "../assets/projects/pythonVersionPatchPr/pythonVersionPatchPrHero.jpg";
 import reactWhiteboardStudioHero from "../assets/projects/reactWhiteboardStudio/reactWhiteboardStudioHero.jpg";
+import codexUsageTrackerProduct from "../assets/projects/codexUsageTracker/codexUsageTrackerProduct.png";
 import tvShowNetworkOverview from "../assets/projects/tvshownetwork/tvShowNetworkOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
 
@@ -105,18 +106,6 @@ export const projects: Project[] = [
     liveUrl: "https://podcast.casperkristiansson.com/",
   },
   {
-    id: "react-whiteboard-studio",
-    title: "React Whiteboard Studio",
-    summary:
-      "Polished whiteboard with fluid canvas interactions and persistence.",
-    tags: ["React", "TypeScript", "Canvas", "Zustand", "IndexedDB"],
-    categories: ["Product", "Web"],
-    image: reactWhiteboardStudioHero,
-    path: "/articles/react-whiteboard-studio",
-    tier: "notable",
-    liveUrl: "https://draw.casperkristiansson.com/",
-  },
-  {
     id: "cpython-patch-pr-action",
     title: "CPython Patch PR Action",
     summary:
@@ -130,6 +119,26 @@ export const projects: Project[] = [
     liveUrl: "https://github.com/CasperKristiansson/python-version-patch-pr",
   },
   {
+    id: "codex-usage-tracker",
+    title: "Codex Usage Tracker",
+    summary:
+      "Local-first Codex CLI usage tracker with SQLite storage, reporting, and a Next.js dashboard.",
+    tags: [
+      "Python",
+      "TypeScript",
+      "Next.js",
+      "React",
+      "SQLite",
+      "CLI",
+      "Tailwind CSS",
+    ],
+    categories: ["Open Source", "Product"],
+    image: codexUsageTrackerProduct,
+    path: "/articles/codex-usage-tracker",
+    tier: "notable",
+    liveUrl: "https://github.com/CasperKristiansson/codex-usage-tracker",
+  },
+  {
     id: "movieboxdb",
     title: "MovieBoxDB",
     summary: "Movie tracking app with search and rich metadata.",
@@ -139,6 +148,18 @@ export const projects: Project[] = [
     path: "/articles/movieboxdb",
     tier: "notable",
     liveUrl: "https://movieboxdb.web.app/",
+  },
+  {
+    id: "react-whiteboard-studio",
+    title: "React Whiteboard Studio",
+    summary:
+      "Polished whiteboard with fluid canvas interactions and persistence.",
+    tags: ["React", "TypeScript", "Canvas", "Zustand", "IndexedDB"],
+    categories: ["Product", "Web"],
+    image: reactWhiteboardStudioHero,
+    path: "/articles/react-whiteboard-studio",
+    tier: "more",
+    liveUrl: "https://draw.casperkristiansson.com/",
   },
   {
     id: "kitgrid",

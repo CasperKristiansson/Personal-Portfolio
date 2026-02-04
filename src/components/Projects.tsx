@@ -157,7 +157,7 @@ export const Projects: FC = () => {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-1 lg:row-end-2",
       imageAspect: "aspect-[16/5]",
     },
-    "cpython-patch-pr-action": {
+    "codex-usage-tracker": {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-2 lg:row-end-3",
       imageAspect: "aspect-[16/5]",
     },
@@ -169,7 +169,7 @@ export const Projects: FC = () => {
       cardClass: "lg:col-start-3 lg:col-end-6 lg:row-start-3 lg:row-end-4",
       imageAspect: "aspect-[16/7]",
     },
-    "react-whiteboard-studio": {
+    "cpython-patch-pr-action": {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-4 lg:row-end-5",
       imageAspect: "aspect-[16/10]",
     },
@@ -181,7 +181,7 @@ export const Projects: FC = () => {
 
   const compactHighlightIds = new Set([
     "pydantic-fixturegen",
-    "cpython-patch-pr-action",
+    "codex-usage-tracker",
   ]);
 
   if (!spotlight) {

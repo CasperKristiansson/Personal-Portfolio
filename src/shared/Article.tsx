@@ -76,6 +76,7 @@ const badgeMap: Record<string, BadgeConfig> = {
   Zustand: { color: "334155" },
   IndexedDB: { color: "475569" },
   "Node.js": { color: "339933", logo: "node.js", logoColor: "white" },
+  "Next.js": { color: "000000", logo: "nextdotjs", logoColor: "white" },
   "GitHub Actions": {
     color: "2088FF",
     logo: "githubactions",
@@ -85,6 +86,7 @@ const badgeMap: Record<string, BadgeConfig> = {
   Figma: { color: "F24E1E", logo: "figma", logoColor: "white" },
   Markdown: { color: "000000", logo: "markdown", logoColor: "white" },
   PNPM: { color: "F69220", logo: "pnpm", logoColor: "white" },
+  SQLite: { color: "003B57", logo: "sqlite", logoColor: "white" },
   Desktop: { color: "1E293B" },
   Azure: { color: "0078D4", logo: "microsoftazure", logoColor: "white" },
   TensorFlow: { color: "FF6F00", logo: "tensorflow", logoColor: "white" },
@@ -94,6 +96,7 @@ const badgeMap: Record<string, BadgeConfig> = {
     logo: "raspberrypi",
     logoColor: "white",
   },
+  Playwright: { color: "45BA4B", logo: "playwright", logoColor: "white" },
   "REST API": { color: "1D4ED8" },
   API: { color: "1D4ED8" },
   WordPress: { color: "21759B", logo: "wordpress", logoColor: "white" },

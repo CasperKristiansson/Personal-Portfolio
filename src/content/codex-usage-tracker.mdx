@@ -1,0 +1,57 @@
+import codexUsageTrackerProduct from "../assets/projects/codexUsageTracker/codexUsageTrackerProduct.png";
+import codexUsageTrackerHero from "../assets/projects/codexUsageTracker/codexUsageTrackerHero.png";
+import codexUsageTrackerDashboard from "../assets/projects/codexUsageTracker/codexUsageTrackerDashboard.png";
+
+export const meta = {
+  path: "/articles/codex-usage-tracker",
+  period: "2026",
+  header: "Codex Usage Tracker",
+  description:
+    "Local-first tracker for Codex CLI usage with SQLite storage, fast reporting, and a Next.js dashboard.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/codex-usage-tracker",
+      display: "Github",
+    },
+  ],
+  image: codexUsageTrackerProduct,
+};
+
+Codex Usage Tracker is a local-first system for understanding OpenAI Codex CLI usage. It ingests rollout JSONL files, stores token metrics and metadata in SQLite, and makes the data explorable through both a CLI and a Next.js dashboard.
+
+## Why it exists
+
+Codex usage is scattered across rollout logs, CLI output, and app-server events. This project consolidates those sources into one durable, queryable dataset so daily, weekly, and monthly insights are always a command away.
+
+## What it delivers
+
+- **Incremental ingestion:** only new or changed files are parsed, keeping refreshes fast.
+- **Multiple data sources:** rollout JSONL, CLI logs, and app-server JSON-RPC logs.
+- **Reporting built-in:** daily/weekly/monthly breakdowns by model, directory, or session.
+- **Exports:** raw events to JSON or CSV for ad hoc analysis.
+- **Privacy controls:** optional redaction and purge commands to avoid storing content.
+
+<img src={codexUsageTrackerHero} alt="Codex Usage Tracker hero" />
+
+<img src={codexUsageTrackerDashboard} alt="Codex Usage Tracker dashboard" />
+
+## Dashboard experience
+
+The local dashboard runs on Next.js and visualizes usage trends, model splits, and the latest usage snapshot. It is purpose-built for quick comprehension: the latest snapshot, totals, and weekly rollups are always front-and-center.
+
+## Architecture highlights
+
+- **Python CLI core:** A `codex-track` binary handles ingestion, reporting, and exports.
+- **SQLite storage layer:** tables for events, sessions, turns, and tool calls with lightweight metadata indices.
+- **UI bundle:** A self-contained Next.js build shipped with the installer for local usage.
+- **Configurable timezones:** reporting respects local timezone settings, with historical re-ingest support.
+
+## Tech stack
+
+Python 3.10, TypeScript, Next.js, React 19, SQLite, Tailwind CSS, pnpm, Playwright.
+
+## What I am most proud of
+
+- A local-first workflow that keeps sensitive usage data on-device by default.
+- Incremental ingestion that scales without reprocessing large log histories.
+- A UI that makes technical telemetry feel approachable and actionable.

@@ -19,6 +19,9 @@ import PodcastTracker, {
 import PydanticFixturegen, {
   meta as pydanticFixturegenMeta,
 } from "./content/pydantic-fixturegen.mdx";
+import CodexUsageTracker, {
+  meta as codexUsageTrackerMeta,
+} from "./content/codex-usage-tracker.mdx";
 import PythonVersionPatchPr, {
   meta as pythonVersionPatchPrMeta,
 } from "./content/python-version-patch-pr.mdx";
@@ -64,6 +67,11 @@ const podcastTracker: ArticleItem = {
 const pydanticFixturegen: ArticleItem = {
   ...pydanticFixturegenMeta,
   Content: PydanticFixturegen,
+};
+
+const codexUsageTracker: ArticleItem = {
+  ...codexUsageTrackerMeta,
+  Content: CodexUsageTracker,
 };
 
 const pythonVersionPatchPr: ArticleItem = {
@@ -116,6 +124,7 @@ export const Articles: ArticleItem[] = [
   reactWhiteboardStudio,
   podcastTracker,
   pydanticFixturegen,
+  codexUsageTracker,
   pythonVersionPatchPr,
   pktraffic,
   movieboxdb,
