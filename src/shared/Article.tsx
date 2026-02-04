@@ -242,7 +242,7 @@ export const Article: FC<ArticleItem> = (article) => {
     ),
     img: ({ alt, ...props }: ImgHTMLAttributes<HTMLImageElement>) => (
       <motion.figure
-        className="mt-6"
+        className="my-8"
         variants={scaleInItem}
         initial="hidden"
         whileInView="visible"
