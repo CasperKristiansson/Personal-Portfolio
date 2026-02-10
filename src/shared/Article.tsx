@@ -242,7 +242,7 @@ export const Article: FC<ArticleItem> = (article) => {
     ),
     img: ({ alt, ...props }: ImgHTMLAttributes<HTMLImageElement>) => (
       <motion.figure
-        className="my-8"
+        className="mb-8 pt-6"
         variants={scaleInItem}
         initial="hidden"
         whileInView="visible"
@@ -251,7 +251,7 @@ export const Article: FC<ArticleItem> = (article) => {
         <img
           {...props}
           alt={alt ?? ""}
-          className="mx-auto rounded-2xl border border-white/10 shadow-xl"
+          className="mx-auto block rounded-2xl border border-white/10 shadow-xl"
         />
         {alt ? (
           <figcaption className="mt-2 text-sm text-slate-400 italic">
@@ -448,7 +448,9 @@ export const Article: FC<ArticleItem> = (article) => {
           </motion.div>
         </div>
       </motion.div>
-      <div className={`relative mx-auto w-full max-w-205 px-6 pb-20 lg:px-0`}>
+      <div
+        className={`article-content relative mx-auto w-full max-w-205 px-6 pb-20 lg:px-0`}
+      >
         <MDXProvider components={mdxComponents}>
           <article.Content />
         </MDXProvider>

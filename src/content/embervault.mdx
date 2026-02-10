@@ -1,0 +1,61 @@
+import embervaultHero from "../assets/projects/embervault/embervaultHero.png";
+import embervaultApp from "../assets/projects/embervault/embervaultApp.png";
+import embervaultSettings from "../assets/projects/embervault/embervaultSettings.png";
+
+export const meta = {
+  path: "/articles/embervault",
+  period: "2026",
+  header: "EmberVault",
+  description:
+    "Local-first notes app with a calm, dark-mode writing space, offline support, and zero-account privacy.",
+  headerLinks: [
+    {
+      link: "https://github.com/CasperKristiansson/EmberVault",
+      display: "Github",
+    },
+    {
+      link: "https://embervault.casperkristiansson.com",
+      display: "embervault.casperkristiansson.com",
+    },
+  ],
+  image: embervaultHero,
+};
+
+EmberVault is a dark-mode, macOS-inspired notes app that runs in the browser while keeping everything on-device. It is built for speed, privacy, and a calm writing environment, with no accounts, no cloud sync, and no tracking.
+
+## The Wow in One Paragraph
+
+EmberVault blends a focused writing surface with a local-first storage model so your notes never leave your machine. It offers a block-based editor with Markdown-friendly blocks, fast navigation, and an information-dense right rail for outlines and metadata. The result is a lightweight product that feels native, stays offline-ready after the first load, and keeps your entire workspace private by default.
+
+## Local-First Storage
+
+- **Folder vault:** notes live inside a user-chosen folder on disk, leveraging the browser's folder permission model (best experience on Chrome and Edge).
+- **Browser storage:** IndexedDB-backed storage for quick setup and broad browser compatibility.
+- **Single workspace:** folders + tags organize everything in one consistent hierarchy.
+
+<img src={embervaultApp} alt="EmberVault app interface" />
+
+## Writing Experience
+
+The editor is block-based and Markdown-friendly, with rich blocks for code, tables, checklists, quotes, dividers, and LaTeX math. The interface stays deliberately calm: split panes, tabs, and a right panel keep context close without breaking writing flow.
+
+## Search, Navigation, and Recovery
+
+- **Full-text search** with filters and fuzzy matching to surface content quickly.
+- **Tabs + split panes** for multitasking across notes.
+- **Right panel** for outlines and metadata at a glance.
+- **Favorites + Trash** with restore support so nothing is lost by accident.
+
+<img src={embervaultSettings} alt="EmberVault settings" />
+
+## Offline + Privacy
+
+EmberVault is offline-first after the initial load. There are no accounts, no tracking, and no background sync. Every note stays on-device, whether stored in a folder vault or the browser database.
+
+## Tech Stack
+
+SvelteKit, Svelte 5, TypeScript, Vite, Tailwind CSS, TipTap, IndexedDB, and MiniSearch.
+
+## What Makes It Stand Out
+
+EmberVault turns local-first from a buzzword into a product experience. The storage model is explicit, the editor is powerful without being noisy, and the UI keeps attention where it belongs: on the writing itself.

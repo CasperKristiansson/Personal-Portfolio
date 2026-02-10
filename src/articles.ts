@@ -10,6 +10,7 @@ import FinanceTracker, {
 import ImageEditingApplication, {
   meta as imageEditingApplicationMeta,
 } from "./content/image-editing-application.mdx";
+import EmberVault, { meta as emberVaultMeta } from "./content/embervault.mdx";
 import Kitgrid, { meta as kitgridMeta } from "./content/kitgrid.mdx";
 import MovieBoxDB, { meta as movieboxdbMeta } from "./content/movieboxdb.mdx";
 import PKTraffic, { meta as pktrafficMeta } from "./content/pktraffic.mdx";
@@ -62,6 +63,11 @@ const reactWhiteboardStudio: ArticleItem = {
 const podcastTracker: ArticleItem = {
   ...podcastTrackerMeta,
   Content: PodcastTracker,
+};
+
+const emberVault: ArticleItem = {
+  ...emberVaultMeta,
+  Content: EmberVault,
 };
 
 const pydanticFixturegen: ArticleItem = {
@@ -123,6 +129,7 @@ export const Articles: ArticleItem[] = [
   financeTracker,
   reactWhiteboardStudio,
   podcastTracker,
+  emberVault,
   pydanticFixturegen,
   codexUsageTracker,
   pythonVersionPatchPr,

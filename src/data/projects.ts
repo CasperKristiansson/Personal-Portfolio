@@ -3,6 +3,7 @@ import financeTrackerHero from "../assets/projects/financeTracker/financeTracker
 import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
 import kitgridHero from "../assets/projects/kitgrid/kitgridHero.jpg";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
+import embervaultHero from "../assets/projects/embervault/embervaultHero.png";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import podcastTrackerHero from "../assets/projects/podcastTracker/podcastTrackerHero.jpg";
 import pydanticFixturegenHero from "../assets/projects/pydanticFixturegen/pydanticFixturegenHero.jpg";
@@ -81,17 +82,23 @@ export const projects: Project[] = [
     liveUrl: "https://pktraffic.com/",
   },
   {
-    id: "pydantic-fixturegen",
-    title: "pydantic-fixturegen",
+    id: "embervault",
+    title: "EmberVault",
     summary:
-      "Deterministic fixtures and datasets for Pydantic v2, dataclasses, and TypedDicts.",
-    tags: ["Python", "Pydantic", "CLI", "PyPI", "Testing", "Open Source"],
-    categories: ["Open Source", "DevOps"],
-    image: pydanticFixturegenHero,
-    media: { type: "animation", id: "pydantic-fixturegen" },
-    path: "/articles/pydantic-fixturegen",
+      "Local-first notes app with a calm writing environment, offline support, and folder/IndexedDB storage.",
+    tags: [
+      "SvelteKit",
+      "TypeScript",
+      "Tailwind CSS",
+      "TipTap",
+      "IndexedDB",
+      "Local-first",
+    ],
+    categories: ["Product", "Web"],
+    image: embervaultHero,
+    path: "/articles/embervault",
     tier: "featured",
-    liveUrl: "https://github.com/CasperKristiansson/pydantic-fixturegen",
+    liveUrl: "https://embervault.casperkristiansson.com",
   },
   {
     id: "podcast-tracker",
@@ -139,6 +146,19 @@ export const projects: Project[] = [
     liveUrl: "https://github.com/CasperKristiansson/codex-usage-tracker",
   },
   {
+    id: "pydantic-fixturegen",
+    title: "pydantic-fixturegen",
+    summary:
+      "Deterministic fixtures and datasets for Pydantic v2, dataclasses, and TypedDicts.",
+    tags: ["Python", "Pydantic", "CLI", "PyPI", "Testing", "Open Source"],
+    categories: ["Open Source", "DevOps"],
+    image: pydanticFixturegenHero,
+    media: { type: "animation", id: "pydantic-fixturegen" },
+    path: "/articles/pydantic-fixturegen",
+    tier: "notable",
+    liveUrl: "https://github.com/CasperKristiansson/pydantic-fixturegen",
+  },
+  {
     id: "movieboxdb",
     title: "MovieBoxDB",
     summary: "Movie tracking app with search and rich metadata.",
@@ -146,7 +166,7 @@ export const projects: Project[] = [
     categories: ["Product", "Web"],
     image: movieboxdbOverview,
     path: "/articles/movieboxdb",
-    tier: "notable",
+    tier: "more",
     liveUrl: "https://movieboxdb.web.app/",
   },
   {

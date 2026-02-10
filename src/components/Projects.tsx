@@ -153,7 +153,7 @@ export const Projects: FC = () => {
       cardClass: "lg:col-start-1 lg:col-end-4 lg:row-start-1 lg:row-end-3",
       imageAspect: "aspect-[16/6]",
     },
-    "pydantic-fixturegen": {
+    embervault: {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-1 lg:row-end-2",
       imageAspect: "aspect-[16/5]",
     },
@@ -173,16 +173,13 @@ export const Projects: FC = () => {
       cardClass: "lg:col-start-4 lg:col-end-6 lg:row-start-4 lg:row-end-5",
       imageAspect: "aspect-[16/10]",
     },
-    movieboxdb: {
+    "pydantic-fixturegen": {
       cardClass: "lg:col-start-1 lg:col-end-4 lg:row-start-4 lg:row-end-5",
       imageAspect: "aspect-[16/7]",
     },
   };
 
-  const compactHighlightIds = new Set([
-    "pydantic-fixturegen",
-    "codex-usage-tracker",
-  ]);
+  const compactHighlightIds = new Set(["embervault", "codex-usage-tracker"]);
 
   if (!spotlight) {
     return null;

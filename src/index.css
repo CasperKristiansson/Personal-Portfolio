@@ -109,4 +109,11 @@ body {
       --heading-flash-color: var(--color-primary);
     }
   }
+
+  .article-content > img,
+  .article-content p > img,
+  .article-content li > img {
+    display: block;
+    margin: 1.5rem auto 2rem;
+  }
 }
