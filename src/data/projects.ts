@@ -160,6 +160,26 @@ export const projects: Project[] = [
     liveUrl: "https://github.com/CasperKristiansson/pydantic-fixturegen",
   },
   {
+    id: "cloudcanvas",
+    title: "CloudCanvas",
+    summary:
+      "AWS-hosted Excalidraw fork with Google auth, cloud workspaces, autosave, and sharing.",
+    tags: [
+      "React",
+      "TypeScript",
+      "AWS",
+      "Lambda",
+      "DynamoDB",
+      "Cognito",
+      "S3",
+    ],
+    categories: ["Product", "Cloud"],
+    image: cloudcanvasHero,
+    path: "/articles/cloudcanvas",
+    tier: "more",
+    liveUrl: "https://cloudcanvas.casperkristiansson.com/",
+  },
+  {
     id: "movieboxdb",
     title: "MovieBoxDB",
     summary: "Movie tracking app with search and rich metadata.",
@@ -181,26 +201,6 @@ export const projects: Project[] = [
     path: "/articles/react-whiteboard-studio",
     tier: "more",
     liveUrl: "https://draw.casperkristiansson.com/",
-  },
-  {
-    id: "cloudcanvas",
-    title: "CloudCanvas",
-    summary:
-      "AWS-hosted Excalidraw fork with Google auth, cloud workspaces, autosave, and sharing.",
-    tags: [
-      "React",
-      "TypeScript",
-      "AWS",
-      "Lambda",
-      "DynamoDB",
-      "Cognito",
-      "S3",
-    ],
-    categories: ["Product", "Cloud"],
-    image: cloudcanvasHero,
-    path: "/articles/cloudcanvas",
-    tier: "more",
-    liveUrl: "https://cloudcanvas.casperkristiansson.com/",
   },
   {
     id: "kitgrid",
