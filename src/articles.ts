@@ -3,14 +3,18 @@ import type { ComponentType } from "react";
 import CloudComputing, {
   meta as cloudComputingMeta,
 } from "./content/cloud-computing.mdx";
+import CloudCanvas, { meta as cloudCanvasMeta } from "./content/cloudcanvas.mdx";
+import CodexUsageTracker, {
+  meta as codexUsageTrackerMeta,
+} from "./content/codex-usage-tracker.mdx";
 import Ecoloop, { meta as ecoloopMeta } from "./content/ecoloop.mdx";
+import EmberVault, { meta as emberVaultMeta } from "./content/embervault.mdx";
 import FinanceTracker, {
   meta as financeTrackerMeta,
 } from "./content/finance-tracker.mdx";
 import ImageEditingApplication, {
   meta as imageEditingApplicationMeta,
 } from "./content/image-editing-application.mdx";
-import EmberVault, { meta as emberVaultMeta } from "./content/embervault.mdx";
 import Kitgrid, { meta as kitgridMeta } from "./content/kitgrid.mdx";
 import MovieBoxDB, { meta as movieboxdbMeta } from "./content/movieboxdb.mdx";
 import PKTraffic, { meta as pktrafficMeta } from "./content/pktraffic.mdx";
@@ -20,9 +24,6 @@ import PodcastTracker, {
 import PydanticFixturegen, {
   meta as pydanticFixturegenMeta,
 } from "./content/pydantic-fixturegen.mdx";
-import CodexUsageTracker, {
-  meta as codexUsageTrackerMeta,
-} from "./content/codex-usage-tracker.mdx";
 import PythonVersionPatchPr, {
   meta as pythonVersionPatchPrMeta,
 } from "./content/python-version-patch-pr.mdx";
@@ -125,6 +126,11 @@ const cloudComputing: ArticleItem = {
   Content: CloudComputing,
 };
 
+const cloudCanvas: ArticleItem = {
+  ...cloudCanvasMeta,
+  Content: CloudCanvas,
+};
+
 export const Articles: ArticleItem[] = [
   financeTracker,
   reactWhiteboardStudio,
@@ -141,4 +147,5 @@ export const Articles: ArticleItem[] = [
   tvShowNetwork,
   kitgrid,
   cloudComputing,
+  cloudCanvas,
 ];

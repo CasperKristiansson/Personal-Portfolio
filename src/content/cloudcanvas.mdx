@@ -1,0 +1,36 @@
+import cloudcanvasHero from "../assets/projects/cloudcanvas/cloudcanvasHero.jpg";
+
+export const meta = {
+  path: "/articles/cloudcanvas",
+  period: "2026",
+  header: "CloudCanvas",
+  description:
+    "A hosted Excalidraw fork with AWS-backed persistence, Google-only auth, and cloud-native workspace workflows.",
+  headerLinks: [
+    {
+      link: "https://cloudcanvas.casperkristiansson.com/",
+      display: "Live",
+    },
+  ],
+  image: cloudcanvasHero,
+};
+
+CloudCanvas is a product fork of Excalidraw focused on a cloud-first whiteboarding workflow. The goal is to keep the editor experience close to upstream Excalidraw while adding production-ready AWS infrastructure and hosted collaboration primitives.
+
+## Highlights
+
+- Google authentication with Cognito.
+- Cloud API backed by API Gateway and Lambda.
+- Drawing and asset persistence in S3 with metadata in DynamoDB.
+- Workspace model with projects, folders, favorites, and recent files.
+- Share links and share management with expiry and revoke controls.
+
+<img src={cloudcanvasHero} alt="CloudCanvas product banner" />
+
+## Engineering approach
+
+CloudCanvas keeps editor internals near-upstream to make rebases practical, while CloudCanvas-specific product capabilities are layered in app and cloud modules. This structure reduces fork drift and keeps product iteration manageable.
+
+## Tech stack
+
+React, TypeScript, AWS Cognito, API Gateway, Lambda, DynamoDB, S3, Terraform.

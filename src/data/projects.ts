@@ -1,15 +1,16 @@
+import cloudcanvasHero from "../assets/projects/cloudcanvas/cloudcanvasHero.jpg";
+import codexUsageTrackerProduct from "../assets/projects/codexUsageTracker/codexUsageTrackerProduct.png";
 import ecoloopOverview from "../assets/projects/ecoloop/ecoloopOverview.png";
+import embervaultHero from "../assets/projects/embervault/embervaultHero.png";
 import financeTrackerHero from "../assets/projects/financeTracker/financeTrackerHero.jpg";
 import imageEditorOverview from "../assets/projects/imageEditor/imageEditorOverview.png";
 import kitgridHero from "../assets/projects/kitgrid/kitgridHero.jpg";
 import movieboxdbOverview from "../assets/projects/movieboxdb/movieboxdbOverview.png";
-import embervaultHero from "../assets/projects/embervault/embervaultHero.png";
 import pktrafficOverview from "../assets/projects/pktraffic/pktrafficOverview.png";
 import podcastTrackerHero from "../assets/projects/podcastTracker/podcastTrackerHero.jpg";
 import pydanticFixturegenHero from "../assets/projects/pydanticFixturegen/pydanticFixturegenHero.jpg";
 import pythonVersionPatchPrHero from "../assets/projects/pythonVersionPatchPr/pythonVersionPatchPrHero.jpg";
 import reactWhiteboardStudioHero from "../assets/projects/reactWhiteboardStudio/reactWhiteboardStudioHero.jpg";
-import codexUsageTrackerProduct from "../assets/projects/codexUsageTracker/codexUsageTrackerProduct.png";
 import tvShowNetworkOverview from "../assets/projects/tvshownetwork/tvShowNetworkOverview.png";
 import weatherbrainOverview from "../assets/projects/weatherbrain/weatherbrainOverview.png";
 
@@ -180,6 +181,26 @@ export const projects: Project[] = [
     path: "/articles/react-whiteboard-studio",
     tier: "more",
     liveUrl: "https://draw.casperkristiansson.com/",
+  },
+  {
+    id: "cloudcanvas",
+    title: "CloudCanvas",
+    summary:
+      "AWS-hosted Excalidraw fork with Google auth, cloud workspaces, autosave, and sharing.",
+    tags: [
+      "React",
+      "TypeScript",
+      "AWS",
+      "Lambda",
+      "DynamoDB",
+      "Cognito",
+      "S3",
+    ],
+    categories: ["Product", "Cloud"],
+    image: cloudcanvasHero,
+    path: "/articles/cloudcanvas",
+    tier: "more",
+    liveUrl: "https://cloudcanvas.casperkristiansson.com/",
   },
   {
     id: "kitgrid",
