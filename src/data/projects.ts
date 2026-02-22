@@ -106,7 +106,16 @@ export const projects: Project[] = [
     title: "Podcast Tracker",
     summary:
       "Spotify-synced podcast tracker with show pages and listening history.",
-    tags: ["Astro", "TypeScript", "Tailwind CSS", "GraphQL", "AWS", "DynamoDB"],
+    tags: [
+      "Astro",
+      "TypeScript",
+      "Tailwind CSS",
+      "GraphQL",
+      "AWS",
+      "AppSync",
+      "DynamoDB",
+      "Ink",
+    ],
     categories: ["Product", "Web"],
     image: podcastTrackerHero,
     path: "/articles/podcast-tracker",

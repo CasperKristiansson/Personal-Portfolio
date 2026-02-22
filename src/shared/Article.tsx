@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router";
 
 import type { ArticleItem } from "../articles";
+import inkLogo from "../assets/logos/ink.png";
 import { Icons } from "../components/Icons";
 import { PydanticFixturegenHero } from "../components/PydanticFixturegenHero";
 import { PythonVersionPatchPrHero } from "../components/PythonVersionPatchPrHero";
@@ -34,6 +35,7 @@ type BadgeConfig = {
   color: string;
   logo?: string;
   logoColor?: string;
+  customLogoSrc?: string;
 };
 
 const badgeMap: Record<string, BadgeConfig> = {
@@ -43,6 +45,7 @@ const badgeMap: Record<string, BadgeConfig> = {
   Redux: { color: "764ABC", logo: "redux", logoColor: "white" },
   Python: { color: "3776AB", logo: "python", logoColor: "white" },
   AWS: { color: "232F3E", logo: "amazonaws", logoColor: "white" },
+  AppSync: { color: "232F3E", logo: "amazonaws", logoColor: "white" },
   Terraform: { color: "844FBA", logo: "terraform", logoColor: "white" },
   Firebase: { color: "FFCA28", logo: "firebase", logoColor: "0B1224" },
   "Firebase Auth": {
@@ -75,6 +78,7 @@ const badgeMap: Record<string, BadgeConfig> = {
   Canvas: { color: "E34F26", logo: "html5", logoColor: "white" },
   Zustand: { color: "334155" },
   IndexedDB: { color: "475569" },
+  Ink: { color: "1F2937", customLogoSrc: inkLogo },
   "Node.js": { color: "339933", logo: "node.js", logoColor: "white" },
   "Next.js": { color: "000000", logo: "nextdotjs", logoColor: "white" },
   "GitHub Actions": {
@@ -132,16 +136,39 @@ const BadgeList: FC<{ tags: string[]; max?: number }> = ({ tags, max = 6 }) => {
 
   return (
     <div className="mt-5 flex flex-wrap gap-2">
-      {visible.map((tag) => (
-        <img
-          key={tag}
-          src={buildBadgeUrl(tag)}
-          alt={tag}
-          title={tag}
-          loading="lazy"
-          className="h-6 w-auto"
-        />
-      ))}
+      {visible.map((tag) => {
+        const config = badgeMap[tag];
+        if (config?.customLogoSrc) {
+          return (
+            <span
+              key={tag}
+              className="inline-flex h-6 items-center gap-1.5 rounded-[3px] px-2 text-[11px] font-semibold text-white"
+              style={{ backgroundColor: `#${config.color}` }}
+              title={tag}
+            >
+              <img
+                src={config.customLogoSrc}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="h-3.5 w-3.5 object-contain"
+              />
+              <span>{config.label ?? tag}</span>
+            </span>
+          );
+        }
+
+        return (
+          <img
+            key={tag}
+            src={buildBadgeUrl(tag)}
+            alt={tag}
+            title={tag}
+            loading="lazy"
+            className="h-6 w-auto"
+          />
+        );
+      })}
       {remaining > 0 && (
         <button
           type="button"
